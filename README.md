@@ -5,7 +5,7 @@ Examples of basic code...
 Faster
 Demo available here :
 
-[Java JGraphT Demo](Java\jgrapht-demo\src\main\java\org\jgrapht\demo)
+[Java JGraphT Demo](Java/jgrapht-demo/src/main/java/org/jgrapht/demo)
 
 Doc : https://jgrapht.org/guide/UserOverview
 
