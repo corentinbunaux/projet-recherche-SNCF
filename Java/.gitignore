@@ -1,39 +1,5 @@
-# default crapfile-ignores
-*~
-*.*bak*
-*.old*
-*.log*
-*_log_*
-*.bz2
-*.gz
-*.xz
-*.tar
-*.zip
-*.nbm
-*.orig
-*.swp*
-*.*-swp
-*.db
-*.jar
-*Kopie*
-nbproject/private
-one-jar
-target
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
 build
-.cache
-.settings
-.project
-.kdev4
-.buildpath
-.svn
-.idea/*
-*.iml
-out/*
-**/out/*
-**/bin/*
-pom.xml.releaseBackup
-**/pom.xml.releaseBackup
-**/dependency-reduced-pom.xml
-.classpath
-docs/javadoc*
-docs/_site
