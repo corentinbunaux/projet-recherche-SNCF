@@ -8,8 +8,6 @@ import edu.uci.ics.jung.algorithms.filters.KNeighborhoodFilter;
 import edu.uci.ics.jung.algorithms.filters.KNeighborhoodFilter.EdgeType;
 import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.graph.SparseMultigraph;
-
-import java.awt.Point;
 import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.IOException;
@@ -138,7 +136,7 @@ public class RailNetwork {
         return border;
     }
 
-    public static Point2D convertToWGS84( Map<String, Point2D> positions, String startVertex) {
+    private static Point2D convertToWGS84( Map<String, Point2D> positions, String startVertex) {
         double x_wgs84 = positions.get(startVertex).getX()*100/Window.width;
         double y_wgs84 = (Window.height - positions.get(startVertex).getY())*100/Window.height;
         return new Point2D.Double(x_wgs84, y_wgs84);

@@ -2,6 +2,7 @@ package org.example;
 
 import java.awt.geom.Point2D;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import edu.uci.ics.jung.graph.Graph;
@@ -12,11 +13,15 @@ public class App {
         
         Graph<String, String> railNetwork = RailNetwork.createRailNetwork(positions);
         Graph<String, String> subGrapgNeighborhood = RailNetwork.graphNeighborhood(railNetwork, "Le Havre", 5);
-        Graph<String, String> subGrapgBorder = RailNetwork.graphBorder(railNetwork, positions, "Le Havre", 50);
+        Graph<String, String> subGrapgBorderLH = RailNetwork.graphBorder(railNetwork, positions, "Le Havre", 50);
+        Graph<String, String> subGrapgBorderMarseille = RailNetwork.graphBorder(railNetwork, positions, "Marseille-St-Charles", 20);
 
         //Graph visualisation
-        GraphVisualizer.displayGraph(railNetwork, positions);
-        GraphVisualizer.displayGraph(subGrapgNeighborhood, positions);
-        GraphVisualizer.displayGraph(subGrapgBorder, positions);
+        // GraphVisualizer.displayGraph(railNetwork, positions);
+        // GraphVisualizer.displayGraph(subGrapgNeighborhood, positions);
+        GraphVisualizer.displayGraph(subGrapgBorderMarseille, positions);
+
+        List<List<String>> manchettes = ManchetteGenerator.generateManchettes(subGrapgBorderMarseille);
+        ManchetteGenerator.printManchettes(manchettes);
     }
 }
