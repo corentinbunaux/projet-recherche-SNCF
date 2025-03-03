@@ -11,10 +11,12 @@ public class App {
         Map<String, Point2D> positions = new HashMap<>();
         
         Graph<String, String> railNetwork = RailNetwork.createRailNetwork(positions);
-        Graph<String, String> subGrapg = RailNetwork.neighborhood(railNetwork, "Le Havre", 5);
+        Graph<String, String> subGrapgNeighborhood = RailNetwork.graphNeighborhood(railNetwork, "Le Havre", 5);
+        Graph<String, String> subGrapgBorder = RailNetwork.graphBorder(railNetwork, positions, "Le Havre", 50);
 
         //Graph visualisation
         GraphVisualizer.displayGraph(railNetwork, positions);
-        GraphVisualizer.displayGraph(subGrapg, positions);
+        GraphVisualizer.displayGraph(subGrapgNeighborhood, positions);
+        GraphVisualizer.displayGraph(subGrapgBorder, positions);
     }
 }
