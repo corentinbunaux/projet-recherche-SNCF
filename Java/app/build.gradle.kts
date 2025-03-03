@@ -22,6 +22,11 @@ dependencies {
     implementation("net.sf.jung:jung-algorithms:2.1.1")
     implementation("net.sf.jung:jung-graph-impl:2.1.1")
     implementation("net.sf.jung:jung-visualization:2.1.1")
+
+    // Jackson dependencies
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.13.3")
+    implementation("com.fasterxml.jackson.core:jackson-core:2.13.3")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:2.13.3")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
