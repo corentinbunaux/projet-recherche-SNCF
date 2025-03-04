@@ -12,7 +12,7 @@ public class ManchetteGenerator {
     // Génération des manchettes
     public static List<List<String>> generateManchettes(Graph<String, String> railNetwork) {
         List<List<String>> manchettes = new ArrayList<>();
-        List<String> outliers = outliersList(railNetwork);
+        List<String> outliers = outliersList(railNetwork);  //extrémités
         Set<String> visitedOutliers = new HashSet<>();
     
         for (String outlier : outliers) {
@@ -32,15 +32,19 @@ public class ManchetteGenerator {
                 // Tant qu'on n'a pas atteint un autre outlier, on complète la manchette
                 while (!end) {
                     Collection<String> neighbors = railNetwork.getNeighbors(currentStation);
+                    System.out.println("Current station: " + currentStation + ", Neighbors: " + neighbors);
     
                     // Vérifier s'il n'y a qu'un seul voisin (ligne terminée)
                     if (neighbors.size() == 1) {
                         String nextStation = neighbors.iterator().next();
-                        if (!visited.contains(nextStation)) {
+                        String code_ligne_nextStation = RailNetwork.getCodeLignes(nextStation);
+                        String code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
+                        if (!visited.contains(nextStation) && code_ligne_nextStation.equals(code_ligne_Station)) {
                             manchette.add(nextStation);
                             visited.add(nextStation);
                             currentStation = nextStation;
-                        } else {
+                        }
+                        else {
                             end = true; // Éviter une boucle infinie
                         }
                     } else {
@@ -48,7 +52,9 @@ public class ManchetteGenerator {
                         
                         // Parcourir les voisins pour trouver une station non visitée qui n'est pas un outlier
                         for (String neighbor : neighbors) {
-                            if (!outliers.contains(neighbor) && !visited.contains(neighbor)) {
+                            String code_ligne_nextStation = RailNetwork.getCodeLignes(neighbor);
+                            String code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
+                            if (!outliers.contains(neighbor) && !visited.contains(neighbor) && code_ligne_nextStation.equals(code_ligne_Station) ) {
                                 manchette.add(neighbor);
                                 visited.add(neighbor);
                                 currentStation = neighbor;

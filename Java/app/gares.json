@@ -1,7 +1,7 @@
 [
   {
     "code_uic": "87009696",
-    "libelle": "La Douzill\u00e8re",
+    "libelle": "La Douzillère",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "594000",
@@ -28,7 +28,7 @@
   },
   {
     "code_uic": "87142554",
-    "libelle": "Ch\u00e2tillon-sur-Seine",
+    "libelle": "Châtillon-sur-Seine",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "839000",
@@ -55,7 +55,7 @@
   },
   {
     "code_uic": "87382218",
-    "libelle": "La D\u00e9fense",
+    "libelle": "La Défense",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "973000",
@@ -163,7 +163,7 @@
   },
   {
     "code_uic": "87174003",
-    "libelle": "Ch\u00e2lons-en-Champagne",
+    "libelle": "Châlons-en-Champagne",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "070000",
@@ -298,7 +298,7 @@
   },
   {
     "code_uic": "87473181",
-    "libelle": "Plouaret-Tr\u00e9gor",
+    "libelle": "Plouaret-Trégor",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -379,7 +379,7 @@
   },
   {
     "code_uic": "87396275",
-    "libelle": "Champagn\u00e9",
+    "libelle": "Champagné",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -433,7 +433,7 @@
   },
   {
     "code_uic": "87545210",
-    "libelle": "Ste-Genevi\u00e8ve-des-Bois",
+    "libelle": "Ste-Geneviève-des-Bois",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "570000",
@@ -514,7 +514,7 @@
   },
   {
     "code_uic": "87775114",
-    "libelle": "Verg\u00e8ze-Codognan",
+    "libelle": "Vergèze-Codognan",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "810000",
@@ -811,7 +811,7 @@
   },
   {
     "code_uic": "87394015",
-    "libelle": "Luc\u00e9",
+    "libelle": "Lucé",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "500000",
@@ -865,7 +865,7 @@
   },
   {
     "code_uic": "87574400",
-    "libelle": "Foss\u00e9-Marolles",
+    "libelle": "Fossé-Marolles",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "559000",
@@ -919,7 +919,7 @@
   },
   {
     "code_uic": "87595264",
-    "libelle": "St-L\u00e9on-sur-l'Isle",
+    "libelle": "St-Léon-sur-l'Isle",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "621000",
@@ -1324,7 +1324,7 @@
   },
   {
     "code_uic": "87313676",
-    "libelle": "Laboissi\u00e8re-le-D\u00e9luge",
+    "libelle": "Laboissière-le-Déluge",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "325000",
@@ -1405,7 +1405,7 @@
   },
   {
     "code_uic": "87543017",
-    "libelle": "Les Aubrais-Orl\u00e9ans",
+    "libelle": "Les Aubrais-Orléans",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "570000",
@@ -1459,7 +1459,7 @@
   },
   {
     "code_uic": "87747485",
-    "libelle": "Le Cheylas-La Buissi\u00e8re",
+    "libelle": "Le Cheylas-La Buissière",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "909000",
@@ -1513,7 +1513,7 @@
   },
   {
     "code_uic": "87746776",
-    "libelle": "Les P\u00e9lerins",
+    "libelle": "Les Pélerins",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "896000",
@@ -1648,7 +1648,7 @@
   },
   {
     "code_uic": "87571547",
-    "libelle": "Neuill\u00e9-Pont-Pierre",
+    "libelle": "Neuillé-Pont-Pierre",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "561000",
@@ -1729,7 +1729,7 @@
   },
   {
     "code_uic": "87486142",
-    "libelle": "Belleville-Vend\u00e9e",
+    "libelle": "Belleville-Vendée",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "530000",
@@ -1783,7 +1783,7 @@
   },
   {
     "code_uic": "87184523",
-    "libelle": "Montb\u00e9liard",
+    "libelle": "Montbéliard",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "852000",
@@ -1891,7 +1891,7 @@
   },
   {
     "code_uic": "87345132",
-    "libelle": "Coron-de-M\u00e9ricourt",
+    "libelle": "Coron-de-Méricourt",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "284000",
@@ -2053,7 +2053,7 @@
   },
   {
     "code_uic": "87543017",
-    "libelle": "Les Aubrais-Orl\u00e9ans",
+    "libelle": "Les Aubrais-Orléans",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "590000",
@@ -2404,7 +2404,7 @@
   },
   {
     "code_uic": "87545483",
-    "libelle": "Breuillet-Bruy\u00e8res-le-Ch\u00e2tel",
+    "libelle": "Breuillet-Bruyères-le-Châtel",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "550000",
@@ -2485,7 +2485,7 @@
   },
   {
     "code_uic": "87114389",
-    "libelle": "La Varenne-Chennevi\u00e8res",
+    "libelle": "La Varenne-Chennevières",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "990000",
@@ -2566,7 +2566,7 @@
   },
   {
     "code_uic": "87756890",
-    "libelle": "Vi\u00e9vola",
+    "libelle": "Viévola",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "946000",
@@ -2593,7 +2593,7 @@
   },
   {
     "code_uic": "87282624",
-    "libelle": "Lyon-Jean-Mac\u00e9",
+    "libelle": "Lyon-Jean-Macé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "830000",
@@ -3268,7 +3268,7 @@
   },
   {
     "code_uic": "87281121",
-    "libelle": "Arn\u00e8ke",
+    "libelle": "Arnèke",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "301000",
@@ -3376,7 +3376,7 @@
   },
   {
     "code_uic": "87775072",
-    "libelle": "St-C\u00e9saire",
+    "libelle": "St-Césaire",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "810000",
@@ -3646,7 +3646,7 @@
   },
   {
     "code_uic": "87345157",
-    "libelle": "H\u00e9nin-Beaumont",
+    "libelle": "Hénin-Beaumont",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "284000",
@@ -3700,7 +3700,7 @@
   },
   {
     "code_uic": "87393470",
-    "libelle": "Marchezais-Brou\u00e9",
+    "libelle": "Marchezais-Broué",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "395000",
@@ -3727,7 +3727,7 @@
   },
   {
     "code_uic": "87721522",
-    "libelle": "Le M\u00e9ridien",
+    "libelle": "Le Méridien",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "782000",
@@ -3808,7 +3808,7 @@
   },
   {
     "code_uic": "87193250",
-    "libelle": "B\u00e9ning",
+    "libelle": "Béning",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "172000",
@@ -3943,7 +3943,7 @@
   },
   {
     "code_uic": "87543355",
-    "libelle": "Villeneuve-d'Ingr\u00e9",
+    "libelle": "Villeneuve-d'Ingré",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "556000",
@@ -3997,7 +3997,7 @@
   },
   {
     "code_uic": "87734509",
-    "libelle": "Noir\u00e9table",
+    "libelle": "Noirétable",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "784000",
@@ -4240,7 +4240,7 @@
   },
   {
     "code_uic": "87396556",
-    "libelle": "Laign\u00e9-St-Gervais",
+    "libelle": "Laigné-St-Gervais",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "561000",
@@ -4321,7 +4321,7 @@
   },
   {
     "code_uic": "87381137",
-    "libelle": "Asni\u00e8res-sur-Seine",
+    "libelle": "Asnières-sur-Seine",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "340000",
@@ -4375,7 +4375,7 @@
   },
   {
     "code_uic": "87476317",
-    "libelle": "Quimperl\u00e9",
+    "libelle": "Quimperlé",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "470000",
@@ -4726,7 +4726,7 @@
   },
   {
     "code_uic": "87741454",
-    "libelle": "St-B\u00e9ron-La Bridoire",
+    "libelle": "St-Béron-La Bridoire",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "903000",
@@ -4807,7 +4807,7 @@
   },
   {
     "code_uic": "87763300",
-    "libelle": "Veynes-D\u00e9voluy",
+    "libelle": "Veynes-Dévoluy",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "905000",
@@ -5212,7 +5212,7 @@
   },
   {
     "code_uic": "87485532",
-    "libelle": "Rouill\u00e9",
+    "libelle": "Rouillé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "538000",
@@ -5266,7 +5266,7 @@
   },
   {
     "code_uic": "87696195",
-    "libelle": "La Charit\u00e9-sur-Loire",
+    "libelle": "La Charité-sur-Loire",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "750000",
@@ -5509,7 +5509,7 @@
   },
   {
     "code_uic": "87734053",
-    "libelle": "Riom-Ch\u00e2tel-Guyon",
+    "libelle": "Riom-Châtel-Guyon",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "790000",
@@ -5779,7 +5779,7 @@
   },
   {
     "code_uic": "87116400",
-    "libelle": "Montry-Cond\u00e9",
+    "libelle": "Montry-Condé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "071000",
@@ -5806,7 +5806,7 @@
   },
   {
     "code_uic": "87396283",
-    "libelle": "St-Mars-la-Bri\u00e8re",
+    "libelle": "St-Mars-la-Brière",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -5887,7 +5887,7 @@
   },
   {
     "code_uic": "87184507",
-    "libelle": "H\u00e9ricourt",
+    "libelle": "Héricourt",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "852000",
@@ -6022,7 +6022,7 @@
   },
   {
     "code_uic": "87773200",
-    "libelle": "S\u00e8te",
+    "libelle": "Sète",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "810000",
@@ -6184,7 +6184,7 @@
   },
   {
     "code_uic": "87313866",
-    "libelle": "P\u00e9ronne-la-Chapelette",
+    "libelle": "Péronne-la-Chapelette",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "259000",
@@ -6346,7 +6346,7 @@
   },
   {
     "code_uic": "87576173",
-    "libelle": "Faubourg-d'Orl\u00e9ans",
+    "libelle": "Faubourg-d'Orléans",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "600000",
@@ -6373,7 +6373,7 @@
   },
   {
     "code_uic": "87747410",
-    "libelle": "Dom\u00e8ne",
+    "libelle": "Domène",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "909000",
@@ -6400,7 +6400,7 @@
   },
   {
     "code_uic": "87396325",
-    "libelle": "La Fert\u00e9-Bernard",
+    "libelle": "La Ferté-Bernard",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -6535,7 +6535,7 @@
   },
   {
     "code_uic": "87575704",
-    "libelle": "Mignaloux-Nouaill\u00e9",
+    "libelle": "Mignaloux-Nouaillé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "604000",
@@ -6589,7 +6589,7 @@
   },
   {
     "code_uic": "87393439",
-    "libelle": "Garanci\u00e8res-la-Queue",
+    "libelle": "Garancières-la-Queue",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "395000",
@@ -6697,7 +6697,7 @@
   },
   {
     "code_uic": "87615062",
-    "libelle": "Tr\u00e8bes",
+    "libelle": "Trèbes",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "640000",
@@ -6832,7 +6832,7 @@
   },
   {
     "code_uic": "87478040",
-    "libelle": "Ding\u00e9",
+    "libelle": "Dingé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "441000",
@@ -6886,7 +6886,7 @@
   },
   {
     "code_uic": "87583823",
-    "libelle": "Lux\u00e9",
+    "libelle": "Luxé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "570000",
@@ -7237,7 +7237,7 @@
   },
   {
     "code_uic": "87396606",
-    "libelle": "Ch\u00e2teau-du-Loir",
+    "libelle": "Château-du-Loir",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "561000",
@@ -7426,7 +7426,7 @@
   },
   {
     "code_uic": "87476242",
-    "libelle": "Brand\u00e9rion",
+    "libelle": "Brandérion",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "470000",
@@ -7534,7 +7534,7 @@
   },
   {
     "code_uic": "87584607",
-    "libelle": "St-M\u00e9dard-de-Guizi\u00e8res",
+    "libelle": "St-Médard-de-Guizières",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "621000",
@@ -7615,7 +7615,7 @@
   },
   {
     "code_uic": "87672634",
-    "libelle": "Buzy-en-B\u00e9arn",
+    "libelle": "Buzy-en-Béarn",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "664000",
@@ -7669,7 +7669,7 @@
   },
   {
     "code_uic": "87581538",
-    "libelle": "Caud\u00e9ran-M\u00e9rignac",
+    "libelle": "Caudéran-Mérignac",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "586000",
@@ -7912,7 +7912,7 @@
   },
   {
     "code_uic": "87118133",
-    "libelle": "Ch\u00e2tres (Aube)",
+    "libelle": "Châtres (Aube)",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "001000",
@@ -8209,7 +8209,7 @@
   },
   {
     "code_uic": "87683722",
-    "libelle": "Sermizelles-V\u00e9zelay",
+    "libelle": "Sermizelles-Vézelay",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "755000",
@@ -8236,7 +8236,7 @@
   },
   {
     "code_uic": "87694364",
-    "libelle": "St-L\u00e9ger-sur-Dheune",
+    "libelle": "St-Léger-sur-Dheune",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "760000",
@@ -8398,7 +8398,7 @@
   },
   {
     "code_uic": "87743716",
-    "libelle": "Amb\u00e9rieu",
+    "libelle": "Ambérieu",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "890000",
@@ -8668,7 +8668,7 @@
   },
   {
     "code_uic": "87696856",
-    "libelle": "Ch\u00e2tel-Censoir",
+    "libelle": "Châtel-Censoir",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "753000",
@@ -8695,7 +8695,7 @@
   },
   {
     "code_uic": "87575126",
-    "libelle": "Dang\u00e9",
+    "libelle": "Dangé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "570000",
@@ -8749,7 +8749,7 @@
   },
   {
     "code_uic": "87691600",
-    "libelle": "Les Perri\u00e8res",
+    "libelle": "Les Perrières",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "760000",
@@ -8857,7 +8857,7 @@
   },
   {
     "code_uic": "87313700",
-    "libelle": "Milly-sur-Th\u00e9rain",
+    "libelle": "Milly-sur-Thérain",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "325000",
@@ -8911,7 +8911,7 @@
   },
   {
     "code_uic": "87481846",
-    "libelle": "Pontch\u00e2teau",
+    "libelle": "Pontchâteau",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "470000",
@@ -9478,7 +9478,7 @@
   },
   {
     "code_uic": "87411132",
-    "libelle": "St-Pierre-l\u00e8s-Elbeuf",
+    "libelle": "St-Pierre-lès-Elbeuf",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "370000",
@@ -9532,7 +9532,7 @@
   },
   {
     "code_uic": "87215145",
-    "libelle": "H\u00e9ming",
+    "libelle": "Héming",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "070000",
@@ -9559,7 +9559,7 @@
   },
   {
     "code_uic": "87611855",
-    "libelle": "Lamagist\u00e8re",
+    "libelle": "Lamagistère",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "640000",
@@ -9748,7 +9748,7 @@
   },
   {
     "code_uic": "87722546",
-    "libelle": "S\u00e9r\u00e9zin",
+    "libelle": "Sérézin",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "830000",
@@ -9775,7 +9775,7 @@
   },
   {
     "code_uic": "87757583",
-    "libelle": "Th\u00e9oule-sur-Mer",
+    "libelle": "Théoule-sur-Mer",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "930000",
@@ -10072,7 +10072,7 @@
   },
   {
     "code_uic": "87713156",
-    "libelle": "Nuits-sous-Ravi\u00e8res",
+    "libelle": "Nuits-sous-Ravières",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "830000",
@@ -10099,7 +10099,7 @@
   },
   {
     "code_uic": "87444182",
-    "libelle": "Fr\u00e9nouville-Cagny",
+    "libelle": "Frénouville-Cagny",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "366000",
@@ -10153,7 +10153,7 @@
   },
   {
     "code_uic": "87381491",
-    "libelle": "Andr\u00e9sy",
+    "libelle": "Andrésy",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "334000",
@@ -10288,7 +10288,7 @@
   },
   {
     "code_uic": "87437806",
-    "libelle": "Aytr\u00e9-Plage",
+    "libelle": "Aytré-Plage",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "530000",
@@ -10396,7 +10396,7 @@
   },
   {
     "code_uic": "87485136",
-    "libelle": "St-Laurent-de-la-Pr\u00e9e",
+    "libelle": "St-Laurent-de-la-Prée",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "530000",
@@ -10558,7 +10558,7 @@
   },
   {
     "code_uic": "87381137",
-    "libelle": "Asni\u00e8res-sur-Seine",
+    "libelle": "Asnières-sur-Seine",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "973000",
@@ -10585,7 +10585,7 @@
   },
   {
     "code_uic": "87618710",
-    "libelle": "Sal\u00e9chan-Siradan",
+    "libelle": "Saléchan-Siradan",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "668000",
@@ -10774,7 +10774,7 @@
   },
   {
     "code_uic": "87595165",
-    "libelle": "Ch\u00e2teau-l'\u00c9v\u00eaque",
+    "libelle": "Château-l'\u00c9v\u00eaque",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "611000",
@@ -10801,7 +10801,7 @@
   },
   {
     "code_uic": "87586735",
-    "libelle": "N\u00e9rac",
+    "libelle": "Nérac",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "643000",
@@ -10909,7 +10909,7 @@
   },
   {
     "code_uic": "87487884",
-    "libelle": "La M\u00e9nitr\u00e9",
+    "libelle": "La Ménitré",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "515000",
@@ -10936,7 +10936,7 @@
   },
   {
     "code_uic": "87765180",
-    "libelle": "Courth\u00e9zon",
+    "libelle": "Courthézon",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "830000",
@@ -11044,7 +11044,7 @@
   },
   {
     "code_uic": "87571885",
-    "libelle": "Jou\u00e9-l\u00e8s-Tours",
+    "libelle": "Joué-lès-Tours",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "594000",
@@ -11179,7 +11179,7 @@
   },
   {
     "code_uic": "87192302",
-    "libelle": "B\u00e9nestroff",
+    "libelle": "Bénestroff",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "100000",
@@ -11206,7 +11206,7 @@
   },
   {
     "code_uic": "87574434",
-    "libelle": "V\u00e9retz-Montlouis",
+    "libelle": "Véretz-Montlouis",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "593000",
@@ -11395,7 +11395,7 @@
   },
   {
     "code_uic": "87543207",
-    "libelle": "Avenue-du-Pr\u00e9sident-Kennedy-Radio-France",
+    "libelle": "Avenue-du-Président-Kennedy-Radio-France",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "962000",
@@ -11530,7 +11530,7 @@
   },
   {
     "code_uic": "87313197",
-    "libelle": "Monti\u00e8res",
+    "libelle": "Montières",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "305000",
@@ -11773,7 +11773,7 @@
   },
   {
     "code_uic": "87276659",
-    "libelle": "Fr\u00e9pillon",
+    "libelle": "Frépillon",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "328000",
@@ -11800,7 +11800,7 @@
   },
   {
     "code_uic": "87682435",
-    "libelle": "H\u00e9ricy",
+    "libelle": "Héricy",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "746000",
@@ -11935,7 +11935,7 @@
   },
   {
     "code_uic": "87729111",
-    "libelle": "M\u00e2con-Port-Fluvial",
+    "libelle": "Mâcon-Port-Fluvial",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "883000",
@@ -12016,7 +12016,7 @@
   },
   {
     "code_uic": "87672261",
-    "libelle": "Baigts-de-B\u00e9arn",
+    "libelle": "Baigts-de-Béarn",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "650000",
@@ -12259,7 +12259,7 @@
   },
   {
     "code_uic": "87342212",
-    "libelle": "Fr\u00e9vin-Capelle",
+    "libelle": "Frévin-Capelle",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "307000",
@@ -12718,7 +12718,7 @@
   },
   {
     "code_uic": "87474080",
-    "libelle": "Qu\u00e9m\u00e9n\u00e9ven",
+    "libelle": "Quéménéven",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "470000",
@@ -12745,7 +12745,7 @@
   },
   {
     "code_uic": "87741744",
-    "libelle": "Pombli\u00e8re-St-Marcel",
+    "libelle": "Pomblière-St-Marcel",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "899000",
@@ -12880,7 +12880,7 @@
   },
   {
     "code_uic": "87672113",
-    "libelle": "Montaut-B\u00e9tharram",
+    "libelle": "Montaut-Bétharram",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "650000",
@@ -12907,7 +12907,7 @@
   },
   {
     "code_uic": "87342451",
-    "libelle": "Salom\u00e9",
+    "libelle": "Salomé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "289000",
@@ -13042,7 +13042,7 @@
   },
   {
     "code_uic": "87686733",
-    "libelle": "Paris-Bercy-Rap\u00e9e",
+    "libelle": "Paris-Bercy-Rapée",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "955000",
@@ -13339,7 +13339,7 @@
   },
   {
     "code_uic": "87193516",
-    "libelle": "Far\u00e9bersviller",
+    "libelle": "Farébersviller",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "159000",
@@ -13528,7 +13528,7 @@
   },
   {
     "code_uic": "87582692",
-    "libelle": "St-M\u00e9dard-d'Eyrans",
+    "libelle": "St-Médard-d'Eyrans",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "640000",
@@ -13555,7 +13555,7 @@
   },
   {
     "code_uic": "87586735",
-    "libelle": "N\u00e9rac",
+    "libelle": "Nérac",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "644000",
@@ -13582,7 +13582,7 @@
   },
   {
     "code_uic": "87411819",
-    "libelle": "Cl\u00e8res",
+    "libelle": "Clères",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "353300",
@@ -13636,7 +13636,7 @@
   },
   {
     "code_uic": "87597427",
-    "libelle": "Fl\u00e9r\u00e9-la-Rivi\u00e8re",
+    "libelle": "Fléré-la-Rivière",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "594000",
@@ -14284,7 +14284,7 @@
   },
   {
     "code_uic": "87144162",
-    "libelle": "Laveline-devant-Bruy\u00e8res",
+    "libelle": "Laveline-devant-Bruyères",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "062000",
@@ -14662,7 +14662,7 @@
   },
   {
     "code_uic": "87576876",
-    "libelle": "Gi\u00e8vres",
+    "libelle": "Gièvres",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "593000",
@@ -14851,7 +14851,7 @@
   },
   {
     "code_uic": "87612002",
-    "libelle": "Lab\u00e8ge-Innopole",
+    "libelle": "Labège-Innopole",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "640000",
@@ -15067,7 +15067,7 @@
   },
   {
     "code_uic": "87192237",
-    "libelle": "R\u00e9milly",
+    "libelle": "Rémilly",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "140000",
@@ -15364,7 +15364,7 @@
   },
   {
     "code_uic": "87381137",
-    "libelle": "Asni\u00e8res-sur-Seine",
+    "libelle": "Asnières-sur-Seine",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "334000",
@@ -15391,7 +15391,7 @@
   },
   {
     "code_uic": "87571414",
-    "libelle": "Veign\u00e9",
+    "libelle": "Veigné",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "594000",
@@ -15472,7 +15472,7 @@
   },
   {
     "code_uic": "87386318",
-    "libelle": "Nanterre-Universit\u00e9",
+    "libelle": "Nanterre-Université",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "975000",
@@ -15634,7 +15634,7 @@
   },
   {
     "code_uic": "87594572",
-    "libelle": "St-Denis-pr\u00e8s-Martel",
+    "libelle": "St-Denis-près-Martel",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "718000",
@@ -15742,7 +15742,7 @@
   },
   {
     "code_uic": "87116269",
-    "libelle": "Gu\u00e9rard-La Celle-sur-Morin",
+    "libelle": "Guérard-La Celle-sur-Morin",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "002000",
@@ -15769,7 +15769,7 @@
   },
   {
     "code_uic": "87574475",
-    "libelle": "Bl\u00e9r\u00e9-la-Croix",
+    "libelle": "Bléré-la-Croix",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "593000",
@@ -15958,7 +15958,7 @@
   },
   {
     "code_uic": "87116020",
-    "libelle": "Ozoir-la-Ferri\u00e8re",
+    "libelle": "Ozoir-la-Ferrière",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "001000",
@@ -16120,7 +16120,7 @@
   },
   {
     "code_uic": "87611590",
-    "libelle": "Tarascon-sur-Ari\u00e8ge",
+    "libelle": "Tarascon-sur-Ariège",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "672000",
@@ -16282,7 +16282,7 @@
   },
   {
     "code_uic": "87543017",
-    "libelle": "Les Aubrais-Orl\u00e9ans",
+    "libelle": "Les Aubrais-Orléans",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "569000",
@@ -16417,7 +16417,7 @@
   },
   {
     "code_uic": "87484147",
-    "libelle": "Tierc\u00e9",
+    "libelle": "Tiercé",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "450000",
@@ -16525,7 +16525,7 @@
   },
   {
     "code_uic": "87741611",
-    "libelle": "Gr\u00e9sy-sur-Is\u00e8re",
+    "libelle": "Grésy-sur-Isère",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "899000",
@@ -16687,7 +16687,7 @@
   },
   {
     "code_uic": "87143024",
-    "libelle": "Vraincourt-Vi\u00e9ville",
+    "libelle": "Vraincourt-Viéville",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "020000",
@@ -16930,7 +16930,7 @@
   },
   {
     "code_uic": "87334490",
-    "libelle": "Cesson-S\u00e9vign\u00e9",
+    "libelle": "Cesson-Sévigné",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -16957,7 +16957,7 @@
   },
   {
     "code_uic": "87393520",
-    "libelle": "St-Germain-St-R\u00e9my",
+    "libelle": "St-Germain-St-Rémy",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "395000",
@@ -17200,7 +17200,7 @@
   },
   {
     "code_uic": "87313742",
-    "libelle": "Feuqui\u00e8res-Broquiers",
+    "libelle": "Feuquières-Broquiers",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "325000",
@@ -17227,7 +17227,7 @@
   },
   {
     "code_uic": "87615351",
-    "libelle": "Roques\u00e9ri\u00e8re",
+    "libelle": "Roquesérière",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "718000",
@@ -17281,7 +17281,7 @@
   },
   {
     "code_uic": "87142554",
-    "libelle": "Ch\u00e2tillon-sur-Seine",
+    "libelle": "Châtillon-sur-Seine",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "838000",
@@ -17443,7 +17443,7 @@
   },
   {
     "code_uic": "87611814",
-    "libelle": "M\u00e9renvielle",
+    "libelle": "Mérenvielle",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "648000",
@@ -17632,7 +17632,7 @@
   },
   {
     "code_uic": "87582866",
-    "libelle": "La R\u00e9ole",
+    "libelle": "La Réole",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "640000",
@@ -17659,7 +17659,7 @@
   },
   {
     "code_uic": "87315341",
-    "libelle": "Bailleul-sur-Th\u00e9rain",
+    "libelle": "Bailleul-sur-Thérain",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "317000",
@@ -17794,7 +17794,7 @@
   },
   {
     "code_uic": "87718403",
-    "libelle": "Roche-lez-Beaupr\u00e9",
+    "libelle": "Roche-lez-Beaupré",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "852000",
@@ -17929,7 +17929,7 @@
   },
   {
     "code_uic": "87673707",
-    "libelle": "Oss\u00e8s-St-Martin-d'Arrossa",
+    "libelle": "Ossès-St-Martin-d'Arrossa",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "660000",
@@ -17983,7 +17983,7 @@
   },
   {
     "code_uic": "87613877",
-    "libelle": "Salles-Courbati\u00e8s",
+    "libelle": "Salles-Courbatiès",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "718000",
@@ -18010,7 +18010,7 @@
   },
   {
     "code_uic": "87478024",
-    "libelle": "St-M\u00e9dard-sur-Ille",
+    "libelle": "St-Médard-sur-Ille",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "441000",
@@ -18118,7 +18118,7 @@
   },
   {
     "code_uic": "87723502",
-    "libelle": "Cr\u00e9pieux-la-Pape",
+    "libelle": "Crépieux-la-Pape",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "890000",
@@ -18172,7 +18172,7 @@
   },
   {
     "code_uic": "87175240",
-    "libelle": "L\u00e9rouville",
+    "libelle": "Lérouville",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "070000",
@@ -18280,7 +18280,7 @@
   },
   {
     "code_uic": "87575845",
-    "libelle": "Lussac-les-Ch\u00e2teaux",
+    "libelle": "Lussac-les-Châteaux",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "604000",
@@ -18307,7 +18307,7 @@
   },
   {
     "code_uic": "87595769",
-    "libelle": "Siorac-en-P\u00e9rigord",
+    "libelle": "Siorac-en-Périgord",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "628000",
@@ -18388,7 +18388,7 @@
   },
   {
     "code_uic": "87487256",
-    "libelle": "Luch\u00e9",
+    "libelle": "Luché",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "525000",
@@ -18577,7 +18577,7 @@
   },
   {
     "code_uic": "87478099",
-    "libelle": "La Gouesni\u00e8re-Cancale",
+    "libelle": "La Gouesnière-Cancale",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "441000",
@@ -18658,7 +18658,7 @@
   },
   {
     "code_uic": "87615500",
-    "libelle": "St-Ju\u00e9ry",
+    "libelle": "St-Juéry",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "742000",
@@ -18820,7 +18820,7 @@
   },
   {
     "code_uic": "87141390",
-    "libelle": "M\u00e9nil-Flin",
+    "libelle": "Ménil-Flin",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "067000",
@@ -19063,7 +19063,7 @@
   },
   {
     "code_uic": "87396309",
-    "libelle": "Connerr\u00e9-Beill\u00e9",
+    "libelle": "Connerré-Beillé",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -19279,7 +19279,7 @@
   },
   {
     "code_uic": "87584474",
-    "libelle": "Tr\u00e9molat",
+    "libelle": "Trémolat",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "629000",
@@ -19468,7 +19468,7 @@
   },
   {
     "code_uic": "87734715",
-    "libelle": "St-Vincent-le-Ch\u00e2teau",
+    "libelle": "St-Vincent-le-Château",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "798000",
@@ -19549,7 +19549,7 @@
   },
   {
     "code_uic": "87584177",
-    "libelle": "V\u00e9lines",
+    "libelle": "Vélines",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "629000",
@@ -19576,7 +19576,7 @@
   },
   {
     "code_uic": "87575332",
-    "libelle": "Anch\u00e9-Voulon",
+    "libelle": "Anché-Voulon",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "570000",
@@ -19630,7 +19630,7 @@
   },
   {
     "code_uic": "87172874",
-    "libelle": "F\u00e9pin",
+    "libelle": "Fépin",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "205000",
@@ -20116,7 +20116,7 @@
   },
   {
     "code_uic": "87721787",
-    "libelle": "Bois-d'Oingt-L\u00e9gny",
+    "libelle": "Bois-d'Oingt-Légny",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "775000",
@@ -20143,7 +20143,7 @@
   },
   {
     "code_uic": "87682179",
-    "libelle": "Le M\u00e9e",
+    "libelle": "Le Mée",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "830000",
@@ -20602,7 +20602,7 @@
   },
   {
     "code_uic": "87746438",
-    "libelle": "Sallanches-Combloux-Meg\u00e8ve",
+    "libelle": "Sallanches-Combloux-Megève",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "895000",
@@ -20710,7 +20710,7 @@
   },
   {
     "code_uic": "87386409",
-    "libelle": "Houilles-Carri\u00e8res-sur-Seine",
+    "libelle": "Houilles-Carrières-sur-Seine",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "340000",
@@ -20926,7 +20926,7 @@
   },
   {
     "code_uic": "87214809",
-    "libelle": "Ch\u00e2tenois (Bas-Rhin)",
+    "libelle": "Châtenois (Bas-Rhin)",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "116000",
@@ -20980,7 +20980,7 @@
   },
   {
     "code_uic": "87386052",
-    "libelle": "Ach\u00e8res-Grand-Cormier",
+    "libelle": "Achères-Grand-Cormier",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "340000",
@@ -21061,7 +21061,7 @@
   },
   {
     "code_uic": "87592006",
-    "libelle": "Limoges-B\u00e9n\u00e9dictins",
+    "libelle": "Limoges-Bénédictins",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "590000",
@@ -21358,7 +21358,7 @@
   },
   {
     "code_uic": "87144154",
-    "libelle": "Bruy\u00e8res",
+    "libelle": "Bruyères",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "062000",
@@ -21493,7 +21493,7 @@
   },
   {
     "code_uic": "87741009",
-    "libelle": "Chamb\u00e9ry-Challes-les-Eaux",
+    "libelle": "Chambéry-Challes-les-Eaux",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "900000",
@@ -21601,7 +21601,7 @@
   },
   {
     "code_uic": "87697318",
-    "libelle": "Villetaneuse-Universit\u00e9 TT",
+    "libelle": "Villetaneuse-Université TT",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "960000",
@@ -21628,7 +21628,7 @@
   },
   {
     "code_uic": "87721530",
-    "libelle": "Charbonni\u00e8res-les-Bains",
+    "libelle": "Charbonnières-les-Bains",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "782000",
@@ -21817,7 +21817,7 @@
   },
   {
     "code_uic": "87576025",
-    "libelle": "Romorantin (Voie \u00e9troite)",
+    "libelle": "Romorantin (Voie étroite)",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "600000",
@@ -21871,7 +21871,7 @@
   },
   {
     "code_uic": "87747352",
-    "libelle": "St-\u00c9gr\u00e8ve-St-Robert",
+    "libelle": "St-\u00c9grève-St-Robert",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "905000",
@@ -21952,7 +21952,7 @@
   },
   {
     "code_uic": "87411652",
-    "libelle": "St-Val\u00e9ry-en-Caux",
+    "libelle": "St-Valéry-en-Caux",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "358000",
@@ -22060,7 +22060,7 @@
   },
   {
     "code_uic": "87597005",
-    "libelle": "Ch\u00e2teauroux",
+    "libelle": "Châteauroux",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "590000",
@@ -22222,7 +22222,7 @@
   },
   {
     "code_uic": "87473181",
-    "libelle": "Plouaret-Tr\u00e9gor",
+    "libelle": "Plouaret-Trégor",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "446000",
@@ -22276,7 +22276,7 @@
   },
   {
     "code_uic": "87474569",
-    "libelle": "St-Pol-de-L\u00e9on",
+    "libelle": "St-Pol-de-Léon",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "447000",
@@ -22330,7 +22330,7 @@
   },
   {
     "code_uic": "87192302",
-    "libelle": "B\u00e9nestroff",
+    "libelle": "Bénestroff",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "097000",
@@ -22357,7 +22357,7 @@
   },
   {
     "code_uic": "87751230",
-    "libelle": "Ch\u00e2teau-Arnoux-St-Auban",
+    "libelle": "Château-Arnoux-St-Auban",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "920000",
@@ -22384,7 +22384,7 @@
   },
   {
     "code_uic": "87734731",
-    "libelle": "Chamali\u00e8res-sur-Loire",
+    "libelle": "Chamalières-sur-Loire",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "798000",
@@ -22627,7 +22627,7 @@
   },
   {
     "code_uic": "87473512",
-    "libelle": "Moust\u00e9ru",
+    "libelle": "Moustéru",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "485000",
@@ -22654,7 +22654,7 @@
   },
   {
     "code_uic": "87194209",
-    "libelle": "Montm\u00e9dy",
+    "libelle": "Montmédy",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "204000",
@@ -22708,7 +22708,7 @@
   },
   {
     "code_uic": "87611194",
-    "libelle": "Marignac-St-B\u00e9at",
+    "libelle": "Marignac-St-Béat",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "668000",
@@ -23248,7 +23248,7 @@
   },
   {
     "code_uic": "87580340",
-    "libelle": "Arenc-Eurom\u00e9diterran\u00e9e",
+    "libelle": "Arenc-Euroméditerranée",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "939001",
@@ -23329,7 +23329,7 @@
   },
   {
     "code_uic": "87696682",
-    "libelle": "Ch\u00e2teau-Chinon",
+    "libelle": "Château-Chinon",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "763000",
@@ -23356,7 +23356,7 @@
   },
   {
     "code_uic": "87182543",
-    "libelle": "Luttenbach-pr\u00e8s-Munster",
+    "libelle": "Luttenbach-près-Munster",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "119000",
@@ -23410,7 +23410,7 @@
   },
   {
     "code_uic": "87411454",
-    "libelle": "Mont\u00e9rolier-Buchy",
+    "libelle": "Montérolier-Buchy",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "321000",
@@ -23680,7 +23680,7 @@
   },
   {
     "code_uic": "87328195",
-    "libelle": "Th\u00e9s\u00e9e",
+    "libelle": "Thésée",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "593000",
@@ -24220,7 +24220,7 @@
   },
   {
     "code_uic": "87485169",
-    "libelle": "Aytr\u00e9",
+    "libelle": "Aytré",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "538000",
@@ -24463,7 +24463,7 @@
   },
   {
     "code_uic": "87764357",
-    "libelle": "Boll\u00e8ne-la-Croisi\u00e8re",
+    "libelle": "Bollène-la-Croisière",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "830000",
@@ -24571,7 +24571,7 @@
   },
   {
     "code_uic": "87478511",
-    "libelle": "Louvern\u00e9",
+    "libelle": "Louverné",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -24598,7 +24598,7 @@
   },
   {
     "code_uic": "87615245",
-    "libelle": "Tessonni\u00e8res",
+    "libelle": "Tessonnières",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "718000",
@@ -24976,7 +24976,7 @@
   },
   {
     "code_uic": "87576876",
-    "libelle": "Gi\u00e8vres",
+    "libelle": "Gièvres",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "600000",
@@ -25327,7 +25327,7 @@
   },
   {
     "code_uic": "87396051",
-    "libelle": "Teill\u00e9",
+    "libelle": "Teillé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "430000",
@@ -25381,7 +25381,7 @@
   },
   {
     "code_uic": "87191106",
-    "libelle": "Maizi\u00e8res-l\u00e8s-Metz",
+    "libelle": "Maizières-lès-Metz",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "180000",
@@ -25408,7 +25408,7 @@
   },
   {
     "code_uic": "87545145",
-    "libelle": "\u00c9tr\u00e9chy",
+    "libelle": "\u00c9tréchy",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "570000",
@@ -25651,7 +25651,7 @@
   },
   {
     "code_uic": "87575068",
-    "libelle": "Maill\u00e9",
+    "libelle": "Maillé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "570000",
@@ -25678,7 +25678,7 @@
   },
   {
     "code_uic": "87775148",
-    "libelle": "Chasserad\u00e8s",
+    "libelle": "Chasseradès",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "723000",
@@ -25732,7 +25732,7 @@
   },
   {
     "code_uic": "87276691",
-    "libelle": "Compi\u00e8gne",
+    "libelle": "Compiègne",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "242000",
@@ -25786,7 +25786,7 @@
   },
   {
     "code_uic": "87131961",
-    "libelle": "Brion-Montr\u00e9al-la-Cluse",
+    "libelle": "Brion-Montréal-la-Cluse",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "878000",
@@ -25840,7 +25840,7 @@
   },
   {
     "code_uic": "87272146",
-    "libelle": "Les Gr\u00e9sillons",
+    "libelle": "Les Grésillons",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "962000",
@@ -25867,7 +25867,7 @@
   },
   {
     "code_uic": "87300822",
-    "libelle": "Belfort-Montb\u00e9liard-TGV",
+    "libelle": "Belfort-Montbéliard-TGV",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "014000",
@@ -25948,7 +25948,7 @@
   },
   {
     "code_uic": "87281071",
-    "libelle": "Calais-Fr\u00e9thun",
+    "libelle": "Calais-Fréthun",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "216000",
@@ -26029,7 +26029,7 @@
   },
   {
     "code_uic": "87761619",
-    "libelle": "Alixan-Ch\u00e2teauneuf-d'Is\u00e8re",
+    "libelle": "Alixan-Châteauneuf-d'Isère",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "908000",
@@ -26083,7 +26083,7 @@
   },
   {
     "code_uic": "87723494",
-    "libelle": "St-Andr\u00e9-le-Gaz",
+    "libelle": "St-André-le-Gaz",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "905000",
@@ -26137,7 +26137,7 @@
   },
   {
     "code_uic": "87484337",
-    "libelle": "La Possonni\u00e8re",
+    "libelle": "La Possonnière",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "515000",
@@ -26164,7 +26164,7 @@
   },
   {
     "code_uic": "87611517",
-    "libelle": "L'Hospitalet-pr\u00e8s-l'Andorre",
+    "libelle": "L'Hospitalet-près-l'Andorre",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "672000",
@@ -26299,7 +26299,7 @@
   },
   {
     "code_uic": "87681619",
-    "libelle": "Villab\u00e9",
+    "libelle": "Villabé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "746000",
@@ -26380,7 +26380,7 @@
   },
   {
     "code_uic": "87734418",
-    "libelle": "Pont-du-Ch\u00e2teau (FRET)",
+    "libelle": "Pont-du-Château (FRET)",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "784000",
@@ -26542,7 +26542,7 @@
   },
   {
     "code_uic": "87276410",
-    "libelle": "Pr\u00e9cy-sur-Oise",
+    "libelle": "Précy-sur-Oise",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "329000",
@@ -26677,7 +26677,7 @@
   },
   {
     "code_uic": "87144014",
-    "libelle": "St-Di\u00e9-des-Vosges",
+    "libelle": "St-Dié-des-Vosges",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "067000",
@@ -26731,7 +26731,7 @@
   },
   {
     "code_uic": "87784850",
-    "libelle": "Ste-L\u00e9ocadie",
+    "libelle": "Ste-Léocadie",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "669000",
@@ -27028,7 +27028,7 @@
   },
   {
     "code_uic": "87381657",
-    "libelle": "Ach\u00e8res-Ville",
+    "libelle": "Achères-Ville",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "338000",
@@ -27082,7 +27082,7 @@
   },
   {
     "code_uic": "87581876",
-    "libelle": "La Chapelle-d'Amb\u00e8s",
+    "libelle": "La Chapelle-d'Ambès",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "583000",
@@ -27352,7 +27352,7 @@
   },
   {
     "code_uic": "87491720",
-    "libelle": "Cl\u00e9rac-Charente",
+    "libelle": "Clérac-Charente",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "580000",
@@ -27379,7 +27379,7 @@
   },
   {
     "code_uic": "87192237",
-    "libelle": "R\u00e9milly",
+    "libelle": "Rémilly",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "172000",
@@ -27433,7 +27433,7 @@
   },
   {
     "code_uic": "87471177",
-    "libelle": "Pl\u00e9ch\u00e2tel",
+    "libelle": "Pléchâtel",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "468000",
@@ -27514,7 +27514,7 @@
   },
   {
     "code_uic": "87484238",
-    "libelle": "Tr\u00e9mentines",
+    "libelle": "Trémentines",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "523000",
@@ -27541,7 +27541,7 @@
   },
   {
     "code_uic": "87485474",
-    "libelle": "La Cr\u00e8che",
+    "libelle": "La Crèche",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "538000",
@@ -27730,7 +27730,7 @@
   },
   {
     "code_uic": "87141127",
-    "libelle": "Rosi\u00e8res-aux-Salines",
+    "libelle": "Rosières-aux-Salines",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "070000",
@@ -27757,7 +27757,7 @@
   },
   {
     "code_uic": "87396606",
-    "libelle": "Ch\u00e2teau-du-Loir",
+    "libelle": "Château-du-Loir",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "500000",
@@ -28027,7 +28027,7 @@
   },
   {
     "code_uic": "87383281",
-    "libelle": "Massy-Verri\u00e8res",
+    "libelle": "Massy-Verrières",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "985000",
@@ -28216,7 +28216,7 @@
   },
   {
     "code_uic": "87484063",
-    "libelle": "Tr\u00e9laz\u00e9",
+    "libelle": "Trélazé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "515000",
@@ -28270,7 +28270,7 @@
   },
   {
     "code_uic": "87381012",
-    "libelle": "P\u00e9reire-Levallois",
+    "libelle": "Péreire-Levallois",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "971000",
@@ -28324,7 +28324,7 @@
   },
   {
     "code_uic": "87732206",
-    "libelle": "St-Germain-des-Foss\u00e9s",
+    "libelle": "St-Germain-des-Fossés",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "750000",
@@ -28675,7 +28675,7 @@
   },
   {
     "code_uic": "87699223",
-    "libelle": "Base A\u00e9rienne",
+    "libelle": "Base Aérienne",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "600000",
@@ -28702,7 +28702,7 @@
   },
   {
     "code_uic": "87594119",
-    "libelle": "Corr\u00e8ze",
+    "libelle": "Corrèze",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "716000",
@@ -29242,7 +29242,7 @@
   },
   {
     "code_uic": "87182329",
-    "libelle": "Herrlisheim-pr\u00e8s-Colmar",
+    "libelle": "Herrlisheim-près-Colmar",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "115000",
@@ -29269,7 +29269,7 @@
   },
   {
     "code_uic": "87595322",
-    "libelle": "Montpon-M\u00e9nest\u00e9rol",
+    "libelle": "Montpon-Ménestérol",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "621000",
@@ -29431,7 +29431,7 @@
   },
   {
     "code_uic": "87313668",
-    "libelle": "M\u00e9ru",
+    "libelle": "Méru",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "325000",
@@ -29458,7 +29458,7 @@
   },
   {
     "code_uic": "87673459",
-    "libelle": "Gu\u00e9thary",
+    "libelle": "Guéthary",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "655000",
@@ -29620,7 +29620,7 @@
   },
   {
     "code_uic": "87144311",
-    "libelle": "Rozi\u00e8res-sur-Mouzon",
+    "libelle": "Rozières-sur-Mouzon",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "035000",
@@ -29809,7 +29809,7 @@
   },
   {
     "code_uic": "87191346",
-    "libelle": "K\u00e9dange",
+    "libelle": "Kédange",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "177000",
@@ -29917,7 +29917,7 @@
   },
   {
     "code_uic": "87756478",
-    "libelle": "Carnol\u00e8s",
+    "libelle": "Carnolès",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "930000",
@@ -29971,7 +29971,7 @@
   },
   {
     "code_uic": "87382374",
-    "libelle": "Suresnes-Mont-Val\u00e9rien",
+    "libelle": "Suresnes-Mont-Valérien",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "973000",
@@ -30079,7 +30079,7 @@
   },
   {
     "code_uic": "87543314",
-    "libelle": "Org\u00e8res",
+    "libelle": "Orgères",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "556000",
@@ -30160,7 +30160,7 @@
   },
   {
     "code_uic": "87413617",
-    "libelle": "Colleville-Ste-H\u00e9l\u00e8ne",
+    "libelle": "Colleville-Ste-Hélène",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "357000",
@@ -30268,7 +30268,7 @@
   },
   {
     "code_uic": "87276485",
-    "libelle": "Bouff\u00e9mont-Moisselles",
+    "libelle": "Bouffémont-Moisselles",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "325000",
@@ -30322,7 +30322,7 @@
   },
   {
     "code_uic": "87784447",
-    "libelle": "Caudi\u00e8s",
+    "libelle": "Caudiès",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "676000",
@@ -30376,7 +30376,7 @@
   },
   {
     "code_uic": "87144030",
-    "libelle": "Docelles-Chenim\u00e9nil",
+    "libelle": "Docelles-Cheniménil",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "062000",
@@ -30511,7 +30511,7 @@
   },
   {
     "code_uic": "87755215",
-    "libelle": "St-Cyr-les-L\u00e8cques-La Cadi\u00e8re",
+    "libelle": "St-Cyr-les-Lècques-La Cadière",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "930000",
@@ -30646,7 +30646,7 @@
   },
   {
     "code_uic": "87543009",
-    "libelle": "Orl\u00e9ans",
+    "libelle": "Orléans",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "569000",
@@ -30700,7 +30700,7 @@
   },
   {
     "code_uic": "87755330",
-    "libelle": "Solli\u00e8s-Pont",
+    "libelle": "Solliès-Pont",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "930000",
@@ -30727,7 +30727,7 @@
   },
   {
     "code_uic": "87382341",
-    "libelle": "S\u00e8vres-Ville-d'Avray",
+    "libelle": "Sèvres-Ville-d'Avray",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "973000",
@@ -30916,7 +30916,7 @@
   },
   {
     "code_uic": "87592337",
-    "libelle": "La Jonch\u00e8re",
+    "libelle": "La Jonchère",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "590000",
@@ -31051,7 +31051,7 @@
   },
   {
     "code_uic": "87586800",
-    "libelle": "M\u00e9zin",
+    "libelle": "Mézin",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "644000",
@@ -31105,7 +31105,7 @@
   },
   {
     "code_uic": "87144014",
-    "libelle": "St-Di\u00e9-des-Vosges",
+    "libelle": "St-Dié-des-Vosges",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "110000",
@@ -31267,7 +31267,7 @@
   },
   {
     "code_uic": "87184259",
-    "libelle": "Ch\u00e8vremont",
+    "libelle": "Chèvremont",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "001000",
@@ -31294,7 +31294,7 @@
   },
   {
     "code_uic": "87491357",
-    "libelle": "St-Jean-d'Ang\u00e9ly",
+    "libelle": "St-Jean-d'Angély",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "500000",
@@ -31672,7 +31672,7 @@
   },
   {
     "code_uic": "87576413",
-    "libelle": "Moulins-sur-Y\u00e8vre",
+    "libelle": "Moulins-sur-Yèvre",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "690000",
@@ -31861,7 +31861,7 @@
   },
   {
     "code_uic": "87144071",
-    "libelle": "Ch\u00e2tel-Nomexy",
+    "libelle": "Châtel-Nomexy",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "042000",
@@ -32644,7 +32644,7 @@
   },
   {
     "code_uic": "87191684",
-    "libelle": "Aubou\u00e9",
+    "libelle": "Auboué",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "085000",
@@ -32806,7 +32806,7 @@
   },
   {
     "code_uic": "87574665",
-    "libelle": "Ch\u00e2teau-Renault",
+    "libelle": "Château-Renault",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "550000",
@@ -32860,7 +32860,7 @@
   },
   {
     "code_uic": "87584730",
-    "libelle": "St-Loub\u00e8s",
+    "libelle": "St-Loubès",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "570000",
@@ -33076,7 +33076,7 @@
   },
   {
     "code_uic": "87491274",
-    "libelle": "La Grave-d'Ambar\u00e8s-Gare-Inf\u00e9rieure",
+    "libelle": "La Grave-d'Ambarès-Gare-Inférieure",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "500000",
@@ -33292,7 +33292,7 @@
   },
   {
     "code_uic": "87342436",
-    "libelle": "La Bass\u00e9e",
+    "libelle": "La Bassée",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "289000",
@@ -33454,7 +33454,7 @@
   },
   {
     "code_uic": "87481143",
-    "libelle": "Thouar\u00e9",
+    "libelle": "Thouaré",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "515000",
@@ -33535,7 +33535,7 @@
   },
   {
     "code_uic": "87193250",
-    "libelle": "B\u00e9ning",
+    "libelle": "Béning",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "159000",
@@ -33778,7 +33778,7 @@
   },
   {
     "code_uic": "87575175",
-    "libelle": "Naintr\u00e9-les-Barres",
+    "libelle": "Naintré-les-Barres",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "570000",
@@ -33805,7 +33805,7 @@
   },
   {
     "code_uic": "87721704",
-    "libelle": "Les Flach\u00e8res",
+    "libelle": "Les Flachères",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "775000",
@@ -33859,7 +33859,7 @@
   },
   {
     "code_uic": "87172007",
-    "libelle": "Charleville-M\u00e9zi\u00e8res",
+    "libelle": "Charleville-Mézières",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "205000",
@@ -33940,7 +33940,7 @@
   },
   {
     "code_uic": "87545509",
-    "libelle": "St-Ch\u00e9ron",
+    "libelle": "St-Chéron",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "550000",
@@ -34183,7 +34183,7 @@
   },
   {
     "code_uic": "87781369",
-    "libelle": "L\u00e9zignan-la-C\u00e8be",
+    "libelle": "Lézignan-la-Cèbe",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "732000",
@@ -34453,7 +34453,7 @@
   },
   {
     "code_uic": "87386763",
-    "libelle": "\u00c9p\u00f4ne-M\u00e9zi\u00e8res",
+    "libelle": "\u00c9p\u00f4ne-Mézières",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "396000",
@@ -34480,7 +34480,7 @@
   },
   {
     "code_uic": "87781609",
-    "libelle": "B\u00e9darieux",
+    "libelle": "Bédarieux",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "722000",
@@ -34696,7 +34696,7 @@
   },
   {
     "code_uic": "87471169",
-    "libelle": "St-Senoux-Pl\u00e9ch\u00e2tel",
+    "libelle": "St-Senoux-Pléchâtel",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "468000",
@@ -35128,7 +35128,7 @@
   },
   {
     "code_uic": "87281071",
-    "libelle": "Calais-Fr\u00e9thun",
+    "libelle": "Calais-Fréthun",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "314000",
@@ -35425,7 +35425,7 @@
   },
   {
     "code_uic": "87684217",
-    "libelle": "Souppes-Ch\u00e2teau-Landon",
+    "libelle": "Souppes-Château-Landon",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "750000",
@@ -35479,7 +35479,7 @@
   },
   {
     "code_uic": "87763300",
-    "libelle": "Veynes-D\u00e9voluy",
+    "libelle": "Veynes-Dévoluy",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "915000",
@@ -35506,7 +35506,7 @@
   },
   {
     "code_uic": "87582742",
-    "libelle": "C\u00e9rons",
+    "libelle": "Cérons",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "640000",
@@ -35533,7 +35533,7 @@
   },
   {
     "code_uic": "87144477",
-    "libelle": "St-L\u00e9onard",
+    "libelle": "St-Léonard",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "062000",
@@ -35560,7 +35560,7 @@
   },
   {
     "code_uic": "87116541",
-    "libelle": "S\u00e9zanne",
+    "libelle": "Sézanne",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "010000",
@@ -35938,7 +35938,7 @@
   },
   {
     "code_uic": "87411074",
-    "libelle": "Rouen-Orl\u00e9ans",
+    "libelle": "Rouen-Orléans",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "365000",
@@ -36343,7 +36343,7 @@
   },
   {
     "code_uic": "87713511",
-    "libelle": "Vougeot-Gilly-l\u00e8s-C\u00eeteaux",
+    "libelle": "Vougeot-Gilly-lès-C\u00eeteaux",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "830000",
@@ -36370,7 +36370,7 @@
   },
   {
     "code_uic": "87574236",
-    "libelle": "Su\u00e8vres",
+    "libelle": "Suèvres",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "570000",
@@ -36478,7 +36478,7 @@
   },
   {
     "code_uic": "87313387",
-    "libelle": "Estr\u00e9es-St-Denis",
+    "libelle": "Estrées-St-Denis",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "232000",
@@ -36586,7 +36586,7 @@
   },
   {
     "code_uic": "87471243",
-    "libelle": "St-M\u00e9en",
+    "libelle": "St-Méen",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "472000",
@@ -36613,7 +36613,7 @@
   },
   {
     "code_uic": "87784744",
-    "libelle": "Thu\u00e8s-les-Bains",
+    "libelle": "Thuès-les-Bains",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "669000",
@@ -36829,7 +36829,7 @@
   },
   {
     "code_uic": "87747402",
-    "libelle": "Grenoble-Universit\u00e9-Gi\u00e8res",
+    "libelle": "Grenoble-Université-Gières",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "909903",
@@ -37153,7 +37153,7 @@
   },
   {
     "code_uic": "87192427",
-    "libelle": "Nov\u00e9ant",
+    "libelle": "Novéant",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "089000",
@@ -37261,7 +37261,7 @@
   },
   {
     "code_uic": "87543421",
-    "libelle": "Ch\u00e9cy-Mardi\u00e9",
+    "libelle": "Chécy-Mardié",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "687000",
@@ -37288,7 +37288,7 @@
   },
   {
     "code_uic": "87783365",
-    "libelle": "S\u00e9v\u00e9rac-le-Ch\u00e2teau",
+    "libelle": "Sévérac-le-Château",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "725000",
@@ -37315,7 +37315,7 @@
   },
   {
     "code_uic": "87144196",
-    "libelle": "Corcieux-Van\u00e9mont",
+    "libelle": "Corcieux-Vanémont",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "062000",
@@ -37477,7 +37477,7 @@
   },
   {
     "code_uic": "87313403",
-    "libelle": "R\u00e9my",
+    "libelle": "Rémy",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "317000",
@@ -37612,7 +37612,7 @@
   },
   {
     "code_uic": "87571844",
-    "libelle": "Savonni\u00e8res",
+    "libelle": "Savonnières",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "515000",
@@ -37801,7 +37801,7 @@
   },
   {
     "code_uic": "87575142",
-    "libelle": "Ch\u00e2tellerault",
+    "libelle": "Châtellerault",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "570000",
@@ -37828,7 +37828,7 @@
   },
   {
     "code_uic": "87191742",
-    "libelle": "Gandrange-Amn\u00e9ville",
+    "libelle": "Gandrange-Amnéville",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "085000",
@@ -37882,7 +37882,7 @@
   },
   {
     "code_uic": "87615757",
-    "libelle": "Baraqueville-Carcenac-Peyral\u00e8s",
+    "libelle": "Baraqueville-Carcenac-Peyralès",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "736000",
@@ -38260,7 +38260,7 @@
   },
   {
     "code_uic": "87415828",
-    "libelle": "\u00c9tr\u00e9pagny",
+    "libelle": "\u00c9trépagny",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "342000",
@@ -38368,7 +38368,7 @@
   },
   {
     "code_uic": "87473041",
-    "libelle": "Le L\u00e9gu\u00e9",
+    "libelle": "Le Légué",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "445000",
@@ -38422,7 +38422,7 @@
   },
   {
     "code_uic": "87476234",
-    "libelle": "Land\u00e9vant",
+    "libelle": "Landévant",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "470000",
@@ -38530,7 +38530,7 @@
   },
   {
     "code_uic": "87784751",
-    "libelle": "Thu\u00e8s",
+    "libelle": "Thuès",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "669000",
@@ -38827,7 +38827,7 @@
   },
   {
     "code_uic": "87672634",
-    "libelle": "Buzy-en-B\u00e9arn",
+    "libelle": "Buzy-en-Béarn",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "665000",
@@ -38908,7 +38908,7 @@
   },
   {
     "code_uic": "87192062",
-    "libelle": "Metz-Chambi\u00e8re",
+    "libelle": "Metz-Chambière",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "180000",
@@ -39016,7 +39016,7 @@
   },
   {
     "code_uic": "87611921",
-    "libelle": "Colomiers-Lyc\u00e9e-International",
+    "libelle": "Colomiers-Lycée-International",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "648000",
@@ -39286,7 +39286,7 @@
   },
   {
     "code_uic": "87116582",
-    "libelle": "Ch\u00e2teau-Thierry",
+    "libelle": "Château-Thierry",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "070000",
@@ -39421,7 +39421,7 @@
   },
   {
     "code_uic": "87485714",
-    "libelle": "Mazi\u00e8res-Verruyes",
+    "libelle": "Mazières-Verruyes",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "500000",
@@ -39475,7 +39475,7 @@
   },
   {
     "code_uic": "87141150",
-    "libelle": "Lun\u00e9ville",
+    "libelle": "Lunéville",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "070000",
@@ -39502,7 +39502,7 @@
   },
   {
     "code_uic": "87723734",
-    "libelle": "St-Andr\u00e9-de-Corcy",
+    "libelle": "St-André-de-Corcy",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "886000",
@@ -39529,7 +39529,7 @@
   },
   {
     "code_uic": "87595769",
-    "libelle": "Siorac-en-P\u00e9rigord",
+    "libelle": "Siorac-en-Périgord",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "628000",
@@ -39799,7 +39799,7 @@
   },
   {
     "code_uic": "87116574",
-    "libelle": "Ch\u00e9zy-sur-Marne",
+    "libelle": "Chézy-sur-Marne",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "070000",
@@ -40069,7 +40069,7 @@
   },
   {
     "code_uic": "87785006",
-    "libelle": "Cerb\u00e8re",
+    "libelle": "Cerbère",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "677000",
@@ -40096,7 +40096,7 @@
   },
   {
     "code_uic": "87386300",
-    "libelle": "Les Vall\u00e9es",
+    "libelle": "Les Vallées",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "340000",
@@ -40285,7 +40285,7 @@
   },
   {
     "code_uic": "87181016",
-    "libelle": "St-Louis-la-Chauss\u00e9e",
+    "libelle": "St-Louis-la-Chaussée",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "115000",
@@ -40420,7 +40420,7 @@
   },
   {
     "code_uic": "87696344",
-    "libelle": "La Fert\u00e9-Hauterive",
+    "libelle": "La Ferté-Hauterive",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "750000",
@@ -40474,7 +40474,7 @@
   },
   {
     "code_uic": "87571885",
-    "libelle": "Jou\u00e9-l\u00e8s-Tours",
+    "libelle": "Joué-lès-Tours",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "525000",
@@ -40609,7 +40609,7 @@
   },
   {
     "code_uic": "87393124",
-    "libelle": "S\u00e8vres-Rive-Gauche",
+    "libelle": "Sèvres-Rive-Gauche",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -40825,7 +40825,7 @@
   },
   {
     "code_uic": "87562421",
-    "libelle": "Aulnat-A\u00e9roport",
+    "libelle": "Aulnat-Aéroport",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "784000",
@@ -41203,7 +41203,7 @@
   },
   {
     "code_uic": "87393454",
-    "libelle": "Tacoigni\u00e8res-Richebourg",
+    "libelle": "Tacoignières-Richebourg",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "395000",
@@ -41500,7 +41500,7 @@
   },
   {
     "code_uic": "87713115",
-    "libelle": "Les Laumes-Al\u00e9sia",
+    "libelle": "Les Laumes-Alésia",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "830000",
@@ -41581,7 +41581,7 @@
   },
   {
     "code_uic": "87574251",
-    "libelle": "La Chauss\u00e9e-St-Victor",
+    "libelle": "La Chaussée-St-Victor",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "570000",
@@ -41797,7 +41797,7 @@
   },
   {
     "code_uic": "87612028",
-    "libelle": "Lab\u00e8ge-Village",
+    "libelle": "Labège-Village",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "640000",
@@ -41851,7 +41851,7 @@
   },
   {
     "code_uic": "87615112",
-    "libelle": "L\u00e9zignan (Aude)",
+    "libelle": "Lézignan (Aude)",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "640000",
@@ -41878,7 +41878,7 @@
   },
   {
     "code_uic": "87765206",
-    "libelle": "Sorgues-Ch\u00e2teauneuf-du-Pape",
+    "libelle": "Sorgues-Châteauneuf-du-Pape",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "927000",
@@ -42013,7 +42013,7 @@
   },
   {
     "code_uic": "87474791",
-    "libelle": "Ch\u00e2teaulin",
+    "libelle": "Châteaulin",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "470000",
@@ -42040,7 +42040,7 @@
   },
   {
     "code_uic": "87725689",
-    "libelle": "M\u00e2con-Ville",
+    "libelle": "Mâcon-Ville",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "830000",
@@ -42067,7 +42067,7 @@
   },
   {
     "code_uic": "87113134",
-    "libelle": "Paris-La Villette-H\u00e9bert",
+    "libelle": "Paris-La Villette-Hébert",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "001000",
@@ -42121,7 +42121,7 @@
   },
   {
     "code_uic": "87485508",
-    "libelle": "La Mothe-St-H\u00e9ray",
+    "libelle": "La Mothe-St-Héray",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "538000",
@@ -42175,7 +42175,7 @@
   },
   {
     "code_uic": "87755629",
-    "libelle": "Hy\u00e8res",
+    "libelle": "Hyères",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "942000",
@@ -42229,7 +42229,7 @@
   },
   {
     "code_uic": "87594416",
-    "libelle": "La Rivi\u00e8re-de-Mansac",
+    "libelle": "La Rivière-de-Mansac",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "621000",
@@ -42445,7 +42445,7 @@
   },
   {
     "code_uic": "87271460",
-    "libelle": "Roissy-A\u00e9roport-Charles-de-Gaulle 1",
+    "libelle": "Roissy-Aéroport-Charles-de-Gaulle 1",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "076000",
@@ -42472,7 +42472,7 @@
   },
   {
     "code_uic": "87481622",
-    "libelle": "Iss\u00e9",
+    "libelle": "Issé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "519000",
@@ -42661,7 +42661,7 @@
   },
   {
     "code_uic": "87590349",
-    "libelle": "Babini\u00e8re",
+    "libelle": "Babinière",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "519000",
@@ -42769,7 +42769,7 @@
   },
   {
     "code_uic": "87597419",
-    "libelle": "Ch\u00e2tillon-sur-Indre",
+    "libelle": "Châtillon-sur-Indre",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "594000",
@@ -43417,7 +43417,7 @@
   },
   {
     "code_uic": "87576579",
-    "libelle": "Aubigny-sur-N\u00e8re",
+    "libelle": "Aubigny-sur-Nère",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "682000",
@@ -43444,7 +43444,7 @@
   },
   {
     "code_uic": "87545194",
-    "libelle": "Br\u00e9tigny",
+    "libelle": "Brétigny",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "570000",
@@ -43660,7 +43660,7 @@
   },
   {
     "code_uic": "87696575",
-    "libelle": "Tamnay-Ch\u00e2tillon",
+    "libelle": "Tamnay-Châtillon",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "763000",
@@ -43930,7 +43930,7 @@
   },
   {
     "code_uic": "87471508",
-    "libelle": "Vitr\u00e9",
+    "libelle": "Vitré",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -43957,7 +43957,7 @@
   },
   {
     "code_uic": "87751800",
-    "libelle": "Sept\u00e8mes",
+    "libelle": "Septèmes",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "905000",
@@ -43984,7 +43984,7 @@
   },
   {
     "code_uic": "87116590",
-    "libelle": "M\u00e9zy",
+    "libelle": "Mézy",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "070000",
@@ -44011,7 +44011,7 @@
   },
   {
     "code_uic": "87726000",
-    "libelle": "St-\u00c9tienne-Ch\u00e2teaucreux",
+    "libelle": "St-\u00c9tienne-Châteaucreux",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "750000",
@@ -44200,7 +44200,7 @@
   },
   {
     "code_uic": "87471219",
-    "libelle": "Besl\u00e9",
+    "libelle": "Beslé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "468000",
@@ -44308,7 +44308,7 @@
   },
   {
     "code_uic": "87276675",
-    "libelle": "M\u00e9riel",
+    "libelle": "Mériel",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "328000",
@@ -44524,7 +44524,7 @@
   },
   {
     "code_uic": "87194449",
-    "libelle": "R\u00e9hon",
+    "libelle": "Réhon",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "202000",
@@ -44740,7 +44740,7 @@
   },
   {
     "code_uic": "87594796",
-    "libelle": "Laval-de-C\u00e8re",
+    "libelle": "Laval-de-Cère",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "719000",
@@ -45010,7 +45010,7 @@
   },
   {
     "code_uic": "87471094",
-    "libelle": "La Brohini\u00e8re",
+    "libelle": "La Brohinière",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -45145,7 +45145,7 @@
   },
   {
     "code_uic": "87381731",
-    "libelle": "N\u00e9zel-Aulnay",
+    "libelle": "Nézel-Aulnay",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "396000",
@@ -45496,7 +45496,7 @@
   },
   {
     "code_uic": "87491241",
-    "libelle": "St-Andr\u00e9-de-Cubzac",
+    "libelle": "St-André-de-Cubzac",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "500000",
@@ -45928,7 +45928,7 @@
   },
   {
     "code_uic": "87696468",
-    "libelle": "B\u00e9ard",
+    "libelle": "Béard",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "760000",
@@ -46009,7 +46009,7 @@
   },
   {
     "code_uic": "87673012",
-    "libelle": "Bayonne-All\u00e9es-Marines",
+    "libelle": "Bayonne-Allées-Marines",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "658000",
@@ -46063,7 +46063,7 @@
   },
   {
     "code_uic": "87485110",
-    "libelle": "Ch\u00e2telaillon",
+    "libelle": "Châtelaillon",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "530000",
@@ -46090,7 +46090,7 @@
   },
   {
     "code_uic": "87741280",
-    "libelle": "\u00c9pierre-St-L\u00e9ger",
+    "libelle": "\u00c9pierre-St-Léger",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "900000",
@@ -46144,7 +46144,7 @@
   },
   {
     "code_uic": "87755314",
-    "libelle": "La Pauline-Hy\u00e8res",
+    "libelle": "La Pauline-Hyères",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "930000",
@@ -46198,7 +46198,7 @@
   },
   {
     "code_uic": "87393546",
-    "libelle": "Bi\u00e8vres",
+    "libelle": "Bièvres",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "990000",
@@ -46279,7 +46279,7 @@
   },
   {
     "code_uic": "87763557",
-    "libelle": "L'Argenti\u00e8re-les-\u00c9crins",
+    "libelle": "L'Argentière-les-\u00c9crins",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "915000",
@@ -46306,7 +46306,7 @@
   },
   {
     "code_uic": "87313122",
-    "libelle": "Longpr\u00e9-les-Corps-Saints",
+    "libelle": "Longpré-les-Corps-Saints",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "322000",
@@ -46414,7 +46414,7 @@
   },
   {
     "code_uic": "87728006",
-    "libelle": "Lyon-Guilloti\u00e8re",
+    "libelle": "Lyon-Guillotière",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "830000",
@@ -46576,7 +46576,7 @@
   },
   {
     "code_uic": "87592345",
-    "libelle": "St-Sulpice-Lauri\u00e8re",
+    "libelle": "St-Sulpice-Laurière",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "590000",
@@ -46738,7 +46738,7 @@
   },
   {
     "code_uic": "87313601",
-    "libelle": "Rochy-Cond\u00e9",
+    "libelle": "Rochy-Condé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "316000",
@@ -46954,7 +46954,7 @@
   },
   {
     "code_uic": "87343400",
-    "libelle": "Trith-St-L\u00e9ger",
+    "libelle": "Trith-St-Léger",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "254000",
@@ -46981,7 +46981,7 @@
   },
   {
     "code_uic": "87394569",
-    "libelle": "St-Sauveur-Ch\u00e2teauneuf",
+    "libelle": "St-Sauveur-Châteauneuf",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "409000",
@@ -47008,7 +47008,7 @@
   },
   {
     "code_uic": "87575704",
-    "libelle": "Mignaloux-Nouaill\u00e9",
+    "libelle": "Mignaloux-Nouaillé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "601000",
@@ -47035,7 +47035,7 @@
   },
   {
     "code_uic": "87386763",
-    "libelle": "\u00c9p\u00f4ne-M\u00e9zi\u00e8res",
+    "libelle": "\u00c9p\u00f4ne-Mézières",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "340000",
@@ -47386,7 +47386,7 @@
   },
   {
     "code_uic": "87481036",
-    "libelle": "Rez\u00e9-Pont-Rousseau",
+    "libelle": "Rezé-Pont-Rousseau",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "534000",
@@ -47521,7 +47521,7 @@
   },
   {
     "code_uic": "87396259",
-    "libelle": "Rouess\u00e9-Vass\u00e9",
+    "libelle": "Rouessé-Vassé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -47683,7 +47683,7 @@
   },
   {
     "code_uic": "87393587",
-    "libelle": "Tilli\u00e8res",
+    "libelle": "Tillières",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "395000",
@@ -47791,7 +47791,7 @@
   },
   {
     "code_uic": "87144360",
-    "libelle": "Ch\u00e2tenois-Dolaincourt",
+    "libelle": "Châtenois-Dolaincourt",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "030000",
@@ -47953,7 +47953,7 @@
   },
   {
     "code_uic": "87481218",
-    "libelle": "Port-St-P\u00e8re-St-Mars",
+    "libelle": "Port-St-Père-St-Mars",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "534000",
@@ -48007,7 +48007,7 @@
   },
   {
     "code_uic": "87111864",
-    "libelle": "Balsi\u00e8ges-Bourg",
+    "libelle": "Balsièges-Bourg",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "723000",
@@ -48034,7 +48034,7 @@
   },
   {
     "code_uic": "87381905",
-    "libelle": "Cergy-Pr\u00e9fecture",
+    "libelle": "Cergy-Préfecture",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "326000",
@@ -48061,7 +48061,7 @@
   },
   {
     "code_uic": "87334482",
-    "libelle": "Neuville-Universit\u00e9",
+    "libelle": "Neuville-Université",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "326000",
@@ -48412,7 +48412,7 @@
   },
   {
     "code_uic": "87673285",
-    "libelle": "B\u00e9nesse-Maremne",
+    "libelle": "Bénesse-Maremne",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "655000",
@@ -48520,7 +48520,7 @@
   },
   {
     "code_uic": "87613471",
-    "libelle": "Lagu\u00e9pie",
+    "libelle": "Laguépie",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "718000",
@@ -48547,7 +48547,7 @@
   },
   {
     "code_uic": "87611723",
-    "libelle": "Bazi\u00e8ge",
+    "libelle": "Baziège",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "640000",
@@ -48601,7 +48601,7 @@
   },
   {
     "code_uic": "87193623",
-    "libelle": "R\u00e9melfing",
+    "libelle": "Rémelfing",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "161000",
@@ -48817,7 +48817,7 @@
   },
   {
     "code_uic": "87141101",
-    "libelle": "Varang\u00e9ville-St-Nicolas",
+    "libelle": "Varangéville-St-Nicolas",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "070000",
@@ -48871,7 +48871,7 @@
   },
   {
     "code_uic": "87713834",
-    "libelle": "St-Julien-Cl\u00e9nay",
+    "libelle": "St-Julien-Clénay",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "849000",
@@ -48952,7 +48952,7 @@
   },
   {
     "code_uic": "87191692",
-    "libelle": "Hom\u00e9court",
+    "libelle": "Homécourt",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "085000",
@@ -49141,7 +49141,7 @@
   },
   {
     "code_uic": "87214056",
-    "libelle": "S\u00e9lestat",
+    "libelle": "Sélestat",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "111000",
@@ -49573,7 +49573,7 @@
   },
   {
     "code_uic": "87276667",
-    "libelle": "M\u00e9ry (Val-d'Oise)",
+    "libelle": "Méry (Val-d'Oise)",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "328000",
@@ -49600,7 +49600,7 @@
   },
   {
     "code_uic": "87764001",
-    "libelle": "Mont\u00e9limar",
+    "libelle": "Montélimar",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "830000",
@@ -49735,7 +49735,7 @@
   },
   {
     "code_uic": "87715144",
-    "libelle": "La Rivi\u00e8re",
+    "libelle": "La Rivière",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "875000",
@@ -49816,7 +49816,7 @@
   },
   {
     "code_uic": "87471144",
-    "libelle": "Laill\u00e9",
+    "libelle": "Laillé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "468000",
@@ -49897,7 +49897,7 @@
   },
   {
     "code_uic": "87316125",
-    "libelle": "Th\u00e9zy-Glimont",
+    "libelle": "Thézy-Glimont",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "232000",
@@ -50113,7 +50113,7 @@
   },
   {
     "code_uic": "87484659",
-    "libelle": "Ch\u00e2teau-Gontier",
+    "libelle": "Château-Gontier",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "460000",
@@ -50167,7 +50167,7 @@
   },
   {
     "code_uic": "87756817",
-    "libelle": "Tou\u00ebt-de-l'Escar\u00e8ne",
+    "libelle": "Tou\u00ebt-de-l'Escarène",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "945000",
@@ -50302,7 +50302,7 @@
   },
   {
     "code_uic": "87393256",
-    "libelle": "La Verri\u00e8re",
+    "libelle": "La Verrière",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -50842,7 +50842,7 @@
   },
   {
     "code_uic": "87415323",
-    "libelle": "Bourgtheroulde-Thuit-H\u00e9bert",
+    "libelle": "Bourgtheroulde-Thuit-Hébert",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "372000",
@@ -50869,7 +50869,7 @@
   },
   {
     "code_uic": "87296152",
-    "libelle": "Cr\u00e9py-Couvron",
+    "libelle": "Crépy-Couvron",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "261000",
@@ -51004,7 +51004,7 @@
   },
   {
     "code_uic": "87725705",
-    "libelle": "M\u00e2con-Loch\u00e9-TGV",
+    "libelle": "Mâcon-Loché-TGV",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "752000",
@@ -51058,7 +51058,7 @@
   },
   {
     "code_uic": "87481689",
-    "libelle": "La Croix-de-M\u00e9an",
+    "libelle": "La Croix-de-Méan",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "515000",
@@ -51085,7 +51085,7 @@
   },
   {
     "code_uic": "87171371",
-    "libelle": "F\u00e8re-en-Tardenois",
+    "libelle": "Fère-en-Tardenois",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "072000",
@@ -51328,7 +51328,7 @@
   },
   {
     "code_uic": "87144154",
-    "libelle": "Bruy\u00e8res",
+    "libelle": "Bruyères",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "065000",
@@ -51355,7 +51355,7 @@
   },
   {
     "code_uic": "87439554",
-    "libelle": "Vitrolles-A\u00e9roport-Marseille-Provence",
+    "libelle": "Vitrolles-Aéroport-Marseille-Provence",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "830000",
@@ -51436,7 +51436,7 @@
   },
   {
     "code_uic": "87175414",
-    "libelle": "Gondrecourt-le-Ch\u00e2teau",
+    "libelle": "Gondrecourt-le-Château",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "027000",
@@ -51463,7 +51463,7 @@
   },
   {
     "code_uic": "87615526",
-    "libelle": "Labrugui\u00e8re",
+    "libelle": "Labruguière",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "737000",
@@ -51733,7 +51733,7 @@
   },
   {
     "code_uic": "87681312",
-    "libelle": "Viry-Ch\u00e2tillon",
+    "libelle": "Viry-Châtillon",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "745000",
@@ -51814,7 +51814,7 @@
   },
   {
     "code_uic": "87484337",
-    "libelle": "La Possonni\u00e8re",
+    "libelle": "La Possonnière",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "523000",
@@ -51976,7 +51976,7 @@
   },
   {
     "code_uic": "87473264",
-    "libelle": "Land\u00e9bia",
+    "libelle": "Landébia",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "415000",
@@ -52219,7 +52219,7 @@
   },
   {
     "code_uic": "87144162",
-    "libelle": "Laveline-devant-Bruy\u00e8res",
+    "libelle": "Laveline-devant-Bruyères",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "063000",
@@ -52246,7 +52246,7 @@
   },
   {
     "code_uic": "87116772",
-    "libelle": "Cr\u00e9cy-La Chapelle",
+    "libelle": "Crécy-La Chapelle",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "071000",
@@ -52273,7 +52273,7 @@
   },
   {
     "code_uic": "87765206",
-    "libelle": "Sorgues-Ch\u00e2teauneuf-du-Pape",
+    "libelle": "Sorgues-Châteauneuf-du-Pape",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "830000",
@@ -52516,7 +52516,7 @@
   },
   {
     "code_uic": "87723767",
-    "libelle": "Marlieux-Ch\u00e2tillon",
+    "libelle": "Marlieux-Châtillon",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "886000",
@@ -52570,7 +52570,7 @@
   },
   {
     "code_uic": "87396234",
-    "libelle": "Sill\u00e9-le-Guillaume",
+    "libelle": "Sillé-le-Guillaume",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -52651,7 +52651,7 @@
   },
   {
     "code_uic": "87775213",
-    "libelle": "G\u00e9nolhac",
+    "libelle": "Génolhac",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "790000",
@@ -52786,7 +52786,7 @@
   },
   {
     "code_uic": "87534339",
-    "libelle": "Mulhouse-Mus\u00e9es (Tram/Train)",
+    "libelle": "Mulhouse-Musées (Tram/Train)",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "132000",
@@ -52813,7 +52813,7 @@
   },
   {
     "code_uic": "87684563",
-    "libelle": "Mign\u00e8res-Gondr\u00e9ville",
+    "libelle": "Mignères-Gondréville",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "745000",
@@ -53164,7 +53164,7 @@
   },
   {
     "code_uic": "87734152",
-    "libelle": "Sarli\u00e8ve-Cournon",
+    "libelle": "Sarliève-Cournon",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "790000",
@@ -53218,7 +53218,7 @@
   },
   {
     "code_uic": "87474312",
-    "libelle": "St-Th\u00e9gonnec",
+    "libelle": "St-Thégonnec",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -53407,7 +53407,7 @@
   },
   {
     "code_uic": "87271593",
-    "libelle": "Cr\u00e9py-en-Valois",
+    "libelle": "Crépy-en-Valois",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "229000",
@@ -53569,7 +53569,7 @@
   },
   {
     "code_uic": "87611152",
-    "libelle": "Montr\u00e9jeau-Gourdan-Polignan",
+    "libelle": "Montréjeau-Gourdan-Polignan",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "650000",
@@ -53704,7 +53704,7 @@
   },
   {
     "code_uic": "87773515",
-    "libelle": "Villeneuve-l\u00e8s-Maguelone",
+    "libelle": "Villeneuve-lès-Maguelone",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "810000",
@@ -53866,7 +53866,7 @@
   },
   {
     "code_uic": "87316406",
-    "libelle": "Montreuil-sur-Th\u00e9rain",
+    "libelle": "Montreuil-sur-Thérain",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "316000",
@@ -54028,7 +54028,7 @@
   },
   {
     "code_uic": "87192302",
-    "libelle": "B\u00e9nestroff",
+    "libelle": "Bénestroff",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "140000",
@@ -54163,7 +54163,7 @@
   },
   {
     "code_uic": "87313601",
-    "libelle": "Rochy-Cond\u00e9",
+    "libelle": "Rochy-Condé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "317000",
@@ -54298,7 +54298,7 @@
   },
   {
     "code_uic": "87694653",
-    "libelle": "G\u00e9nelard",
+    "libelle": "Génelard",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "769000",
@@ -55162,7 +55162,7 @@
   },
   {
     "code_uic": "87722678",
-    "libelle": "Le P\u00e9age-de-Roussillon",
+    "libelle": "Le Péage-de-Roussillon",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "830000",
@@ -55216,7 +55216,7 @@
   },
   {
     "code_uic": "87394288",
-    "libelle": "Cond\u00e9-sur-Huisne",
+    "libelle": "Condé-sur-Huisne",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -55270,7 +55270,7 @@
   },
   {
     "code_uic": "87595769",
-    "libelle": "Siorac-en-P\u00e9rigord",
+    "libelle": "Siorac-en-Périgord",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "631000",
@@ -55297,7 +55297,7 @@
   },
   {
     "code_uic": "87296632",
-    "libelle": "La F\u00e8re",
+    "libelle": "La Fère",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "261000",
@@ -55540,7 +55540,7 @@
   },
   {
     "code_uic": "87481234",
-    "libelle": "St-Hilaire-de-Chal\u00e9ons",
+    "libelle": "St-Hilaire-de-Chaléons",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "536000",
@@ -55675,7 +55675,7 @@
   },
   {
     "code_uic": "87747402",
-    "libelle": "Grenoble-Universit\u00e9-Gi\u00e8res",
+    "libelle": "Grenoble-Université-Gières",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "909000",
@@ -56026,7 +56026,7 @@
   },
   {
     "code_uic": "87316075",
-    "libelle": "Dreuil-l\u00e8s-Amiens",
+    "libelle": "Dreuil-lès-Amiens",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "311000",
@@ -56107,7 +56107,7 @@
   },
   {
     "code_uic": "87342055",
-    "libelle": "B\u00e9thune-Rivage",
+    "libelle": "Béthune-Rivage",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "290000",
@@ -56269,7 +56269,7 @@
   },
   {
     "code_uic": "87576454",
-    "libelle": "N\u00e9rondes",
+    "libelle": "Nérondes",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "690000",
@@ -56404,7 +56404,7 @@
   },
   {
     "code_uic": "87474056",
-    "libelle": "Pont-de-Buis L\u00e8s Quimerc'h",
+    "libelle": "Pont-de-Buis Lès Quimerc'h",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "470000",
@@ -56539,7 +56539,7 @@
   },
   {
     "code_uic": "87734038",
-    "libelle": "Royat-Chamali\u00e8res",
+    "libelle": "Royat-Chamalières",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "711000",
@@ -56728,7 +56728,7 @@
   },
   {
     "code_uic": "87615211",
-    "libelle": "Esp\u00e9raza",
+    "libelle": "Espéraza",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "676000",
@@ -56782,7 +56782,7 @@
   },
   {
     "code_uic": "87741678",
-    "libelle": "La B\u00e2thie",
+    "libelle": "La Bâthie",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "899000",
@@ -56836,7 +56836,7 @@
   },
   {
     "code_uic": "87295337",
-    "libelle": "Ferri\u00e8re-la-Grande",
+    "libelle": "Ferrière-la-Grande",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "241000",
@@ -56890,7 +56890,7 @@
   },
   {
     "code_uic": "87276451",
-    "libelle": "Bruy\u00e8res-sur-Oise",
+    "libelle": "Bruyères-sur-Oise",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "329000",
@@ -57241,7 +57241,7 @@
   },
   {
     "code_uic": "87773200",
-    "libelle": "S\u00e8te",
+    "libelle": "Sète",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "731000",
@@ -57268,7 +57268,7 @@
   },
   {
     "code_uic": "87612028",
-    "libelle": "Lab\u00e8ge-Village",
+    "libelle": "Labège-Village",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "640000",
@@ -57322,7 +57322,7 @@
   },
   {
     "code_uic": "87781609",
-    "libelle": "B\u00e9darieux",
+    "libelle": "Bédarieux",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "737000",
@@ -57646,7 +57646,7 @@
   },
   {
     "code_uic": "87712182",
-    "libelle": "Neuilly-l\u00e8s-Dijon",
+    "libelle": "Neuilly-lès-Dijon",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "850000",
@@ -57970,7 +57970,7 @@
   },
   {
     "code_uic": "87182824",
-    "libelle": "\u00cele-Napol\u00e9on-Garage",
+    "libelle": "\u00cele-Napoléon-Garage",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "124000",
@@ -58078,7 +58078,7 @@
   },
   {
     "code_uic": "87722231",
-    "libelle": "Pierre-B\u00e9nite",
+    "libelle": "Pierre-Bénite",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "750000",
@@ -58132,7 +58132,7 @@
   },
   {
     "code_uic": "87345041",
-    "libelle": "Li\u00e9vin",
+    "libelle": "Liévin",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "301000",
@@ -58267,7 +58267,7 @@
   },
   {
     "code_uic": "87116558",
-    "libelle": "Nanteuil-Sa\u00e2cy",
+    "libelle": "Nanteuil-Saâcy",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "070000",
@@ -58348,7 +58348,7 @@
   },
   {
     "code_uic": "87743716",
-    "libelle": "Amb\u00e9rieu",
+    "libelle": "Ambérieu",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "889000",
@@ -58618,7 +58618,7 @@
   },
   {
     "code_uic": "87784785",
-    "libelle": "Plan\u00e8s",
+    "libelle": "Planès",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "669000",
@@ -58780,7 +58780,7 @@
   },
   {
     "code_uic": "87393678",
-    "libelle": "Aunay-Tr\u00e9on",
+    "libelle": "Aunay-Tréon",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "409000",
@@ -59158,7 +59158,7 @@
   },
   {
     "code_uic": "87396408",
-    "libelle": "Sabl\u00e9-sur-Sarthe",
+    "libelle": "Sablé-sur-Sarthe",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "450000",
@@ -59455,7 +59455,7 @@
   },
   {
     "code_uic": "87592741",
-    "libelle": "Bussi\u00e8re-Galant",
+    "libelle": "Bussière-Galant",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "615000",
@@ -59509,7 +59509,7 @@
   },
   {
     "code_uic": "87313593",
-    "libelle": "Villers-St-S\u00e9pulcre",
+    "libelle": "Villers-St-Sépulcre",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "316000",
@@ -59725,7 +59725,7 @@
   },
   {
     "code_uic": "87594747",
-    "libelle": "B\u00e9taille",
+    "libelle": "Bétaille",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "719000",
@@ -59860,7 +59860,7 @@
   },
   {
     "code_uic": "87116517",
-    "libelle": "La Fert\u00e9-sous-Jouarre",
+    "libelle": "La Ferté-sous-Jouarre",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "070000",
@@ -60076,7 +60076,7 @@
   },
   {
     "code_uic": "87345587",
-    "libelle": "Catteni\u00e8res",
+    "libelle": "Cattenières",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "250000",
@@ -60319,7 +60319,7 @@
   },
   {
     "code_uic": "87411819",
-    "libelle": "Cl\u00e8res",
+    "libelle": "Clères",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "350000",
@@ -60373,7 +60373,7 @@
   },
   {
     "code_uic": "87783241",
-    "libelle": "St-Ch\u00e9ly-d'Apcher",
+    "libelle": "St-Chély-d'Apcher",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "722000",
@@ -60535,7 +60535,7 @@
   },
   {
     "code_uic": "87386409",
-    "libelle": "Houilles-Carri\u00e8res-sur-Seine",
+    "libelle": "Houilles-Carrières-sur-Seine",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "975900",
@@ -60562,7 +60562,7 @@
   },
   {
     "code_uic": "87613182",
-    "libelle": "Th\u00e9dirac-Peyrilles",
+    "libelle": "Thédirac-Peyrilles",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "590000",
@@ -60913,7 +60913,7 @@
   },
   {
     "code_uic": "87471227",
-    "libelle": "Mass\u00e9rac",
+    "libelle": "Massérac",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "468000",
@@ -61021,7 +61021,7 @@
   },
   {
     "code_uic": "87592253",
-    "libelle": "Pierre-Buffi\u00e8re",
+    "libelle": "Pierre-Buffière",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "590000",
@@ -61345,7 +61345,7 @@
   },
   {
     "code_uic": "87473579",
-    "libelle": "Coat-Gu\u00e9gan",
+    "libelle": "Coat-Guégan",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "485000",
@@ -61561,7 +61561,7 @@
   },
   {
     "code_uic": "87592170",
-    "libelle": "P\u00e9rols",
+    "libelle": "Pérols",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "713000",
@@ -61750,7 +61750,7 @@
   },
   {
     "code_uic": "87116590",
-    "libelle": "M\u00e9zy",
+    "libelle": "Mézy",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "004000",
@@ -62236,7 +62236,7 @@
   },
   {
     "code_uic": "87393272",
-    "libelle": "Coigni\u00e8res",
+    "libelle": "Coignières",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -62317,7 +62317,7 @@
   },
   {
     "code_uic": "87144287",
-    "libelle": "Contrex\u00e9ville",
+    "libelle": "Contrexéville",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "035000",
@@ -62398,7 +62398,7 @@
   },
   {
     "code_uic": "87751230",
-    "libelle": "Ch\u00e2teau-Arnoux-St-Auban",
+    "libelle": "Château-Arnoux-St-Auban",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "905000",
@@ -62533,7 +62533,7 @@
   },
   {
     "code_uic": "87718015",
-    "libelle": "Besan\u00e7on-Mouill\u00e8re",
+    "libelle": "Besan\u00e7on-Mouillère",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "872000",
@@ -62776,7 +62776,7 @@
   },
   {
     "code_uic": "87382002",
-    "libelle": "B\u00e9con-les-Bruy\u00e8res",
+    "libelle": "Bécon-les-Bruyères",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "973000",
@@ -62965,7 +62965,7 @@
   },
   {
     "code_uic": "87611822",
-    "libelle": "Brax-L\u00e9guevin",
+    "libelle": "Brax-Léguevin",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "648000",
@@ -63235,7 +63235,7 @@
   },
   {
     "code_uic": "87576363",
-    "libelle": "Lu\u00e7ay-le-M\u00e2le",
+    "libelle": "Lu\u00e7ay-le-Mâle",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "600000",
@@ -63478,7 +63478,7 @@
   },
   {
     "code_uic": "87471540",
-    "libelle": "Noyal-Acign\u00e9",
+    "libelle": "Noyal-Acigné",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -63883,7 +63883,7 @@
   },
   {
     "code_uic": "87611079",
-    "libelle": "Caz\u00e8res-sur-Garonne",
+    "libelle": "Cazères-sur-Garonne",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "650000",
@@ -64072,7 +64072,7 @@
   },
   {
     "code_uic": "87576504",
-    "libelle": "Asni\u00e8res-l\u00e8s-Bourges",
+    "libelle": "Asnières-lès-Bourges",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "682000",
@@ -64153,7 +64153,7 @@
   },
   {
     "code_uic": "87753574",
-    "libelle": "La Redonne-Ensu\u00e8s",
+    "libelle": "La Redonne-Ensuès",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "935000",
@@ -64288,7 +64288,7 @@
   },
   {
     "code_uic": "87192476",
-    "libelle": "Vandi\u00e8res",
+    "libelle": "Vandières",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "090000",
@@ -64369,7 +64369,7 @@
   },
   {
     "code_uic": "87393173",
-    "libelle": "Chaville-V\u00e9lizy",
+    "libelle": "Chaville-Vélizy",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "977000",
@@ -64504,7 +64504,7 @@
   },
   {
     "code_uic": "87141382",
-    "libelle": "Chenevi\u00e8res",
+    "libelle": "Chenevières",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "067000",
@@ -64801,7 +64801,7 @@
   },
   {
     "code_uic": "87784520",
-    "libelle": "St-F\u00e9liu-d'Avall",
+    "libelle": "St-Féliu-d'Avall",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "679000",
@@ -64828,7 +64828,7 @@
   },
   {
     "code_uic": "87144352",
-    "libelle": "Gironcourt-Hou\u00e9court",
+    "libelle": "Gironcourt-Houécourt",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "030000",
@@ -65476,7 +65476,7 @@
   },
   {
     "code_uic": "87142729",
-    "libelle": "Autrey-l\u00e8s-Gray",
+    "libelle": "Autrey-lès-Gray",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "838000",
@@ -65503,7 +65503,7 @@
   },
   {
     "code_uic": "87775791",
-    "libelle": "G\u00e9n\u00e9rac",
+    "libelle": "Générac",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "819000",
@@ -66205,7 +66205,7 @@
   },
   {
     "code_uic": "87784488",
-    "libelle": "Cases-de-P\u00e8ne",
+    "libelle": "Cases-de-Pène",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "676000",
@@ -66340,7 +66340,7 @@
   },
   {
     "code_uic": "87343210",
-    "libelle": "Le Poirier-Universit\u00e9",
+    "libelle": "Le Poirier-Université",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "267000",
@@ -66448,7 +66448,7 @@
   },
   {
     "code_uic": "87545459",
-    "libelle": "La Norville-St-Germain-l\u00e8s-Arpajon",
+    "libelle": "La Norville-St-Germain-lès-Arpajon",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "550000",
@@ -66475,7 +66475,7 @@
   },
   {
     "code_uic": "87761650",
-    "libelle": "Romans-Bourg-de-P\u00e9age",
+    "libelle": "Romans-Bourg-de-Péage",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "908000",
@@ -66502,7 +66502,7 @@
   },
   {
     "code_uic": "87582577",
-    "libelle": "Solf\u00e9rino",
+    "libelle": "Solférino",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "655000",
@@ -66664,7 +66664,7 @@
   },
   {
     "code_uic": "87595876",
-    "libelle": "Belv\u00e8s",
+    "libelle": "Belvès",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "631000",
@@ -66691,7 +66691,7 @@
   },
   {
     "code_uic": "87142554",
-    "libelle": "Ch\u00e2tillon-sur-Seine",
+    "libelle": "Châtillon-sur-Seine",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "840000",
@@ -66826,7 +66826,7 @@
   },
   {
     "code_uic": "87387308",
-    "libelle": "St-Andr\u00e9-de-l'Eure",
+    "libelle": "St-André-de-l'Eure",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "397000",
@@ -66907,7 +66907,7 @@
   },
   {
     "code_uic": "87784801",
-    "libelle": "Bolqu\u00e8re-Eyne",
+    "libelle": "Bolquère-Eyne",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "669000",
@@ -67042,7 +67042,7 @@
   },
   {
     "code_uic": "87354597",
-    "libelle": "St-S\u00e9bastien-Fr\u00eane-Rond",
+    "libelle": "St-Sébastien-Fr\u00eane-Rond",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "530000",
@@ -67204,7 +67204,7 @@
   },
   {
     "code_uic": "87473140",
-    "libelle": "Ch\u00e2telaudren-Plouagat",
+    "libelle": "Châtelaudren-Plouagat",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -67339,7 +67339,7 @@
   },
   {
     "code_uic": "87313551",
-    "libelle": "Cires-l\u00e8s-Mello",
+    "libelle": "Cires-lès-Mello",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "316000",
@@ -67393,7 +67393,7 @@
   },
   {
     "code_uic": "87696732",
-    "libelle": "Pr\u00e9mery",
+    "libelle": "Prémery",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "754000",
@@ -67771,7 +67771,7 @@
   },
   {
     "code_uic": "87612002",
-    "libelle": "Lab\u00e8ge-Innopole",
+    "libelle": "Labège-Innopole",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "640000",
@@ -67906,7 +67906,7 @@
   },
   {
     "code_uic": "87478560",
-    "libelle": "Voutr\u00e9",
+    "libelle": "Voutré",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -67933,7 +67933,7 @@
   },
   {
     "code_uic": "87381269",
-    "libelle": "S\u00e9rifontaine",
+    "libelle": "Sérifontaine",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "330000",
@@ -68311,7 +68311,7 @@
   },
   {
     "code_uic": "87753475",
-    "libelle": "Fos-M\u00e9riquette",
+    "libelle": "Fos-Mériquette",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "935901",
@@ -68473,7 +68473,7 @@
   },
   {
     "code_uic": "87747279",
-    "libelle": "R\u00e9aumont-St-Cassien",
+    "libelle": "Réaumont-St-Cassien",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "905000",
@@ -68716,7 +68716,7 @@
   },
   {
     "code_uic": "87611525",
-    "libelle": "M\u00e9rens-les-Vals",
+    "libelle": "Mérens-les-Vals",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "672000",
@@ -68824,7 +68824,7 @@
   },
   {
     "code_uic": "87756783",
-    "libelle": "Peillon-Ste-Th\u00e8cle",
+    "libelle": "Peillon-Ste-Thècle",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "945000",
@@ -68932,7 +68932,7 @@
   },
   {
     "code_uic": "87328328",
-    "libelle": "Biblioth\u00e8que-Fran\u00e7ois-Mitterrand",
+    "libelle": "Bibliothèque-Fran\u00e7ois-Mitterrand",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "570000",
@@ -69040,7 +69040,7 @@
   },
   {
     "code_uic": "87775239",
-    "libelle": "Ste-C\u00e9cile-d'Andorge",
+    "libelle": "Ste-Cécile-d'Andorge",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "790000",
@@ -69202,7 +69202,7 @@
   },
   {
     "code_uic": "87396713",
-    "libelle": "Bess\u00e9-sur-Braye",
+    "libelle": "Bessé-sur-Braye",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "500000",
@@ -69310,7 +69310,7 @@
   },
   {
     "code_uic": "87447185",
-    "libelle": "Pont-H\u00e9bert",
+    "libelle": "Pont-Hébert",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "415000",
@@ -69418,7 +69418,7 @@
   },
   {
     "code_uic": "87278259",
-    "libelle": "M\u00e9rignac-Arlac",
+    "libelle": "Mérignac-Arlac",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "586000",
@@ -69607,7 +69607,7 @@
   },
   {
     "code_uic": "87696716",
-    "libelle": "Gu\u00e9rigny",
+    "libelle": "Guérigny",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "754000",
@@ -69634,7 +69634,7 @@
   },
   {
     "code_uic": "87756809",
-    "libelle": "L'Escar\u00e8ne",
+    "libelle": "L'Escarène",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "945000",
@@ -69769,7 +69769,7 @@
   },
   {
     "code_uic": "87381624",
-    "libelle": "Br\u00e9val",
+    "libelle": "Bréval",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "366000",
@@ -69796,7 +69796,7 @@
   },
   {
     "code_uic": "87444208",
-    "libelle": "M\u00e9zidon",
+    "libelle": "Mézidon",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "366000",
@@ -69823,7 +69823,7 @@
   },
   {
     "code_uic": "87444208",
-    "libelle": "M\u00e9zidon",
+    "libelle": "Mézidon",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "430000",
@@ -69877,7 +69877,7 @@
   },
   {
     "code_uic": "87761494",
-    "libelle": "St-P\u00e9ray",
+    "libelle": "St-Péray",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "800000",
@@ -69931,7 +69931,7 @@
   },
   {
     "code_uic": "87300863",
-    "libelle": "Besan\u00e7on-Franche-Comt\u00e9-TGV",
+    "libelle": "Besan\u00e7on-Franche-Comté-TGV",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "014000",
@@ -69985,7 +69985,7 @@
   },
   {
     "code_uic": "87313460",
-    "libelle": "Rosi\u00e8res",
+    "libelle": "Rosières",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "261000",
@@ -70012,7 +70012,7 @@
   },
   {
     "code_uic": "87592493",
-    "libelle": "St-S\u00e9bastien",
+    "libelle": "St-Sébastien",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "590000",
@@ -70390,7 +70390,7 @@
   },
   {
     "code_uic": "87683201",
-    "libelle": "\u00c9tigny-V\u00e9ron",
+    "libelle": "\u00c9tigny-Véron",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "830000",
@@ -70687,7 +70687,7 @@
   },
   {
     "code_uic": "87444752",
-    "libelle": "Pr\u00e9-en-Pail",
+    "libelle": "Pré-en-Pail",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "432000",
@@ -70984,7 +70984,7 @@
   },
   {
     "code_uic": "87182832",
-    "libelle": "\u00cele-Napol\u00e9on",
+    "libelle": "\u00cele-Napoléon",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "124000",
@@ -71011,7 +71011,7 @@
   },
   {
     "code_uic": "87446179",
-    "libelle": "St-Cyprien-Ar\u00e8nes",
+    "libelle": "St-Cyprien-Arènes",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "648000",
@@ -71092,7 +71092,7 @@
   },
   {
     "code_uic": "87473124",
-    "libelle": "La M\u00e9augon",
+    "libelle": "La Méaugon",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -71119,7 +71119,7 @@
   },
   {
     "code_uic": "87286278",
-    "libelle": "P\u00e9renchies",
+    "libelle": "Pérenchies",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "295000",
@@ -71173,7 +71173,7 @@
   },
   {
     "code_uic": "87413344",
-    "libelle": "Br\u00e9aut\u00e9-Beuzeville",
+    "libelle": "Bréauté-Beuzeville",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "340000",
@@ -71335,7 +71335,7 @@
   },
   {
     "code_uic": "87547307",
-    "libelle": "Mus\u00e9e-d'Orsay",
+    "libelle": "Musée-d'Orsay",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "984000",
@@ -71929,7 +71929,7 @@
   },
   {
     "code_uic": "87171058",
-    "libelle": "Reims-St-L\u00e9onard",
+    "libelle": "Reims-St-Léonard",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "081000",
@@ -72091,7 +72091,7 @@
   },
   {
     "code_uic": "87546192",
-    "libelle": "Pont-de-Rungis-A\u00e9roport-d'Orly",
+    "libelle": "Pont-de-Rungis-Aéroport-d'Orly",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "990331",
@@ -72172,7 +72172,7 @@
   },
   {
     "code_uic": "87396226",
-    "libelle": "Criss\u00e9",
+    "libelle": "Crissé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -72361,7 +72361,7 @@
   },
   {
     "code_uic": "87393892",
-    "libelle": "Montfort-l'Amaury-M\u00e8re",
+    "libelle": "Montfort-l'Amaury-Mère",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "395000",
@@ -72604,7 +72604,7 @@
   },
   {
     "code_uic": "87574699",
-    "libelle": "Notre-Dame-d'O\u00e9",
+    "libelle": "Notre-Dame-d'Oé",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "550000",
@@ -72766,7 +72766,7 @@
   },
   {
     "code_uic": "87484329",
-    "libelle": "Savenni\u00e8res-B\u00e9huard",
+    "libelle": "Savennières-Béhuard",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "515000",
@@ -72847,7 +72847,7 @@
   },
   {
     "code_uic": "87172056",
-    "libelle": "Montherm\u00e9",
+    "libelle": "Monthermé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "205000",
@@ -72874,7 +72874,7 @@
   },
   {
     "code_uic": "87756767",
-    "libelle": "La Trinit\u00e9-Victor",
+    "libelle": "La Trinité-Victor",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "945000",
@@ -73036,7 +73036,7 @@
   },
   {
     "code_uic": "87141622",
-    "libelle": "Praye-sous-Vaud\u00e9mont",
+    "libelle": "Praye-sous-Vaudémont",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "040000",
@@ -73117,7 +73117,7 @@
   },
   {
     "code_uic": "87775288",
-    "libelle": "Al\u00e8s",
+    "libelle": "Alès",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "790000",
@@ -73306,7 +73306,7 @@
   },
   {
     "code_uic": "87286195",
-    "libelle": "St-Andr\u00e9",
+    "libelle": "St-André",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "295000",
@@ -73360,7 +73360,7 @@
   },
   {
     "code_uic": "87296145",
-    "libelle": "Origny-en-Thi\u00e9rache",
+    "libelle": "Origny-en-Thiérache",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "229000",
@@ -73630,7 +73630,7 @@
   },
   {
     "code_uic": "87725739",
-    "libelle": "Roman\u00e8che-Thorins",
+    "libelle": "Romanèche-Thorins",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "830000",
@@ -73684,7 +73684,7 @@
   },
   {
     "code_uic": "87141291",
-    "libelle": "Neufch\u00e2teau",
+    "libelle": "Neufchâteau",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "032000",
@@ -73792,7 +73792,7 @@
   },
   {
     "code_uic": "87447177",
-    "libelle": "Cond\u00e9-sur-Vire",
+    "libelle": "Condé-sur-Vire",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "414000",
@@ -74224,7 +74224,7 @@
   },
   {
     "code_uic": "87784892",
-    "libelle": "B\u00e9na-Fanes",
+    "libelle": "Béna-Fanes",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "669000",
@@ -74305,7 +74305,7 @@
   },
   {
     "code_uic": "87718114",
-    "libelle": "Torpes-Boussi\u00e8res",
+    "libelle": "Torpes-Boussières",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "871000",
@@ -74386,7 +74386,7 @@
   },
   {
     "code_uic": "87473819",
-    "libelle": "Tr\u00e9gonneau-Squiffiec",
+    "libelle": "Trégonneau-Squiffiec",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "486000",
@@ -74521,7 +74521,7 @@
   },
   {
     "code_uic": "87682294",
-    "libelle": "St-Mamm\u00e8s",
+    "libelle": "St-Mammès",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "830000",
@@ -74764,7 +74764,7 @@
   },
   {
     "code_uic": "87111849",
-    "libelle": "Marne-la-Vall\u00e9e-Chessy",
+    "libelle": "Marne-la-Vallée-Chessy",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "226310",
@@ -74791,7 +74791,7 @@
   },
   {
     "code_uic": "87276311",
-    "libelle": "Chevri\u00e8res",
+    "libelle": "Chevrières",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "242000",
@@ -74980,7 +74980,7 @@
   },
   {
     "code_uic": "87713065",
-    "libelle": "M\u00e2lain",
+    "libelle": "Mâlain",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "830000",
@@ -75088,7 +75088,7 @@
   },
   {
     "code_uic": "87474379",
-    "libelle": "La Boissi\u00e8re",
+    "libelle": "La Boissière",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "476000",
@@ -75169,7 +75169,7 @@
   },
   {
     "code_uic": "87757740",
-    "libelle": "La Fray\u00e8re",
+    "libelle": "La Frayère",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "944000",
@@ -75250,7 +75250,7 @@
   },
   {
     "code_uic": "87753715",
-    "libelle": "S\u00e9nas",
+    "libelle": "Sénas",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "925000",
@@ -75358,7 +75358,7 @@
   },
   {
     "code_uic": "87485250",
-    "libelle": "Mauz\u00e9",
+    "libelle": "Mauzé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "538000",
@@ -75547,7 +75547,7 @@
   },
   {
     "code_uic": "87592105",
-    "libelle": "Ch\u00e2teauneuf-Bujaleuf",
+    "libelle": "Châteauneuf-Bujaleuf",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "713000",
@@ -75709,7 +75709,7 @@
   },
   {
     "code_uic": "87741181",
-    "libelle": "Montm\u00e9lian",
+    "libelle": "Montmélian",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "900000",
@@ -75790,7 +75790,7 @@
   },
   {
     "code_uic": "87471458",
-    "libelle": "Chevaign\u00e9",
+    "libelle": "Chevaigné",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "441000",
@@ -76033,7 +76033,7 @@
   },
   {
     "code_uic": "87484154",
-    "libelle": "\u00c9trich\u00e9-Ch\u00e2teauneuf",
+    "libelle": "\u00c9triché-Châteauneuf",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "450000",
@@ -76330,7 +76330,7 @@
   },
   {
     "code_uic": "87131961",
-    "libelle": "Brion-Montr\u00e9al-la-Cluse",
+    "libelle": "Brion-Montréal-la-Cluse",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "884000",
@@ -76384,7 +76384,7 @@
   },
   {
     "code_uic": "87723585",
-    "libelle": "Meximieux-P\u00e9rouges",
+    "libelle": "Meximieux-Pérouges",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "890000",
@@ -76546,7 +76546,7 @@
   },
   {
     "code_uic": "87696575",
-    "libelle": "Tamnay-Ch\u00e2tillon",
+    "libelle": "Tamnay-Châtillon",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "763000",
@@ -76600,7 +76600,7 @@
   },
   {
     "code_uic": "87747212",
-    "libelle": "Ch\u00e2bons",
+    "libelle": "Châbons",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "905000",
@@ -76681,7 +76681,7 @@
   },
   {
     "code_uic": "87734087",
-    "libelle": "Pont-du-Ch\u00e2teau",
+    "libelle": "Pont-du-Château",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "784000",
@@ -76789,7 +76789,7 @@
   },
   {
     "code_uic": "87486316",
-    "libelle": "Fouger\u00e9",
+    "libelle": "Fougeré",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "525000",
@@ -76843,7 +76843,7 @@
   },
   {
     "code_uic": "87681452",
-    "libelle": "La Fert\u00e9-Alais",
+    "libelle": "La Ferté-Alais",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "745000",
@@ -76897,7 +76897,7 @@
   },
   {
     "code_uic": "87116616",
-    "libelle": "Isles-Armenti\u00e8res",
+    "libelle": "Isles-Armentières",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "072000",
@@ -77086,7 +77086,7 @@
   },
   {
     "code_uic": "87303875",
-    "libelle": "Ingersheim-Cit\u00e9-Scolaire",
+    "libelle": "Ingersheim-Cité-Scolaire",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "119000",
@@ -77113,7 +77113,7 @@
   },
   {
     "code_uic": "87286195",
-    "libelle": "St-Andr\u00e9",
+    "libelle": "St-André",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "292000",
@@ -77140,7 +77140,7 @@
   },
   {
     "code_uic": "87696575",
-    "libelle": "Tamnay-Ch\u00e2tillon",
+    "libelle": "Tamnay-Châtillon",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "762000",
@@ -77275,7 +77275,7 @@
   },
   {
     "code_uic": "87684241",
-    "libelle": "Ferri\u00e8res-Fontenay",
+    "libelle": "Ferrières-Fontenay",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "750000",
@@ -77545,7 +77545,7 @@
   },
   {
     "code_uic": "87171835",
-    "libelle": "B\u00e9theniville",
+    "libelle": "Bétheniville",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "207000",
@@ -77626,7 +77626,7 @@
   },
   {
     "code_uic": "87144477",
-    "libelle": "St-L\u00e9onard",
+    "libelle": "St-Léonard",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "064000",
@@ -77734,7 +77734,7 @@
   },
   {
     "code_uic": "87481465",
-    "libelle": "Montaigu-Vend\u00e9e",
+    "libelle": "Montaigu-Vendée",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "530000",
@@ -77869,7 +77869,7 @@
   },
   {
     "code_uic": "87118752",
-    "libelle": "Brienne-le-Ch\u00e2teau",
+    "libelle": "Brienne-le-Château",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "015000",
@@ -78004,7 +78004,7 @@
   },
   {
     "code_uic": "87381012",
-    "libelle": "P\u00e9reire-Levallois",
+    "libelle": "Péreire-Levallois",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "962000",
@@ -78058,7 +78058,7 @@
   },
   {
     "code_uic": "87297515",
-    "libelle": "Les Bons-P\u00e8res",
+    "libelle": "Les Bons-Pères",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "242000",
@@ -78220,7 +78220,7 @@
   },
   {
     "code_uic": "87696104",
-    "libelle": "Ch\u00e2tillon-sur-Loire",
+    "libelle": "Châtillon-sur-Loire",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "750000",
@@ -78247,7 +78247,7 @@
   },
   {
     "code_uic": "87761742",
-    "libelle": "Poli\u00e9nas",
+    "libelle": "Poliénas",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "908000",
@@ -78598,7 +78598,7 @@
   },
   {
     "code_uic": "87473827",
-    "libelle": "Br\u00e9lidy-Plou\u00ebc",
+    "libelle": "Brélidy-Plou\u00ebc",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "486000",
@@ -78760,7 +78760,7 @@
   },
   {
     "code_uic": "87673707",
-    "libelle": "Oss\u00e8s-St-Martin-d'Arrossa",
+    "libelle": "Ossès-St-Martin-d'Arrossa",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "661000",
@@ -78895,7 +78895,7 @@
   },
   {
     "code_uic": "87142752",
-    "libelle": "Mirebeau-sur-B\u00e8ze",
+    "libelle": "Mirebeau-sur-Bèze",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "838000",
@@ -78949,7 +78949,7 @@
   },
   {
     "code_uic": "87471367",
-    "libelle": "Martign\u00e9-Ferchaud",
+    "libelle": "Martigné-Ferchaud",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "466000",
@@ -79327,7 +79327,7 @@
   },
   {
     "code_uic": "87116186",
-    "libelle": "L\u00e9chelle (Seine-et-Marne)",
+    "libelle": "Léchelle (Seine-et-Marne)",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "003000",
@@ -79354,7 +79354,7 @@
   },
   {
     "code_uic": "87746859",
-    "libelle": "Argenti\u00e8re",
+    "libelle": "Argentière",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "896000",
@@ -79489,7 +79489,7 @@
   },
   {
     "code_uic": "87354589",
-    "libelle": "St-S\u00e9bastien-Pas-Enchant\u00e9s",
+    "libelle": "St-Sébastien-Pas-Enchantés",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "530000",
@@ -79516,7 +79516,7 @@
   },
   {
     "code_uic": "87402297",
-    "libelle": "Colmar-M\u00e9sanges",
+    "libelle": "Colmar-Mésanges",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "119000",
@@ -79570,7 +79570,7 @@
   },
   {
     "code_uic": "87781856",
-    "libelle": "Sall\u00e8les-d'Aude",
+    "libelle": "Sallèles-d'Aude",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "734000",
@@ -79678,7 +79678,7 @@
   },
   {
     "code_uic": "87592741",
-    "libelle": "Bussi\u00e8re-Galant",
+    "libelle": "Bussière-Galant",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "611000",
@@ -79705,7 +79705,7 @@
   },
   {
     "code_uic": "87481648",
-    "libelle": "Ch\u00e2teaubriant",
+    "libelle": "Châteaubriant",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "460000",
@@ -79759,7 +79759,7 @@
   },
   {
     "code_uic": "87381293",
-    "libelle": "Gournay-Ferri\u00e8res",
+    "libelle": "Gournay-Ferrières",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "330000",
@@ -80191,7 +80191,7 @@
   },
   {
     "code_uic": "87545756",
-    "libelle": "Ch\u00e2teaudun",
+    "libelle": "Châteaudun",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "550000",
@@ -80353,7 +80353,7 @@
   },
   {
     "code_uic": "87592121",
-    "libelle": "Eymoutiers-Vassivi\u00e8re",
+    "libelle": "Eymoutiers-Vassivière",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "713000",
@@ -80407,7 +80407,7 @@
   },
   {
     "code_uic": "87775361",
-    "libelle": "St-Geni\u00e8s-de-Malgoir\u00e8s",
+    "libelle": "St-Geniès-de-Malgoirès",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "790000",
@@ -80542,7 +80542,7 @@
   },
   {
     "code_uic": "87473199",
-    "libelle": "Ploun\u00e9rin",
+    "libelle": "Plounérin",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -80596,7 +80596,7 @@
   },
   {
     "code_uic": "87546192",
-    "libelle": "Pont-de-Rungis-A\u00e9roport-d'Orly",
+    "libelle": "Pont-de-Rungis-Aéroport-d'Orly",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "985000",
@@ -80920,7 +80920,7 @@
   },
   {
     "code_uic": "87590372",
-    "libelle": "Ch\u00e2teaubriant Tram-Train",
+    "libelle": "Châteaubriant Tram-Train",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "519000",
@@ -80947,7 +80947,7 @@
   },
   {
     "code_uic": "87172486",
-    "libelle": "Messempr\u00e9",
+    "libelle": "Messempré",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "214000",
@@ -81163,7 +81163,7 @@
   },
   {
     "code_uic": "87726216",
-    "libelle": "Bouth\u00e9on",
+    "libelle": "Bouthéon",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "750000",
@@ -81217,7 +81217,7 @@
   },
   {
     "code_uic": "87723395",
-    "libelle": "La Verpilli\u00e8re",
+    "libelle": "La Verpillière",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "905000",
@@ -81514,7 +81514,7 @@
   },
   {
     "code_uic": "87471664",
-    "libelle": "G\u00e9rard",
+    "libelle": "Gérard",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "439000",
@@ -81649,7 +81649,7 @@
   },
   {
     "code_uic": "87214056",
-    "libelle": "S\u00e9lestat",
+    "libelle": "Sélestat",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "115000",
@@ -81946,7 +81946,7 @@
   },
   {
     "code_uic": "87595892",
-    "libelle": "Villefranche-du-P\u00e9rigord",
+    "libelle": "Villefranche-du-Périgord",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "631000",
@@ -82000,7 +82000,7 @@
   },
   {
     "code_uic": "87481234",
-    "libelle": "St-Hilaire-de-Chal\u00e9ons",
+    "libelle": "St-Hilaire-de-Chaléons",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "537000",
@@ -82216,7 +82216,7 @@
   },
   {
     "code_uic": "87611665",
-    "libelle": "Castelnau-d'Estr\u00e9tefonds",
+    "libelle": "Castelnau-d'Estrétefonds",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "640000",
@@ -82432,7 +82432,7 @@
   },
   {
     "code_uic": "87473389",
-    "libelle": "Loud\u00e9ac",
+    "libelle": "Loudéac",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "475000",
@@ -82837,7 +82837,7 @@
   },
   {
     "code_uic": "87381236",
-    "libelle": "Trie-Ch\u00e2teau",
+    "libelle": "Trie-Château",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "330000",
@@ -83026,7 +83026,7 @@
   },
   {
     "code_uic": "87476424",
-    "libelle": "Penthi\u00e8vre",
+    "libelle": "Penthièvre",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "473000",
@@ -83215,7 +83215,7 @@
   },
   {
     "code_uic": "87781005",
-    "libelle": "B\u00e9ziers",
+    "libelle": "Béziers",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "640000",
@@ -83242,7 +83242,7 @@
   },
   {
     "code_uic": "87481416",
-    "libelle": "La Haie-Fouassi\u00e8re",
+    "libelle": "La Haie-Fouassière",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "530000",
@@ -83512,7 +83512,7 @@
   },
   {
     "code_uic": "87413484",
-    "libelle": "Gravenchon-Port-J\u00e9rome",
+    "libelle": "Gravenchon-Port-Jérome",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "362000",
@@ -83647,7 +83647,7 @@
   },
   {
     "code_uic": "87595504",
-    "libelle": "P\u00e9rigueux-St-Georges",
+    "libelle": "Périgueux-St-Georges",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "621000",
@@ -83674,7 +83674,7 @@
   },
   {
     "code_uic": "87723320",
-    "libelle": "V\u00e9nissieux",
+    "libelle": "Vénissieux",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "905000",
@@ -83863,7 +83863,7 @@
   },
   {
     "code_uic": "87345108",
-    "libelle": "Brebi\u00e8res-Sud",
+    "libelle": "Brebières-Sud",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "272000",
@@ -83917,7 +83917,7 @@
   },
   {
     "code_uic": "87491506",
-    "libelle": "Ch\u00e2teauneuf-sur-Charente",
+    "libelle": "Châteauneuf-sur-Charente",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "579000",
@@ -83971,7 +83971,7 @@
   },
   {
     "code_uic": "87485227",
-    "libelle": "Surg\u00e8res",
+    "libelle": "Surgères",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "538000",
@@ -84079,7 +84079,7 @@
   },
   {
     "code_uic": "87174516",
-    "libelle": "Bussy-Lettr\u00e9e-Vatry",
+    "libelle": "Bussy-Lettrée-Vatry",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "006000",
@@ -84268,7 +84268,7 @@
   },
   {
     "code_uic": "87723304",
-    "libelle": "V\u00e9nissieux-Nord",
+    "libelle": "Vénissieux-Nord",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "905000",
@@ -84322,7 +84322,7 @@
   },
   {
     "code_uic": "87116541",
-    "libelle": "S\u00e9zanne",
+    "libelle": "Sézanne",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "002000",
@@ -84403,7 +84403,7 @@
   },
   {
     "code_uic": "87746107",
-    "libelle": "Gr\u00e9sy-sur-Aix",
+    "libelle": "Grésy-sur-Aix",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "897000",
@@ -84511,7 +84511,7 @@
   },
   {
     "code_uic": "87171256",
-    "libelle": "Montbr\u00e9",
+    "libelle": "Montbré",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "074000",
@@ -84619,7 +84619,7 @@
   },
   {
     "code_uic": "87345439",
-    "libelle": "Brun\u00e9mont",
+    "libelle": "Brunémont",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "259000",
@@ -84835,7 +84835,7 @@
   },
   {
     "code_uic": "87313270",
-    "libelle": "St-Just-en-Chauss\u00e9e",
+    "libelle": "St-Just-en-Chaussée",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "272000",
@@ -84862,7 +84862,7 @@
   },
   {
     "code_uic": "87116673",
-    "libelle": "La Fert\u00e9-Milon",
+    "libelle": "La Ferté-Milon",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "072000",
@@ -85186,7 +85186,7 @@
   },
   {
     "code_uic": "87497461",
-    "libelle": "Galli\u00e9ni-Canc\u00e9ropole",
+    "libelle": "Galliéni-Cancéropole",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "648000",
@@ -85780,7 +85780,7 @@
   },
   {
     "code_uic": "87592147",
-    "libelle": "La Celle-Corr\u00e8ze",
+    "libelle": "La Celle-Corrèze",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "713000",
@@ -86725,7 +86725,7 @@
   },
   {
     "code_uic": "87590331",
-    "libelle": "Haluch\u00e8re-Batignolles",
+    "libelle": "Haluchère-Batignolles",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "519000",
@@ -86995,7 +86995,7 @@
   },
   {
     "code_uic": "87583468",
-    "libelle": "Roumazi\u00e8res-Loubert",
+    "libelle": "Roumazières-Loubert",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "608000",
@@ -87157,7 +87157,7 @@
   },
   {
     "code_uic": "87721050",
-    "libelle": "R\u00e9gny",
+    "libelle": "Régny",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "783000",
@@ -87481,7 +87481,7 @@
   },
   {
     "code_uic": "87694398",
-    "libelle": "Cheilly-l\u00e8s-Maranges",
+    "libelle": "Cheilly-lès-Maranges",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "760000",
@@ -87508,7 +87508,7 @@
   },
   {
     "code_uic": "87473082",
-    "libelle": "Pl\u00e9n\u00e9e-Jugon",
+    "libelle": "Plénée-Jugon",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -87562,7 +87562,7 @@
   },
   {
     "code_uic": "87113795",
-    "libelle": "Villiers-sur-Marne-Le Plessis-Tr\u00e9vise",
+    "libelle": "Villiers-sur-Marne-Le Plessis-Trévise",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "001000",
@@ -87616,7 +87616,7 @@
   },
   {
     "code_uic": "87583468",
-    "libelle": "Roumazi\u00e8res-Loubert",
+    "libelle": "Roumazières-Loubert",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "610000",
@@ -87724,7 +87724,7 @@
   },
   {
     "code_uic": "87721753",
-    "libelle": "Ch\u00e2tillon-d'Azergues",
+    "libelle": "Châtillon-d'Azergues",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "775000",
@@ -87778,7 +87778,7 @@
   },
   {
     "code_uic": "87590828",
-    "libelle": "Suc\u00e9-sur-Erdre",
+    "libelle": "Sucé-sur-Erdre",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "519000",
@@ -87805,7 +87805,7 @@
   },
   {
     "code_uic": "87476770",
-    "libelle": "Dreff\u00e9ac",
+    "libelle": "Drefféac",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "470000",
@@ -88156,7 +88156,7 @@
   },
   {
     "code_uic": "87743302",
-    "libelle": "Ceyz\u00e9riat",
+    "libelle": "Ceyzériat",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "884000",
@@ -88399,7 +88399,7 @@
   },
   {
     "code_uic": "87611350",
-    "libelle": "Vernet-d'Ari\u00e8ge",
+    "libelle": "Vernet-d'Ariège",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "672000",
@@ -88480,7 +88480,7 @@
   },
   {
     "code_uic": "87144048",
-    "libelle": "L\u00e9panges",
+    "libelle": "Lépanges",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "062000",
@@ -88615,7 +88615,7 @@
   },
   {
     "code_uic": "87478255",
-    "libelle": "Pleine-Foug\u00e8res",
+    "libelle": "Pleine-Fougères",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "415000",
@@ -88723,7 +88723,7 @@
   },
   {
     "code_uic": "87726406",
-    "libelle": "Andr\u00e9zieux",
+    "libelle": "Andrézieux",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "784000",
@@ -88750,7 +88750,7 @@
   },
   {
     "code_uic": "87141291",
-    "libelle": "Neufch\u00e2teau",
+    "libelle": "Neufchâteau",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "026000",
@@ -88777,7 +88777,7 @@
   },
   {
     "code_uic": "87481234",
-    "libelle": "St-Hilaire-de-Chal\u00e9ons",
+    "libelle": "St-Hilaire-de-Chaléons",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "537000",
@@ -88993,7 +88993,7 @@
   },
   {
     "code_uic": "87141127",
-    "libelle": "Rosi\u00e8res-aux-Salines",
+    "libelle": "Rosières-aux-Salines",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "039000",
@@ -89425,7 +89425,7 @@
   },
   {
     "code_uic": "87783365",
-    "libelle": "S\u00e9v\u00e9rac-le-Ch\u00e2teau",
+    "libelle": "Sévérac-le-Château",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "722000",
@@ -89641,7 +89641,7 @@
   },
   {
     "code_uic": "87561143",
-    "libelle": "Halte de Fontanil-Lyc\u00e9e de Drap",
+    "libelle": "Halte de Fontanil-Lycée de Drap",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "945000",
@@ -89668,7 +89668,7 @@
   },
   {
     "code_uic": "87476754",
-    "libelle": "S\u00e9v\u00e9rac",
+    "libelle": "Sévérac",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "470000",
@@ -89722,7 +89722,7 @@
   },
   {
     "code_uic": "87741439",
-    "libelle": "L\u00e9pin-le-Lac-La Bauche",
+    "libelle": "Lépin-le-Lac-La Bauche",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "903000",
@@ -90235,7 +90235,7 @@
   },
   {
     "code_uic": "87287185",
-    "libelle": "De\u00fbl\u00e9mont",
+    "libelle": "De\u00fblémont",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "296000",
@@ -90829,7 +90829,7 @@
   },
   {
     "code_uic": "87144014",
-    "libelle": "St-Di\u00e9-des-Vosges",
+    "libelle": "St-Dié-des-Vosges",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "062000",
@@ -90964,7 +90964,7 @@
   },
   {
     "code_uic": "87276766",
-    "libelle": "Rib\u00e9court",
+    "libelle": "Ribécourt",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "242000",
@@ -90991,7 +90991,7 @@
   },
   {
     "code_uic": "87473553",
-    "libelle": "Le P\u00e9nity",
+    "libelle": "Le Pénity",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "485000",
@@ -91126,7 +91126,7 @@
   },
   {
     "code_uic": "87313718",
-    "libelle": "St-Omer-en-Chauss\u00e9e",
+    "libelle": "St-Omer-en-Chaussée",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "325000",
@@ -91153,7 +91153,7 @@
   },
   {
     "code_uic": "87144345",
-    "libelle": "Provench\u00e8res-sur-Fave",
+    "libelle": "Provenchères-sur-Fave",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "110000",
@@ -91207,7 +91207,7 @@
   },
   {
     "code_uic": "87141374",
-    "libelle": "St-Cl\u00e9ment-Laronxe",
+    "libelle": "St-Clément-Laronxe",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "067000",
@@ -91612,7 +91612,7 @@
   },
   {
     "code_uic": "87757567",
-    "libelle": "Anth\u00e9or-Cap-Roux",
+    "libelle": "Anthéor-Cap-Roux",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "930000",
@@ -91747,7 +91747,7 @@
   },
   {
     "code_uic": "87473165",
-    "libelle": "Belle-Isle-B\u00e9gard",
+    "libelle": "Belle-Isle-Bégard",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -91855,7 +91855,7 @@
   },
   {
     "code_uic": "87484352",
-    "libelle": "Champtoc\u00e9-sur-Loire",
+    "libelle": "Champtocé-sur-Loire",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "515000",
@@ -91990,7 +91990,7 @@
   },
   {
     "code_uic": "87597609",
-    "libelle": "Gu\u00e9ret",
+    "libelle": "Guéret",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "702000",
@@ -92287,7 +92287,7 @@
   },
   {
     "code_uic": "87415893",
-    "libelle": "Bonni\u00e8res",
+    "libelle": "Bonnières",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "340000",
@@ -92314,7 +92314,7 @@
   },
   {
     "code_uic": "87386664",
-    "libelle": "Les Clairi\u00e8res-de-Verneuil",
+    "libelle": "Les Clairières-de-Verneuil",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "340000",
@@ -92395,7 +92395,7 @@
   },
   {
     "code_uic": "87113878",
-    "libelle": "All\u00e9e-de-la-Tour-Rendez-Vous",
+    "libelle": "Allée-de-la-Tour-Rendez-Vous",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "958000",
@@ -92692,7 +92692,7 @@
   },
   {
     "code_uic": "87576298",
-    "libelle": "Ch\u00e2teauneuf-sur-Cher",
+    "libelle": "Châteauneuf-sur-Cher",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "695000",
@@ -92719,7 +92719,7 @@
   },
   {
     "code_uic": "87473058",
-    "libelle": "Qu\u00e9dillac",
+    "libelle": "Quédillac",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -92773,7 +92773,7 @@
   },
   {
     "code_uic": "87487819",
-    "libelle": "Longu\u00e9",
+    "libelle": "Longué",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "510000",
@@ -92881,7 +92881,7 @@
   },
   {
     "code_uic": "87174664",
-    "libelle": "F\u00e8re-Champenoise",
+    "libelle": "Fère-Champenoise",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "010000",
@@ -93016,7 +93016,7 @@
   },
   {
     "code_uic": "87757500",
-    "libelle": "Fr\u00e9jus",
+    "libelle": "Fréjus",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "930000",
@@ -93313,7 +93313,7 @@
   },
   {
     "code_uic": "87645440",
-    "libelle": "Vic-sur-C\u00e8re",
+    "libelle": "Vic-sur-Cère",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "720000",
@@ -93610,7 +93610,7 @@
   },
   {
     "code_uic": "87543462",
-    "libelle": "Ch\u00e2teauneuf-sur-Loire",
+    "libelle": "Châteauneuf-sur-Loire",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "687000",
@@ -93772,7 +93772,7 @@
   },
   {
     "code_uic": "87317099",
-    "libelle": "Neufch\u00e2tel-Hardelot",
+    "libelle": "Neufchâtel-Hardelot",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "311000",
@@ -93826,7 +93826,7 @@
   },
   {
     "code_uic": "87725838",
-    "libelle": "M\u00e9z\u00e9riat",
+    "libelle": "Mézériat",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "883000",
@@ -93880,7 +93880,7 @@
   },
   {
     "code_uic": "87396234",
-    "libelle": "Sill\u00e9-le-Guillaume",
+    "libelle": "Sillé-le-Guillaume",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "428000",
@@ -94123,7 +94123,7 @@
   },
   {
     "code_uic": "87543066",
-    "libelle": "Ch\u00e2teau-Gaillard",
+    "libelle": "Château-Gaillard",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "570000",
@@ -94204,7 +94204,7 @@
   },
   {
     "code_uic": "87988717",
-    "libelle": "Lyc\u00e9e-Henri-Sellier",
+    "libelle": "Lycée-Henri-Sellier",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "958000",
@@ -94285,7 +94285,7 @@
   },
   {
     "code_uic": "87751636",
-    "libelle": "S\u00e9on-St-Henry",
+    "libelle": "Séon-St-Henry",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "830000",
@@ -94420,7 +94420,7 @@
   },
   {
     "code_uic": "87611392",
-    "libelle": "V\u00e9nerque-le-Vernet",
+    "libelle": "Vénerque-le-Vernet",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "672000",
@@ -94555,7 +94555,7 @@
   },
   {
     "code_uic": "87444695",
-    "libelle": "S\u00e9es",
+    "libelle": "Sées",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "430000",
@@ -94636,7 +94636,7 @@
   },
   {
     "code_uic": "87683557",
-    "libelle": "Mon\u00e9teau-Gurgy",
+    "libelle": "Monéteau-Gurgy",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "753000",
@@ -95176,7 +95176,7 @@
   },
   {
     "code_uic": "87574533",
-    "libelle": "Fr\u00e9teval-Mor\u00e9e",
+    "libelle": "Fréteval-Morée",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "550000",
@@ -95311,7 +95311,7 @@
   },
   {
     "code_uic": "87317230",
-    "libelle": "Auchy-l\u00e8s-Hesdin",
+    "libelle": "Auchy-lès-Hesdin",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "308000",
@@ -95824,7 +95824,7 @@
   },
   {
     "code_uic": "87595009",
-    "libelle": "P\u00e9rigueux",
+    "libelle": "Périgueux",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "621000",
@@ -95959,7 +95959,7 @@
   },
   {
     "code_uic": "87286013",
-    "libelle": "Lille-D\u00e9livrance",
+    "libelle": "Lille-Délivrance",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "292000",
@@ -96094,7 +96094,7 @@
   },
   {
     "code_uic": "87118430",
-    "libelle": "Buch\u00e8res-Verri\u00e8res",
+    "libelle": "Buchères-Verrières",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "838000",
@@ -96499,7 +96499,7 @@
   },
   {
     "code_uic": "87784868",
-    "libelle": "Oss\u00e9ja",
+    "libelle": "Osséja",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "669000",
@@ -96607,7 +96607,7 @@
   },
   {
     "code_uic": "87271494",
-    "libelle": "A\u00e9roport-Charles-de-Gaulle 2-TGV",
+    "libelle": "Aéroport-Charles-de-Gaulle 2-TGV",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "226310",
@@ -96823,7 +96823,7 @@
   },
   {
     "code_uic": "87784769",
-    "libelle": "Fontp\u00e9drouse-St-Thomas-les-Bains",
+    "libelle": "Fontpédrouse-St-Thomas-les-Bains",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "669000",
@@ -97012,7 +97012,7 @@
   },
   {
     "code_uic": "87481176",
-    "libelle": "Boussay-La Bruffi\u00e8re",
+    "libelle": "Boussay-La Bruffière",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "527000",
@@ -97066,7 +97066,7 @@
   },
   {
     "code_uic": "87543124",
-    "libelle": "La Fert\u00e9-St-Aubin",
+    "libelle": "La Ferté-St-Aubin",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "590000",
@@ -97093,7 +97093,7 @@
   },
   {
     "code_uic": "87286146",
-    "libelle": "Armenti\u00e8res",
+    "libelle": "Armentières",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "295000",
@@ -97120,7 +97120,7 @@
   },
   {
     "code_uic": "87286146",
-    "libelle": "Armenti\u00e8res",
+    "libelle": "Armentières",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "293000",
@@ -97552,7 +97552,7 @@
   },
   {
     "code_uic": "87741181",
-    "libelle": "Montm\u00e9lian",
+    "libelle": "Montmélian",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "909000",
@@ -97579,7 +97579,7 @@
   },
   {
     "code_uic": "87141135",
-    "libelle": "Blainville-Damelevi\u00e8res",
+    "libelle": "Blainville-Damelevières",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "070000",
@@ -97768,7 +97768,7 @@
   },
   {
     "code_uic": "87171769",
-    "libelle": "Coucy-l\u00e8s-Eppes",
+    "libelle": "Coucy-lès-Eppes",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "082000",
@@ -97849,7 +97849,7 @@
   },
   {
     "code_uic": "87271593",
-    "libelle": "Cr\u00e9py-en-Valois",
+    "libelle": "Crépy-en-Valois",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "231000",
@@ -97984,7 +97984,7 @@
   },
   {
     "code_uic": "87575340",
-    "libelle": "Couh\u00e9-V\u00e9rac",
+    "libelle": "Couhé-Vérac",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "570000",
@@ -98011,7 +98011,7 @@
   },
   {
     "code_uic": "87393447",
-    "libelle": "Org\u00e9rus-B\u00e9houst",
+    "libelle": "Orgérus-Béhoust",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "395000",
@@ -98551,7 +98551,7 @@
   },
   {
     "code_uic": "87762906",
-    "libelle": "Lyon-St-Exup\u00e9ry-TGV",
+    "libelle": "Lyon-St-Exupéry-TGV",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "752000",
@@ -98578,7 +98578,7 @@
   },
   {
     "code_uic": "87592071",
-    "libelle": "St-L\u00e9onard-de-Noblat",
+    "libelle": "St-Léonard-de-Noblat",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "713000",
@@ -98605,7 +98605,7 @@
   },
   {
     "code_uic": "87396572",
-    "libelle": "Aubign\u00e9-Racan",
+    "libelle": "Aubigné-Racan",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "561000",
@@ -98686,7 +98686,7 @@
   },
   {
     "code_uic": "87413542",
-    "libelle": "F\u00e9camp",
+    "libelle": "Fécamp",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "359000",
@@ -98902,7 +98902,7 @@
   },
   {
     "code_uic": "87615369",
-    "libelle": "Montastruc-la-Conseill\u00e8re",
+    "libelle": "Montastruc-la-Conseillère",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "718000",
@@ -99145,7 +99145,7 @@
   },
   {
     "code_uic": "87001479",
-    "libelle": "Roissy-A\u00e9roport-Charles-de-Gaulle 2-TGV (RER)",
+    "libelle": "Roissy-Aéroport-Charles-de-Gaulle 2-TGV (RER)",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "076000",
@@ -99388,7 +99388,7 @@
   },
   {
     "code_uic": "87743716",
-    "libelle": "Amb\u00e9rieu",
+    "libelle": "Ambérieu",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "883000",
@@ -99631,7 +99631,7 @@
   },
   {
     "code_uic": "87784231",
-    "libelle": "Argel\u00e8s-sur-Mer",
+    "libelle": "Argelès-sur-Mer",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "677000",
@@ -99685,7 +99685,7 @@
   },
   {
     "code_uic": "87317503",
-    "libelle": "Feuqui\u00e8res-Fressenneville",
+    "libelle": "Feuquières-Fressenneville",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "323000",
@@ -99766,7 +99766,7 @@
   },
   {
     "code_uic": "87484246",
-    "libelle": "Chemill\u00e9",
+    "libelle": "Chemillé",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "523000",
@@ -99982,7 +99982,7 @@
   },
   {
     "code_uic": "87581884",
-    "libelle": "Le Bec-d'Amb\u00e8s",
+    "libelle": "Le Bec-d'Ambès",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "583000",
@@ -100063,7 +100063,7 @@
   },
   {
     "code_uic": "87595132",
-    "libelle": "N\u00e9grondes",
+    "libelle": "Négrondes",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "611000",
@@ -100117,7 +100117,7 @@
   },
   {
     "code_uic": "87215079",
-    "libelle": "R\u00e9ding",
+    "libelle": "Réding",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "070000",
@@ -100522,7 +100522,7 @@
   },
   {
     "code_uic": "87181016",
-    "libelle": "St-Louis-la-Chauss\u00e9e",
+    "libelle": "St-Louis-la-Chaussée",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "135000",
@@ -100657,7 +100657,7 @@
   },
   {
     "code_uic": "87581801",
-    "libelle": "B\u00e8gles",
+    "libelle": "Bègles",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "640000",
@@ -100684,7 +100684,7 @@
   },
   {
     "code_uic": "87342006",
-    "libelle": "B\u00e9thune",
+    "libelle": "Béthune",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "301000",
@@ -100711,7 +100711,7 @@
   },
   {
     "code_uic": "87775353",
-    "libelle": "Nozi\u00e8res-Brignon",
+    "libelle": "Nozières-Brignon",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "790000",
@@ -100900,7 +100900,7 @@
   },
   {
     "code_uic": "87615799",
-    "libelle": "Revel-Sor\u00e8ze",
+    "libelle": "Revel-Sorèze",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "736000",
@@ -100927,7 +100927,7 @@
   },
   {
     "code_uic": "87313064",
-    "libelle": "M\u00e9ricourt-Ribemont",
+    "libelle": "Méricourt-Ribemont",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "272000",
@@ -101143,7 +101143,7 @@
   },
   {
     "code_uic": "87611848",
-    "libelle": "Montrab\u00e9",
+    "libelle": "Montrabé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "718000",
@@ -101224,7 +101224,7 @@
   },
   {
     "code_uic": "87764290",
-    "libelle": "Donz\u00e8re",
+    "libelle": "Donzère",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "830000",
@@ -101332,7 +101332,7 @@
   },
   {
     "code_uic": "87608802",
-    "libelle": "Cr\u00e9teil-Pompadour",
+    "libelle": "Créteil-Pompadour",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "830000",
@@ -101602,7 +101602,7 @@
   },
   {
     "code_uic": "87575563",
-    "libelle": "Ayron-Latill\u00e9",
+    "libelle": "Ayron-Latillé",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "524000",
@@ -101710,7 +101710,7 @@
   },
   {
     "code_uic": "87391805",
-    "libelle": "Montrouge-Ch\u00e2tillon",
+    "libelle": "Montrouge-Châtillon",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "553000",
@@ -101818,7 +101818,7 @@
   },
   {
     "code_uic": "87734053",
-    "libelle": "Riom-Ch\u00e2tel-Guyon",
+    "libelle": "Riom-Châtel-Guyon",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "787000",
@@ -101953,7 +101953,7 @@
   },
   {
     "code_uic": "87214056",
-    "libelle": "S\u00e9lestat",
+    "libelle": "Sélestat",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "116000",
@@ -101980,7 +101980,7 @@
   },
   {
     "code_uic": "87141606",
-    "libelle": "V\u00e9zelise",
+    "libelle": "Vézelise",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "040000",
@@ -102061,7 +102061,7 @@
   },
   {
     "code_uic": "87713156",
-    "libelle": "Nuits-sous-Ravi\u00e8res",
+    "libelle": "Nuits-sous-Ravières",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "839000",
@@ -102115,7 +102115,7 @@
   },
   {
     "code_uic": "87576082",
-    "libelle": "La Fert\u00e9-Imbault",
+    "libelle": "La Ferté-Imbault",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "600000",
@@ -102142,7 +102142,7 @@
   },
   {
     "code_uic": "87576116",
-    "libelle": "Mehun-sur-Y\u00e8vre",
+    "libelle": "Mehun-sur-Yèvre",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "690000",
@@ -102196,7 +102196,7 @@
   },
   {
     "code_uic": "87773465",
-    "libelle": "St-Aun\u00e8s",
+    "libelle": "St-Aunès",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "810000",
@@ -102682,7 +102682,7 @@
   },
   {
     "code_uic": "87444547",
-    "libelle": "\u00c9couch\u00e9",
+    "libelle": "\u00c9couché",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "405000",
@@ -102817,7 +102817,7 @@
   },
   {
     "code_uic": "87611509",
-    "libelle": "Port\u00e9-Puymorens",
+    "libelle": "Porté-Puymorens",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "672000",
@@ -102925,7 +102925,7 @@
   },
   {
     "code_uic": "87471524",
-    "libelle": "Ch\u00e2teaubourg",
+    "libelle": "Châteaubourg",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "420000",
@@ -103006,7 +103006,7 @@
   },
   {
     "code_uic": "87775288",
-    "libelle": "Al\u00e8s",
+    "libelle": "Alès",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "805000",
@@ -103168,7 +103168,7 @@
   },
   {
     "code_uic": "87586495",
-    "libelle": "Sauveterre-la-L\u00e9mance",
+    "libelle": "Sauveterre-la-Lémance",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "631000",
@@ -103303,7 +103303,7 @@
   },
   {
     "code_uic": "87765420",
-    "libelle": "Mori\u00e8res-l\u00e8s-Avignon",
+    "libelle": "Morières-lès-Avignon",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "925000",
@@ -103492,7 +103492,7 @@
   },
   {
     "code_uic": "87575274",
-    "libelle": "Ligug\u00e9",
+    "libelle": "Ligugé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "570000",
@@ -103654,7 +103654,7 @@
   },
   {
     "code_uic": "87613174",
-    "libelle": "D\u00e9gagnac",
+    "libelle": "Dégagnac",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "590000",
@@ -103735,7 +103735,7 @@
   },
   {
     "code_uic": "87471334",
-    "libelle": "Janz\u00e9",
+    "libelle": "Janzé",
     "fret": "O",
     "voyageurs": "O",
     "code_ligne": "466000",
@@ -103816,7 +103816,7 @@
   },
   {
     "code_uic": "87611053",
-    "libelle": "Longages-No\u00e9",
+    "libelle": "Longages-Noé",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "650000",
@@ -103843,7 +103843,7 @@
   },
   {
     "code_uic": "87751321",
-    "libelle": "Manosque-Gr\u00e9oux-les-Bains",
+    "libelle": "Manosque-Gréoux-les-Bains",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "905000",
@@ -104032,7 +104032,7 @@
   },
   {
     "code_uic": "87485359",
-    "libelle": "Priss\u00e9-la-Charri\u00e8re",
+    "libelle": "Prissé-la-Charrière",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "500000",
@@ -104113,7 +104113,7 @@
   },
   {
     "code_uic": "87671362",
-    "libelle": "St-P\u00e9-de-Bigorre",
+    "libelle": "St-Pé-de-Bigorre",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "650000",
@@ -104275,7 +104275,7 @@
   },
   {
     "code_uic": "87313122",
-    "libelle": "Longpr\u00e9-les-Corps-Saints",
+    "libelle": "Longpré-les-Corps-Saints",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "311000",
@@ -104356,7 +104356,7 @@
   },
   {
     "code_uic": "87174664",
-    "libelle": "F\u00e8re-Champenoise",
+    "libelle": "Fère-Champenoise",
     "fret": "O",
     "voyageurs": "N",
     "code_ligne": "007000",
@@ -104680,7 +104680,7 @@
   },
   {
     "code_uic": "87765198",
-    "libelle": "B\u00e9darrides",
+    "libelle": "Bédarrides",
     "fret": "N",
     "voyageurs": "O",
     "code_ligne": "830000",

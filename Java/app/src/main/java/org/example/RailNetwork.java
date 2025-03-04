@@ -120,9 +120,21 @@ class Ligne {
 }
 
 public class RailNetwork {
+
+    
+
     private static List<Gare> loadGares(String filePath) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(new File(filePath), new TypeReference<List<Gare>>() {});
+    }
+    private static List<Gare> gares;
+
+    static {
+        try {
+            gares = loadGares("gares.json");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private static List<Ligne> loadLignes(String filePath) throws IOException {
@@ -134,30 +146,27 @@ public class RailNetwork {
     public static Graph<String, String> createRailNetwork(Map<String, Point2D> positions) {
         Graph<String, String> railNetwork = new SparseMultigraph<>();
 
-        try {
-            List<Gare> gares = loadGares("gares.json");
+    
             List<Ligne> lignes = loadLignes("lignes.json");
+            
+        Map<String, List<Gare>> garesParLigne = new HashMap<>();
+        for (Gare gare : gares) {
+            garesParLigne.computeIfAbsent(gare.code_ligne, k -> new ArrayList<>()).add(gare);
+            railNetwork.addVertex(gare.libelle);
+        }
 
-            Map<String, List<Gare>> garesParLigne = new HashMap<>();
-            for (Gare gare : gares) {
-                garesParLigne.computeIfAbsent(gare.code_ligne, k -> new ArrayList<>()).add(gare);
-                railNetwork.addVertex(gare.libelle);
-            }
-
-            // Normalisation des positions pour affichage
-            for (Gare gare : gares) {
-                double normX = (gare.x_wgs84) * Window.width / 100;
-                double normY = (gare.y_wgs84) * Window.height / 100;
-                double symY = Window.height - normY;
-                positions.put(gare.libelle, new Point2D.Double(normX, symY));
-            }
+        // Normalisation des positions pour affichage
+        for (Gare gare : gares) {
+            double normX = (gare.x_wgs84) * Window.width / 100;
+            double normY = (gare.y_wgs84) * Window.height / 100;
+            double symY = Window.height - normY;
+            positions.put(gare.libelle, new Point2D.Double(normX, symY));
+        }
 
             // Ajout des connexions entre gares d'une même ligne
             computeEdgesToRailNetwork(lignes, garesParLigne, railNetwork);
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        
 
         return railNetwork;
     }
@@ -268,5 +277,16 @@ public class RailNetwork {
 
         return R * c; // Distance en kilomètres
     }
+
+    public static String getCodeLignes(String station)  {
+        for (Gare gare : gares) {
+            if (gare.libelle.equals(station)) {
+                return gare.code_ligne;
+            }
+        }
+        return "error";
+    }
+        
+        
 }
 
