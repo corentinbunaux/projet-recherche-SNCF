@@ -1,10 +1,15 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import edu.uci.ics.jung.graph.Graph;
-import java.util.*;
 
 public class ManchetteGenerator {
-    // Génération naïve des manchettes (parcours de trains)
+    // Génération des manchettes
     public static List<List<String>> generateManchettes(Graph<String, String> railNetwork) {
         List<List<String>> manchettes = new ArrayList<>();
         List<String> outliers = outliersList(railNetwork);

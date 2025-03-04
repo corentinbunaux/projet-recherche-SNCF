@@ -79,6 +79,7 @@ public class RailNetwork {
 
             // Ajout des connexions entre gares d'une même ligne
             for (List<Gare> garesLigne : garesParLigne.values()) {
+                // FIXME : trouver les liens entre gares d'une même ligne
                 garesLigne.sort(Comparator.comparing(g -> g.code_uic));
                 for (int i = 0; i < garesLigne.size() - 1; i++) {
                     railNetwork.addEdge(garesLigne.get(i).libelle + " -> " + garesLigne.get(i + 1).libelle,
