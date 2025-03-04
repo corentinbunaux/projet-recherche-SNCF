@@ -145,9 +145,10 @@ public class RailNetwork {
     // Création du graphe ferroviaire
     public static Graph<String, String> createRailNetwork(Map<String, Point2D> positions) {
         Graph<String, String> railNetwork = new SparseMultigraph<>();
-
-    
+        try {
             List<Ligne> lignes = loadLignes("lignes.json");
+        
+        
             
         Map<String, List<Gare>> garesParLigne = new HashMap<>();
         for (Gare gare : gares) {
@@ -165,8 +166,9 @@ public class RailNetwork {
 
             // Ajout des connexions entre gares d'une même ligne
             computeEdgesToRailNetwork(lignes, garesParLigne, railNetwork);
-
-        
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return railNetwork;
     }
