@@ -2,7 +2,6 @@ package org.example;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import edu.uci.ics.jung.algorithms.filters.Filter;
 import edu.uci.ics.jung.algorithms.filters.KNeighborhoodFilter;
 import edu.uci.ics.jung.algorithms.filters.KNeighborhoodFilter.EdgeType;
@@ -12,6 +11,10 @@ import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.JsonNode;
 
 class Gare {
     public String code_uic;
@@ -50,10 +53,81 @@ class Gare {
     }
 }
 
+class Ligne {
+    public String type_ligne;
+    public String idgaia;
+    public String code_ligne;
+    public String lib_ligne;
+    public int rg_troncon;
+    public String pkd;
+    public String pkf;
+    public double x_d_l93;
+    public double y_d_l93;
+    public double x_f_l93;
+    public double y_f_l93;
+    public double x_d_wgs84;
+    public double y_d_wgs84;
+    public double x_f_wgs84;
+    public double y_f_wgs84;
+    public String c_geo_d;
+    public GeoCoordinate c_geo_f;
+    public GeoCoordinate geo_point_2d;
+    public GeoShape geo_shape;
+
+    static class GeoCoordinate {
+        public double lon;
+        public double lat;
+    }
+
+    static class GeoShape {
+        public String type;
+        public Geometry geometry;
+        public Map<String, Object> properties;
+
+        static class Geometry {
+            public String type;
+            public List<List<Double>> coordinates;  // Stockera les coordonnées après parsing
+
+            @JsonCreator
+            public Geometry(@JsonProperty("type") String type, @JsonProperty("coordinates") JsonNode coordinatesNode) {
+                this.type = type;
+                this.coordinates = new ArrayList<>();
+
+                if (coordinatesNode.isArray()) {
+                    if (type.equals("LineString")) {
+                        // Cas d'un `LineString` (List<List<Double>>)
+                        for (JsonNode point : coordinatesNode) {
+                            List<Double> coord = new ArrayList<>();
+                            coord.add(point.get(0).asDouble());
+                            coord.add(point.get(1).asDouble());
+                            this.coordinates.add(coord);
+                        }
+                    } else if (type.equals("MultiLineString")) {
+                        // Cas d'un `MultiLineString` (List<List<List<Double>>>)
+                        for (JsonNode line : coordinatesNode) {
+                            for (JsonNode point : line) {
+                                List<Double> coord = new ArrayList<>();
+                                coord.add(point.get(0).asDouble());
+                                coord.add(point.get(1).asDouble());
+                                this.coordinates.add(coord);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 public class RailNetwork {
     private static List<Gare> loadGares(String filePath) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(new File(filePath), new TypeReference<List<Gare>>() {});
+    }
+
+    private static List<Ligne> loadLignes(String filePath) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.readValue(new File(filePath), new TypeReference<List<Ligne>>() {});
     }
 
     // Création du graphe ferroviaire
@@ -62,6 +136,7 @@ public class RailNetwork {
 
         try {
             List<Gare> gares = loadGares("gares.json");
+            List<Ligne> lignes = loadLignes("lignes.json");
 
             Map<String, List<Gare>> garesParLigne = new HashMap<>();
             for (Gare gare : gares) {
@@ -78,23 +153,55 @@ public class RailNetwork {
             }
 
             // Ajout des connexions entre gares d'une même ligne
-            for (List<Gare> garesLigne : garesParLigne.values()) {
-                // FIXME : trouver les liens entre gares d'une même ligne
-                garesLigne.sort(Comparator.comparing(g -> g.code_uic));
-                for (int i = 0; i < garesLigne.size() - 1; i++) {
-                    railNetwork.addEdge(garesLigne.get(i).libelle + " -> " + garesLigne.get(i + 1).libelle,
-                            garesLigne.get(i).libelle, garesLigne.get(i + 1).libelle);
-                }
-            }
-
-            // System.out.println("Nombre de gares: " + railNetwork.getVertexCount());
-            // System.out.println("Nombre de liaisons: " + railNetwork.getEdgeCount());
+            computeEdgesToRailNetwork(lignes, garesParLigne, railNetwork);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         return railNetwork;
+    }
+
+    private static void computeEdgesToRailNetwork(List<Ligne> linesList, Map<String, List<Gare>> garesParLigne, Graph<String, String> railNetwork) {
+        //For each line referenced in the lignes.json file, add edges between stations
+        for(Ligne line : linesList) {
+            // Get the train stations for the current line
+            List<Gare> gares = garesParLigne.get(line.code_ligne);
+            if(gares == null) {
+                continue;
+            }
+            sortTrainStations(gares, line);
+            // Add edges between stations
+            for (int i = 0; i < gares.size() - 1; i++) {
+                railNetwork.addEdge(gares.get(i).libelle + " -> " + gares.get(i + 1).libelle, gares.get(i).libelle, gares.get(i + 1).libelle);
+            }
+        }
+    }
+
+    // Sort the train stations by their position on the line
+    private static void sortTrainStations(List<Gare> gares, Ligne line) {
+        //Coordinates of the line
+        List<List<Double>> coordinates = line.geo_shape.geometry.coordinates;
+        // Indexes of the closest points on the line for each train station
+        Map<String, Number> indexes = new HashMap<>();
+        // Iterate over the train stations to find the closest point on the line
+        for(Gare gare : gares) {
+            double x = gare.x_wgs84;
+            double y = gare.y_wgs84;
+            double minDistance = Double.MAX_VALUE;
+            int index = 0;
+            for(int i = 0; i < coordinates.size(); i++) {
+                List<Double> point = coordinates.get(i);
+                double distance = Math.pow(x - point.get(0), 2) + Math.pow(y - point.get(1), 2);
+                if(distance < minDistance) {
+                    minDistance = distance;
+                    index = i;
+                }
+            }
+            indexes.put(gare.libelle, index);
+        }
+        // Sort the train stations by their position on the line
+        gares.sort(Comparator.comparing(gare -> indexes.get(gare.libelle).intValue()));  
     }
 
     public static void printSubgraph(Graph<String, String> subgraph) {
