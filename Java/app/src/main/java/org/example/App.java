@@ -18,10 +18,10 @@ public class App {
 
         //Graph visualisation
         GraphVisualizer.displayGraph(railNetwork, positions);
-        GraphVisualizer.displayGraph(subGrapgNeighborhood, positions);
-        GraphVisualizer.displayGraph(subGrapgBorderMarseille, positions);
+        // GraphVisualizer.displayGraph(subGrapgNeighborhood, positions);
+        // GraphVisualizer.displayGraph(subGrapgBorderMarseille, positions);
 
-        List<List<String>> manchettes = ManchetteGenerator.generateManchettes(subGrapgBorderMarseille);
-        ManchetteGenerator.printManchettes(manchettes);
+        // List<List<String>> manchettes = ManchetteGenerator.generateManchettes(subGrapgBorderMarseille);
+        // ManchetteGenerator.printManchettes(manchettes);
     }
 }

@@ -12,28 +12,28 @@ public class ManchetteGenerator {
     // Génération des manchettes
     public static List<List<String>> generateManchettes(Graph<String, String> railNetwork) {
         List<List<String>> manchettes = new ArrayList<>();
-        List<String> outliers = outliersList(railNetwork);  //extrémités
+        List<String> outliers = outliersList(railNetwork); // extrémités
         Set<String> visitedOutliers = new HashSet<>();
-    
+
         for (String outlier : outliers) {
             if (!visitedOutliers.contains(outlier)) {
                 // Créer une nouvelle manchette et ajouter l'outlier
                 List<String> manchette = new ArrayList<>();
                 manchette.add(outlier);
                 visitedOutliers.add(outlier);
-    
+
                 // Liste des stations visitées pour éviter les doublons
                 Set<String> visited = new HashSet<>();
                 visited.add(outlier);
-    
+
                 String currentStation = outlier;
                 boolean end = false;
-    
+
                 // Tant qu'on n'a pas atteint un autre outlier, on complète la manchette
                 while (!end) {
                     Collection<String> neighbors = railNetwork.getNeighbors(currentStation);
                     System.out.println("Current station: " + currentStation + ", Neighbors: " + neighbors);
-    
+
                     // Vérifier s'il n'y a qu'un seul voisin (ligne terminée)
                     if (neighbors.size() == 1) {
                         String nextStation = neighbors.iterator().next();
@@ -43,18 +43,19 @@ public class ManchetteGenerator {
                             manchette.add(nextStation);
                             visited.add(nextStation);
                             currentStation = nextStation;
-                        }
-                        else {
+                        } else {
                             end = true; // Éviter une boucle infinie
                         }
                     } else {
                         boolean foundNewStation = false;
-                        
-                        // Parcourir les voisins pour trouver une station non visitée qui n'est pas un outlier
+
+                        // Parcourir les voisins pour trouver une station non visitée qui n'est pas un
+                        // outlier
                         for (String neighbor : neighbors) {
                             String code_ligne_nextStation = RailNetwork.getCodeLignes(neighbor);
                             String code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
-                            if (!outliers.contains(neighbor) && !visited.contains(neighbor) && code_ligne_nextStation.equals(code_ligne_Station) ) {
+                            if (!outliers.contains(neighbor) && !visited.contains(neighbor)
+                                    && code_ligne_nextStation.equals(code_ligne_Station)) {
                                 manchette.add(neighbor);
                                 visited.add(neighbor);
                                 currentStation = neighbor;
@@ -62,7 +63,7 @@ public class ManchetteGenerator {
                                 break;
                             }
                         }
-    
+
                         // Si on ne trouve que des outliers, on termine la manchette
                         if (!foundNewStation) {
                             for (String neighbor : neighbors) {
@@ -74,21 +75,20 @@ public class ManchetteGenerator {
                                 }
                             }
                         }
-    
+
                         // Si aucun voisin utilisable, arrêter la manchette
                         if (!end && !foundNewStation) {
                             end = true;
                         }
                     }
                 }
-    
+
                 // Ajouter la manchette complète
                 manchettes.add(manchette);
             }
         }
         return manchettes;
     }
-    
 
     private static List<String> outliersList(Graph<String, String> railNetwork) {
         List<String> outliers = new ArrayList<>();
