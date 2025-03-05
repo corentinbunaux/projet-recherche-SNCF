@@ -278,16 +278,20 @@ public class RailNetwork {
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
         return R * c; // Distance en kilomètres
-    }
+        }
 
-    public static String getCodeLignes(String station)  {
+        public static List<String> getCodeLignes(String station) {
+        List<String> codesLignes = new ArrayList<>();
         for (Gare gare : gares) {
             if (gare.libelle.equals(station)) {
-                return gare.code_ligne;
+            codesLignes.add(gare.code_ligne);
             }
         }
-        return "error";
-    }
+        if (codesLignes.isEmpty()) {
+            codesLignes.add("error");
+        }
+        return codesLignes;
+        }
         
         
 }

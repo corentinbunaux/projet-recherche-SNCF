@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,6 +15,7 @@ public class ManchetteGenerator {
         List<List<String>> manchettes = new ArrayList<>();
         List<String> outliers = outliersList(railNetwork);  //extrémités
         Set<String> visitedOutliers = new HashSet<>();
+        Set<String> allVisited = new HashSet<>();
     
         for (String outlier : outliers) {
             if (!visitedOutliers.contains(outlier)) {
@@ -21,6 +23,7 @@ public class ManchetteGenerator {
                 List<String> manchette = new ArrayList<>();
                 manchette.add(outlier);
                 visitedOutliers.add(outlier);
+                allVisited.add(outlier);
     
                 // Liste des stations visitées pour éviter les doublons
                 Set<String> visited = new HashSet<>();
@@ -37,34 +40,64 @@ public class ManchetteGenerator {
                     // Vérifier s'il n'y a qu'un seul voisin (ligne terminée)
                     if (neighbors.size() == 1) {
                         String nextStation = neighbors.iterator().next();
-                        String code_ligne_nextStation = RailNetwork.getCodeLignes(nextStation);
-                        String code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
-                        if (!visited.contains(nextStation) && code_ligne_nextStation.equals(code_ligne_Station)) {
+                        List<String> code_ligne_nextStation = RailNetwork.getCodeLignes(nextStation);
+                        List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
+                        if (!visited.contains(nextStation) && !Collections.disjoint(code_ligne_nextStation, code_ligne_Station)) {
                             manchette.add(nextStation);
                             visited.add(nextStation);
                             currentStation = nextStation;
+                            allVisited.add(nextStation);
                         }
                         else {
                             end = true; // Éviter une boucle infinie
                         }
                     } else {
                         boolean foundNewStation = false;
+                        boolean notyet=false;
                         
                         // Parcourir les voisins pour trouver une station non visitée qui n'est pas un outlier
                         for (String neighbor : neighbors) {
-                            String code_ligne_nextStation = RailNetwork.getCodeLignes(neighbor);
-                            String code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
-                            if (!outliers.contains(neighbor) && !visited.contains(neighbor) && code_ligne_nextStation.equals(code_ligne_Station) ) {
+                            List<String> code_ligne_nextStation = RailNetwork.getCodeLignes(neighbor);
+                            List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
+                            System.out.println("Code lignes current station: " + code_ligne_Station+ "curent station: "+currentStation);
+                            System.out.println("Code lignes next station: " + code_ligne_nextStation + "next station: "+neighbor); //!outliers.contains(neighbor) &&
+                            if (!allVisited.contains(neighbor) && !visited.contains(neighbor) && !Collections.disjoint(code_ligne_nextStation, code_ligne_Station) ) {
+                                System.out.println("visited: " + visited);
                                 manchette.add(neighbor);
                                 visited.add(neighbor);
+                                allVisited.add(neighbor);
+                                if (!visitedOutliers.contains(neighbor)) {
+                                    visitedOutliers.add(neighbor);
+                                }
                                 currentStation = neighbor;
                                 foundNewStation = true;
                                 break;
                             }
                         }
+
+                        // Si on ne trouve que des outliers, on termine la manchette
+                        if (!foundNewStation &&!notyet) {
+                            for (String neighbor : neighbors) {
+                                List<String> code_ligne_nextStation = RailNetwork.getCodeLignes(neighbor);
+                                List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
+                                if (!visited.contains(neighbor) && !Collections.disjoint(code_ligne_nextStation, code_ligne_Station) ) {
+                                    manchette.add(neighbor);
+                                    visited.add(neighbor);
+                                    allVisited.add(neighbor);
+                                    if (!visitedOutliers.contains(neighbor)) {
+                                        visitedOutliers.add(neighbor);
+                                    }
+                                    currentStation = neighbor;
+                                    foundNewStation = true;
+                                    notyet=true;
+                                    
+                                    break;
+                                }
+                            }
+                        }
     
                         // Si on ne trouve que des outliers, on termine la manchette
-                        if (!foundNewStation) {
+                        if (!foundNewStation && notyet) {
                             for (String neighbor : neighbors) {
                                 if (!visitedOutliers.contains(neighbor)) {
                                     manchette.add(neighbor);
