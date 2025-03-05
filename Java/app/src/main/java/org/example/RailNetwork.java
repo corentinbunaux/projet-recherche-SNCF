@@ -128,10 +128,13 @@ public class RailNetwork {
     }
 
     private static List<Gare> gares;
+    private static List<Ligne> lignes;
 
     static {
         try {
             gares = loadGares("gares.json");
+            lignes = loadLignes("lignes.json");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -146,36 +149,85 @@ public class RailNetwork {
     // Création du graphe ferroviaire
     public static Graph<String, String> createRailNetwork(Map<String, Point2D> positions) {
         Graph<String, String> railNetwork = new SparseMultigraph<>();
-        try {
-            List<Ligne> lignes = loadLignes("lignes.json");
-
-            Map<String, List<Gare>> garesParLigne = new HashMap<>();
-            for (Gare gare : gares) {
-                garesParLigne.computeIfAbsent(gare.code_ligne, k -> new ArrayList<>()).add(gare);
-                railNetwork.addVertex(gare.libelle);
-            }
-
-            // Normalisation des positions pour affichage
-            for (Gare gare : gares) {
-                double normX = (gare.x_wgs84) * Window.width / 100;
-                double normY = (gare.y_wgs84) * Window.height / 100;
-                double symY = Window.height - normY;
-                positions.put(gare.libelle, new Point2D.Double(normX, symY));
-            }
-
-            // Ajout des connexions entre gares d'une même ligne
-            computeEdgesToRailNetwork(lignes, garesParLigne, railNetwork);
-        } catch (Exception e) {
-            e.printStackTrace();
+        Map<String, List<Gare>> garesParLigne = new HashMap<>();
+        List<Ligne> lines = new ArrayList<>();
+        for (Gare gare : gares) {
+            garesParLigne.computeIfAbsent(gare.code_ligne, k -> new ArrayList<>()).add(gare);
+            railNetwork.addVertex(gare.libelle);
         }
 
+        // Normalisation des positions pour affichage
+        for (Gare gare : gares) {
+            double normX = (gare.x_wgs84) * Window.width / 100;
+            double normY = (gare.y_wgs84) * Window.height / 100;
+            double symY = Window.height - normY;
+            positions.put(gare.libelle, new Point2D.Double(normX, symY));
+        }
+
+        // Merge lines with the same code_ligne but different rg_troncon
+        lines = mergeLines(lignes);
+
+        // Ajout des connexions entre gares d'une même ligne
+        computeEdgesToRailNetwork(lines, garesParLigne, railNetwork);
         return railNetwork;
+    }
+
+    private static List<Ligne> mergeLines(List<Ligne> lignes) {
+        // Map pour stocker les lignes par code_ligne
+        Map<String, List<Ligne>> lignesParCode = new HashMap<>();
+
+        // Regrouper les lignes par code_ligne
+        for (Ligne ligne : lignes) {
+            lignesParCode.computeIfAbsent(ligne.code_ligne, k -> new ArrayList<>()).add(ligne);
+        }
+
+        // Liste des lignes fusionnées
+        List<Ligne> lignesFusionnees = new ArrayList<>();
+
+        // Fusionner les lignes ayant le même code_ligne
+        for (List<Ligne> troncons : lignesParCode.values()) {
+            if (troncons.size() == 1) {
+                // Si une seule ligne, pas besoin de fusion
+                lignesFusionnees.add(troncons.get(0));
+                continue;
+            }
+
+            // Trier les tronçons par rg_troncon (ordre des segments)
+            troncons.sort(Comparator.comparingInt(l -> l.rg_troncon));
+
+            // Prendre le premier tronçon comme base
+            Ligne ligneFusionnee = troncons.get(0);
+            List<List<Double>> coordinatesFusionnees = new ArrayList<>(ligneFusionnee.geo_shape.geometry.coordinates);
+
+            // Fusionner les tronçons suivants
+            for (int i = 1; i < troncons.size(); i++) {
+                Ligne troncon = troncons.get(i);
+
+                // Vérifier si la fin du dernier tronçon correspond au début du suivant
+                List<Double> lastPoint = coordinatesFusionnees.get(coordinatesFusionnees.size() - 1);
+                List<Double> firstPointNext = troncon.geo_shape.geometry.coordinates.get(0);
+
+                if (lastPoint.equals(firstPointNext)) {
+                    // Ajout direct si les tronçons sont déjà liés
+                    coordinatesFusionnees.addAll(troncon.geo_shape.geometry.coordinates.subList(1,
+                            troncon.geo_shape.geometry.coordinates.size()));
+                } else {
+                    // Ajout du reste des points du tronçon suivant
+                    coordinatesFusionnees.addAll(troncon.geo_shape.geometry.coordinates);
+                }
+            }
+
+            // Mise à jour des coordonnées de la ligne fusionnée
+            ligneFusionnee.geo_shape.geometry.coordinates = coordinatesFusionnees;
+            lignesFusionnees.add(ligneFusionnee);
+        }
+
+        return lignesFusionnees;
     }
 
     private static void computeEdgesToRailNetwork(List<Ligne> linesList, Map<String, List<Gare>> garesParLigne,
             Graph<String, String> railNetwork) {
         // For each line referenced in the lignes.json file, add edges between stations
-        System.out.println("Number of lines: " + linesList.size());
         for (Ligne line : linesList) {
             // Get the train stations for the current line
             List<Gare> gares = garesParLigne.get(line.code_ligne);
@@ -183,14 +235,15 @@ public class RailNetwork {
             // If no train stations are found for the current line, skip it
             if (gares == null) {
                 // System.out
-                //         .println("No train stations found for line " + line.code_ligne + " (" + line.type_ligne + ")");
+                // .println("No train stations found for line " + line.code_ligne + " (" +
+                // line.type_ligne + ")");
                 continue;
             }
             sortTrainStations(gares, line);
             // Add edges between stations
             for (int i = 0; i < gares.size() - 1; i++) {
                 railNetwork.addEdge(gares.get(i).libelle + " -> " + gares.get(i + 1).libelle, gares.get(i).libelle,
-                       gares.get(i + 1).libelle);
+                        gares.get(i + 1).libelle);
             }
         }
     }
@@ -222,8 +275,10 @@ public class RailNetwork {
         }
         // Sort the train stations by their position on the line
         gares.sort(Comparator.comparing(gare -> indexes.get(gare.libelle).intValue()));
-        String maxGapGare = Collections.max(gaps.entrySet(), Comparator.comparingDouble(entry -> entry.getValue().doubleValue())).getKey();
-        System.out.println("Max gap : " + gaps.get(maxGapGare) + " for station " + maxGapGare + " on line " + line.code_ligne);
+        String maxGapGare = Collections
+                .max(gaps.entrySet(), Comparator.comparingDouble(entry -> entry.getValue().doubleValue())).getKey();
+        System.out.println(
+                "Max gap : " + gaps.get(maxGapGare) + " for station " + maxGapGare + " on line " + line.code_ligne);
     }
 
     public static void printSubgraph(Graph<String, String> subgraph) {
