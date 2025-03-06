@@ -6,12 +6,15 @@ import java.util.Map;
 
 import edu.uci.ics.jung.algorithms.layout.StaticLayout;
 import edu.uci.ics.jung.graph.Graph;
-import edu.uci.ics.jung.visualization.Layer;
 import edu.uci.ics.jung.visualization.VisualizationViewer;
 import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
 import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
 import edu.uci.ics.jung.visualization.renderers.Renderer;
-import edu.uci.ics.jung.visualization.transform.MutableTransformer;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Set;
+import edu.uci.ics.jung.visualization.picking.PickedState;
 
 public class GraphVisualizer {
 
@@ -19,10 +22,6 @@ public class GraphVisualizer {
         StaticLayout<String, String> layout = new StaticLayout<>(graph, vertex -> positions.get(vertex), new Dimension(Window.width, Window.height));
         VisualizationViewer<String, String> vv = new VisualizationViewer<>(layout);
         vv.setPreferredSize(new Dimension(Window.width, Window.height));
-
-        // Set initial camera rendering position
-        MutableTransformer layoutTransformer = vv.getRenderContext().getMultiLayerTransformer().getTransformer(Layer.LAYOUT);
-        layoutTransformer.setTranslate(Window.width / 2, 0);
 
         // Labels des sommets
         vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
@@ -32,7 +31,24 @@ public class GraphVisualizer {
         vv.getRenderContext().setVertexFillPaintTransformer(_ -> ColorPalette.SNCF_RED);
 
         // Souris interactive
-        DefaultModalGraphMouse<String, String> graphMouse = new DefaultModalGraphMouse<>();
+        DefaultModalGraphMouse<String, String> graphMouse = new DefaultModalGraphMouse<String, String>() {
+            @Override
+            public void setMode(Mode mode) {
+                if (mode == Mode.PICKING) {
+                    // Override the functionality for PICKING mode
+                    System.out.println("PICKING mode activated");
+                    vv.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+                            PickedState<String> pickedState = vv.getPickedVertexState();
+                            Set<String> pickedVertices = pickedState.getPicked();
+                            System.out.println("Picked vertices: " + pickedVertices);
+                        }
+                    });
+                }
+                super.setMode(mode);
+            }
+        };
         vv.setGraphMouse(graphMouse);
 
         return vv;

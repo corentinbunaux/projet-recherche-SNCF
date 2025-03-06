@@ -21,18 +21,22 @@ public class GUI {
 
     // Declare static variables for the visualization viewer, toolbar, buttons, and selected button
     private static VisualizationViewer<String, String> vv;
+    private static Graph<String, String> railNetwork;
+    private static Map<String, Point2D> positions;
     private static JPanel toolbar;
     private static List<JButton> buttons;
     private static JButton selectedButton;
+    private static JFrame frame;
 
     // Method to display the GUI with the given graph and positions
-    public static void display(Graph<String, String> railNetwork, Map<String, Point2D> positions) {
+    public static void display(Graph<String, String> railNetwork_argument, Map<String, Point2D> positions_argument) {
+        railNetwork = railNetwork_argument;
+        positions = positions_argument;
         toolbar = toolBar(); // Initialize the toolbar
         vv = GraphVisualizer.Graph(railNetwork, positions); // Initialize the visualization viewer
-        JFrame frame = new JFrame("Réseau Ferroviaire - Visualisation"); // Create the main frame
+        frame = new JFrame("Réseau Ferroviaire - Visualisation"); // Create the main frame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
-
         frame.setJMenuBar(menuBar()); // Add the menu bar
         frame.add(toolbar, BorderLayout.NORTH); // Add the toolbar to the frame
         frame.add(vv, BorderLayout.CENTER); // Add the visualization viewer to the frame
@@ -101,9 +105,9 @@ public class GUI {
             case "Selection" ->
                 selectionHandler(button, vv);
             case "Manchette" ->
-                System.out.println("Mode manchette");
+                System.out.println("Génération des manchettes");
             case "Reset" ->
-                System.out.println("Réinitialisation");
+                reset();
             default ->
                 System.out.println("Mode inconnu");
         }
@@ -111,6 +115,14 @@ public class GUI {
         // Revalidate and repaint the toolbar to reflect changes
         toolbar.revalidate();
         toolbar.repaint();
+    }
+
+    private static void reset() {
+        frame.remove(vv); // Remove the toolbar from the frame
+        vv = GraphVisualizer.Graph(railNetwork, positions); // Initialize the visualization viewer
+        frame.add(vv, BorderLayout.CENTER); // Add the visualization viewer to the frame
+        frame.revalidate(); // Revalidate the frame to apply changes
+        frame.repaint(); // Repaint the frame to reflect changes
     }
 
     // Method to handle the "Movement" button action
