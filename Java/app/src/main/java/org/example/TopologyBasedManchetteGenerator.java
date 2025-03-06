@@ -97,15 +97,23 @@ public class TopologyBasedManchetteGenerator {
                             String new_ligne_reference=null;
                             Deque<String> queue_max = new LinkedList<>();
                             for (String option_code : code_ligne_Station) {  
-                                                         
-                                if (ligne_reference != null && !option_code.equals(ligne_reference)) {
-                                    System.out.println("Option code: "+option_code);
-                                    Deque<String> queue=exploreStation(railNetwork, option_code, currentStation, allVisited, visited);
-                                    System.out.println("Queue: "+queue);   
-                                    if (queue.size() > max) {
-                                        max = queue.size();
-                                        queue_max = queue;
-                                        new_ligne_reference=option_code;
+                                int count = 0;
+                                for (String neighbor : neighbors) {
+                                    List<String> code_ligne_neighbor = RailNetwork.getCodeLignes(neighbor);
+                                    if (!allVisited.contains(neighbor) && !visited.contains(neighbor) && code_ligne_neighbor.contains(option_code)) {
+                                        count++;
+                                    }
+                                }
+                                if (count < 2) {
+                                    if (ligne_reference != null && !option_code.equals(ligne_reference)) {
+                                        System.out.println("Option code: "+option_code);
+                                        Deque<String> queue=exploreStation(railNetwork, option_code, currentStation, allVisited, visited);
+                                        System.out.println("Queue: "+queue);   
+                                        if (queue.size() > max) {
+                                            max = queue.size();
+                                            queue_max = queue;
+                                            new_ligne_reference=option_code;
+                                        }
                                     }
                                 }
                             }
