@@ -7,6 +7,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -25,6 +28,7 @@ public class GraphVisualizer {
     private static float sizeVerteces = 7.0f;
     private static float sizeEdges = 1.0f;
     private static VisualizationViewer<String, String> vv;
+    private static final List<String> stackedVertices = new ArrayList<>();
 
     @SuppressWarnings("Convert2Lambda")
     public static VisualizationViewer<String, String> Graph(Graph<String, String> graph, Map<String, Point2D> positions) {
@@ -47,13 +51,19 @@ public class GraphVisualizer {
             public void setMode(Mode mode) {
                 if (mode == Mode.PICKING) {
                     // Override the functionality for PICKING mode
-                    System.out.println("PICKING mode activated");
                     vv.addMouseListener(new MouseAdapter() {
                         @Override
                         public void mouseReleased(MouseEvent e) {
-                            PickedState<String> pickedState = vv.getPickedVertexState();
-                            Set<String> pickedVertices = pickedState.getPicked();
-                            System.out.println("Picked vertices: " + pickedVertices);
+                            if (e.getButton() == MouseEvent.BUTTON1) { // Only handle left click
+                                PickedState<String> pickedState = vv.getPickedVertexState();
+                                Set<String> pickedVertices = pickedState.getPicked();
+                                if (!pickedVertices.isEmpty()) {
+                                    handleVerticesSelected(pickedVertices);
+                                    pickedState.clear();
+                                }
+                            } else if (e.getButton() == MouseEvent.BUTTON3) { // Only handle right click
+                                System.out.println("Right click");
+                            }
                         }
                     });
                 }
@@ -84,6 +94,23 @@ public class GraphVisualizer {
         return vv;
     }
 
+    private static void handleVerticesSelected(Set<String> pickedVertices) {
+        for (String vertex : pickedVertices) {
+            if (!stackedVertices.contains(vertex)) {
+                stackedVertices.add(vertex);
+            } else {
+                stackedVertices.remove(vertex);
+            }
+        }
+        vv.getRenderContext().setVertexFillPaintTransformer(v -> {
+            if (stackedVertices.contains(v)) {
+                return ColorPalette.SNCF_PURPLE;
+            } else {
+                return ColorPalette.SNCF_RED;
+            }
+        });
+    }
+
     private static void updateVertecesSize() {
         // Set vertex size
         vv.getRenderContext().setVertexShapeTransformer(_ -> {
@@ -95,7 +122,7 @@ public class GraphVisualizer {
         vv.getRenderContext().setEdgeStrokeTransformer(_ -> new BasicStroke(sizeEdges));
     }
 
-    public static void resetUI(){
+    public static void resetUI() {
         zoomIn = 0;
         sizeVerteces = 7.0f;
         sizeEdges = 1.0f;
