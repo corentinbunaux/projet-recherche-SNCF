@@ -176,9 +176,8 @@ public class RailNetwork {
         }
 
         // Ajout d'un padding en pourcentage des valeurs min et max
-        double paddingPercentage = 0.2; // 20% de padding
-        double paddingX = (maxX - minX) * paddingPercentage;
-        double paddingY = (maxY - minY) * paddingPercentage;
+        double paddingX = (maxX - minX) * Window.margin;
+        double paddingY = (maxY - minY) * Window.margin;
         minX -= paddingX;
         maxX += paddingX;
         minY -= paddingY;
@@ -186,7 +185,7 @@ public class RailNetwork {
 
         // Normalisation des positions pour affichage
         for (Gare gare : gares) {
-            double normX = (gare.x_wgs84 - minX) * Window.width / (maxX - minX);
+            double normX = (gare.x_wgs84 - minX) * Window.height / (maxX - minX);
             double normY = (gare.y_wgs84 - minY) * Window.height / (maxY - minY);
             double symY = Window.height - normY;
             positions.put(gare.libelle, new Point2D.Double(normX, symY));

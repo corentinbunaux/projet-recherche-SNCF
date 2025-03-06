@@ -1,8 +1,8 @@
 package org.example;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
+import javax.swing.JToggleButton;
 
 import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.visualization.VisualizationViewer;
@@ -20,136 +20,106 @@ import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
 public class GUI {
 
     // Declare static variables for the visualization viewer, toolbar, buttons, and selected button
+    private static List<JToggleButton> toggleButtons;
     private static VisualizationViewer<String, String> vv;
-    private static Graph<String, String> railNetwork;
-    private static Map<String, Point2D> positions;
-    private static JPanel toolbar;
-    private static List<JButton> buttons;
-    private static JButton selectedButton;
     private static JFrame frame;
+    private static Graph<String, String> railNetwork;
+    private static Map<String, Point2D> positions; 
 
     // Method to display the GUI with the given graph and positions
-    public static void display(Graph<String, String> railNetwork_argument, Map<String, Point2D> positions_argument) {
-        railNetwork = railNetwork_argument;
-        positions = positions_argument;
-        toolbar = toolBar(); // Initialize the toolbar
+    public static void display(Graph<String, String> railNetwork_arg, Map<String, Point2D> positions_arg) {
+        railNetwork = railNetwork_arg;
+        positions = positions_arg;
         vv = GraphVisualizer.Graph(railNetwork, positions); // Initialize the visualization viewer
         frame = new JFrame("Réseau Ferroviaire - Visualisation"); // Create the main frame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         frame.setJMenuBar(menuBar()); // Add the menu bar
-        frame.add(toolbar, BorderLayout.NORTH); // Add the toolbar to the frame
         frame.add(vv, BorderLayout.CENTER); // Add the visualization viewer to the frame
         frame.pack();
         frame.setVisible(true); // Display the frame
-    }
-
-    // Method to create the toolbar with buttons
-    private static JPanel toolBar() {
-        JPanel panel = new JPanel();
-        panel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        buttons = new java.util.ArrayList<>();
-        selectedButton = button("Movement"); // Initialize the first button as selected
-        buttons.add(selectedButton);
-        buttons.add(button("Selection"));
-        buttons.add(button("Manchette"));
-        buttons.add(button("Reset"));
-        for (JButton button : buttons) {
-            panel.add(button); // Add buttons to the panel
-        }
-        selectedButton.setBackground(ColorPalette.SNCF_COOL_GRAY_7); // Set the background color of the selected button
-        return panel;
-    }
-
-    // Method to create a button with the given image path
-    private static JButton button(String imagePath) {
-        JButton button = new JButton(new javax.swing.ImageIcon("img/" + imagePath + ".png"));
-        button.setPreferredSize(new java.awt.Dimension(30, 30));
-        button.setBackground(button != selectedButton ? java.awt.Color.WHITE : ColorPalette.SNCF_COOL_GRAY_7);
-        button.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.GRAY));
-        button.setFocusPainted(false);
-
-        // Add mouse listeners to change the button's background color on hover
-        button.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                if (button != selectedButton) {
-                    button.setBackground(ColorPalette.SNCF_COOL_GRAY_3);
-                }
-            }
-
-            @Override
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                if (button != selectedButton) {
-                    button.setBackground(java.awt.Color.WHITE);
-                }
-            }
-        });
-
-        // Add action listener to handle button clicks
-        button.addActionListener(_ -> btnHandler(button, imagePath));
-        return button;
-    }
-
-    // Method to handle button clicks
-    private static void btnHandler(JButton button, String btnName) {
-        // Reset the previously selected button's background color
-        if (selectedButton != null) {
-            selectedButton.setBackground(java.awt.Color.WHITE);
-        }
-
-        // Handle different button actions
-        switch (btnName) {
-            case "Movement" ->
-                movementHandler(button, vv);
-            case "Selection" ->
-                selectionHandler(button, vv);
-            case "Manchette" ->
-                System.out.println("Génération des manchettes");
-            case "Reset" ->
-                reset();
-            default ->
-                System.out.println("Mode inconnu");
-        }
-
-        // Revalidate and repaint the toolbar to reflect changes
-        toolbar.revalidate();
-        toolbar.repaint();
-    }
-
-    private static void reset() {
-        frame.remove(vv); // Remove the toolbar from the frame
-        vv = GraphVisualizer.Graph(railNetwork, positions); // Initialize the visualization viewer
-        frame.add(vv, BorderLayout.CENTER); // Add the visualization viewer to the frame
-        frame.revalidate(); // Revalidate the frame to apply changes
-        frame.repaint(); // Repaint the frame to reflect changes
-    }
-
-    // Method to handle the "Movement" button action
-    private static void movementHandler(JButton button, VisualizationViewer<String, String> vv) {
-        colorButton(button); // Change the button color
-        GraphVisualizer.getGraphMouse(vv).setMode(ModalGraphMouse.Mode.TRANSFORMING); // Set the graph mouse mode to transforming
-    }
-
-    // Method to handle the "Selection" button action
-    private static void selectionHandler(JButton button, VisualizationViewer<String, String> vv) {
-        colorButton(button); // Change the button color
-        GraphVisualizer.getGraphMouse(vv).setMode(ModalGraphMouse.Mode.PICKING); // Set the graph mouse mode to picking
-    }
-
-    // Method to change the color of the selected button
-    private static void colorButton(JButton button) {
-        selectedButton = button; // Set the new selected button
-        button.setBackground(ColorPalette.SNCF_COOL_GRAY_7); // Change the background color
-        button.repaint();
-        button.revalidate();
     }
 
     // Method to create the menu bar
     private static JMenuBar menuBar() {
         JMenuBar menuBar = new JMenuBar();
         menuBar.add(menu("Menu")); // Add a menu to the menu bar
+
+        toggleButtons = new ArrayList<>();
+        toggleButtons.add(toggleButton("Movement"));
+        toggleButtons.add(toggleButton("Selection"));
+        //Default mode : Movement
+        toggleButtons.get(0).setSelected(true);
+
+        List<JButton> buttons = new ArrayList<>();
+        buttons.add(button("Manchette"));
+        buttons.add(button("Reset"));
+
+        for (JToggleButton toggleButton : toggleButtons) {
+            menuBar.add(toggleButton); // Add a menu item to the menu bar
+        }
+        for (JButton button : buttons) {
+            menuBar.add(button); // Add a menu item to the menu bar
+        }
+
         return menuBar;
+    }
+
+    private static JToggleButton toggleButton(String title) {
+        JToggleButton toggleButton = new JToggleButton(new javax.swing.ImageIcon("img/" + title + ".png"));
+        toggleButton.setPreferredSize(new java.awt.Dimension(30, 30));
+        toggleButton.addActionListener(_ -> {
+            resetToggleButtons();
+            toggleButton.setSelected(true);
+            handleToggleButton(title);
+        });
+
+        return toggleButton;
+    }
+
+    private static JButton button(String title) {
+        JButton button = new JButton(new javax.swing.ImageIcon("img/" + title + ".png"));
+        button.setPreferredSize(new java.awt.Dimension(30, 30));
+        button.addActionListener(_ -> {
+            resetToggleButtons();
+            // Movement mode activated by default
+            toggleButtons.get(0).setSelected(true);
+            handleButtons(title);
+        });
+        return button;
+    }
+
+    private static void handleToggleButton(String title) {
+        switch (title) {
+            case "Movement" -> ((ModalGraphMouse) vv.getGraphMouse()).setMode(ModalGraphMouse.Mode.TRANSFORMING);
+            case "Selection" -> ((ModalGraphMouse) vv.getGraphMouse()).setMode(ModalGraphMouse.Mode.PICKING);
+            default -> {
+            }
+        }
+    }
+
+    private static void handleButtons(String title) {
+        switch (title) {
+            case "Manchette" -> System.out.println("Manchette button clicked");
+            case "Reset" -> reset();
+            default -> {
+            }
+        }
+    }
+
+    private static void reset(){
+        frame.getContentPane().remove(vv);
+        GraphVisualizer.resetUI();
+        vv = GraphVisualizer.Graph(railNetwork, positions);
+        frame.add(vv, BorderLayout.CENTER);
+        frame.revalidate();
+        frame.repaint();
+    }
+
+    private static void resetToggleButtons() {
+        for (JToggleButton toggleButton : toggleButtons) {
+            toggleButton.setSelected(false);
+        }
     }
 
     // Method to create a menu with the given text
