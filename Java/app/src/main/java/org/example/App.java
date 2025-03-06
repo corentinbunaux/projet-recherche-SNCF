@@ -21,8 +21,8 @@ public class App {
         GraphVisualizer.displayGraph(subGrapgNeighborhood, positions);
         GraphVisualizer.displayGraph(subGrapgBorderMarseille, positions);
 
-        //List<List<String>> manchettes = ManchetteGenerator.generateManchettes(subGrapgBorderMarseille);
-        //ManchetteGenerator.printManchettes(manchettes);
+        List<List<String>> manchettes = ManchetteGenerator.generateManchettesDfs(subGrapgBorderMarseille);
+        ManchetteGenerator.printManchettes(manchettes);
 
         List<List<String>> manchettes_stack =TopologyBasedManchetteGenerator.generateManchettes(subGrapgBorderMarseille);
         TopologyBasedManchetteGenerator.printManchettes(manchettes_stack);

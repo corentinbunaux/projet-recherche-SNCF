@@ -11,10 +11,6 @@ import edu.uci.ics.jung.graph.Graph;
 
 public class ManchetteGenerator {
     // Génération des manchettes
-<<<<<<< HEAD
-
-=======
->>>>>>> f4228e2ed5aa5ad38684c90105c57236e9e89a89
     public static List<List<String>> generateManchettes(Graph<String, String> railNetwork) {
         List<List<String>> manchettes = new ArrayList<>();
         List<String> outliers = outliersList(railNetwork); // extrémités
