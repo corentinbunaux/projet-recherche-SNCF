@@ -172,7 +172,11 @@ public class GUI {
     }
 
     private static void updateManchetteUI() {
-        // Update the UI for the Manchette button
+        frame.getContentPane().remove(splitPane);
+        Graph<String, String> subgraph = RailNetwork.subGraphListVerteces(GraphVisualizer.getStackedVertices(), railNetwork);
+        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, GraphVisualizer.Graph(subgraph, positions), manchettePanel);
+        GraphVisualizer.resetUI();
+        frame.add(splitPane, BorderLayout.CENTER);
         frame.revalidate();
         frame.repaint();
     }

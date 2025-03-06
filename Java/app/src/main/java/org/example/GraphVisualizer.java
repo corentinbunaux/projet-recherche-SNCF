@@ -8,7 +8,6 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -128,5 +127,10 @@ public class GraphVisualizer {
         sizeEdges = 1.0f;
         updateVertecesSize();
         updateEdgesSize();
+        stackedVertices.clear();
+    }
+
+    public static List<String> getStackedVertices() {
+        return stackedVertices;
     }
 }

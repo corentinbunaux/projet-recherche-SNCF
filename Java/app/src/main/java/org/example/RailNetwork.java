@@ -129,12 +129,6 @@ class Ligne {
 
 public class RailNetwork {
 
-    private static List<Gare> loadGares(String filePath) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(new File(filePath), new TypeReference<List<Gare>>() {
-        });
-    }
-
     private static List<Gare> gares;
     private static List<Ligne> lignes;
 
@@ -146,6 +140,12 @@ public class RailNetwork {
         } catch (IOException e) {
             System.err.println("Error while loading data: " + e.getMessage());
         }
+    }
+
+    private static List<Gare> loadGares(String filePath) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.readValue(new File(filePath), new TypeReference<List<Gare>>() {
+        });
     }
 
     private static List<Ligne> loadLignes(String filePath) throws IOException {
@@ -382,5 +382,21 @@ public class RailNetwork {
             }
         }
         return "error";
+    }
+
+    public static Graph<String, String> subGraphListVerteces(List<String> pickedVerteces, Graph<String, String> railNetwork) {
+        Graph<String, String> subGraph = new SparseMultigraph<>();
+        for (String vertex : pickedVerteces) {
+            subGraph.addVertex(vertex);
+        }
+        // Add edges based on the complete graph railNetwork
+        for (String vertex : pickedVerteces) {
+            for (String neighbor : railNetwork.getNeighbors(vertex)) {
+                if (pickedVerteces.contains(neighbor)) {
+                    subGraph.addEdge(vertex + " -> " + neighbor, vertex, neighbor);
+                }
+            }
+        }
+        return subGraph;
     }
 }
