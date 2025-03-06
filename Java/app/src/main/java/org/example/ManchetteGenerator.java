@@ -11,7 +11,6 @@ import edu.uci.ics.jung.graph.Graph;
 
 public class ManchetteGenerator {
     // Génération des manchettes
-    
     public static List<List<String>> generateManchettes(Graph<String, String> railNetwork) {
         List<List<String>> manchettes = new ArrayList<>();
         List<String> outliers = outliersList(railNetwork); // extrémités
@@ -120,6 +119,78 @@ public class ManchetteGenerator {
         }
         return manchettes;
     }
+
+    // Test implémentation Manchette Algo profondeur (fonctionne)
+    public static List<List<String>> generateManchettesDfs(Graph<String, String> railNetwork) {
+        List<List<String>> manchettes = new ArrayList<>();
+        List<String> outliers = outliersList(railNetwork);
+        Set<String> allVisitedOutliers = new HashSet<>();
+
+        for (String outlier : outliers) {
+            if(!allVisitedOutliers.contains(outlier)) {
+                // Créer une nouvelle liste pour cette manchette
+                System.out.println("Step 1 : Choose outlier (" + outlier + ")");
+                Set<String> visited = new HashSet<>();
+                List<List<String>> manchettesOutlier = new ArrayList<>();
+                Set<String> allVisited = new HashSet<>();
+                dfs(railNetwork, outlier, new ArrayList<>(), visited, allVisited, manchettesOutlier);
+                manchettes.add(getLongestList(manchettesOutlier));
+                allVisitedOutliers.add(getLongestList(manchettesOutlier).getLast());
+            }
+        }
+        return manchettes;
+    }
+
+    // Recherche en profondeur
+    private static void dfs(Graph<String, String> railNetwork, String currentStation, 
+                            List<String> manchette, Set<String> visited, 
+                            Set<String> allVisited, List<List<String>> manchettes) {
+        visited.add(currentStation);
+        allVisited.add(currentStation);
+        manchette.add(currentStation);
+
+        List<String> neighbors = new ArrayList<>(railNetwork.getNeighbors(currentStation));
+        neighbors.removeAll(visited); // Éviter les boucles
+
+        if (!neighbors.isEmpty()) {
+            for (String neighbor : neighbors) {
+                if (!allVisited.contains(neighbor) && areConnectedByLine(currentStation, neighbor)) {
+                    // Nouvelle manchette pour chaque bifurcation
+                    List<String> newManchette = new ArrayList<>(manchette);
+                    System.out.println("Step 2 : Choose branch " + manchette);
+                    dfs(railNetwork, neighbor, newManchette, visited, allVisited, manchettes);
+                }
+            }
+        } else {
+            // On est à une extrémité ou une impasse, donc on sauvegarde la manchette
+            manchettes.add(new ArrayList<>(manchette));
+            System.out.println("Step 3 : Add manchette " + manchette);
+        }  
+    }
+
+    // Récupère la plus longue branche parmis les branches récupérées
+    public static List<String> getLongestList(List<List<String>> lists) {
+        if (lists == null || lists.isEmpty()) {
+            return null; // Retourne null si la liste est vide ou nulle
+        }
+
+        List<String> longestList = lists.get(0);
+
+        for (List<String> list : lists) {
+            if (list.size() > longestList.size()) {
+                longestList = list;
+            }
+        }
+
+        return longestList;
+    }
+
+    private static boolean areConnectedByLine(String station1, String station2) {
+        List<String> code_ligne1 = RailNetwork.getCodeLignes(station1);
+        List<String> code_ligne2 = RailNetwork.getCodeLignes(station2);
+        return !Collections.disjoint(code_ligne1, code_ligne2);
+    }
+
 
     private static List<String> outliersList(Graph<String, String> railNetwork) {
         List<String> outliers = new ArrayList<>();

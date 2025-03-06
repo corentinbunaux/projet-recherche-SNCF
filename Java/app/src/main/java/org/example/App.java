@@ -17,11 +17,11 @@ public class App {
         Graph<String, String> subGrapgBorderMarseille = RailNetwork.graphBorder(railNetwork, positions, "Marseille-St-Charles", 20);
 
         //Graph visualisation
-        GraphVisualizer.displayGraph(railNetwork, positions);
+        // GraphVisualizer.displayGraph(railNetwork, positions);
         // GraphVisualizer.displayGraph(subGrapgNeighborhood, positions);
-        // GraphVisualizer.displayGraph(subGrapgBorderMarseille, positions);
+        GraphVisualizer.displayGraph(subGrapgBorderMarseille, positions);
 
-        List<List<String>> manchettes = ManchetteGenerator.generateManchettes(subGrapgBorderMarseille);
+        List<List<String>> manchettes = ManchetteGenerator.generateManchettesDfs(subGrapgBorderMarseille);
         ManchetteGenerator.printManchettes(manchettes);
     }
 }
