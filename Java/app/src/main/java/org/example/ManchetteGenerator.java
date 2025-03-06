@@ -11,7 +11,7 @@ import edu.uci.ics.jung.graph.Graph;
 
 public class ManchetteGenerator {
     // Génération des manchettes
-    
+
     public static List<List<String>> generateManchettes(Graph<String, String> railNetwork) {
         List<List<String>> manchettes = new ArrayList<>();
         List<String> outliers = outliersList(railNetwork); // extrémités
@@ -36,11 +36,16 @@ public class ManchetteGenerator {
                     Collection<String> neighbors = railNetwork.getNeighbors(currentStation);
                     System.out.println("Current station: " + currentStation + ", Neighbors: " + neighbors);
 
+                    
+
                     // Vérifier s'il n'y a qu'un seul voisin (ligne terminée)
                     if (neighbors.size() == 1) {
                         String nextStation = neighbors.iterator().next();
                         List<String> code_ligne_nextStation = RailNetwork.getCodeLignes(nextStation);
                         List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
+                        System.out.println("Code lignes current station: " + code_ligne_Station+ "curent station: "+currentStation);
+
+                        
                         if (!visited.contains(nextStation) && !Collections.disjoint(code_ligne_nextStation, code_ligne_Station)) {
                             manchette.add(nextStation);
                             visited.add(nextStation);
@@ -58,8 +63,8 @@ public class ManchetteGenerator {
                         for (String neighbor : neighbors) {
                             List<String> code_ligne_nextStation = RailNetwork.getCodeLignes(neighbor);
                             List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
-                            System.out.println("Code lignes current station: " + code_ligne_Station+ "curent station: "+currentStation);
-                            System.out.println("Code lignes next station: " + code_ligne_nextStation + "next station: "+neighbor); //!outliers.contains(neighbor) &&
+                            //System.out.println("Code lignes current station: " + code_ligne_Station+ "curent station: "+currentStation);
+                            //System.out.println("Code lignes next station: " + code_ligne_nextStation + "next station: "+neighbor); //!outliers.contains(neighbor) &&
                             if (!allVisited.contains(neighbor) && !visited.contains(neighbor) && !Collections.disjoint(code_ligne_nextStation, code_ligne_Station) ) {
                                 System.out.println("visited: " + visited);
                                 manchette.add(neighbor);

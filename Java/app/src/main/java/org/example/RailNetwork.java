@@ -277,8 +277,8 @@ public class RailNetwork {
         gares.sort(Comparator.comparing(gare -> indexes.get(gare.libelle).intValue()));
         String maxGapGare = Collections
                 .max(gaps.entrySet(), Comparator.comparingDouble(entry -> entry.getValue().doubleValue())).getKey();
-        System.out.println(
-                "Max gap : " + gaps.get(maxGapGare) + " for station " + maxGapGare + " on line " + line.code_ligne);
+        //System.out.println(
+        //        "Max gap : " + gaps.get(maxGapGare) + " for station " + maxGapGare + " on line " + line.code_ligne);
     }
 
     public static void printSubgraph(Graph<String, String> subgraph) {
