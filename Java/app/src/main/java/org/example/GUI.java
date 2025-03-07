@@ -42,6 +42,7 @@ public class GUI {
         frame.setLayout(new BorderLayout());
         frame.setJMenuBar(menuBar()); // Add the menu bar
 
+        // FIXME 2 : once the function is updated, add a null argument to the function to display nothing in the tree in the first place
         manchettePanel = createScrollPane();
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, vv, manchettePanel);
         frame.add(splitPane, BorderLayout.CENTER);
@@ -50,6 +51,7 @@ public class GUI {
         frame.setVisible(true); // Display the frame
     }
 
+    //FIXME 1 : add a List<List<String>> argument (manchettes) to the function to display the manchettes in the tree, do not forget the null argument
     private static JScrollPane createScrollPane() {
         JScrollPane scrollPane = new JScrollPane();
 
@@ -174,6 +176,8 @@ public class GUI {
     private static void updateManchetteUI() {
         frame.getContentPane().remove(splitPane);
         Graph<String, String> subgraph = RailNetwork.subGraphListVerteces(GraphVisualizer.getStackedVertices(), railNetwork);
+        //FIXME 3 : change the manchettePanel attribute here to display the manchettes in the tree
+        // manchettePanel = ...
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, GraphVisualizer.Graph(subgraph, positions), manchettePanel);
         GraphVisualizer.resetUI();
         frame.add(splitPane, BorderLayout.CENTER);
