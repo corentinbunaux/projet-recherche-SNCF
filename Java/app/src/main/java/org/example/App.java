@@ -2,29 +2,17 @@ package org.example;
 
 import java.awt.geom.Point2D;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+
+import com.formdev.flatlaf.FlatLightLaf;
 
 import edu.uci.ics.jung.graph.Graph;
 
 public class App {
     public static void main(String[] args) {
+        FlatLightLaf.setup();
         Map<String, Point2D> positions = new HashMap<>();
-        
         Graph<String, String> railNetwork = RailNetwork.createRailNetwork(positions);
-        Graph<String, String> subGrapgNeighborhood = RailNetwork.graphNeighborhood(railNetwork, "Le Havre", 5);
-        Graph<String, String> subGrapgBorderLH = RailNetwork.graphBorder(railNetwork, positions, "Le Havre", 50);
-        Graph<String, String> subGrapgBorderMarseille = RailNetwork.graphBorder(railNetwork, positions, "Marseille-St-Charles", 50);
-
-        //Graph visualisation
-        //GraphVisualizer.displayGraph(railNetwork, positions);
-        GraphVisualizer.displayGraph(subGrapgNeighborhood, positions);
-        GraphVisualizer.displayGraph(subGrapgBorderMarseille, positions);
-
-        //List<List<String>> manchettes = ManchetteGenerator.generateManchettes(subGrapgBorderMarseille);
-        //ManchetteGenerator.printManchettes(manchettes);
-
-        List<List<String>> manchettes_stack =TopologyBasedManchetteGenerator.generateManchettes(subGrapgBorderMarseille);
-        TopologyBasedManchetteGenerator.printManchettes(manchettes_stack);
+        GUI.display(railNetwork, positions);
     }
 }

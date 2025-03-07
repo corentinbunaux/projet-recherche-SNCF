@@ -6,4 +6,4 @@ build
 
 .vscode
 app/build
-app/bin
+app/bin/main/org/example/*.class

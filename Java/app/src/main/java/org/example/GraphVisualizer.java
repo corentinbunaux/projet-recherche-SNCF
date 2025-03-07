@@ -1,57 +1,136 @@
 package org.example;
 
-import edu.uci.ics.jung.visualization.Layer;
-import edu.uci.ics.jung.visualization.VisualizationViewer;
-import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
-import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
-import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
-import edu.uci.ics.jung.visualization.renderers.Renderer;
-import edu.uci.ics.jung.visualization.transform.MutableTransformer;
-
+import java.awt.BasicStroke;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
-import javax.swing.JFrame;
 import edu.uci.ics.jung.algorithms.layout.StaticLayout;
 import edu.uci.ics.jung.graph.Graph;
-import javax.swing.JComboBox;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
+import edu.uci.ics.jung.visualization.VisualizationViewer;
+import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
+import edu.uci.ics.jung.visualization.decorators.EdgeShape;
+import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
+import edu.uci.ics.jung.visualization.picking.PickedState;
+import edu.uci.ics.jung.visualization.renderers.Renderer;
 
 public class GraphVisualizer {
-    public static void displayGraph(Graph<String, String> graph, Map<String, Point2D> positions) {
+
+    private static int zoomIn = 0;
+    private static float sizeVerteces = 7.0f;
+    private static float sizeEdges = 1.0f;
+    private static VisualizationViewer<String, String> vv;
+    private static final List<String> stackedVertices = new ArrayList<>();
+
+    @SuppressWarnings("Convert2Lambda")
+    public static VisualizationViewer<String, String> Graph(Graph<String, String> graph, Map<String, Point2D> positions) {
         StaticLayout<String, String> layout = new StaticLayout<>(graph, vertex -> positions.get(vertex), new Dimension(Window.width, Window.height));
-        VisualizationViewer<String, String> vv = new VisualizationViewer<>(layout);
+        vv = new VisualizationViewer<>(layout);
         vv.setPreferredSize(new Dimension(Window.width, Window.height));
 
-        // Set initial camera rendering position
-        MutableTransformer layoutTransformer = vv.getRenderContext().getMultiLayerTransformer().getTransformer(Layer.LAYOUT);
-        layoutTransformer.setTranslate(Window.width/2, 0);
-        
-        // Labels des sommets
-        vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
-        vv.getRenderer().getVertexLabelRenderer().setPosition(Renderer.VertexLabel.Position.CNTR);
+        // Set vertex color and size
+        vv.getRenderContext().setVertexFillPaintTransformer(_ -> ColorPalette.SNCF_RED);
+        updateVertecesSize();
 
-        // 🎛 Souris interactive
-        DefaultModalGraphMouse<String, String> graphMouse = new DefaultModalGraphMouse<>();
+        // Set edge color, size and shape
+        vv.getRenderContext().setEdgeDrawPaintTransformer(_ -> ColorPalette.SNCF_BLACK);
+        updateEdgesSize();
+        vv.getRenderContext().setEdgeShapeTransformer(EdgeShape.line(graph));
+
+        // Souris interactive
+        DefaultModalGraphMouse<String, String> graphMouse = new DefaultModalGraphMouse<String, String>() {
+            @Override
+            public void setMode(Mode mode) {
+                if (mode == Mode.PICKING) {
+                    // Override the functionality for PICKING mode
+                    vv.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+                            if (e.getButton() == MouseEvent.BUTTON1) { // Only handle left click
+                                PickedState<String> pickedState = vv.getPickedVertexState();
+                                Set<String> pickedVertices = pickedState.getPicked();
+                                if (!pickedVertices.isEmpty()) {
+                                    handleVerticesSelected(pickedVertices);
+                                    pickedState.clear();
+                                }
+                            } else if (e.getButton() == MouseEvent.BUTTON3) { // Only handle right click
+                                System.out.println("Right click");
+                            }
+                        }
+                    });
+                }
+                super.setMode(mode);
+            }
+        };
         vv.setGraphMouse(graphMouse);
 
-        // Ajout d'un menu pour changer de mode
-        JComboBox<ModalGraphMouse.Mode> modeBox = new JComboBox<>(ModalGraphMouse.Mode.values());
-        modeBox.addActionListener(e -> graphMouse.setMode((ModalGraphMouse.Mode) modeBox.getSelectedItem()));
+        //Add a curstom mouse scroll listener
+        vv.addMouseWheelListener(new MouseWheelListener() {
+            @Override
+            public void mouseWheelMoved(MouseWheelEvent e) {
+                zoomIn += e.getWheelRotation();
+                sizeVerteces += e.getWheelRotation() * 0.03f * (int) sizeVerteces;
+                sizeEdges += e.getWheelRotation() * 0.05f * (int) sizeEdges;
+                updateVertecesSize();
+                updateEdgesSize();
+                if (zoomIn > Window.zoomThresold) {
+                    // Labels des sommets
+                    vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
+                    vv.getRenderer().getVertexLabelRenderer().setPosition(Renderer.VertexLabel.Position.S);
+                } else {
+                    vv.getRenderContext().setVertexLabelTransformer(_ -> null);
+                }
+            }
+        });
 
-        // Interface graphique
-        JPanel panel = new JPanel();
-        panel.add(modeBox);
+        return vv;
+    }
 
-        // Création de la fenêtre
-        JFrame frame = new JFrame("Réseau Ferroviaire - Visualisation");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new BorderLayout());
-        frame.add(vv, BorderLayout.CENTER);
-        frame.add(panel, BorderLayout.SOUTH);
-        frame.pack();
-        frame.setVisible(true);
+    private static void handleVerticesSelected(Set<String> pickedVertices) {
+        for (String vertex : pickedVertices) {
+            if (!stackedVertices.contains(vertex)) {
+                stackedVertices.add(vertex);
+            } else {
+                stackedVertices.remove(vertex);
+            }
+        }
+        vv.getRenderContext().setVertexFillPaintTransformer(v -> {
+            if (stackedVertices.contains(v)) {
+                return ColorPalette.SNCF_PURPLE;
+            } else {
+                return ColorPalette.SNCF_RED;
+            }
+        });
+    }
+
+    private static void updateVertecesSize() {
+        // Set vertex size
+        vv.getRenderContext().setVertexShapeTransformer(_ -> {
+            return new java.awt.geom.Ellipse2D.Double(-sizeVerteces / 2.0, -sizeVerteces / 2.0, sizeVerteces, sizeVerteces);
+        });
+    }
+
+    private static void updateEdgesSize() {
+        vv.getRenderContext().setEdgeStrokeTransformer(_ -> new BasicStroke(sizeEdges));
+    }
+
+    public static void resetUI() {
+        zoomIn = 0;
+        sizeVerteces = 7.0f;
+        sizeEdges = 1.0f;
+        updateVertecesSize();
+        updateEdgesSize();
+        stackedVertices.clear();
+    }
+
+    public static List<String> getStackedVertices() {
+        return stackedVertices;
     }
 }
