@@ -21,7 +21,6 @@ public class ManchettesOptimized {
         Set<String> visitedOutliers = new HashSet<>();
         Set<String> allVisited = new HashSet<>();
         Map<String, List<String>> lines = lineList(railNetwork);
-        railNetwork.addEdge("Fos sur Mer - Rassussen", "Fos-sur-Mer", "Rassuen");
 
         System.out.println("Lines: " + lines);
 
@@ -299,6 +298,10 @@ public class ManchettesOptimized {
                         break;
                     } 
                 }
+
+                if (RailNetwork.getCodeLignes(curentStation).size() > 2) {
+                    end_line = true;
+                }
                 
                 if (!foundOne) {
                     queue.add("NO PRIORITE");
@@ -315,7 +318,7 @@ public class ManchettesOptimized {
 
     private static List<String> outliersList(Graph<String, String> railNetwork) {
         List<String> outliers = new ArrayList<>();
-        railNetwork.addEdge("Fos sur Mer - Rassussen", "Fos-sur-Mer", "Rassuen");
+        
         for (String station : railNetwork.getVertices()) {
             if (railNetwork.getOutEdges(station).size() <= 1) {
                 outliers.add(station);

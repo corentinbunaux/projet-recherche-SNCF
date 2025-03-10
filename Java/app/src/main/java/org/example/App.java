@@ -14,14 +14,14 @@ public class App {
         Graph<String, String> railNetwork = RailNetwork.createRailNetwork(positions);
         Graph<String, String> subGrapgNeighborhood = RailNetwork.graphNeighborhood(railNetwork, "Le Havre", 5);
         Graph<String, String> subGrapgBorderLH = RailNetwork.graphBorder(railNetwork, positions, "Le Havre", 50);
-        Graph<String, String> subGrapgBorderMarseille = RailNetwork.graphBorder(railNetwork, positions, "Marseille-St-Charles", 20);
+        Graph<String, String> subGrapgBorderMarseille = RailNetwork.graphBorder(railNetwork, positions, "Marseille-St-Charles", 50);
 
         //Graph visualisation
         GraphVisualizer.Graph(railNetwork, positions);
         GraphVisualizer.Graph(subGrapgNeighborhood, positions);
         GraphVisualizer.Graph(subGrapgBorderMarseille, positions);
 
-        List<List<String>> manchettes = ManchetteGenerator.generateManchettes(subGrapgBorderMarseille);
-        ManchetteGenerator.printManchettes(manchettes);
+        List<List<String>> manchettes = ManchettesOptimized.generateManchettes(subGrapgBorderMarseille);
+        ManchettesOptimized.printManchettes(manchettes);
     }
 }
