@@ -320,7 +320,9 @@ public class ManchettesOptimized {
         List<String> outliers = new ArrayList<>();
         
         for (String station : railNetwork.getVertices()) {
-            if (railNetwork.getOutEdges(station).size() <= 1) {
+            System.out.print(station);
+            System.out.println(railNetwork.getNeighborCount(station));
+            if (railNetwork.getNeighborCount(station) <= 1) {
                 outliers.add(station);
             }
         }
