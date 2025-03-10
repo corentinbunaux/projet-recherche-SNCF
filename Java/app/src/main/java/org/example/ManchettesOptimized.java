@@ -22,6 +22,9 @@ public class ManchettesOptimized {
         Set<String> allVisited = new HashSet<>();
         Map<String, List<String>> lines = lineList(railNetwork);
 
+        
+
+
         System.out.println("Lines: " + lines);
 
         // Trier les outliers par leur apparition dans les lignes
@@ -143,9 +146,7 @@ public class ManchettesOptimized {
                                     }
                                     
                                     String lastElement = queue.pollLast();
-                                    System.out.println("enplty"+ queue.isEmpty());
                                     if (!queue.isEmpty()) {
-                                        System.out.println("ok");
                                          // Récupère le dernier élément
                                     
                                         boolean isPriorityQueue = lastElement.equals("PRIORITE");
@@ -199,7 +200,6 @@ public class ManchettesOptimized {
     
                         // Si on ne trouve que des outliers, on termine la manchette
                         if (!foundNewStation && notyet) {
-                            System.out.println("okei into the loop");
                             
                             for (String neighbor : neighbors) {
                                 if (!visited.contains(neighbor)) {
@@ -299,9 +299,9 @@ public class ManchettesOptimized {
                     } 
                 }
 
-                if (RailNetwork.getCodeLignes(curentStation).size() > 2) {
-                    end_line = true;
-                }
+                // if (RailNetwork.getCodeLignes(curentStation).size() > 1) {
+                //     end_line = true;
+                // }
                 
                 if (!foundOne) {
                     queue.add("NO PRIORITE");

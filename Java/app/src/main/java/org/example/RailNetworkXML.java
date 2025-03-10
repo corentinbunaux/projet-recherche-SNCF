@@ -103,7 +103,7 @@ public class RailNetworkXML {
         } catch (IOException | ParserConfigurationException | DOMException | SAXException e) {
             System.err.println("Error: " + e.getMessage());
         }
-        System.out.println("Rail network created.");
+        System.out.println("Rail network created at data/rail_network.xml");
         return railNetwork;
     }
 }
