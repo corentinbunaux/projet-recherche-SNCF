@@ -12,10 +12,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.JsonNode;
-
 class Gare_json {
 
     public String code_uic;
@@ -57,75 +53,75 @@ class Gare_json {
     }
 }
 
-class Ligne_json {
+// class Ligne_json {
 
-    public String type_ligne;
-    public String idgaia;
-    public String code_ligne;
-    public String lib_ligne;
-    public int rg_troncon;
-    public String pkd;
-    public String pkf;
-    public double x_d_l93;
-    public double y_d_l93;
-    public double x_f_l93;
-    public double y_f_l93;
-    public double x_d_wgs84;
-    public double y_d_wgs84;
-    public double x_f_wgs84;
-    public double y_f_wgs84;
-    public String c_geo_d;
-    public GeoCoordinate c_geo_f;
-    public GeoCoordinate geo_point_2d;
-    public GeoShape geo_shape;
+//     public String type_ligne;
+//     public String idgaia;
+//     public String code_ligne;
+//     public String lib_ligne;
+//     public int rg_troncon;
+//     public String pkd;
+//     public String pkf;
+//     public double x_d_l93;
+//     public double y_d_l93;
+//     public double x_f_l93;
+//     public double y_f_l93;
+//     public double x_d_wgs84;
+//     public double y_d_wgs84;
+//     public double x_f_wgs84;
+//     public double y_f_wgs84;
+//     public String c_geo_d;
+//     public GeoCoordinate c_geo_f;
+//     public GeoCoordinate geo_point_2d;
+//     public GeoShape geo_shape;
 
-    static class GeoCoordinate {
+//     static class GeoCoordinate {
 
-        public double lon;
-        public double lat;
-    }
+//         public double lon;
+//         public double lat;
+//     }
 
-    static class GeoShape {
+//     static class GeoShape {
 
-        public String type;
-        public Geometry geometry;
-        public Map<String, Object> properties;
+//         public String type;
+//         public Geometry geometry;
+//         public Map<String, Object> properties;
 
-        static class Geometry {
+//         static class Geometry {
 
-            public String type;
-            public List<List<Double>> coordinates; // Stockera les coordonnées après parsing
+//             public String type;
+//             public List<List<Double>> coordinates; // Stockera les coordonnées après parsing
 
-            @JsonCreator
-            public Geometry(@JsonProperty("type") String type, @JsonProperty("coordinates") JsonNode coordinatesNode) {
-                this.type = type;
-                this.coordinates = new ArrayList<>();
+//             @JsonCreator
+//             public Geometry(@JsonProperty("type") String type, @JsonProperty("coordinates") JsonNode coordinatesNode) {
+//                 this.type = type;
+//                 this.coordinates = new ArrayList<>();
 
-                if (coordinatesNode.isArray()) {
-                    if (type.equals("LineString")) {
-                        // Cas d'un `LineString` (List<List<Double>>)
-                        for (JsonNode point : coordinatesNode) {
-                            List<Double> coord = new ArrayList<>();
-                            coord.add(point.get(0).asDouble());
-                            coord.add(point.get(1).asDouble());
-                            this.coordinates.add(coord);
-                        }
-                    } else if (type.equals("MultiLineString")) {
-                        // Cas d'un `MultiLineString` (List<List<List<Double>>>)
-                        for (JsonNode line : coordinatesNode) {
-                            for (JsonNode point : line) {
-                                List<Double> coord = new ArrayList<>();
-                                coord.add(point.get(0).asDouble());
-                                coord.add(point.get(1).asDouble());
-                                this.coordinates.add(coord);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
+//                 if (coordinatesNode.isArray()) {
+//                     if (type.equals("LineString")) {
+//                         // Cas d'un `LineString` (List<List<Double>>)
+//                         for (JsonNode point : coordinatesNode) {
+//                             List<Double> coord = new ArrayList<>();
+//                             coord.add(point.get(0).asDouble());
+//                             coord.add(point.get(1).asDouble());
+//                             this.coordinates.add(coord);
+//                         }
+//                     } else if (type.equals("MultiLineString")) {
+//                         // Cas d'un `MultiLineString` (List<List<List<Double>>>)
+//                         for (JsonNode line : coordinatesNode) {
+//                             for (JsonNode point : line) {
+//                                 List<Double> coord = new ArrayList<>();
+//                                 coord.add(point.get(0).asDouble());
+//                                 coord.add(point.get(1).asDouble());
+//                                 this.coordinates.add(coord);
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
 
 public class RailNetwork {
 
@@ -310,8 +306,8 @@ public class RailNetwork {
         }
         // Sort the train stations by their position on the line
         gares.sort(Comparator.comparing(Gare_json -> indexes.get(Gare_json.libelle).intValue()));
-        String maxGapGare = Collections
-                .max(gaps.entrySet(), Comparator.comparingDouble(entry -> entry.getValue().doubleValue())).getKey();
+        // String maxGapGare = Collections
+        //         .max(gaps.entrySet(), Comparator.comparingDouble(entry -> entry.getValue().doubleValue())).getKey();
         //System.out.println(
         //        "Max gap : " + gaps.get(maxGapGare) + " for station " + maxGapGare + " on line " + line.code_ligne);
     }
