@@ -18,13 +18,17 @@ public class App {
 
         //Graph visualisation
         //GraphVisualizer.displayGraph(railNetwork, positions);
-        GraphVisualizer.displayGraph(subGrapgNeighborhood, positions);
+        //GraphVisualizer.displayGraph(subGrapgNeighborhood, positions);
         GraphVisualizer.displayGraph(subGrapgBorderMarseille, positions);
 
-        List<List<String>> manchettes = ManchetteGenerator.generateManchettesDfs(subGrapgBorderMarseille);
-        ManchetteGenerator.printManchettes(manchettes);
+        //List<List<String>> manchettes = ManchetteGenerator.generateManchettesDfs(subGrapgBorderMarseille);
+        //ManchetteGenerator.printManchettes(manchettes);
 
-        List<List<String>> manchettes_stack =TopologyBasedManchetteGenerator.generateManchettes(subGrapgBorderMarseille);
-        TopologyBasedManchetteGenerator.printManchettes(manchettes_stack);
+        //List<List<String>> manchettes_stack =TopologyBasedManchetteGenerator.generateManchettes(subGrapgBorderMarseille);
+        //TopologyBasedManchetteGenerator.printManchettes(manchettes_stack);
+
+        
+        List<List<String>> manchettes_opti =ManchettesOptimized.generateManchettes(subGrapgBorderMarseille);
+        ManchettesOptimized.printManchettes(manchettes_opti);
     }
 }
