@@ -15,6 +15,6 @@ public class App {
         Map<String, Point2D> positions = new HashMap<>();
         Graph<String, String> railNetwork = RailNetwork.createRailNetwork(positions);
         GUI.display(railNetwork, positions);
-        Graph<String, String> railNetworkXML = RailNetworkXML.createRailNetwork();
+        // Graph<String, String> railNetworkXML = RailNetworkXML.createRailNetwork();
     }
 }
