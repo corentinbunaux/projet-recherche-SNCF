@@ -381,6 +381,14 @@ public class RailNetworkXML {
             Map<String, List<Station>> garesParLigne = retrieveStationsForEachLine(lines, stations, linkImmuLine);
             computeEdgesToRailNetwork(lines, garesParLigne, railNetwork);
 
+            // remove edges with no connection
+            List<String> vertices = new ArrayList<>(railNetwork.getVertices());
+            for (String vertex : vertices) {
+                if (railNetwork.getNeighborCount(vertex) == 0) {
+                    railNetwork.removeVertex(vertex);
+                }
+            }
+
         } catch (DOMException e) {
             System.err.println("Error: " + e.getMessage());
         }
