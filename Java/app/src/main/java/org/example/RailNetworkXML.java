@@ -112,12 +112,55 @@ class Ligne_json {
     }
 }
 
+class Gare_json {
+
+    public String code_uic;
+    public String libelle;
+    public String code_ligne;
+    public String fret;
+    public String voyageurs;
+    public int rg_troncon;
+    public String pk;
+    public String commune;
+    public String departemen;
+    public int idreseau;
+    public String idgaia;
+    public double x_l93;
+    public double y_l93;
+    public double x_wgs84;
+    public double y_wgs84;
+    public GeoCoordinate c_geo;
+    public GeoCoordinate geo_point_2d;
+    public GeoShape geo_shape;
+
+    static class GeoCoordinate {
+
+        public double lon;
+        public double lat;
+    }
+
+    static class GeoShape {
+
+        public String type;
+        public Geometry geometry;
+        public Map<String, Object> properties;
+
+        static class Geometry {
+
+            public String type;
+            public List<Double> coordinates;
+        }
+    }
+}
+
 public class RailNetworkXML {
 
     private static List<Ligne_json> lignes;
+    private static List<Gare_json> gares;
     static {
         try {
             lignes = loadLignes("lignes.json");
+            gares = loadGares("gares.json");
 
         } catch (IOException e) {
             System.err.println("Error while loading data: " + e.getMessage());
@@ -131,6 +174,12 @@ public class RailNetworkXML {
     private static List<Ligne_json> loadLignes(String filePath) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(new File(filePath), new TypeReference<List<Ligne_json>>() {
+        });
+    }
+
+    private static List<Gare_json> loadGares(String filePath) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.readValue(new File(filePath), new TypeReference<List<Gare_json>>() {
         });
     }
 
@@ -241,7 +290,7 @@ public class RailNetworkXML {
         try {
             NodeList stationNodeList = readXMLFile("data/nodes.xml").getElementsByTagName("PR");
             NodeList linksNodeList = readXMLFile("data/links.xml").getElementsByTagName("LOCALISATION_PR_PK");
-            Map<String, String> linkImmuLine = new HashMap<>();
+            Map<String, List<String>> linkImmuLine = new HashMap<>();
             Map<String, Station> stations = new HashMap<>();
 
             for (int i = 0; i < linksNodeList.getLength(); i++) {
@@ -249,7 +298,11 @@ public class RailNetworkXML {
                 String codeLigne = link.getAttribute("CodeLigne");
                 String codeImmu = link.getAttribute("CodeImmuable");
                 if (!codeLigne.isEmpty() && !codeImmu.isEmpty()) {
-                    linkImmuLine.put(codeImmu, codeLigne);
+                    linkImmuLine.computeIfAbsent(codeImmu, _ -> new ArrayList<>());
+                    List<String> codeLignes = linkImmuLine.get(codeImmu);
+                    if (!codeLignes.contains(codeLigne)) {
+                        codeLignes.add(codeLigne);
+                    }
                 }
             }
 
@@ -269,6 +322,22 @@ public class RailNetworkXML {
                     s.y = y;
                     s.codeImmu = codeImmu;
                     stations.put(codeImmu, s);
+                }
+            }
+
+            for(Gare_json gare : gares) {
+                String libelle = gare.libelle;
+                double x = gare.x_wgs84;
+                double y = gare.y_wgs84;
+                String codeImmu = gare.code_uic.substring(2);
+                String codeLigne = gare.code_ligne;
+
+                if (!libelle.isEmpty() && x != 0 && y != 0 && !codeImmu.isEmpty() && !codeLigne.isEmpty()) {
+                    linkImmuLine.computeIfAbsent(codeImmu, _ -> new ArrayList<>());
+                    List<String> codeLignes = linkImmuLine.get(codeImmu);
+                    if (!codeLignes.contains(codeLigne)) {
+                        codeLignes.add(codeLigne);
+                    }
                 }
             }
 
@@ -372,16 +441,16 @@ public class RailNetworkXML {
     }
 
     private static Map<String, List<Station>> retrieveStationsForEachLine(List<Ligne_json> lignes,
-            Map<String, Station> stations, Map<String, String> linkImmuLine) {
+            Map<String, Station> stations, Map<String, List<String>> linkImmuLine) {
         Map<String, List<Station>> stationsForLines = new HashMap<>();
 
         for (Ligne_json ligne : lignes) {
             String codeLigne = ligne.code_ligne;
-            List<Station> stationNames = stationsForLines.computeIfAbsent(codeLigne, k -> new ArrayList<>());
+            List<Station> stationNames = stationsForLines.computeIfAbsent(codeLigne, _ -> new ArrayList<>());
 
             for (Station station : stations.values()) {
                 if (linkImmuLine.containsKey(station.codeImmu)
-                        && linkImmuLine.get(station.codeImmu).equals(codeLigne)) {
+                        && linkImmuLine.get(station.codeImmu).contains(codeLigne)) {
                     stationNames.add(station);
                 }
             }
@@ -397,7 +466,6 @@ public class RailNetworkXML {
         for (Ligne_json line : linesList) {
             // Get the train stations for the current line
             List<Station> stations = garesParLigne.get(line.code_ligne);
-            System.out.println(stations);
 
             // If no train stations are found for the current line, skip it
             if (stations == null) {

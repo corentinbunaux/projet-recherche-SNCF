@@ -12,46 +12,46 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-class Gare_json {
+// class Gare_json {
 
-    public String code_uic;
-    public String libelle;
-    public String code_ligne;
-    public String fret;
-    public String voyageurs;
-    public int rg_troncon;
-    public String pk;
-    public String commune;
-    public String departemen;
-    public int idreseau;
-    public String idgaia;
-    public double x_l93;
-    public double y_l93;
-    public double x_wgs84;
-    public double y_wgs84;
-    public GeoCoordinate c_geo;
-    public GeoCoordinate geo_point_2d;
-    public GeoShape geo_shape;
+//     public String code_uic;
+//     public String libelle;
+//     public String code_ligne;
+//     public String fret;
+//     public String voyageurs;
+//     public int rg_troncon;
+//     public String pk;
+//     public String commune;
+//     public String departemen;
+//     public int idreseau;
+//     public String idgaia;
+//     public double x_l93;
+//     public double y_l93;
+//     public double x_wgs84;
+//     public double y_wgs84;
+//     public GeoCoordinate c_geo;
+//     public GeoCoordinate geo_point_2d;
+//     public GeoShape geo_shape;
 
-    static class GeoCoordinate {
+//     static class GeoCoordinate {
 
-        public double lon;
-        public double lat;
-    }
+//         public double lon;
+//         public double lat;
+//     }
 
-    static class GeoShape {
+//     static class GeoShape {
 
-        public String type;
-        public Geometry geometry;
-        public Map<String, Object> properties;
+//         public String type;
+//         public Geometry geometry;
+//         public Map<String, Object> properties;
 
-        static class Geometry {
+//         static class Geometry {
 
-            public String type;
-            public List<Double> coordinates;
-        }
-    }
-}
+//             public String type;
+//             public List<Double> coordinates;
+//         }
+//     }
+// }
 
 // class Ligne_json {
 
