@@ -74,14 +74,14 @@ class VarInfo {
     public String hlpPour;
 }
 
-class flow_json {
+class flows_json {
     public VarInfo varInfo;
     public List<Point> points;
 }
 
 public class Flow {
 
-    public static List<flow_json> flows;
+    public static List<flows_json> flows;
 
     static {
         try {
@@ -94,7 +94,7 @@ public class Flow {
     public static void flow() {
         Graph<String, String> flowNetwork = new SparseMultigraph<>();
         Map<String, Point2D> positions = new HashMap<>();
-        flow_json testFlow = flows.get(0);
+        flows_json testFlow = flows.get(0);
         for (int i = 0; i < testFlow.points.size(); i++) {
             Point point = testFlow.points.get(i);
             flowNetwork.addVertex(point.libelle);
@@ -108,9 +108,9 @@ public class Flow {
         GUI.display(flowNetwork,positions);
     }
 
-    private static List<flow_json> loadFlows(String filePath) throws IOException {
+    private static List<flows_json> loadFlows(String filePath) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(new File(filePath), new TypeReference<List<flow_json>>() {
+        return objectMapper.readValue(new File(filePath), new TypeReference<List<flows_json>>() {
         });
     }
 }

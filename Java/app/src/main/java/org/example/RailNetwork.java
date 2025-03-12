@@ -2,9 +2,6 @@ package org.example;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import edu.uci.ics.jung.algorithms.filters.Filter;
-import edu.uci.ics.jung.algorithms.filters.KNeighborhoodFilter;
-import edu.uci.ics.jung.algorithms.filters.KNeighborhoodFilter.EdgeType;
 import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.graph.SparseMultigraph;
 import java.awt.geom.Point2D;
