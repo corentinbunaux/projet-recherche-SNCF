@@ -189,9 +189,8 @@ public class GUI {
 
     private static void updateManchetteUI() {
         frame.getContentPane().remove(splitPane);
-        Graph<String, String> subgraph = RailNetwork.subGraphListVerteces(GraphVisualizer.getStackedVertices(), railNetwork);
-        //FIXME 3 : change the manchettePanel attribute here to display the manchettes in the tree
-        // manchettePanel = ...
+        Graph<String, String> subgraph = RailNetworkXML.subGraphListVerteces(GraphVisualizer.getStackedVertices(), railNetwork);
+        manchettePanel = createScrollPane(ManchettesOptimized.generateManchettes(subgraph));
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, GraphVisualizer.Graph(subgraph, positions), manchettePanel);
         GraphVisualizer.resetUI();
         frame.add(splitPane, BorderLayout.CENTER);

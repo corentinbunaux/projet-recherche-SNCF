@@ -40,8 +40,8 @@ public class ManchetteGenerator {
                     // Vérifier s'il n'y a qu'un seul voisin (ligne terminée)
                     if (neighbors.size() == 1) {
                         String nextStation = neighbors.iterator().next();
-                        List<String> code_ligne_nextStation = RailNetwork.getCodeLignes(nextStation);
-                        List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
+                        List<String> code_ligne_nextStation = RailNetworkXML.getCodeLignes(nextStation);
+                        List<String> code_ligne_Station = RailNetworkXML.getCodeLignes(currentStation);
                         System.out.println("Code lignes current station: " + code_ligne_Station+ "curent station: "+currentStation);
 
                         
@@ -60,8 +60,8 @@ public class ManchetteGenerator {
                         
                         // Parcourir les voisins pour trouver une station non visitée qui n'est pas un outlier
                         for (String neighbor : neighbors) {
-                            List<String> code_ligne_nextStation = RailNetwork.getCodeLignes(neighbor);
-                            List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
+                            List<String> code_ligne_nextStation = RailNetworkXML.getCodeLignes(neighbor);
+                            List<String> code_ligne_Station = RailNetworkXML.getCodeLignes(currentStation);
                             //System.out.println("Code lignes current station: " + code_ligne_Station+ "curent station: "+currentStation);
                             //System.out.println("Code lignes next station: " + code_ligne_nextStation + "next station: "+neighbor); //!outliers.contains(neighbor) &&
                             if (!allVisited.contains(neighbor) && !visited.contains(neighbor) && !Collections.disjoint(code_ligne_nextStation, code_ligne_Station) ) {
@@ -81,8 +81,8 @@ public class ManchetteGenerator {
                         // Si on ne trouve que des outliers, on termine la manchette
                         if (!foundNewStation &&!notyet) {
                             for (String neighbor : neighbors) {
-                                List<String> code_ligne_nextStation = RailNetwork.getCodeLignes(neighbor);
-                                List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
+                                List<String> code_ligne_nextStation = RailNetworkXML.getCodeLignes(neighbor);
+                                List<String> code_ligne_Station = RailNetworkXML.getCodeLignes(currentStation);
                                 if (!visited.contains(neighbor) && !Collections.disjoint(code_ligne_nextStation, code_ligne_Station) ) {
                                     manchette.add(neighbor);
                                     visited.add(neighbor);
@@ -191,8 +191,8 @@ public class ManchetteGenerator {
     }
 
     private static boolean areConnectedByLine(String station1, String station2) {
-        List<String> code_ligne1 = RailNetwork.getCodeLignes(station1);
-        List<String> code_ligne2 = RailNetwork.getCodeLignes(station2);
+        List<String> code_ligne1 = RailNetworkXML.getCodeLignes(station1);
+        List<String> code_ligne2 = RailNetworkXML.getCodeLignes(station2);
         return !Collections.disjoint(code_ligne1, code_ligne2);
     }
 
