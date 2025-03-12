@@ -6,8 +6,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
+import java.util.Set;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -31,6 +35,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import edu.uci.ics.jung.algorithms.filters.Filter;
+import edu.uci.ics.jung.algorithms.filters.KNeighborhoodFilter;
+import edu.uci.ics.jung.algorithms.filters.KNeighborhoodFilter.EdgeType;
 import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.graph.SparseMultigraph;
 import java.awt.geom.Point2D;
@@ -157,6 +164,10 @@ public class RailNetworkXML {
 
     private static List<Ligne_json> lignes;
     private static List<Gare_json> gares;
+
+    // Calculate min and max values for x and y coordinates
+    private static double minX = Double.MAX_VALUE, maxX = Double.MIN_VALUE;
+    private static double minY = Double.MAX_VALUE, maxY = Double.MIN_VALUE;
     static {
         try {
             lignes = loadLignes("lignes.json");
@@ -325,7 +336,7 @@ public class RailNetworkXML {
                 }
             }
 
-            for(Gare_json gare : gares) {
+            for (Gare_json gare : gares) {
                 String libelle = gare.libelle;
                 double x = gare.x_wgs84;
                 double y = gare.y_wgs84;
@@ -340,10 +351,6 @@ public class RailNetworkXML {
                     }
                 }
             }
-
-            // Calculate min and max values for x and y coordinates
-            double minX = Double.MAX_VALUE, maxX = Double.MIN_VALUE;
-            double minY = Double.MAX_VALUE, maxY = Double.MIN_VALUE;
 
             for (Station s : stations.values()) {
                 if (s.x < minX) {
@@ -523,5 +530,99 @@ public class RailNetworkXML {
         // System.out.println(
         // "Max gap : " + gaps.get(maxGapGare) + " for station " + maxGapGare + " on
         // line " + line.code_ligne);
+    }
+
+    public static Graph<String, String> graphNeighborhood(Graph<String, String> railNetwork, String startVertex,
+            int nbOfNeighbors) {
+        Filter<String, String> filter = new KNeighborhoodFilter<>(startVertex, nbOfNeighbors, EdgeType.IN_OUT);
+        Graph<String, String> neighborhood = filter.apply(railNetwork);
+        return neighborhood;
+    }
+
+    public static Graph<String, String> graphBorder(Graph<String, String> railNetwork, Map<String, Point2D> positions,
+            String startVertex, double maxDistance) {
+        Graph<String, String> border = new SparseMultigraph<>();
+        Queue<String> queue = new LinkedList<>();
+        Set<String> visited = new HashSet<>();
+
+        queue.add(startVertex);
+        visited.add(startVertex);
+        border.addVertex(startVertex);
+
+        Point2D startPoint = convertToWGS84(positions, startVertex);
+
+        while (!queue.isEmpty()) {
+            String currentVertex = queue.poll();
+
+            for (String neighbor : railNetwork.getNeighbors(currentVertex)) {
+                if (!visited.contains(neighbor)) {
+                    Point2D neighborPoint = convertToWGS84(positions, neighbor);
+                    double distance = haversineDistance(startPoint, neighborPoint);
+                    if (distance <= maxDistance) {
+                        queue.add(neighbor);
+                        visited.add(neighbor);
+                        border.addVertex(neighbor);
+                        border.addEdge(currentVertex + " -> " + neighbor, currentVertex, neighbor);
+                    }
+                }
+            }
+        }
+        return border;
+    }
+
+    private static Point2D convertToWGS84(Map<String, Point2D> positions, String startVertex) {
+        Point2D point = positions.get(startVertex);
+        double normX = point.getX() / Window.height * (maxX - minX) + minX;
+        double normY = (Window.height - point.getY()) / Window.height * (maxY - minY) + minY;
+        return new Point2D.Double(normX, normY);
+    }
+
+    public static double haversineDistance(Point2D point1, Point2D point2) {
+        final double R = 6371; // Rayon de la Terre en kilomètres
+
+        double lat1 = Math.toRadians(point1.getY());
+        double lon1 = Math.toRadians(point1.getX());
+        double lat2 = Math.toRadians(point2.getY());
+        double lon2 = Math.toRadians(point2.getX());
+
+        double dlat = lat2 - lat1;
+        double dlon = lon2 - lon1;
+
+        double a = Math.pow(Math.sin(dlat / 2), 2)
+                + Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(dlon / 2), 2);
+
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        return R * c; // Distance en kilomètres
+    }
+
+    public static Graph<String, String> subGraphListVerteces(List<String> pickedVerteces,
+            Graph<String, String> railNetwork) {
+        Graph<String, String> subGraph = new SparseMultigraph<>();
+        for (String vertex : pickedVerteces) {
+            subGraph.addVertex(vertex);
+        }
+        // Add edges based on the complete graph railNetwork
+        for (String vertex : pickedVerteces) {
+            for (String neighbor : railNetwork.getNeighbors(vertex)) {
+                if (pickedVerteces.contains(neighbor)) {
+                    subGraph.addEdge(vertex + " -> " + neighbor, vertex, neighbor);
+                }
+            }
+        }
+        return subGraph;
+    }
+
+    public static List<String> getCodeLignes(String station) {
+        List<String> codesLignes = new ArrayList<>();
+        for (Gare_json Gare_json : gares) {
+            if (Gare_json.libelle.equals(station)) {
+                codesLignes.add(Gare_json.code_ligne);
+            }
+        }
+        if (codesLignes.isEmpty()) {
+            codesLignes.add("error");
+        }
+        return codesLignes;
     }
 }
