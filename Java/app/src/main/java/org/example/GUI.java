@@ -162,6 +162,7 @@ public class GUI {
         frame.getContentPane().remove(splitPane);
         GraphVisualizer.resetUI();
         vv = GraphVisualizer.Graph(railNetwork, positions);
+        manchettePanel = createScrollPane(null);
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, vv, manchettePanel);
         frame.add(splitPane, BorderLayout.CENTER);
         frame.revalidate();
