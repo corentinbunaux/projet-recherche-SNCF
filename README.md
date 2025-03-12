@@ -15,3 +15,5 @@ Using JUNG library for graphs.
 https://docs.gradle.org/current/userguide/installation.html 
 
 Run : ./gradlew run
+
+test
