@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.graph.SparseMultigraph;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,22 +29,19 @@ class Point {
     public String voieSortie;
 
     public Double getXAsDouble() {
-        if (x instanceof Boolean) {
-            return (Boolean) x ? 1.0 : 0.0;
-        } else if (x instanceof Number) {
+        if (x instanceof Number) {
             return ((Number) x).doubleValue();
         } else {
-            return null;
+            return -1000.0;
         }
     }
 
     public Double getYAsDouble() {
-        if (y instanceof Boolean) {
-            return (Boolean) y ? 1.0 : 0.0;
-        } else if (y instanceof Number) {
+        if(y instanceof Number) {
             return ((Number) y).doubleValue();
-        } else {
-            return null;
+        } 
+        else{
+            return -1000.0;
         }
     }
 }
@@ -91,21 +89,75 @@ public class Flow {
         }
     }
 
-    public static void flow() {
-        Graph<String, String> flowNetwork = new SparseMultigraph<>();
+    public static void flow(){
+        Map<String, List<String>> stationsInFlow = getStationsInFlow();
+        Graph<String, String> railNetwork = new SparseMultigraph<>();
         Map<String, Point2D> positions = new HashMap<>();
-        flows_json testFlow = flows.get(0);
-        for (int i = 0; i < testFlow.points.size(); i++) {
-            Point point = testFlow.points.get(i);
-            flowNetwork.addVertex(point.libelle);
-            positions.put(point.libelle, new Point2D.Double(point.getXAsDouble(), point.getYAsDouble()));
-            
-            if (i > 0) {
-            Point previousPoint = testFlow.points.get(i - 1);
-            flowNetwork.addEdge(previousPoint.libelle + "-" + point.libelle, previousPoint.libelle, point.libelle);
+        // for (Map.Entry<String, List<String>> entry : stationsInFlow.entrySet()) {
+        //     System.out.println("Flow ID: " + entry.getKey());
+        //     System.out.println("Stations: " + entry.getValue());
+        // }
+        System.out.println(stationsInFlow.size() + " flows loaded");
+        for(flows_json flow : flows){
+            String NTribu = flow.varInfo.numero_tribu;
+            for(int i = 0;i<stationsInFlow.get(NTribu).size();i++){
+                String stationCI = stationsInFlow.get(NTribu).get(i);
+                String station = getStationName(stationCI, flow.points);
+                Double xStation = getStationX(stationCI, flow.points);
+                Double yStation = getStationY(stationCI, flow.points);
+                Boolean condition1 = xStation.compareTo(-1000.0) == 0;
+                Boolean condition2 = yStation.compareTo(-1000.0) == 0;
+                if(!station.isEmpty() && !condition1 && !condition2){
+                    railNetwork.addVertex(station);
+                    positions.put(station, new Point2D.Double(xStation, yStation));
+                    // if(i>0){
+                    //     railNetwork.addEdge(stationCI + " - " + stationsInFlow.get(NTribu).get(i-1), stationCI, stationsInFlow.get(NTribu).get(i-1));
+                    // }
+                }
             }
         }
-        GUI.display(flowNetwork,positions);
+        GUI.display(railNetwork, positions);
+    }
+
+    private static Double getStationY(String stationCI, List<Point> points){
+        for(Point point : points){
+            if(point.CI.equals(stationCI) && !point.getYAsDouble().equals(null)){
+                return point.getYAsDouble();
+            }
+        }
+        return null;
+    }
+
+    private static Double getStationX(String stationCI, List<Point> points) {
+        for(Point point : points){
+            if(point.CI.equals(stationCI) && !point.getXAsDouble().equals(null)){
+                    return point.getXAsDouble();
+            }
+        }
+        return null;
+    }
+
+    private static String getStationName(String stationCI, List<Point> points) {
+        for(Point point : points){
+            if(point.CI.equals(stationCI)){
+                return point.libelle;
+            }
+        }
+        return "";
+    }
+
+    private static  Map<String, List<String>> getStationsInFlow() {
+        Map<String, List<String>> stationsInFlow = new HashMap<>();
+        for(flows_json flow : flows) {
+            List<String> stations = new ArrayList<>();
+            for(int i=0;i<flow.points.size();i++) {
+                if(i>0 && !flow.points.get(i).CI.equals(flow.points.get(i-1).CI)){
+                    stations.add(flow.points.get(i).CI);
+                }   
+            }
+            stationsInFlow.put(flow.varInfo.numero_tribu, stations);
+        }
+        return stationsInFlow;
     }
 
     private static List<flows_json> loadFlows(String filePath) throws IOException {
