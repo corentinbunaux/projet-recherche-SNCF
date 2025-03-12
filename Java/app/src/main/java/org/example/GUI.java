@@ -60,7 +60,9 @@ public class GUI {
 
         JTree tree = new JTree();
 
-        //Génération des manchettes du sous graphe
+
+
+        // Génération des manchettes du sous graphe
         List<List<String>> manchettes = ManchetteGenerator.generateManchettes(railNetwork);
         javax.swing.tree.DefaultMutableTreeNode manchettes_node = new javax.swing.tree.DefaultMutableTreeNode("Manchettes");
         for (int i = 0; i < manchettes.size(); i++) {
@@ -79,6 +81,30 @@ public class GUI {
         // manchette1.add(gare1);
         // manchette1.add(gare2);
         // tree.setModel(new javax.swing.tree.DefaultTreeModel(manchette1));
+        tree.collapseRow(0); // Collapse the root node to hide all leaves by default
+        scrollPane.setViewportView(tree);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        return scrollPane;
+    }
+
+    private static JScrollPane updateScrollPane(List<List<String>> manchettes) {
+        JScrollPane scrollPane = new JScrollPane();
+
+        JScrollBar verticalScrollBar = new JScrollBar(JScrollBar.VERTICAL);
+        scrollPane.setVerticalScrollBar(verticalScrollBar);
+
+        JTree tree = new JTree();
+
+        javax.swing.tree.DefaultMutableTreeNode manchettes_node = new javax.swing.tree.DefaultMutableTreeNode("Manchettes");
+        for (int i = 0; i < manchettes.size(); i++) {
+            javax.swing.tree.DefaultMutableTreeNode manchette = new javax.swing.tree.DefaultMutableTreeNode("Manchette " + (i+1));
+            for (int j = 0; j < manchettes.get(i).size(); j++) {
+                javax.swing.tree.DefaultMutableTreeNode gare = new javax.swing.tree.DefaultMutableTreeNode(manchettes.get(i).get(j));
+                manchette.add(gare);
+            }
+            manchettes_node.add(manchette);
+        }
+        tree.setModel(new javax.swing.tree.DefaultTreeModel(manchettes_node));
         tree.collapseRow(0); // Collapse the root node to hide all leaves by default
         scrollPane.setViewportView(tree);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -162,7 +188,6 @@ public class GUI {
         frame.getContentPane().remove(splitPane);
         GraphVisualizer.resetUI();
         vv = GraphVisualizer.Graph(railNetwork, positions);
-        manchettePanel = createScrollPane(null);
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, vv, manchettePanel);
         frame.add(splitPane, BorderLayout.CENTER);
         frame.revalidate();
@@ -191,7 +216,7 @@ public class GUI {
     private static void updateManchetteUI() {
         frame.getContentPane().remove(splitPane);
         Graph<String, String> subgraph = RailNetworkXML.subGraphListVerteces(GraphVisualizer.getStackedVertices(), railNetwork);
-        manchettePanel = createScrollPane(ManchettesOptimized.generateManchettes(subgraph));
+        manchettePanel = updateScrollPane(ManchettesOptimized.generateManchettes(subgraph));
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, GraphVisualizer.Graph(subgraph, positions), manchettePanel);
         GraphVisualizer.resetUI();
         frame.add(splitPane, BorderLayout.CENTER);
