@@ -36,14 +36,14 @@ public class GUI {
     public static void display(Graph<String, String> railNetwork_arg, Map<String, Point2D> positions_arg) {
         railNetwork = railNetwork_arg;
         positions = positions_arg;
-        vv = GraphVisualizer.Graph(railNetwork, positions); // Initialize the visualization viewer
+        vv = GraphVisualizer.Graph(railNetwork, positions, null); // Initialize the visualization viewer
         frame = new JFrame("Réseau Ferroviaire - Visualisation"); // Create the main frame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         frame.setJMenuBar(menuBar()); // Add the menu bar
 
         // FIXME 2 : once the function is updated, add a null argument to the function to display nothing in the tree in the first place
-        manchettePanel = createScrollPane();
+        manchettePanel = createScrollPane(null);
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, vv, manchettePanel);
         frame.add(splitPane, BorderLayout.CENTER);
 
@@ -52,7 +52,10 @@ public class GUI {
     }
 
     //FIXME 1 : add a List<List<String>> argument (manchettes) to the function to display the manchettes in the tree, do not forget the null argument
-    private static JScrollPane createScrollPane() {
+    private static JScrollPane createScrollPane(List<List<String>> manchettes) {
+        if (manchettes == null) {
+            return new JScrollPane();
+        }
         JScrollPane scrollPane = new JScrollPane();
 
         JScrollBar verticalScrollBar = new JScrollBar(JScrollBar.VERTICAL);
@@ -61,7 +64,6 @@ public class GUI {
         JTree tree = new JTree();
 
         //Génération des manchettes du sous graphe
-        List<List<String>> manchettes = ManchetteGenerator.generateManchettes(railNetwork);
         javax.swing.tree.DefaultMutableTreeNode manchettes_node = new javax.swing.tree.DefaultMutableTreeNode("Manchettes");
         for (int i = 0; i < manchettes.size(); i++) {
             javax.swing.tree.DefaultMutableTreeNode manchette = new javax.swing.tree.DefaultMutableTreeNode("Manchette " + (i+1));
@@ -79,7 +81,7 @@ public class GUI {
         // manchette1.add(gare1);
         // manchette1.add(gare2);
         // tree.setModel(new javax.swing.tree.DefaultTreeModel(manchette1));
-        tree.collapseRow(0); // Collapse the root node to hide all leaves by default
+        // tree.collapseRow(0); // Collapse the root node to hide all leaves by default
         scrollPane.setViewportView(tree);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         return scrollPane;
@@ -161,7 +163,7 @@ public class GUI {
     private static void reset() {
         frame.getContentPane().remove(splitPane);
         GraphVisualizer.resetUI();
-        vv = GraphVisualizer.Graph(railNetwork, positions);
+        vv = GraphVisualizer.Graph(railNetwork, positions, null);
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, vv, manchettePanel);
         frame.add(splitPane, BorderLayout.CENTER);
         frame.revalidate();
@@ -190,12 +192,14 @@ public class GUI {
     private static void updateManchetteUI() {
         frame.getContentPane().remove(splitPane);
         Graph<String, String> subgraph = RailNetwork.subGraphListVerteces(GraphVisualizer.getStackedVertices(), railNetwork);
-        //FIXME 3 : change the manchettePanel attribute here to display the manchettes in the tree
-        // manchettePanel = ...
-        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, GraphVisualizer.Graph(subgraph, positions), manchettePanel);
+        List<List<String>> manchettes=ManchettesOptimized.generateManchettes(subgraph);
+        manchettePanel = createScrollPane(manchettes);
+        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, GraphVisualizer.Graph(subgraph, positions, manchettes), manchettePanel);
         GraphVisualizer.resetUI();
         frame.add(splitPane, BorderLayout.CENTER);
         frame.revalidate();
         frame.repaint();
     }
+
+    
 }

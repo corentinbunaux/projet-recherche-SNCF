@@ -8,6 +8,7 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -30,17 +31,43 @@ public class GraphVisualizer {
     private static final List<String> stackedVertices = new ArrayList<>();
 
     @SuppressWarnings("Convert2Lambda")
-    public static VisualizationViewer<String, String> Graph(Graph<String, String> graph, Map<String, Point2D> positions) {
+    public static VisualizationViewer<String, String> Graph(Graph<String, String> graph, Map<String, Point2D> positions, List<List<String>> manchette) {
         StaticLayout<String, String> layout = new StaticLayout<>(graph, vertex -> positions.get(vertex), new Dimension(Window.width, Window.height));
+        System.out.println(layout);
         vv = new VisualizationViewer<>(layout);
         vv.setPreferredSize(new Dimension(Window.width, Window.height));
 
         // Set vertex color and size
         vv.getRenderContext().setVertexFillPaintTransformer(_ -> ColorPalette.SNCF_RED);
         updateVertecesSize();
-
+        System.out.println("contexte"+ vv.getRenderContext());
         // Set edge color, size and shape
-        vv.getRenderContext().setEdgeDrawPaintTransformer(_ -> ColorPalette.SNCF_BLACK);
+        if (manchette == null) {
+            vv.getRenderContext().setEdgeDrawPaintTransformer(_ -> ColorPalette.SNCF_BLACK);
+        } else {
+            System.out.println("in");
+            Map<String, java.awt.Color> edgeColorMap = new HashMap<>();
+
+            for (int i = 0; i < manchette.size(); i++) {
+                List<String> edges = manchette.get(i);
+                java.awt.Color color = ColorPalette.getColor(i);
+                for (String edge : edges) {
+                    //System.out.println("Edge: " + edge + " -> Color: " + color);  // Debug
+                    edgeColorMap.put(edge, color);
+                }
+            }
+           // System.out.println("EdgeColorMap: " + edgeColorMap);
+
+            //Vérification dans la transformation
+            vv.getRenderContext().setEdgeDrawPaintTransformer(e -> {
+                java.awt.Color color = edgeColorMap.getOrDefault(e, ColorPalette.SNCF_BLACK);
+                System.out.println("Applying color for edge " + e + ": " + color);  // Debug
+                return color;
+            });
+        }
+    
+            
+        
         updateEdgesSize();
         vv.getRenderContext().setEdgeShapeTransformer(EdgeShape.line(graph));
 
