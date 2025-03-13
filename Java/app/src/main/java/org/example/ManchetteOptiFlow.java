@@ -1,5 +1,6 @@
 package org.example;
 
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Deque;
@@ -12,27 +13,31 @@ import java.util.Set;
 
 import edu.uci.ics.jung.graph.Graph;
 
-public class ManchettesOptimized {
-    // static boolean end = false;
+public class ManchetteOptiFlow {
+    
+    private static List<List<String>> manchettes = new ArrayList<>();
+    private static List<String> outliers = new ArrayList<>();
+    private static Set<String> allVisited = new HashSet<>();
+    private static Set<String> visitedOutliers = new HashSet<>();
+    private static Map<String, List<String>> lines;
+
+    
 
     public static List<List<String>> generateManchettes(Graph<String, String> railNetwork) {
-        List<List<String>> manchettes = new ArrayList<>();
-        List<String> outliers = outliersList(railNetwork); // extrémités
-        Set<String> visitedOutliers = new HashSet<>();
-        Set<String> allVisited = new HashSet<>();
-        Map<String, List<String>> lines = lineList(railNetwork);
+        outliers = outliersList(railNetwork); 
+        lines = lineList(railNetwork);
+        System.out.println("outliers"+ outliers);
+        System.out.println("");
 
-        System.out.println("Lines: " + lines);
+        sortOutliers();
+        System.out.println(lines);
 
-        // Trier les outliers par leur apparition dans les lignes
-        outliers.sort((o1, o2) -> {
-            int size1 = lines.values().stream().filter(line -> line.contains(o1)).mapToInt(List::size).max().orElse(0);
-            int size2 = lines.values().stream().filter(line -> line.contains(o2)).mapToInt(List::size).max().orElse(0);
-            return Integer.compare(size2, size1); // Trier par ordre décroissant de taille de ligne
-        });
-        System.out.println("Outliers: " + outliers);
+        Map<String, List<List<String>>> manchettePossibles=generateManchettesByLines(railNetwork);
+        System.out.println(manchettePossibles);
 
-        for (String outlier : outliers) {
+
+
+        /*for (String outlier : outliers) {
             if (!visitedOutliers.contains(outlier)) {
                 // Créer une nouvelle manchette tant qu'il y a des outliers non visités
                 List<String> manchette = new ArrayList<>();
@@ -55,14 +60,15 @@ public class ManchettesOptimized {
                         String nextStation = neighbors.iterator().next();
                         List<String> code_ligne_nextStation = RailNetwork.getCodeLignes(nextStation);
                         List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
-                        //System.out.println("\nDebut de ligne");
+                        System.out.println("\nDebut de ligne");
 
                         if (code_ligne_Station.size() == 1) {
                             ligne_reference = code_ligne_Station.get(0);
                         } else if (code_ligne_nextStation.size() == 1) {
                             ligne_reference = code_ligne_nextStation.get(0);
                         }
-                        //System.out.println("Première station: " + currentStation + " avec le code ligne: " + code_ligne_Station);
+                        System.out.println(
+                                "Première station: " + currentStation + " avec le code ligne: " + code_ligne_Station);
                         if (!visited.contains(nextStation) && ligne_reference != null
                                 && code_ligne_nextStation.contains(ligne_reference)) {
                             manchette.add(nextStation);
@@ -128,8 +134,8 @@ public class ManchettesOptimized {
                         // prolongement est disponible (prendre la plus grande)
                         if (!foundNewStation && !notyet) {
                             List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
-                            // System.out.println("Recherche de queue avec Code ligne station: " + code_ligne_Station
-                            //         + " current station:" + currentStation);
+                            System.out.println("Recherche de queue avec Code ligne station: " + code_ligne_Station
+                                    + " current station:" + currentStation);
                             int max = 0;
                             String new_ligne_reference = null;
                             Deque<String> queue_max = null;
@@ -140,11 +146,11 @@ public class ManchettesOptimized {
                                     if (option_code.equals(ligne_reference)) {
                                         queue = exploreStation(railNetwork, option_code, currentStation, allVisited,
                                                 visited, false);
-                                        //System.out.println("Queue pour le même code: " + queue);
+                                        System.out.println("Queue pour le même code: " + queue);
                                     } else if (!option_code.equals(ligne_reference)) {
                                         queue = exploreStation(railNetwork, option_code, currentStation, allVisited,
                                                 visited, true);
-                                        //System.out.println("Queue: " + queue);
+                                        System.out.println("Queue: " + queue);
                                     }
 
                                     String lastElement = queue.pollLast();
@@ -174,6 +180,7 @@ public class ManchettesOptimized {
                             }
 
                             if (max > 0) {
+                                System.out.println("in max>0");
                                 manchette.addAll(queue_max);
                                 for (String station : queue_max) {
                                     allVisited.add(station);
@@ -189,7 +196,7 @@ public class ManchettesOptimized {
                                 // System.out.println("Manchette: "+manchette);
                                 // System.out.println("Current station: "+currentStation);
                                 // System.out.println("Ligne reference: "+ligne_reference);
-                                //System.out.println("Queue max: " + queue_max);
+                                System.out.println("Queue max: " + queue_max);
 
                             } else {
                                 notyet = true;
@@ -225,7 +232,7 @@ public class ManchettesOptimized {
                 // Ajouter la manchette complète
                 manchettes.add(manchette);
             }
-        }
+        }*/
         return manchettes;
     }
 
@@ -256,6 +263,48 @@ public class ManchettesOptimized {
     // }
     // }
 
+
+    private static void sortOutliers() {
+        outliers.sort((o1, o2) -> {
+            int size1 = lines.values().stream().filter(line -> line.contains(o1)).mapToInt(List::size).max().orElse(0);
+            int size2 = lines.values().stream().filter(line -> line.contains(o2)).mapToInt(List::size).max().orElse(0);
+            return Integer.compare(size2, size1); // Trier par ordre décroissant de taille de ligne
+        });
+    }
+
+    private static Map<String, List<List<String>>> generateManchettesByLines(Graph<String, String> railNetwork) {
+        Map<String, List<List<String>>> outlierToManchettesMap = new HashMap<>();
+        for (String outlier : outliers) {
+            List<String> code_lignes = RailNetwork.getCodeLignes(outlier);
+            List<List<String>> manchettesForOutlier = new ArrayList<>();
+
+            for (String code_ligne : code_lignes) {
+                List<String> manchette = new ArrayList<>();
+                manchette.add(outlier);
+                Collection<String> stations = railNetwork.getVertices();
+                for (String station : stations) {
+                    if (RailNetwork.getCodeLignes(station).contains(code_ligne) && !station.equals(outlier)) {
+                    manchette.add(station);
+                    }
+                }
+                if (manchette.size() > 1) {
+                    manchettesForOutlier.add(manchette);
+                }
+                
+            }
+
+            if (!manchettesForOutlier.isEmpty()) {
+                outlierToManchettesMap.put(outlier, manchettesForOutlier);
+            }
+        }
+
+        System.out.println("Outlier to Manchettes Map: " + outlierToManchettesMap);
+
+        return outlierToManchettesMap;
+    }
+    
+  
+
     private static Deque<String> exploreStation(Graph<String, String> railNetwork, String option_code,
             String curentStation, Set<String> allVisited, Set<String> visited, boolean priority) {
         Deque<String> queue = new LinkedList<>();
@@ -279,7 +328,7 @@ public class ManchettesOptimized {
                     }
                 }
                 if (!foundOne) {
-                    //queue.add("PRIORITE");
+                    queue.add("PRIORITE");
                     end_line = true;
                 }
             }
@@ -320,8 +369,8 @@ public class ManchettesOptimized {
         List<String> outliers = new ArrayList<>();
 
         for (String station : railNetwork.getVertices()) {
-            //System.out.print(station);
-            //System.out.println(railNetwork.getNeighborCount(station));
+            System.out.print(station);
+            System.out.println(railNetwork.getNeighborCount(station));
             if (railNetwork.getNeighborCount(station) <= 1) {
                 outliers.add(station);
             }
@@ -347,10 +396,10 @@ public class ManchettesOptimized {
 
     // Affichage des manchettes
     public static void printManchettes(List<List<String>> manchettes) {
-        //System.out.println("Number of manchettes: " + manchettes.size());
-        //System.out.println("List :");
+        System.out.println("Number of manchettes: " + manchettes.size());
+        System.out.println("List :");
         for (List<String> manchette : manchettes) {
-            //System.out.println(manchette);
+            System.out.println(manchette);
             System.out.println();
         }
     }

@@ -167,6 +167,8 @@ public class RailNetwork {
     private static Map<String, List<String>> linkImmuLine;
     private static Map<String, Station> stations;
     private static Map<String, String> stationICToName = new HashMap<>();
+    private static NodeList stationNodeList ;
+    private static NodeList linksNodeList ;
 
     // Calculate min and max values for x and y coordinates
     private static double minX = Double.MAX_VALUE, maxX = Double.MIN_VALUE;
@@ -300,8 +302,8 @@ public class RailNetwork {
         }
         Graph<String, String> railNetwork = new SparseMultigraph<>();
         try {
-            NodeList stationNodeList = readXMLFile("data/nodes.xml").getElementsByTagName("PR");
-            NodeList linksNodeList = readXMLFile("data/links.xml").getElementsByTagName("LOCALISATION_PR_PK");
+            stationNodeList = readXMLFile("data/nodes.xml").getElementsByTagName("PR");
+            linksNodeList = readXMLFile("data/links.xml").getElementsByTagName("LOCALISATION_PR_PK");
             linkImmuLine = new HashMap<>();
             stations = new HashMap<>();
 
@@ -331,10 +333,10 @@ public class RailNetwork {
             }
 
             // nodes.xml list of stations
-            processStationNodeList(stationNodeList, stations);
+            processStationNodeList(stations);
 
             // links.xml list of links between stations
-            processLinksNodeList(linksNodeList, linkImmuLine);
+            processLinksNodeList(linkImmuLine);
 
             for (Station s : stations.values()) {
                 updateMinMaxCoordinates(s);
@@ -375,7 +377,7 @@ public class RailNetwork {
         return railNetwork;
     }
 
-    private static void processStationNodeList(NodeList stationNodeList, Map<String, Station> stations) {
+    private static void processStationNodeList( Map<String, Station> stations) {
         for (int i = 0; i < stationNodeList.getLength(); i++) {
             Element station = (Element) stationNodeList.item(i);
             String name = station.getAttribute("Libelle");
@@ -397,7 +399,7 @@ public class RailNetwork {
         }
     }
 
-    private static void processLinksNodeList(NodeList linksNodeList, Map<String, List<String>> linkImmuLine) {
+    private static void processLinksNodeList( Map<String, List<String>> linkImmuLine) {
         for (int i = 0; i < linksNodeList.getLength(); i++) {
             Element link = (Element) linksNodeList.item(i);
             String codeLigne = link.getAttribute("CodeLigne");
@@ -639,26 +641,39 @@ public class RailNetwork {
 
     // ---------USE linkImmuLine.get(codeImmu)
     // INSTEAD--------------------------------
-    public static List<String> getCodeLignes(String station) {
-        List<String> codesLignes = new ArrayList<>();
-        for (Gare_json Gare_json : gares) {
-            if (Gare_json.libelle.equals(station)) {
-                codesLignes.add(Gare_json.code_ligne);
-            }
+
+    public static List<String> getCodeLignes(String station){ 
+
+        String codeImmu= getCodeImmuJson(station);
+        if (codeImmu.equals("")){
+            codeImmu=getCodeImmuXML(station);
         }
-        if (codesLignes.isEmpty()) {
-            codesLignes.add("error");
+
+        //linkImmuLine.get()
+        
+        if (codeImmu.equals("error")) {
+            return Arrays.asList("error");
         }
-        return codesLignes;
+        return linkImmuLine.get(codeImmu);
     }
 
-    public static String getCodeImmu(String stationName) {
+    public static String getCodeImmuJson(String stationName) {
         for (Gare_json Gare_json : gares) {
             if (Gare_json.libelle.equals(stationName)) {
                 return Gare_json.code_uic.substring(2);
             }
         }
         return "";
+    }
+
+    public static String getCodeImmuXML(String stationName) {
+        for (int i = 0; i < stationNodeList.getLength(); i++) {
+            Element link = (Element) stationNodeList.item(i);
+            if (link.getAttribute("Libelle").equals(stationName)) {
+            return link.getAttribute("CodeImmuable");
+            }
+        }
+        return "error";
     }
 
     public static String getName(String stationIC) {
