@@ -16,7 +16,7 @@ public class App {
         Graph<String, String> subgraphTest = RailNetwork.graphBorder(railNetwork, positions, "Marseille-St-Charles", 50);
         // GUI.display(railNetwork, positions);
         GUI.display(subgraphTest, positions);
-        //FlowAlgo.manchetteBasedFlow(subgraphTest);
-        ManchetteOptiFlow.generateManchettes(subgraphTest);
+        FlowAlgo.manchetteBasedFlow(subgraphTest);
+        // ManchetteOptiFlow.generateManchettes(subgraphTest);
     }
 }

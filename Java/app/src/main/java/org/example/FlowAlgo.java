@@ -1,3 +1,19 @@
+/*IDEE DE L'ALGO */
+/*
+ * On récupère les flux de trains dans la zone d'étude par la fonction flowsWallet. La fonction getStationsInFlow donne 
+ * l'ensemble des stations pour un flux donné.
+ *  
+ * 1. On commence par générer des manchettes basiques basées sur les lignes droites du réseau ferroviaire (manchettesOneWays).
+ *   On considère les stations qui ont au plus 2 arêtes incidentes comme des stations de passage. On ajoute chacune de ces
+ *   stations à une manchette. On continue à ajouter les voisins de chaque station de la manchette jusqu'à ce qu'il n'y ait plus. 
+ *   On ajoute en tout dernier les noeuds de chaque manchette, afin de savoir quelle manchettes peuvent être reliées.
+ *   
+ * 2. On améliore ces manchettes en se basant sur les flux de trains. Dans un premier temps, il faut récupérer les stations 
+ *    qui sont des noeuds du réseau les plus visitées. Puis, on s'intéresse au flux entre ces stations et leurs voisines. On
+ *    relie les manchettes qui ont le flux le plus maximal entre la gare noeudale et ses voisines. On réitère jusqu'à ce que les 
+ *    manchettes initiales ne possèdent qu'à leurs bords les stations isolées (une seule station voisine). 
+ */
+
 package org.example;
 
 import java.util.ArrayList;
@@ -20,8 +36,9 @@ public class FlowAlgo {
                                                                   // on the rail network
         // System.out.println("Manchettes: " + manchettes);
 
-        manchettes = improveManchettesWithFlows(stationsInFlow, flowsWallet, manchettes, graph); // Imporve manchettes based on
-                                                                                          // flows
+        manchettes = improveManchettesWithFlows(stationsInFlow, flowsWallet, manchettes, graph); // Imporve manchettes
+                                                                                                 // based on
+        // flows
         System.out.println("Number of manchettes after improvement : " + manchettes.size());
     }
 
@@ -31,15 +48,17 @@ public class FlowAlgo {
         // Get the most visited stations
         List<Map.Entry<String, Integer>> sortedStations = mostVisitedStations(flowsWallet, stationsInFlow, graph);
         // for (Map.Entry<String, Integer> entry : sortedEntries) {
-        //     System.out.println(entry.getKey() + " : " + entry.getValue());
+        // System.out.println(entry.getKey() + " : " + entry.getValue());
         // }
         int i = 0;
         int j = 1;
-        while(isThereAFlowBetweenTwoStations(sortedStations.get(i).getKey(), sortedStations.get(j).getKey(), flowsWallet, stationsInFlow) == null){
+        while (isThereAFlowBetweenTwoStations(sortedStations.get(i).getKey(), sortedStations.get(j).getKey(),
+                flowsWallet, stationsInFlow) == null) {
             i++;
             j++;
         }
-        String flowId = isThereAFlowBetweenTwoStations(sortedStations.get(i).getKey(), sortedStations.get(j).getKey(), flowsWallet, stationsInFlow);
+        String flowId = isThereAFlowBetweenTwoStations(sortedStations.get(i).getKey(), sortedStations.get(j).getKey(),
+                flowsWallet, stationsInFlow);
         System.out.println("Possibility of a flow between two of the most visited stations : ");
         System.out.println(RailNetwork.getName(sortedStations.get(i).getKey()));
         System.out.println(RailNetwork.getName(sortedStations.get(j).getKey()));
@@ -64,7 +83,7 @@ public class FlowAlgo {
         for (String flowID : flowsWallet) {
             List<String> stationsIC = stationsInFlow.get(flowID);
             for (String stationIC : stationsIC) {
-                if(graph.containsVertex(RailNetwork.getName(stationIC))){
+                if (graph.containsVertex(RailNetwork.getName(stationIC))) {
                     if (stationAffluence.containsKey(stationIC)) {
                         stationAffluence.put(stationIC, stationAffluence.get(stationIC) + 1);
                     } else {
