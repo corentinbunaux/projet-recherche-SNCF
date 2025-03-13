@@ -4,22 +4,88 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
 
 import edu.uci.ics.jung.graph.Graph;
 
 public class FlowAlgo {
 
     public static void manchetteBasedFlow(Graph<String, String> graph) {
-        // Make manchettes based on the oneway rails of the graph
-        List<List<String>> manchettes = manchettesOneways(graph);
-        System.out.println("Manchettes: " + manchettes);
+        Map<String, List<String>> stationsInFlow = Flow.getStationsInFlow(); // List of stations for each flow
+        List<String> flowsWallet = flowsWallet(graph, stationsInFlow); // List of flows that go through at least one
+                                                                       // station of the graph
+        // System.out.println("Flows in this zone : " + stationsWallet);
+
+        List<List<String>> manchettes = manchettesOneways(graph); // Basic manchettes generation based on straight lines
+                                                                  // on the rail network
+        // System.out.println("Manchettes: " + manchettes);
+
+        manchettes = improveManchettesWithFlows(stationsInFlow, flowsWallet, manchettes, graph); // Imporve manchettes based on
+                                                                                          // flows
+        System.out.println("Number of manchettes after improvement : " + manchettes.size());
+    }
+
+    private static List<List<String>> improveManchettesWithFlows(Map<String, List<String>> stationsInFlow,
+            List<String> flowsWallet, List<List<String>> manchettes, Graph<String, String> graph) {
+
+        // Get the most visited stations
+        List<Map.Entry<String, Integer>> sortedStations = mostVisitedStations(flowsWallet, stationsInFlow, graph);
+        // for (Map.Entry<String, Integer> entry : sortedEntries) {
+        //     System.out.println(entry.getKey() + " : " + entry.getValue());
+        // }
+        int i = 0;
+        int j = 1;
+        while(isThereAFlowBetweenTwoStations(sortedStations.get(i).getKey(), sortedStations.get(j).getKey(), flowsWallet, stationsInFlow) == null){
+            i++;
+            j++;
+        }
+        String flowId = isThereAFlowBetweenTwoStations(sortedStations.get(i).getKey(), sortedStations.get(j).getKey(), flowsWallet, stationsInFlow);
+        System.out.println("Possibility of a flow between two of the most visited stations : ");
+        System.out.println(RailNetwork.getName(sortedStations.get(i).getKey()));
+        System.out.println(RailNetwork.getName(sortedStations.get(j).getKey()));
+        System.out.println("Flow ID : " + flowId);
+        return manchettes;
+    }
+
+    private static String isThereAFlowBetweenTwoStations(String station1, String station2, List<String> flowsWallet,
+            Map<String, List<String>> stationsInFlow) {
+        for (String flowID : flowsWallet) {
+            List<String> stationsIC = stationsInFlow.get(flowID);
+            if (stationsIC.contains(station1) && stationsIC.contains(station2)) {
+                return flowID;
+            }
+        }
+        return null;
+    }
+
+    private static List<Map.Entry<String, Integer>> mostVisitedStations(List<String> flowsWallet,
+            Map<String, List<String>> stationsInFlow, Graph<String, String> graph) {
+        Map<String, Integer> stationAffluence = new HashMap<>();
+        for (String flowID : flowsWallet) {
+            List<String> stationsIC = stationsInFlow.get(flowID);
+            for (String stationIC : stationsIC) {
+                if(graph.containsVertex(RailNetwork.getName(stationIC))){
+                    if (stationAffluence.containsKey(stationIC)) {
+                        stationAffluence.put(stationIC, stationAffluence.get(stationIC) + 1);
+                    } else {
+                        stationAffluence.put(stationIC, 1);
+                    }
+                }
+            }
+        }
+
+        // Sort the map by values (affluence) in descending order
+        List<Map.Entry<String, Integer>> sortedStations = new ArrayList<>(stationAffluence.entrySet());
+        sortedStations.sort((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()));
+        return sortedStations;
     }
 
     // all the flows that go through at least one station of the graph
-    private static List<String> stationsWallet(Graph<String, String> graph, Map<String, List<String>> stationsInFlow) {
+    private static List<String> flowsWallet(Graph<String, String> graph, Map<String, List<String>> stationsInFlow) {
         List<String> stationsWallet = new ArrayList<>();
 
-        // add the flowID to the stationsWallet if the flow goes through at least one station of the graph
+        // add the flowID to the stationsWallet if the flow goes through at least one
+        // station of the graph
         for (Map.Entry<String, List<String>> entry : stationsInFlow.entrySet()) {
             String flowID = entry.getKey();
             List<String> stationsIC = entry.getValue();
@@ -82,7 +148,8 @@ public class FlowAlgo {
     // Add the border stations to the manchettes
     private static void addBorderStationsToManchettes(Graph<String, String> graph, List<List<String>> manchettes) {
         for (List<String> manchette : manchettes) {
-            List<String> borderStations = new ArrayList<>(Arrays.asList(manchette.get(0), manchette.get(manchette.size() - 1)));
+            List<String> borderStations = new ArrayList<>(
+                    Arrays.asList(manchette.get(0), manchette.get(manchette.size() - 1)));
             for (String borderStation : borderStations) {
                 List<String> neighbors = getNeighborsAsList(graph, borderStation);
                 for (String neighbor : neighbors) {

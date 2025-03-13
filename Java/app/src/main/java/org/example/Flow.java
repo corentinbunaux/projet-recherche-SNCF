@@ -93,10 +93,6 @@ public class Flow {
         Map<String, List<String>> stationsInFlow = getStationsInFlow();
         Graph<String, String> railNetwork = new SparseMultigraph<>();
         Map<String, Point2D> positions = new HashMap<>();
-        // for (Map.Entry<String, List<String>> entry : stationsInFlow.entrySet()) {
-        //     System.out.println("Flow ID: " + entry.getKey());
-        //     System.out.println("Stations: " + entry.getValue());
-        // }
         System.out.println(stationsInFlow.size() + " flows loaded");
         for(flows_json flow : flows){
             String NTribu = flow.varInfo.numero_tribu;
@@ -110,9 +106,6 @@ public class Flow {
                 if(!station.isEmpty() && !condition1 && !condition2){
                     railNetwork.addVertex(station);
                     positions.put(station, new Point2D.Double(xStation, yStation));
-                    // if(i>0){
-                    //     railNetwork.addEdge(stationCI + " - " + stationsInFlow.get(NTribu).get(i-1), stationCI, stationsInFlow.get(NTribu).get(i-1));
-                    // }
                 }
             }
         }
