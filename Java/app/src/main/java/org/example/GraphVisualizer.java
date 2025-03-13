@@ -23,9 +23,9 @@ import edu.uci.ics.jung.visualization.renderers.Renderer;
 
 public class GraphVisualizer {
 
-    private static int zoomIn = 0;
-    private static float sizeVerteces = 7.0f;
-    private static float sizeEdges = 1.0f;
+    private static int zoomIn = Window.initial_zoomIn;
+    private static float sizeVerteces = Window.initial_sizeVerteces;
+    private static float sizeEdges = Window.initial_sizeEdges;
     private static VisualizationViewer<String, String> vv;
     private static final List<String> stackedVertices = new ArrayList<>();
 
@@ -44,7 +44,17 @@ public class GraphVisualizer {
         updateEdgesSize();
         vv.getRenderContext().setEdgeShapeTransformer(EdgeShape.line(graph));
 
-        // Souris interactive
+        // Add interactive mouse controls
+        addMouseControls();
+
+        // Add custom mouse scroll listener
+        addMouseWheelListener();
+
+        return vv;
+    }
+
+    // Add interactive mouse controls
+    private static void addMouseControls() {
         DefaultModalGraphMouse<String, String> graphMouse = new DefaultModalGraphMouse<String, String>() {
             @Override
             public void setMode(Mode mode) {
@@ -70,18 +80,20 @@ public class GraphVisualizer {
             }
         };
         vv.setGraphMouse(graphMouse);
+    }
 
-        //Add a curstom mouse scroll listener
+    // Add custom mouse scroll listener
+    private static void addMouseWheelListener() {
         vv.addMouseWheelListener(new MouseWheelListener() {
             @Override
             public void mouseWheelMoved(MouseWheelEvent e) {
                 zoomIn += e.getWheelRotation();
-                sizeVerteces += e.getWheelRotation() * 0.03f * (int) sizeVerteces;
-                sizeEdges += e.getWheelRotation() * 0.05f * (int) sizeEdges;
+                sizeVerteces += e.getWheelRotation() * Window.vertecesZoomFactor * (int) sizeVerteces;
+                sizeEdges += e.getWheelRotation() * Window.edgesZoomFactor * (int) sizeEdges;
                 updateVertecesSize();
                 updateEdgesSize();
                 if (zoomIn > Window.zoomThresold) {
-                    // Labels des sommets
+                    // Show vertex labels
                     vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
                     vv.getRenderer().getVertexLabelRenderer().setPosition(Renderer.VertexLabel.Position.S);
                 } else {
@@ -89,10 +101,9 @@ public class GraphVisualizer {
                 }
             }
         });
-
-        return vv;
     }
 
+    // Handle selected vertices
     private static void handleVerticesSelected(Set<String> pickedVertices) {
         for (String vertex : pickedVertices) {
             if (!stackedVertices.contains(vertex)) {
@@ -110,26 +121,29 @@ public class GraphVisualizer {
         });
     }
 
+    // Update vertex size
     private static void updateVertecesSize() {
-        // Set vertex size
         vv.getRenderContext().setVertexShapeTransformer(_ -> {
             return new java.awt.geom.Ellipse2D.Double(-sizeVerteces / 2.0, -sizeVerteces / 2.0, sizeVerteces, sizeVerteces);
         });
     }
 
+    // Update edge size
     private static void updateEdgesSize() {
         vv.getRenderContext().setEdgeStrokeTransformer(_ -> new BasicStroke(sizeEdges));
     }
 
+    // Reset UI to default state
     public static void resetUI() {
-        zoomIn = 0;
-        sizeVerteces = 7.0f;
-        sizeEdges = 1.0f;
+        zoomIn = Window.initial_zoomIn;
+        sizeVerteces = Window.initial_sizeVerteces;
+        sizeEdges = Window.initial_sizeEdges;
         updateVertecesSize();
         updateEdgesSize();
         stackedVertices.clear();
     }
 
+    // Get the list of stacked vertices
     public static List<String> getStackedVertices() {
         return stackedVertices;
     }

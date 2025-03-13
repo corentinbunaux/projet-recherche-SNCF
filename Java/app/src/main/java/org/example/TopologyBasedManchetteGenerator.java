@@ -163,11 +163,6 @@ public class TopologyBasedManchetteGenerator {
                 manchettes.add(manchette);
             }
         }
-
-
-
-
-
         return manchettes;
     }
 
