@@ -177,8 +177,7 @@ public class RailNetworkXML {
             System.err.println("Error while loading data: " + e.getMessage());
         }
     }
-    public static final Map<String, String> attributesConditions = Map.of("CodeLocalisation", "FR", "CodeTypePr",
-            "GARE");
+    public static final Map<String, String> attributesConditions = Map.of("CodeLocalisation", "FR");
     public static final List<String> excludedStations = Arrays.asList("Avignon Voie 3 Garage",
             "Lieu Théorique Bâtiment Voyageurs");
 
@@ -210,8 +209,8 @@ public class RailNetworkXML {
             }
             writeDataToXMLFile(filteredLinks, "data/links.xml");
 
-            Document filteredNodes = createXMLFile();
             nodeList = doc.getElementsByTagName("PR");
+            Document filteredNodes = createXMLFile();
             for (int i = 0; i < nodeList.getLength(); i++) {
                 Element station = (Element) nodeList.item(i);
                 boolean matchesConditions = true;
@@ -304,46 +303,23 @@ public class RailNetworkXML {
             Map<String, List<String>> linkImmuLine = new HashMap<>();
             Map<String, Station> stations = new HashMap<>();
 
-            for (int i = 0; i < linksNodeList.getLength(); i++) {
-                Element link = (Element) linksNodeList.item(i);
-                String codeLigne = link.getAttribute("CodeLigne");
-                String codeImmu = link.getAttribute("CodeImmuable");
-                if (!codeLigne.isEmpty() && !codeImmu.isEmpty()) {
-                    linkImmuLine.computeIfAbsent(codeImmu, _ -> new ArrayList<>());
-                    List<String> codeLignes = linkImmuLine.get(codeImmu);
-                    if (!codeLignes.contains(codeLigne)) {
-                        codeLignes.add(codeLigne);
-                    }
-                }
-            }
-
-            for (int i = 0; i < stationNodeList.getLength(); i++) {
-                Element station = (Element) stationNodeList.item(i);
-                String libelle = station.getAttribute("Libelle");
-                String xStr = station.getAttribute("Longitude");
-                String yStr = station.getAttribute("Latitude");
-                String codeImmu = station.getAttribute("CodeImmuable");
-
-                if (!xStr.isEmpty() && !yStr.isEmpty() && !libelle.isEmpty() && !codeImmu.isEmpty()) {
-                    double x = Double.parseDouble(xStr);
-                    double y = Double.parseDouble(yStr);
+            // gares.json list of stations and links between stations and lines
+            for (Gare_json gare : gares) {
+                String name = gare.libelle;
+                String codeImmu = gare.code_uic.substring(2);
+                if (!name.isEmpty() && !codeImmu.isEmpty() && !stations.containsKey(codeImmu)) {
+                    // Add the station to the list of stations
                     Station s = new Station();
-                    s.name = libelle;
-                    s.x = x;
-                    s.y = y;
+                    s.name = name;
+                    s.x = gare.x_wgs84;
+                    s.y = gare.y_wgs84;
                     s.codeImmu = codeImmu;
                     stations.put(codeImmu, s);
                 }
-            }
 
-            for (Gare_json gare : gares) {
-                String libelle = gare.libelle;
-                double x = gare.x_wgs84;
-                double y = gare.y_wgs84;
-                String codeImmu = gare.code_uic.substring(2);
+                // Add the link between a station and a line
                 String codeLigne = gare.code_ligne;
-
-                if (!libelle.isEmpty() && x != 0 && y != 0 && !codeImmu.isEmpty() && !codeLigne.isEmpty()) {
+                if (!codeLigne.isEmpty()) {
                     linkImmuLine.computeIfAbsent(codeImmu, _ -> new ArrayList<>());
                     List<String> codeLignes = linkImmuLine.get(codeImmu);
                     if (!codeLignes.contains(codeLigne)) {
@@ -352,20 +328,14 @@ public class RailNetworkXML {
                 }
             }
 
-            for (Station s : stations.values()) {
-                if (s.x < minX) {
-                    minX = s.x;
-                }
-                if (s.x > maxX) {
-                    maxX = s.x;
-                }
-                if (s.y < minY) {
-                    minY = s.y;
-                }
-                if (s.y > maxY) {
-                    maxY = s.y;
-                }
+            // nodes.xml list of stations
+            processStationNodeList(stationNodeList, stations);
 
+            // links.xml list of links between stations
+            processLinksNodeList(linksNodeList, linkImmuLine);
+
+            for (Station s : stations.values()) {
+                updateMinMaxCoordinates(s);
                 railNetwork.addVertex(s.name);
             }
 
@@ -400,6 +370,58 @@ public class RailNetworkXML {
             System.err.println("Error: " + e.getMessage());
         }
         return railNetwork;
+    }
+
+    private static void processStationNodeList(NodeList stationNodeList, Map<String, Station> stations) {
+        for (int i = 0; i < stationNodeList.getLength(); i++) {
+            Element station = (Element) stationNodeList.item(i);
+            String name = station.getAttribute("Libelle");
+            String xStr = station.getAttribute("Longitude");
+            String yStr = station.getAttribute("Latitude");
+            String codeImmu = station.getAttribute("CodeImmuable");
+
+            if (!stations.containsKey(codeImmu) && !xStr.isEmpty() && !yStr.isEmpty() && !name.isEmpty()
+                    && !codeImmu.isEmpty()) {
+                double x = Double.parseDouble(xStr);
+                double y = Double.parseDouble(yStr);
+                Station s = new Station();
+                s.name = name;
+                s.x = x;
+                s.y = y;
+                s.codeImmu = codeImmu;
+                stations.put(codeImmu, s);
+            }
+        }
+    }
+
+    private static void processLinksNodeList(NodeList linksNodeList, Map<String, List<String>> linkImmuLine) {
+        for (int i = 0; i < linksNodeList.getLength(); i++) {
+            Element link = (Element) linksNodeList.item(i);
+            String codeLigne = link.getAttribute("CodeLigne");
+            String codeImmu = link.getAttribute("CodeImmuable");
+            if (!codeLigne.isEmpty() && !codeImmu.isEmpty()) {
+                linkImmuLine.computeIfAbsent(codeImmu, _ -> new ArrayList<>());
+                List<String> codeLignes = linkImmuLine.get(codeImmu);
+                if (!codeLignes.contains(codeLigne)) {
+                    codeLignes.add(codeLigne);
+                }
+            }
+        }
+    }
+
+    private static void updateMinMaxCoordinates(Station s) {
+        if (s.x < minX) {
+            minX = s.x;
+        }
+        if (s.x > maxX) {
+            maxX = s.x;
+        }
+        if (s.y < minY) {
+            minY = s.y;
+        }
+        if (s.y > maxY) {
+            maxY = s.y;
+        }
     }
 
     private static List<Ligne_json> mergeLines(List<Ligne_json> lignes) {
@@ -484,9 +506,8 @@ public class RailNetworkXML {
 
             // If no train stations are found for the current line, skip it
             if (stations == null) {
-                // System.out
-                // .println("No train stations found for line " + line.code_ligne + " (" +
-                // line.type_ligne + ")");
+                System.out
+                        .println("No train stations found for line " + line.code_ligne + " (" + line.type_ligne + ")");
                 continue;
             }
             sortTrainStations(stations, line);

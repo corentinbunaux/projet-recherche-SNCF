@@ -10,9 +10,9 @@ import edu.uci.ics.jung.graph.Graph;
 public class App {
     public static void main(String[] args) {
         FlatLightLaf.setup();
-        // Map<String, Point2D> positions = new HashMap<>();
-        // Graph<String, String> railNetwork = RailNetworkXML.createRailNetwork(positions);
-        // GUI.display(railNetwork, positions);
-        Flow.flow();
+        Map<String, Point2D> positions = new HashMap<>();
+        Graph<String, String> railNetwork = RailNetworkXML.createRailNetwork(positions);
+        GUI.display(railNetwork, positions);
+        // Flow.flow();
     }
 }
