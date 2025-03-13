@@ -33,7 +33,7 @@ public class ManchetteGenerator {
                 // Tant qu'on n'a pas atteint un autre outlier, on complète la manchette
                 while (!end) {
                     Collection<String> neighbors = railNetwork.getNeighbors(currentStation);
-                    System.out.println("Current station: " + currentStation + ", Neighbors: " + neighbors);
+                    // System.out.println("Current station: " + currentStation + ", Neighbors: " + neighbors);
 
                     
 
@@ -42,7 +42,7 @@ public class ManchetteGenerator {
                         String nextStation = neighbors.iterator().next();
                         List<String> code_ligne_nextStation = RailNetwork.getCodeLignes(nextStation);
                         List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
-                        System.out.println("Code lignes current station: " + code_ligne_Station+ "curent station: "+currentStation);
+                        // System.out.println("Code lignes current station: " + code_ligne_Station+ "curent station: "+currentStation);
 
                         
                         if (!visited.contains(nextStation) && !Collections.disjoint(code_ligne_nextStation, code_ligne_Station)) {
@@ -65,7 +65,7 @@ public class ManchetteGenerator {
                             //System.out.println("Code lignes current station: " + code_ligne_Station+ "curent station: "+currentStation);
                             //System.out.println("Code lignes next station: " + code_ligne_nextStation + "next station: "+neighbor); //!outliers.contains(neighbor) &&
                             if (!allVisited.contains(neighbor) && !visited.contains(neighbor) && !Collections.disjoint(code_ligne_nextStation, code_ligne_Station) ) {
-                                System.out.println("visited: " + visited);
+                                // System.out.println("visited: " + visited);
                                 manchette.add(neighbor);
                                 visited.add(neighbor);
                                 allVisited.add(neighbor);

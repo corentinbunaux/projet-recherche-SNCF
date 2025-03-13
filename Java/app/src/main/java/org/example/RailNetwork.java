@@ -166,6 +166,7 @@ public class RailNetwork {
     private static List<Gare_json> gares;
     private static Map<String, List<String>> linkImmuLine;
     private static Map<String, Station> stations;
+    private static Map<String, String> stationICToName = new HashMap<>();
 
     // Calculate min and max values for x and y coordinates
     private static double minX = Double.MAX_VALUE, maxX = Double.MIN_VALUE;
@@ -174,7 +175,6 @@ public class RailNetwork {
         try {
             lignes = loadLignes("lignes.json");
             gares = loadGares("gares.json");
-
         } catch (IOException e) {
             System.err.println("Error while loading data: " + e.getMessage());
         }
@@ -339,6 +339,7 @@ public class RailNetwork {
             for (Station s : stations.values()) {
                 updateMinMaxCoordinates(s);
                 railNetwork.addVertex(s.name);
+                stationICToName.put(s.codeImmu, s.name);
             }
 
             // Add padding to min and max values
@@ -636,9 +637,8 @@ public class RailNetwork {
         return subGraph;
     }
 
-
-    // ---------USE linkImmuLine.get(codeImmu) INSTEAD-------------------------------- 
-    /*
+    // ---------USE linkImmuLine.get(codeImmu)
+    // INSTEAD--------------------------------
     public static List<String> getCodeLignes(String station) {
         List<String> codesLignes = new ArrayList<>();
         for (Gare_json Gare_json : gares) {
@@ -651,7 +651,6 @@ public class RailNetwork {
         }
         return codesLignes;
     }
-    */
 
     public static String getCodeImmu(String stationName) {
         for (Gare_json Gare_json : gares) {
@@ -660,6 +659,10 @@ public class RailNetwork {
             }
         }
         return "";
+    }
+
+    public static String getName(String stationIC) {
+        return stationICToName.getOrDefault(stationIC, "NoStationFound");
     }
 
     // getCodeLignes(String station) -> linkImmuLine.get(getCodeImmu(station))

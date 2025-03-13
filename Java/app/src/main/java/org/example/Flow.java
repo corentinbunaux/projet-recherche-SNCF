@@ -146,7 +146,7 @@ public class Flow {
         return "";
     }
 
-    private static  Map<String, List<String>> getStationsInFlow() {
+    public static  Map<String, List<String>> getStationsInFlow() {
         Map<String, List<String>> stationsInFlow = new HashMap<>();
         for(flows_json flow : flows) {
             List<String> stations = new ArrayList<>();

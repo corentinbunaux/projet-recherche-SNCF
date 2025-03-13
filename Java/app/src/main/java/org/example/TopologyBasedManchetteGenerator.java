@@ -66,7 +66,7 @@ public class TopologyBasedManchetteGenerator {
                     } else {
                         boolean foundNewStation = false;
                         boolean notyet=false;
-                        System.out.println("visité: "+visited);
+                        // System.out.println("visité: "+visited);
                         for (String neighbor : neighbors) {
                             List<String> code_ligne_nextStation = RailNetwork.getCodeLignes(neighbor);
                             //List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
@@ -131,10 +131,10 @@ public class TopologyBasedManchetteGenerator {
                                 currentStation = queue_max.peekLast();
                                 ligne_reference = new_ligne_reference;
                                 foundNewStation = true;
-                                System.out.println("Manchette: "+manchette);
-                                System.out.println("Current station: "+currentStation);
-                                System.out.println("Ligne reference: "+ligne_reference);
-                                System.out.println("Queue max: "+queue_max);
+                                // System.out.println("Manchette: "+manchette);
+                                // System.out.println("Current station: "+currentStation);
+                                // System.out.println("Ligne reference: "+ligne_reference);
+                                // System.out.println("Queue max: "+queue_max);
                                 
                             }
                             
