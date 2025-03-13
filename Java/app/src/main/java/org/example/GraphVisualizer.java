@@ -43,24 +43,43 @@ public class GraphVisualizer {
         if (manchette == null) {
             vv.getRenderContext().setEdgeDrawPaintTransformer(_ -> ColorPalette.SNCF_BLACK);
         } else {
-            System.out.println("in");
-            Map<String, java.awt.Color> edgeColorMap = new HashMap<>();
+            Map<String, List<java.awt.Color>> edgeColorMap = new HashMap<>();
 
             for (int i = 0; i < manchette.size(); i++) {
                 List<String> man = manchette.get(i);
                 List<String> edges = new ArrayList<>();
-                for (String gare : man) {
-                    edges.addAll(graph.getIncidentEdges(gare));
+                for (int j = 0; j < man.size() - 1; j++) {
+                    String gare1 = man.get(j);
+                    String gare2 = man.get(j + 1);
+                    String edge = graph.findEdge(gare1, gare2);
+                    if (edge != null) {
+                        edge=normalizeEdge(gare1, gare2);
+                        edges.add(edge);
+                    }
                 }
+                //System.out.println("edges"+edges);
                 java.awt.Color color = ColorPalette.getColor(i);
                 for (String edge : edges) {
-                    edgeColorMap.put(edge, color);
+                    edgeColorMap.computeIfAbsent(edge, k -> new ArrayList<>()).add(color);
                 }
             }
+            
             //Vérification dans la transformation
             vv.getRenderContext().setEdgeDrawPaintTransformer(e -> {
-                java.awt.Color color = edgeColorMap.getOrDefault(e, ColorPalette.SNCF_BLACK);
-                return color;
+                String gare1 = e.toString().split("->")[0].trim();
+                String gare2 = e.toString().split("->")[1].trim();
+                String normalizedEdge = normalizeEdge(gare1, gare2);
+               
+                List<java.awt.Color> colors = edgeColorMap.getOrDefault(normalizedEdge, List.of(ColorPalette.SNCF_BLACK));
+                System.out.println(e);
+                System.out.println(normalizedEdge);
+                System.out.println("colors"+colors);
+                if (colors.size() > 1) {
+                    // Combine colors if there are multiple
+                    return new java.awt.GradientPaint(0, 0, colors.get(0), 10, 0, colors.get(1), true);
+                } else {
+                    return colors.get(0);
+                }
             });
         }
     
@@ -77,6 +96,11 @@ public class GraphVisualizer {
 
         return vv;
     }
+
+    private static String normalizeEdge(String gare1, String gare2) {
+        return (gare1.compareTo(gare2) < 0) ? gare1 + " -> " + gare2 : gare2 + " -> " + gare1;
+    }
+    
 
     // Add interactive mouse controls
     private static void addMouseControls() {

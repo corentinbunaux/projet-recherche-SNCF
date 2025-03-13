@@ -65,7 +65,7 @@ public class ManchetteGenerator {
                             //System.out.println("Code lignes current station: " + code_ligne_Station+ "curent station: "+currentStation);
                             //System.out.println("Code lignes next station: " + code_ligne_nextStation + "next station: "+neighbor); //!outliers.contains(neighbor) &&
                             if (!allVisited.contains(neighbor) && !visited.contains(neighbor) && !Collections.disjoint(code_ligne_nextStation, code_ligne_Station) ) {
-                                System.out.println("visited: " + visited);
+                                //System.out.println("visited: " + visited);
                                 manchette.add(neighbor);
                                 visited.add(neighbor);
                                 allVisited.add(neighbor);

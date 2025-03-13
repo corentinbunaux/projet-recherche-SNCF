@@ -52,7 +52,7 @@ public class GUI {
 
     // FIXME : Pourquoi on génère des manchettes sur le réseau complet ???
     private static JScrollPane createScrollPane() {
-        return createScrollPaneWithManchettes(ManchetteGenerator.generateManchettes(railNetwork));
+        return createScrollPaneWithManchettes(ManchettesOptimized.generateManchettes(railNetwork));
     }
 
     // Method to create a JScrollPane with the given manchettes

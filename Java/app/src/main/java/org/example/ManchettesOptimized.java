@@ -55,15 +55,14 @@ public class ManchettesOptimized {
                         String nextStation = neighbors.iterator().next();
                         List<String> code_ligne_nextStation = RailNetwork.getCodeLignes(nextStation);
                         List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
-                        System.out.println("\nDebut de ligne");
+                        //System.out.println("\nDebut de ligne");
 
                         if (code_ligne_Station.size() == 1) {
                             ligne_reference = code_ligne_Station.get(0);
                         } else if (code_ligne_nextStation.size() == 1) {
                             ligne_reference = code_ligne_nextStation.get(0);
                         }
-                        System.out.println(
-                                "Première station: " + currentStation + " avec le code ligne: " + code_ligne_Station);
+                        //System.out.println("Première station: " + currentStation + " avec le code ligne: " + code_ligne_Station);
                         if (!visited.contains(nextStation) && ligne_reference != null
                                 && code_ligne_nextStation.contains(ligne_reference)) {
                             manchette.add(nextStation);
@@ -129,8 +128,8 @@ public class ManchettesOptimized {
                         // prolongement est disponible (prendre la plus grande)
                         if (!foundNewStation && !notyet) {
                             List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
-                            System.out.println("Recherche de queue avec Code ligne station: " + code_ligne_Station
-                                    + " current station:" + currentStation);
+                            // System.out.println("Recherche de queue avec Code ligne station: " + code_ligne_Station
+                            //         + " current station:" + currentStation);
                             int max = 0;
                             String new_ligne_reference = null;
                             Deque<String> queue_max = null;
@@ -141,11 +140,11 @@ public class ManchettesOptimized {
                                     if (option_code.equals(ligne_reference)) {
                                         queue = exploreStation(railNetwork, option_code, currentStation, allVisited,
                                                 visited, false);
-                                        System.out.println("Queue pour le même code: " + queue);
+                                        //System.out.println("Queue pour le même code: " + queue);
                                     } else if (!option_code.equals(ligne_reference)) {
                                         queue = exploreStation(railNetwork, option_code, currentStation, allVisited,
                                                 visited, true);
-                                        System.out.println("Queue: " + queue);
+                                        //System.out.println("Queue: " + queue);
                                     }
 
                                     String lastElement = queue.pollLast();
@@ -175,7 +174,6 @@ public class ManchettesOptimized {
                             }
 
                             if (max > 0) {
-                                System.out.println("in max>0");
                                 manchette.addAll(queue_max);
                                 for (String station : queue_max) {
                                     allVisited.add(station);
@@ -191,7 +189,7 @@ public class ManchettesOptimized {
                                 // System.out.println("Manchette: "+manchette);
                                 // System.out.println("Current station: "+currentStation);
                                 // System.out.println("Ligne reference: "+ligne_reference);
-                                System.out.println("Queue max: " + queue_max);
+                                //System.out.println("Queue max: " + queue_max);
 
                             } else {
                                 notyet = true;
@@ -281,7 +279,7 @@ public class ManchettesOptimized {
                     }
                 }
                 if (!foundOne) {
-                    queue.add("PRIORITE");
+                    //queue.add("PRIORITE");
                     end_line = true;
                 }
             }
@@ -322,8 +320,8 @@ public class ManchettesOptimized {
         List<String> outliers = new ArrayList<>();
 
         for (String station : railNetwork.getVertices()) {
-            System.out.print(station);
-            System.out.println(railNetwork.getNeighborCount(station));
+            //System.out.print(station);
+            //System.out.println(railNetwork.getNeighborCount(station));
             if (railNetwork.getNeighborCount(station) <= 1) {
                 outliers.add(station);
             }
@@ -349,10 +347,10 @@ public class ManchettesOptimized {
 
     // Affichage des manchettes
     public static void printManchettes(List<List<String>> manchettes) {
-        System.out.println("Number of manchettes: " + manchettes.size());
-        System.out.println("List :");
+        //System.out.println("Number of manchettes: " + manchettes.size());
+        //System.out.println("List :");
         for (List<String> manchette : manchettes) {
-            System.out.println(manchette);
+            //System.out.println(manchette);
             System.out.println();
         }
     }
