@@ -42,8 +42,7 @@ public class GUI {
         frame.setLayout(new BorderLayout());
         frame.setJMenuBar(menuBar()); // Add the menu bar
 
-        // FIXME 2 : once the function is updated, add a null argument to the function to display nothing in the tree in the first place
-        manchettePanel = createScrollPane(null);
+        manchettePanel = createScrollPane();
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, vv, manchettePanel);
         frame.add(splitPane, BorderLayout.CENTER);
 
@@ -51,37 +50,31 @@ public class GUI {
         frame.setVisible(true); // Display the frame
     }
 
-    //FIXME 1 : add a List<List<String>> argument (manchettes) to the function to display the manchettes in the tree, do not forget the null argument
-    private static JScrollPane createScrollPane(List<List<String>> manchettes) {
-        if (manchettes == null) {
-            return new JScrollPane();
-        }
-        JScrollPane scrollPane = new JScrollPane();
+    // FIXME : Pourquoi on génère des manchettes sur le réseau complet ???
+    private static JScrollPane createScrollPane() {
+        return createScrollPaneWithManchettes(ManchetteGenerator.generateManchettes(railNetwork));
+    }
 
+    // Method to create a JScrollPane with the given manchettes
+    private static JScrollPane createScrollPaneWithManchettes(List<List<String>> manchettes) {
+        JScrollPane scrollPane = new JScrollPane();
         JScrollBar verticalScrollBar = new JScrollBar(JScrollBar.VERTICAL);
         scrollPane.setVerticalScrollBar(verticalScrollBar);
 
         JTree tree = new JTree();
-
-        //Génération des manchettes du sous graphe
         javax.swing.tree.DefaultMutableTreeNode manchettes_node = new javax.swing.tree.DefaultMutableTreeNode("Manchettes");
+
         for (int i = 0; i < manchettes.size(); i++) {
-            javax.swing.tree.DefaultMutableTreeNode manchette = new javax.swing.tree.DefaultMutableTreeNode("Manchette " + (i+1));
+            javax.swing.tree.DefaultMutableTreeNode manchette = new javax.swing.tree.DefaultMutableTreeNode("Manchette " + (i + 1));
             for (int j = 0; j < manchettes.get(i).size(); j++) {
                 javax.swing.tree.DefaultMutableTreeNode gare = new javax.swing.tree.DefaultMutableTreeNode(manchettes.get(i).get(j));
                 manchette.add(gare);
             }
             manchettes_node.add(manchette);
         }
-        tree.setModel(new javax.swing.tree.DefaultTreeModel(manchettes_node));
 
-        // javax.swing.tree.DefaultMutableTreeNode manchette1 = new javax.swing.tree.DefaultMutableTreeNode("Manchette 1");
-        // javax.swing.tree.DefaultMutableTreeNode gare1 = new javax.swing.tree.DefaultMutableTreeNode("Gare 1");
-        // javax.swing.tree.DefaultMutableTreeNode gare2 = new javax.swing.tree.DefaultMutableTreeNode("Gare 2");
-        // manchette1.add(gare1);
-        // manchette1.add(gare2);
-        // tree.setModel(new javax.swing.tree.DefaultTreeModel(manchette1));
-        // tree.collapseRow(0); // Collapse the root node to hide all leaves by default
+        tree.setModel(new javax.swing.tree.DefaultTreeModel(manchettes_node));
+        tree.collapseRow(0); // Collapse the root node to hide all leaves by default
         scrollPane.setViewportView(tree);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         return scrollPane;
@@ -95,7 +88,7 @@ public class GUI {
         toggleButtons = new ArrayList<>();
         toggleButtons.add(toggleButton("Movement"));
         toggleButtons.add(toggleButton("Selection"));
-        //Default mode : Movement
+        // Default mode : Movement
         toggleButtons.get(0).setSelected(true);
 
         List<JButton> buttons = new ArrayList<>();
@@ -112,6 +105,7 @@ public class GUI {
         return menuBar;
     }
 
+    // Method to create a toggle button with the given title
     private static JToggleButton toggleButton(String title) {
         JToggleButton toggleButton = new JToggleButton(new javax.swing.ImageIcon("img/" + title + ".png"));
         toggleButton.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -125,6 +119,7 @@ public class GUI {
         return toggleButton;
     }
 
+    // Method to create a button with the given title
     private static JButton button(String title) {
         JButton button = new JButton(new javax.swing.ImageIcon("img/" + title + ".png"));
         button.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -138,6 +133,7 @@ public class GUI {
         return button;
     }
 
+    // Method to handle toggle button actions
     private static void handleToggleButton(String title) {
         switch (title) {
             case "Movement" ->
@@ -149,6 +145,7 @@ public class GUI {
         }
     }
 
+    // Method to handle button actions
     private static void handleButtons(String title) {
         switch (title) {
             case "Manchette" ->
@@ -160,6 +157,7 @@ public class GUI {
         }
     }
 
+    // Method to reset the UI
     private static void reset() {
         frame.getContentPane().remove(splitPane);
         GraphVisualizer.resetUI();
@@ -170,6 +168,7 @@ public class GUI {
         frame.repaint();
     }
 
+    // Method to reset toggle buttons
     private static void resetToggleButtons() {
         for (JToggleButton toggleButton : toggleButtons) {
             toggleButton.setSelected(false);
@@ -185,15 +184,16 @@ public class GUI {
 
     // Method to create a menu item with the given text
     private static JMenuItem menuItem(String text) {
-        JMenuItem menuItem = new JMenuItem(text);
-        return menuItem;
+        return new JMenuItem(text);
     }
 
+    // Method to update the Manchette UI
     private static void updateManchetteUI() {
         frame.getContentPane().remove(splitPane);
         Graph<String, String> subgraph = RailNetwork.subGraphListVerteces(GraphVisualizer.getStackedVertices(), railNetwork);
         List<List<String>> manchettes=ManchettesOptimized.generateManchettes(subgraph);
-        manchettePanel = createScrollPane(manchettes);
+        manchettePanel = createScrollPaneWithManchettes(manchettes);
+        
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, GraphVisualizer.Graph(subgraph, positions, manchettes), manchettePanel);
         GraphVisualizer.resetUI();
         frame.add(splitPane, BorderLayout.CENTER);
