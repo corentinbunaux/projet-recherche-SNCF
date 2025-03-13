@@ -53,8 +53,8 @@ public class ManchettesOptimized {
                     // Vérifier s'il n'y a qu'un seul voisin (début de ligne & fin de ligne)
                     if (neighbors.size() == 1) {
                         String nextStation = neighbors.iterator().next();
-                        List<String> code_ligne_nextStation = RailNetworkXML.getCodeLignes(nextStation);
-                        List<String> code_ligne_Station = RailNetworkXML.getCodeLignes(currentStation);
+                        List<String> code_ligne_nextStation = RailNetwork.getCodeLignes(nextStation);
+                        List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
                         System.out.println("\nDebut de ligne");
 
                         if (code_ligne_Station.size() == 1) {
@@ -81,7 +81,7 @@ public class ManchettesOptimized {
                         boolean notyet = false;
 
                         for (String neighbor : neighbors) {
-                            List<String> code_ligne_nextStation = RailNetworkXML.getCodeLignes(neighbor);
+                            List<String> code_ligne_nextStation = RailNetwork.getCodeLignes(neighbor);
                             // System.out.println("\n code_ligne_reference: "+ligne_reference);
                             // System.out.println("currrent station: "+currentStation+"
                             // codeligne"+code_ligne_Station);
@@ -105,7 +105,7 @@ public class ManchettesOptimized {
 
                         // if (!foundNewStation && !notyet) {
                         // for (String neighbor : neighbors) {
-                        // List<String> code_ligne_nextStation = RailNetworkXML.getCodeLignes(neighbor);
+                        // List<String> code_ligne_nextStation = RailNetwork.getCodeLignes(neighbor);
 
                         // // Si on trouve une station visitée qui est sur la même ligne, on continue
                         // if (!visited.contains(neighbor) && ligne_reference != null &&
@@ -128,7 +128,7 @@ public class ManchettesOptimized {
                         // Si on se trouve à une fin de ligne, on cherche si une nouvelle ligne en
                         // prolongement est disponible (prendre la plus grande)
                         if (!foundNewStation && !notyet) {
-                            List<String> code_ligne_Station = RailNetworkXML.getCodeLignes(currentStation);
+                            List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
                             System.out.println("Recherche de queue avec Code ligne station: " + code_ligne_Station
                                     + " current station:" + currentStation);
                             int max = 0;
@@ -235,8 +235,8 @@ public class ManchettesOptimized {
     // currentStation,String ligne_reference,Set<String> visited,Set<String>
     // allVisited,List<String> manchette){
     // String nextStation = neighbors.iterator().next();
-    // List<String> code_ligne_nextStation = RailNetworkXML.getCodeLignes(nextStation);
-    // List<String> code_ligne_Station = RailNetworkXML.getCodeLignes(currentStation);
+    // List<String> code_ligne_nextStation = RailNetwork.getCodeLignes(nextStation);
+    // List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
     // System.out.println("Début de ligne");
 
     // if (code_ligne_Station.size() == 1){
@@ -269,7 +269,7 @@ public class ManchettesOptimized {
                 Collection<String> neighbors = railNetwork.getNeighbors(curentStation);
 
                 for (String neighbor : neighbors) {
-                    List<String> code_ligne_neighbor = RailNetworkXML.getCodeLignes(neighbor);
+                    List<String> code_ligne_neighbor = RailNetwork.getCodeLignes(neighbor);
                     if (!allVisited.contains(neighbor) && !visited.contains(neighbor)
                             && code_ligne_neighbor.contains(option_code)) {
                         queue.add(neighbor);
@@ -293,7 +293,7 @@ public class ManchettesOptimized {
                 Collection<String> neighbors = railNetwork.getNeighbors(curentStation);
 
                 for (String neighbor : neighbors) {
-                    List<String> code_ligne_neighbor = RailNetworkXML.getCodeLignes(neighbor);
+                    List<String> code_ligne_neighbor = RailNetwork.getCodeLignes(neighbor);
                     if (!visited.contains(neighbor) && code_ligne_neighbor.contains(option_code)) {
                         queue.add(neighbor);
                         visited.add(neighbor);
@@ -304,7 +304,7 @@ public class ManchettesOptimized {
                     }
                 }
 
-                // if (RailNetworkXML.getCodeLignes(curentStation).size() > 1) {
+                // if (RailNetwork.getCodeLignes(curentStation).size() > 1) {
                 // end_line = true;
                 // }
 
@@ -334,7 +334,7 @@ public class ManchettesOptimized {
     private static Map<String, List<String>> lineList(Graph<String, String> railNetwork) {
         Map<String, List<String>> lines = new HashMap<>();
         for (String station : railNetwork.getVertices()) {
-            List<String> code_lignes = RailNetworkXML.getCodeLignes(station);
+            List<String> code_lignes = RailNetwork.getCodeLignes(station);
             for (String code_ligne : code_lignes) {
                 if (!lines.containsKey(code_ligne)) {
                     lines.put(code_ligne, new ArrayList<>());

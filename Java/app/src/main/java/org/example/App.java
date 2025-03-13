@@ -12,7 +12,7 @@ public class App {
     public static void main(String[] args) {
         FlatLightLaf.setup();
         Map<String, Point2D> positions = new HashMap<>();
-        Graph<String, String> railNetwork = RailNetworkXML.createRailNetwork(positions);
+        Graph<String, String> railNetwork = RailNetwork.createRailNetwork(positions);
         GUI.display(railNetwork, positions);
         // Flow.flow();
     }

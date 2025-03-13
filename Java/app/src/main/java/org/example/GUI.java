@@ -190,7 +190,7 @@ public class GUI {
     // Method to update the Manchette UI
     private static void updateManchetteUI() {
         frame.getContentPane().remove(splitPane);
-        Graph<String, String> subgraph = RailNetworkXML.subGraphListVerteces(GraphVisualizer.getStackedVertices(), railNetwork);
+        Graph<String, String> subgraph = RailNetwork.subGraphListVerteces(GraphVisualizer.getStackedVertices(), railNetwork);
         manchettePanel = createScrollPaneWithManchettes(ManchettesOptimized.generateManchettes(subgraph));
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, GraphVisualizer.Graph(subgraph, positions), manchettePanel);
         GraphVisualizer.resetUI();

@@ -40,8 +40,8 @@ public class TopologyBasedManchetteGenerator {
                     // Vérifier s'il n'y a qu'un seul voisin (début de ligne & fin de ligne)
                     if (neighbors.size() == 1) {
                         String nextStation = neighbors.iterator().next();
-                        List<String> code_ligne_nextStation = RailNetworkXML.getCodeLignes(nextStation);
-                        List<String> code_ligne_Station = RailNetworkXML.getCodeLignes(currentStation);
+                        List<String> code_ligne_nextStation = RailNetwork.getCodeLignes(nextStation);
+                        List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
                         System.out.println("\nDebut de ligne");
                         
 
@@ -68,8 +68,8 @@ public class TopologyBasedManchetteGenerator {
                         boolean notyet=false;
                         System.out.println("visité: "+visited);
                         for (String neighbor : neighbors) {
-                            List<String> code_ligne_nextStation = RailNetworkXML.getCodeLignes(neighbor);
-                            //List<String> code_ligne_Station = RailNetworkXML.getCodeLignes(currentStation);
+                            List<String> code_ligne_nextStation = RailNetwork.getCodeLignes(neighbor);
+                            //List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
                             
                             // System.out.println("\n code_ligne_reference: "+ligne_reference);
                             // System.out.println("currrent station: "+currentStation+" codeligne"+code_ligne_Station);
@@ -92,14 +92,14 @@ public class TopologyBasedManchetteGenerator {
                         // Si on se trouve à une fin de ligne, on cherche si une nouvelle ligne en prolongement est disponible (prendre la plus grande)
                         if (!foundNewStation && !notyet) {
                             System.out.println("Recherche de queue");
-                            List<String> code_ligne_Station = RailNetworkXML.getCodeLignes(currentStation);
+                            List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
                             int max=0;
                             String new_ligne_reference=null;
                             Deque<String> queue_max = new LinkedList<>();
                             for (String option_code : code_ligne_Station) {  
                                 int count = 0;
                                 for (String neighbor : neighbors) {
-                                    List<String> code_ligne_neighbor = RailNetworkXML.getCodeLignes(neighbor);
+                                    List<String> code_ligne_neighbor = RailNetwork.getCodeLignes(neighbor);
                                     if (!allVisited.contains(neighbor) && !visited.contains(neighbor) && code_ligne_neighbor.contains(option_code)) {
                                         count++;
                                     }
@@ -169,8 +169,8 @@ public class TopologyBasedManchetteGenerator {
 
     // private static void oneNeighbor(Collection<String> neighbors,String currentStation,String ligne_reference,Set<String> visited,Set<String> allVisited,List<String> manchette){
     //     String nextStation = neighbors.iterator().next();
-    //     List<String> code_ligne_nextStation = RailNetworkXML.getCodeLignes(nextStation);
-    //     List<String> code_ligne_Station = RailNetworkXML.getCodeLignes(currentStation);
+    //     List<String> code_ligne_nextStation = RailNetwork.getCodeLignes(nextStation);
+    //     List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
     //     System.out.println("Début de ligne");
 
     //     if (code_ligne_Station.size() == 1){
@@ -201,7 +201,7 @@ public class TopologyBasedManchetteGenerator {
             boolean forced_to_stop=false;
             Collection<String> neighbors = railNetwork.getNeighbors(curentStation);
             for (String neighbor : neighbors) {
-                List<String> code_ligne_neighbor = RailNetworkXML.getCodeLignes(neighbor);
+                List<String> code_ligne_neighbor = RailNetwork.getCodeLignes(neighbor);
                 if (!allVisited.contains(neighbor) && !visited.contains(neighbor)&&code_ligne_neighbor.contains(option_code)) {
                     System.out.println("Neighbor: "+neighbor);
                     queue.add(neighbor);
