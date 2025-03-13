@@ -26,7 +26,7 @@ public class ColorPalette {
         if (i >= 0 && i < colors.length) {
             return colors[i];
         } else {
-            throw new IllegalArgumentException("Index out of range");
+            return colors[i%colors.length];
         }
     }
 }
