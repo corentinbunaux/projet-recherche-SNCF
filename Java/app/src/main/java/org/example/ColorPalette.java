@@ -20,8 +20,8 @@ public class ColorPalette {
 
     public static java.awt.Color getColor(int i) {
         java.awt.Color[] colors = {
-            SNCF_RED, SNCF_PURPLE,  SNCF_YELLOW, SNCF_BROWN, SNCF_DARKBLUE, SNCF_LIGHTBLUE,
-            SNCF_ORANGE, SNCF_LIGHTGREEN, SNCF_PINK, SNCF_COOL_GRAY_1, SNCF_BLACK, 
+            SNCF_PURPLE,  SNCF_YELLOW, SNCF_BROWN, SNCF_DARKBLUE, SNCF_LIGHTBLUE,
+            SNCF_ORANGE, SNCF_LIGHTGREEN, SNCF_PINK, SNCF_COOL_GRAY_1, SNCF_BLACK, SNCF_RED, 
         };
         if (i >= 0 && i < colors.length) {
             return colors[i];
