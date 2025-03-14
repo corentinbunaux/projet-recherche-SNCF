@@ -22,6 +22,7 @@ public class ManchetteOptiFlow {
     
     private static List<List<String>> manchettes = new ArrayList<>();
     private static List<String> outliers = new ArrayList<>();
+    private static List<String> nodes = new ArrayList<>();
     private static Set<String> allVisited = new HashSet<>();
     private static Set<String> visitedOutliers = new HashSet<>();
     private static Map<String, List<String>> lines;
@@ -31,12 +32,18 @@ public class ManchetteOptiFlow {
     public static List<List<String>> generateManchettes(Graph<String, String> railNetwork, Map<String, Point2D> positions) {
         outliers = outliersList(railNetwork); 
         lines = lineList(railNetwork);
+        nodes=nodesList(railNetwork);
         //System.out.println("outliers"+ outliers);
 
         sortOutliers();
         //System.out.println(lines);
 
         List<List<String>> allPaths=generateAllPathsFromOutliers(railNetwork);
+        System.out.println("Number of manchettes: " + allPaths.size());
+        for (int i = 0; i < 10; i++) {
+            System.out.println(allPaths.get(i));
+            System.out.println("");
+        }
 
         
         for (int i = 0; i < allPaths.size(); i++) {
@@ -75,39 +82,15 @@ public class ManchetteOptiFlow {
         return manchettes;
     }
 
-    // private static void oneNeighbor(Collection<String> neighbors,String
-    // currentStation,String ligne_reference,Set<String> visited,Set<String>
-    // allVisited,List<String> manchette){
-    // String nextStation = neighbors.iterator().next();
-    // List<String> code_ligne_nextStation = RailNetwork.getCodeLignes(nextStation);
-    // List<String> code_ligne_Station = RailNetwork.getCodeLignes(currentStation);
-    // System.out.println("Début de ligne");
-
-    // if (code_ligne_Station.size() == 1){
-    // ligne_reference=code_ligne_Station.get(0);
-    // }
-    // else if (code_ligne_nextStation.size() == 1){
-    // ligne_reference=code_ligne_nextStation.get(0);
-    // }
-
-    // if (!visited.contains(nextStation) && ligne_reference != null &&
-    // code_ligne_nextStation.contains(ligne_reference)) {
-    // manchette.add(nextStation);
-    // visited.add(nextStation);
-    // currentStation = nextStation;
-    // allVisited.add(nextStation);
-    // }
-    // else {
-    // end = true; // Éviter une boucle infinie
-    // }
-    // }
-
     private static List<List<String>> generateAllPathsFromOutliers(Graph<String, String> railNetwork) {
+        List<String> outliersAndNodes = new ArrayList<>();
+        outliersAndNodes.addAll(outliers);
+        outliersAndNodes.addAll(nodes);
         List<List<String>> allPaths = new ArrayList<>();
-        for (int i = 0; i < outliers.size(); i++) {
-            for (int j = i + 1; j < outliers.size(); j++) { // J commence à i+1 pour éviter les doublons
-                String startOutlier = outliers.get(i);
-                String endOutlier = outliers.get(j);
+        for (int i = 0; i < outliersAndNodes.size(); i++) {
+            for (int j = i + 1; j < outliersAndNodes.size(); j++) { // J commence à i+1 pour éviter les doublons
+                String startOutlier = outliersAndNodes.get(i);
+                String endOutlier = outliersAndNodes.get(j);
                 if (!startOutlier.equals(endOutlier)) {
                     Set<String> visited = new HashSet<>();
                     List<String> currentPath = new ArrayList<>();
@@ -294,17 +277,23 @@ public class ManchetteOptiFlow {
     }
 
     private static List<String> outliersList(Graph<String, String> railNetwork) {
-        List<String> outliers = new ArrayList<>();
-
         for (String station : railNetwork.getVertices()) {
-            System.out.print(station);
-            System.out.println(railNetwork.getNeighborCount(station));
             if (railNetwork.getNeighborCount(station) <= 1) {
                 outliers.add(station);
             }
         }
         return outliers;
     }
+
+    public static List<String> nodesList(Graph<String, String> railNetwork) {
+        for (String vertex : railNetwork.getVertices()) {
+            if (railNetwork.getNeighborCount(vertex) >= 3) {
+                nodes.add(vertex);
+            }
+        }
+        return nodes;
+    }
+    
 
     private static Map<String, List<String>> lineList(Graph<String, String> railNetwork) {
         Map<String, List<String>> lines = new HashMap<>();
