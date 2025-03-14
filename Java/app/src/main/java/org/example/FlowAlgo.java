@@ -12,6 +12,11 @@
  *    qui sont des noeuds du réseau les plus visitées. Puis, on s'intéresse au flux entre ces stations et leurs voisines. On
  *    relie les manchettes qui ont le flux le plus maximal entre la gare noeudale et ses voisines. On réitère jusqu'à ce que les 
  *    manchettes initiales ne possèdent qu'à leurs bords les stations isolées (une seule station voisine). 
+ * 
+ * 
+ * PROBLEMES
+ * Station Gardanne pas référencée dans le flow.json (pour l'exemple), donc pas de données pour le nombre de visites de cette station...
+ * Récupérer l'affluence des gares autour qui ne sont pas un noeud ?? 
  */
 
 package org.example;
@@ -36,33 +41,57 @@ public class FlowAlgo {
                                                                   // on the rail network
         // System.out.println("Manchettes: " + manchettes);
 
-        manchettes = improveManchettesWithFlows(stationsInFlow, flowsWallet, manchettes, graph); // Imporve manchettes
-                                                                                                 // based on
-        // flows
+        manchettes = improveManchettesWithFlows(graph, manchettes, flowsWallet, stationsInFlow); // Imporve manchettes
+                                                                                                 // based on flows
         System.out.println("Number of manchettes after improvement : " + manchettes.size());
     }
 
-    private static List<List<String>> improveManchettesWithFlows(Map<String, List<String>> stationsInFlow,
-            List<String> flowsWallet, List<List<String>> manchettes, Graph<String, String> graph) {
+    public static List<String> getKnotsAsIC(Graph<String, String> graph) {
+        List<String> knots = new ArrayList<>();
+        for (String vertex : graph.getVertices()) {
+            if (graph.getIncidentEdges(vertex).size() > 2) {
+                knots.add(RailNetwork.getCodeImmu(vertex));
+            }
+        }
+        return knots;
+    }
 
+    private static List<List<String>> improveManchettesWithFlows(Graph<String, String> graph,
+            List<List<String>> manchettes, List<String> flowsWallet, Map<String, List<String>> stationsInFlow) {
+
+        List<String> knotsAsIC = getKnotsAsIC(graph);
+        for(String knot : knotsAsIC){
+            System.out.println(RailNetwork.getName(knot));
+        }
+        System.out.println();
+
+        List<String> mostVisitedknotsAsIC = getMostVisitedStations(getKnotsAsIC(graph), flowsWallet, stationsInFlow);
+        for(String knot : mostVisitedknotsAsIC){
+            System.out.println(RailNetwork.getName(knot));
+        }
         // Get the most visited stations
-        List<Map.Entry<String, Integer>> sortedStations = mostVisitedStations(flowsWallet, stationsInFlow, graph);
+        // List<Map.Entry<String, Integer>> sortedStations =
+        // mostVisitedStations(flowsWallet, stationsInFlow, graph);
         // for (Map.Entry<String, Integer> entry : sortedEntries) {
         // System.out.println(entry.getKey() + " : " + entry.getValue());
         // }
-        int i = 0;
-        int j = 1;
-        while (isThereAFlowBetweenTwoStations(sortedStations.get(i).getKey(), sortedStations.get(j).getKey(),
-                flowsWallet, stationsInFlow) == null) {
-            i++;
-            j++;
-        }
-        String flowId = isThereAFlowBetweenTwoStations(sortedStations.get(i).getKey(), sortedStations.get(j).getKey(),
-                flowsWallet, stationsInFlow);
-        System.out.println("Possibility of a flow between two of the most visited stations : ");
-        System.out.println(RailNetwork.getName(sortedStations.get(i).getKey()));
-        System.out.println(RailNetwork.getName(sortedStations.get(j).getKey()));
-        System.out.println("Flow ID : " + flowId);
+        // int i = 0;
+        // int j = 1;
+        // while (isThereAFlowBetweenTwoStations(sortedStations.get(i).getKey(),
+        // sortedStations.get(j).getKey(),
+        // flowsWallet, stationsInFlow) == null) {
+        // i++;
+        // j++;
+        // }
+        // String flowId =
+        // isThereAFlowBetweenTwoStations(sortedStations.get(i).getKey(),
+        // sortedStations.get(j).getKey(),
+        // flowsWallet, stationsInFlow);
+        // System.out.println("Possibility of a flow between two of the most visited
+        // stations : ");
+        // System.out.println(RailNetwork.getName(sortedStations.get(i).getKey()));
+        // System.out.println(RailNetwork.getName(sortedStations.get(j).getKey()));
+        // System.out.println("Flow ID : " + flowId);
         return manchettes;
     }
 
@@ -77,13 +106,13 @@ public class FlowAlgo {
         return null;
     }
 
-    private static List<Map.Entry<String, Integer>> mostVisitedStations(List<String> flowsWallet,
-            Map<String, List<String>> stationsInFlow, Graph<String, String> graph) {
+    private static List<String> getMostVisitedStations(List<String> stations, List<String> flowsWallet,
+            Map<String, List<String>> stationsInFlow) {
         Map<String, Integer> stationAffluence = new HashMap<>();
         for (String flowID : flowsWallet) {
             List<String> stationsIC = stationsInFlow.get(flowID);
             for (String stationIC : stationsIC) {
-                if (graph.containsVertex(RailNetwork.getName(stationIC))) {
+                if (stations.contains(stationIC)) {
                     if (stationAffluence.containsKey(stationIC)) {
                         stationAffluence.put(stationIC, stationAffluence.get(stationIC) + 1);
                     } else {
@@ -96,7 +125,11 @@ public class FlowAlgo {
         // Sort the map by values (affluence) in descending order
         List<Map.Entry<String, Integer>> sortedStations = new ArrayList<>(stationAffluence.entrySet());
         sortedStations.sort((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()));
-        return sortedStations;
+        List<String> sortedStationNames = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : sortedStations) {
+            sortedStationNames.add(entry.getKey());
+        }
+        return sortedStationNames;
     }
 
     // all the flows that go through at least one station of the graph
