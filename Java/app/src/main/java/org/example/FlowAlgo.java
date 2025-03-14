@@ -60,86 +60,153 @@ public class FlowAlgo {
     private static List<List<String>> improveManchettesWithFlows(Graph<String, String> graph,
             List<List<String>> manchettes, List<String> flowsWallet, Map<String, List<String>> stationsInFlow) {
 
+        // Get knots of the subgraph
         List<String> knotsAsIC = getKnotsAsIC(graph);
-        for(String knot : knotsAsIC){
-            System.out.println(RailNetwork.getName(knot) + " " + knot);
+
+        // Sort the knots by their affluence
+        List<String> mostVisitedknotsAsIC = getMostVisitedStations(knotsAsIC, flowsWallet, stationsInFlow, graph);
+
+        // Look for the manchettes that contain the most visited knot
+        List<List<String>> manchettesForKnot = getManchettesForKnot(mostVisitedknotsAsIC.get(0), manchettes);
+
+        // for each manchette that contains the most visited knot, get the flows that go
+        // through it
+        Map<List<String>, List<String>> flowsForManchetteMap = new HashMap<>();
+        for (List<String> manchette : manchettesForKnot) {
+            List<String> flowsForManchette = flowsForManchette(manchette, flowsWallet, stationsInFlow, knotsAsIC);
+            flowsForManchetteMap.put(manchette, flowsForManchette);
         }
+
+        // Sort the manchettes by the number of flows that go through them
+        List<Map.Entry<List<String>, List<String>>> sortedManchettes = new ArrayList<>(flowsForManchetteMap.entrySet());
+        sortedManchettes.sort((entry1, entry2) -> entry2.getValue().size() - entry1.getValue().size());
+
+        // Merge the two manchettes that have the most flows in common
+        List<String> manchette1 = sortedManchettes.get(0).getKey();
+        List<String> manchette2 = sortedManchettes.get(1).getKey();
+        List<String> mergedManchette = mergeManchettes(manchette1, manchette2, flowsWallet, stationsInFlow);
+
+        System.out.println("Manchette 1 : " + manchette1);
         System.out.println();
-
-        System.out.println(affluenceTotaleStationIC("751420", flowsWallet, stationsInFlow, graph));
-
-        List<String> mostVisitedknotsAsIC = getMostVisitedStations(getKnotsAsIC(graph), flowsWallet, stationsInFlow);
-        // for(String knot : mostVisitedknotsAsIC){
-        //     System.out.println(RailNetwork.getName(knot));
-        // }
+        System.out.println("Manchette 2 : " + manchette2);
+        System.out.println();
+        System.out.println("Merged manchette : " + mergedManchette);
 
         return manchettes;
     }
 
-    private static String isThereAFlowBetweenTwoStations(String station1, String station2, List<String> flowsWallet,
-            Map<String, List<String>> stationsInFlow) {
-        for (String flowID : flowsWallet) {
-            List<String> stationsIC = stationsInFlow.get(flowID);
-            if (stationsIC.contains(station1) && stationsIC.contains(station2)) {
-                return flowID;
-            }
-        }
-        return null;
+    private static List<String> mergeManchettes(List<String> manchette1, List<String> manchette2,
+            List<String> flowsWallet, Map<String, List<String>> stationsInFlow) {
+        List<String> mergedManchette = new ArrayList<>(manchette1);
+        mergedManchette.addAll(manchette2.subList(1, manchette2.size()));
+        return mergedManchette;
     }
 
-    private static int affluenceStationIC(String stationIC, List<String> flowsWallet, Map<String, List<String>> stationsInFlow){
-        int cpt=0;
+    private static List<List<String>> getManchettesForKnot(String knotIC, List<List<String>> manchettes) {
+        List<List<String>> manchettesForKnot = new ArrayList<>();
+        for (List<String> manchette : manchettes) {
+            if (manchette.contains(RailNetwork.getName(knotIC))) {
+                manchettesForKnot.add(manchette);
+            }
+        }
+        return manchettesForKnot;
+    }
+
+    private static List<String> flowsForManchette(List<String> stationsNames, List<String> flowsWallet,
+            Map<String, List<String>> stationsInFlow, List<String> knotAsIC) {
+        List<String> flowsForManchette = new ArrayList<>();
+
+        List<String> manchetteWithoutKnots = extractManchetteWithoutKnots(stationsNames, knotAsIC);
+
+        for (String flow : flowsWallet) {
+            List<String> stationsIC = stationsInFlow.get(flow);
+            for (String stationInManchette : manchetteWithoutKnots) {
+                if (stationsIC.contains(RailNetwork.getCodeImmu(stationInManchette))) {
+                    flowsForManchette.add(flow);
+                    break;
+                }
+            }
+        }
+
+        return flowsForManchette;
+    }
+
+    private static List<String> extractManchetteWithoutKnots(List<String> stationsNames, List<String> knotAsIC) {
+        List<String> manchette = new ArrayList<>(stationsNames);
+        if (knotAsIC.contains(RailNetwork.getCodeImmu(stationsNames.get(0)))) {
+            manchette = manchette.subList(1, manchette.size());
+        }
+
+        if (knotAsIC.contains(RailNetwork.getCodeImmu(stationsNames.get(stationsNames.size() - 1)))) {
+            manchette = manchette.subList(0, manchette.size() - 1);
+        }
+        return manchette;
+    }
+
+    // liste des flux pour une manchette
+    // manchettes les plus affluentes
+    // fusionne deux manchettes tout en gardant les manchettes initilialement
+    // générées
+
+    private static int affluenceStationIC(String stationIC, List<String> flowsWallet,
+            Map<String, List<String>> stationsInFlow) {
+        int cpt = 0;
         for (String flowID : flowsWallet) {
             List<String> listStationsIC = stationsInFlow.get(flowID);
-            if(listStationsIC.contains(stationIC)){
+            if (listStationsIC.contains(stationIC)) {
                 cpt++;
             }
         }
         return cpt;
     }
 
-    private static int affluenceTotaleStationIC(String stationIC, List<String> flowsWallet, Map<String, List<String>> stationsInFlow, Graph<String, String> graph) {
-        int affluence = affluenceStationIC(stationIC, flowsWallet, stationsInFlow); 
-        if(affluence > 0){
+    private static int affluenceTotaleStationIC(String stationIC, List<String> flowsWallet,
+            Map<String, List<String>> stationsInFlow, Graph<String, String> graph) {
+        int affluence = affluenceStationIC(stationIC, flowsWallet, stationsInFlow);
+        if (affluence > 0) {
             return affluence;
         }
-        
+
         Collection<String> neighbors = getNeighborsAsList(graph, RailNetwork.getName(stationIC));
         Collection<String> visited = new ArrayList<>();
         visited.add(RailNetwork.getName(stationIC));
 
-        while(neighbors.size() > 0){
+        while (neighbors.size() > 0) {
             String neighbor = neighbors.iterator().next();
             neighbors.remove(neighbor);
             visited.add(neighbor);
 
             // if the neighbor is a knot, we don't want to go through it
-            if(graph.getIncidentEdges(neighbor).size() > 2){
+            if (graph.getIncidentEdges(neighbor).size() > 2) {
                 continue;
             }
 
             int affluenceNeighbor = affluenceStationIC(RailNetwork.getCodeImmu(neighbor), flowsWallet, stationsInFlow);
-            if(affluenceNeighbor > 0){
+            if (affluenceNeighbor > 0) {
                 affluence += affluenceNeighbor;
             } else {
                 Collection<String> newNeighbors = getNeighborsAsList(graph, neighbor);
-                for(String newNeighbor : newNeighbors){
-                    if(!visited.contains(newNeighbor)){
+                for (String newNeighbor : newNeighbors) {
+                    if (!visited.contains(newNeighbor)) {
                         neighbors.add(newNeighbor);
                     }
                 }
             }
         }
-        if(affluence > 0){
+        if (affluence > 0) {
             return affluence;
         }
         return 1;
     }
 
-    private static List<String> getMostVisitedStations(List<String> stations, List<String> flowsWallet,
-            Map<String, List<String>> stationsInFlow) {
+    private static List<String> getMostVisitedStations(List<String> stationsIC, List<String> flowsWallet,
+            Map<String, List<String>> stationsInFlow, Graph<String, String> graph) {
         Map<String, Integer> stationAffluence = new HashMap<>();
 
+        for (String stationIC : stationsIC) {
+            int affluence = affluenceTotaleStationIC(stationIC, flowsWallet, stationsInFlow, graph);
+            stationAffluence.put(stationIC, affluence);
+        }
 
         // Sort the map by values (affluence) in descending order
         List<Map.Entry<String, Integer>> sortedStations = new ArrayList<>(stationAffluence.entrySet());
