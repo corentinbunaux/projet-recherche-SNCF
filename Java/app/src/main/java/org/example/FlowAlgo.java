@@ -23,6 +23,7 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
@@ -61,37 +62,17 @@ public class FlowAlgo {
 
         List<String> knotsAsIC = getKnotsAsIC(graph);
         for(String knot : knotsAsIC){
-            System.out.println(RailNetwork.getName(knot));
+            System.out.println(RailNetwork.getName(knot) + " " + knot);
         }
         System.out.println();
 
+        System.out.println(affluenceTotaleStationIC("751420", flowsWallet, stationsInFlow, graph));
+
         List<String> mostVisitedknotsAsIC = getMostVisitedStations(getKnotsAsIC(graph), flowsWallet, stationsInFlow);
-        for(String knot : mostVisitedknotsAsIC){
-            System.out.println(RailNetwork.getName(knot));
-        }
-        // Get the most visited stations
-        // List<Map.Entry<String, Integer>> sortedStations =
-        // mostVisitedStations(flowsWallet, stationsInFlow, graph);
-        // for (Map.Entry<String, Integer> entry : sortedEntries) {
-        // System.out.println(entry.getKey() + " : " + entry.getValue());
+        // for(String knot : mostVisitedknotsAsIC){
+        //     System.out.println(RailNetwork.getName(knot));
         // }
-        // int i = 0;
-        // int j = 1;
-        // while (isThereAFlowBetweenTwoStations(sortedStations.get(i).getKey(),
-        // sortedStations.get(j).getKey(),
-        // flowsWallet, stationsInFlow) == null) {
-        // i++;
-        // j++;
-        // }
-        // String flowId =
-        // isThereAFlowBetweenTwoStations(sortedStations.get(i).getKey(),
-        // sortedStations.get(j).getKey(),
-        // flowsWallet, stationsInFlow);
-        // System.out.println("Possibility of a flow between two of the most visited
-        // stations : ");
-        // System.out.println(RailNetwork.getName(sortedStations.get(i).getKey()));
-        // System.out.println(RailNetwork.getName(sortedStations.get(j).getKey()));
-        // System.out.println("Flow ID : " + flowId);
+
         return manchettes;
     }
 
@@ -106,21 +87,59 @@ public class FlowAlgo {
         return null;
     }
 
-    private static List<String> getMostVisitedStations(List<String> stations, List<String> flowsWallet,
-            Map<String, List<String>> stationsInFlow) {
-        Map<String, Integer> stationAffluence = new HashMap<>();
+    private static int affluenceStationIC(String stationIC, List<String> flowsWallet, Map<String, List<String>> stationsInFlow){
+        int cpt=0;
         for (String flowID : flowsWallet) {
-            List<String> stationsIC = stationsInFlow.get(flowID);
-            for (String stationIC : stationsIC) {
-                if (stations.contains(stationIC)) {
-                    if (stationAffluence.containsKey(stationIC)) {
-                        stationAffluence.put(stationIC, stationAffluence.get(stationIC) + 1);
-                    } else {
-                        stationAffluence.put(stationIC, 1);
+            List<String> listStationsIC = stationsInFlow.get(flowID);
+            if(listStationsIC.contains(stationIC)){
+                cpt++;
+            }
+        }
+        return cpt;
+    }
+
+    private static int affluenceTotaleStationIC(String stationIC, List<String> flowsWallet, Map<String, List<String>> stationsInFlow, Graph<String, String> graph) {
+        int affluence = affluenceStationIC(stationIC, flowsWallet, stationsInFlow); 
+        if(affluence > 0){
+            return affluence;
+        }
+        
+        Collection<String> neighbors = getNeighborsAsList(graph, RailNetwork.getName(stationIC));
+        Collection<String> visited = new ArrayList<>();
+        visited.add(RailNetwork.getName(stationIC));
+
+        while(neighbors.size() > 0){
+            String neighbor = neighbors.iterator().next();
+            neighbors.remove(neighbor);
+            visited.add(neighbor);
+
+            // if the neighbor is a knot, we don't want to go through it
+            if(graph.getIncidentEdges(neighbor).size() > 2){
+                continue;
+            }
+
+            int affluenceNeighbor = affluenceStationIC(RailNetwork.getCodeImmu(neighbor), flowsWallet, stationsInFlow);
+            if(affluenceNeighbor > 0){
+                affluence += affluenceNeighbor;
+            } else {
+                Collection<String> newNeighbors = getNeighborsAsList(graph, neighbor);
+                for(String newNeighbor : newNeighbors){
+                    if(!visited.contains(newNeighbor)){
+                        neighbors.add(newNeighbor);
                     }
                 }
             }
         }
+        if(affluence > 0){
+            return affluence;
+        }
+        return 1;
+    }
+
+    private static List<String> getMostVisitedStations(List<String> stations, List<String> flowsWallet,
+            Map<String, List<String>> stationsInFlow) {
+        Map<String, Integer> stationAffluence = new HashMap<>();
+
 
         // Sort the map by values (affluence) in descending order
         List<Map.Entry<String, Integer>> sortedStations = new ArrayList<>(stationAffluence.entrySet());
@@ -221,9 +240,12 @@ public class FlowAlgo {
     private static List<String> getNeighborsAsList(Graph<String, String> graph, String station) {
         List<String> neighbors = new ArrayList<>();
         for (String edge : graph.getIncidentEdges(station)) {
-            neighbors.addAll(graph.getIncidentVertices(edge));
+            for (String vertex : graph.getIncidentVertices(edge)) {
+                if (!vertex.equals(station)) {
+                    neighbors.add(vertex);
+                }
+            }
         }
-        neighbors.remove(station); // Remove the original station from the neighbors list
         return neighbors;
     }
 }
