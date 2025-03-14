@@ -167,8 +167,8 @@ public class RailNetwork {
     private static Map<String, List<String>> linkImmuLine;
     private static Map<String, Station> stations;
     private static Map<String, String> stationICToName = new HashMap<>();
-    private static NodeList stationNodeList ;
-    private static NodeList linksNodeList ;
+    private static NodeList stationNodeList;
+    private static NodeList linksNodeList;
 
     // Calculate min and max values for x and y coordinates
     private static double minX = Double.MAX_VALUE, maxX = Double.MIN_VALUE;
@@ -377,7 +377,7 @@ public class RailNetwork {
         return railNetwork;
     }
 
-    private static void processStationNodeList( Map<String, Station> stations) {
+    private static void processStationNodeList(Map<String, Station> stations) {
         for (int i = 0; i < stationNodeList.getLength(); i++) {
             Element station = (Element) stationNodeList.item(i);
             String name = station.getAttribute("Libelle");
@@ -399,7 +399,7 @@ public class RailNetwork {
         }
     }
 
-    private static void processLinksNodeList( Map<String, List<String>> linkImmuLine) {
+    private static void processLinksNodeList(Map<String, List<String>> linkImmuLine) {
         for (int i = 0; i < linksNodeList.getLength(); i++) {
             Element link = (Element) linksNodeList.item(i);
             String codeLigne = link.getAttribute("CodeLigne");
@@ -596,7 +596,7 @@ public class RailNetwork {
         return border;
     }
 
-    private static Point2D convertToWGS84(Map<String, Point2D> positions, String startVertex) {
+    public static Point2D convertToWGS84(Map<String, Point2D> positions, String startVertex) {
         Point2D point = positions.get(startVertex);
         double normX = point.getX() / Window.height * (maxX - minX) + minX;
         double normY = (Window.height - point.getY()) / Window.height * (maxY - minY) + minY;
@@ -639,52 +639,13 @@ public class RailNetwork {
         return subGraph;
     }
 
-    // ---------USE linkImmuLine.get(codeImmu)
-    // INSTEAD--------------------------------
-
-    // public static List<String> getCodeLignes(String station){ 
-
-    //     String codeImmu= getCodeImmuJson(station);
-    //     if (codeImmu.equals("")){
-    //         codeImmu=getCodeImmuXML(station);
-    //     }
-
-    //     //linkImmuLine.get()
-        
-    //     if (codeImmu.equals("error")) {
-    //         return Arrays.asList("error");
-    //     }
-    //     return linkImmuLine.get(codeImmu);
-    // }
-
-    public static String getCodeImmuJson(String stationName) {
-        for (Gare_json Gare_json : gares) {
-            if (Gare_json.libelle.equals(stationName)) {
-                return Gare_json.code_uic.substring(2);
-            }
-        }
-        return "";
-    }
-
-    public static String getCodeImmuXML(String stationName) {
-        for (int i = 0; i < stationNodeList.getLength(); i++) {
-            Element link = (Element) stationNodeList.item(i);
-            if (link.getAttribute("Libelle").equals(stationName)) {
-            return link.getAttribute("CodeImmuable");
-            }
-        }
-        return "error";
+    public static List<String> getCodeLignes(String station) {
+        return linkImmuLine.get(getCodeImmu(station));
     }
 
     public static String getName(String stationIC) {
         return stationICToName.getOrDefault(stationIC, "NoStationFound");
     }
-
-    public static List<String> getCodeLignes(String station) {
-        return linkImmuLine.get(getCodeImmu(station));
-    }
-
-
 
     public static String getCodeImmu(String station) {
         for (Station s : stations.values()) {
@@ -695,5 +656,5 @@ public class RailNetwork {
         return "";
     }
 
-    // getCodeLignes(String station) -> linkImmuLine.get(getCodeImmu(station))
+    
 }

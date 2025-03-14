@@ -151,9 +151,68 @@ public class Flow {
             stationsInFlow.put(flow.varInfo.numero_tribu, stations);
         }
         return stationsInFlow;
-    }
+        }
 
-    private static List<flows_json> loadFlows(String filePath) throws IOException {
+        public static int affluenceStation(String stationName, String numero_tribu) {
+            int count = 0;
+            String code_imu=RailNetwork.getCodeImmu(stationName);
+            for (flows_json flow : flows) {
+                if (flow.varInfo.numero_tribu.equals(numero_tribu)) {
+                    for (Point point : flow.points) {
+                        if (point.CI.equals(code_imu)) {
+                        count++;
+                        }
+                    }
+                }
+            }
+            if (count == 0) {
+                
+                // for (flows_json flow : flows) {
+                //     if (flow.varInfo.numero_tribu.equals(numero_tribu)) {
+                //         for (int i = 0; i < flow.points.size(); i++) {
+                //             if (flow.points.get(i).CI.equals(code_imu)) {
+                //                 if (i > 0) {
+                //                     count += affluenceStation(flow.points.get(i - 1).libelle, numero_tribu);
+                //                 }
+                //                 if (i < flow.points.size() - 1) {
+                //                     count += affluenceStation(flow.points.get(i + 1).libelle, numero_tribu);
+                //                 }
+                //             }
+                //         }
+                //     }
+                // }
+            }
+            return count;
+        }
+
+        public static int affluenceTotaleStation(String stationName) {
+            int count = 0;
+            String code_imu = RailNetwork.getCodeImmu(stationName);
+            for (flows_json flow : flows) {
+                for (Point point : flow.points) {
+                    if (point.CI.equals(code_imu)) {
+                        count++;
+                    }
+                }
+            }
+            if (count == 0) {
+                for (flows_json flow : flows) {
+                    for (int i = 0; i < flow.points.size(); i++) {
+                        if (flow.points.get(i).CI.equals(code_imu)) {
+                            if (i > 0) {
+                                count += affluenceTotaleStation(flow.points.get(i - 1).libelle);
+                            }
+                            if (i < flow.points.size() - 1) {
+                                count += affluenceTotaleStation(flow.points.get(i + 1).libelle);
+                            }
+                        }
+                    }
+                }
+            }
+            return count;
+        }
+
+        private static List<flows_json> loadFlows(String filePath) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(new File(filePath), new TypeReference<List<flows_json>>() {
         });
