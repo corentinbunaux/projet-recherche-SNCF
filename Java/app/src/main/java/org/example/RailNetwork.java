@@ -642,20 +642,20 @@ public class RailNetwork {
     // ---------USE linkImmuLine.get(codeImmu)
     // INSTEAD--------------------------------
 
-    public static List<String> getCodeLignes(String station){ 
+    // public static List<String> getCodeLignes(String station){ 
 
-        String codeImmu= getCodeImmuJson(station);
-        if (codeImmu.equals("")){
-            codeImmu=getCodeImmuXML(station);
-        }
+    //     String codeImmu= getCodeImmuJson(station);
+    //     if (codeImmu.equals("")){
+    //         codeImmu=getCodeImmuXML(station);
+    //     }
 
-        //linkImmuLine.get()
+    //     //linkImmuLine.get()
         
-        if (codeImmu.equals("error")) {
-            return Arrays.asList("error");
-        }
-        return linkImmuLine.get(codeImmu);
-    }
+    //     if (codeImmu.equals("error")) {
+    //         return Arrays.asList("error");
+    //     }
+    //     return linkImmuLine.get(codeImmu);
+    // }
 
     public static String getCodeImmuJson(String stationName) {
         for (Gare_json Gare_json : gares) {
@@ -678,6 +678,21 @@ public class RailNetwork {
 
     public static String getName(String stationIC) {
         return stationICToName.getOrDefault(stationIC, "NoStationFound");
+    }
+
+    public static List<String> getCodeLignes(String station) {
+        return linkImmuLine.get(getCodeImmu(station));
+    }
+
+
+
+    public static String getCodeImmu(String station) {
+        for (Station s : stations.values()) {
+            if (s.name.equals(station)) {
+                return s.codeImmu;
+            }
+        }
+        return "";
     }
 
     // getCodeLignes(String station) -> linkImmuLine.get(getCodeImmu(station))

@@ -298,8 +298,6 @@ public class ManchetteOptiFlow {
             }
         }
 
-        System.out.println("Outlier to Manchettes Map: " + outlierToManchettesMap);
-
         return outlierToManchettesMap;
     }
     
