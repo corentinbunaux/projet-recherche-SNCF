@@ -58,6 +58,9 @@
  * 3. Après avoir fusionné des manchettes selon les flux, il reste à réduire leur nombre.
  *    On fusionne les manchettes qui ont une partie commune, autre que leur noeud.
  *    Exemple : A-B-C et B-C-D sont fusionnées en A-B-C-D, mais A-B-C et C-D ne sont pas fusionnées.
+ *    Lorsqu'on a fusionné toutes les manchettes possibles, on obtient un ensemble de manchettes plus réduit, représentant
+ *    les flux de trains sur le réseau.
+ *    La dernière étape consiste à fusionner les manchettes jusqu'à obtenir une manchette dont les bords sont des gares isolées.
  */
 
 package org.example;
@@ -69,6 +72,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import org.checkerframework.checker.units.qual.kN;
+import org.checkerframework.checker.units.qual.m;
+
 import java.util.HashMap;
 
 import edu.uci.ics.jung.graph.Graph;
@@ -78,6 +84,7 @@ public class FlowAlgo {
     public static void manchetteBasedFlow(Graph<String, String> graph) {
         // List of stations for each flow
         Map<String, List<String>> stationsInFlow = Flow.getStationsInFlow();
+        List<String> knotsAsIC = getKnotsAsIC(graph);
 
         // List of flows that go through at least one station of the graph
         List<String> flowsWallet = flowsWallet(graph, stationsInFlow);
@@ -87,12 +94,12 @@ public class FlowAlgo {
 
         // Case where two knots are neighbors, therefore there is no manchette between
         // them, need to create one
-        for (String knot : getKnotsAsIC(graph)) {
+        for (String knot : knotsAsIC) {
             addMissingManchettesForNeighboringKnots(graph, RailNetwork.getName(knot), initialManchettes);
         }
 
         // Sort the knots by their affluence
-        List<String> mostVisitedknotsAsIC = getMostVisitedStations(getKnotsAsIC(graph), flowsWallet, stationsInFlow,
+        List<String> mostVisitedknotsAsIC = getMostVisitedStations(knotsAsIC, flowsWallet, stationsInFlow,
                 graph);
 
         // Improve the manchettes based on the flows
@@ -114,13 +121,96 @@ public class FlowAlgo {
         // common part to reduce their number
         mergeManchettesWithCommonPart(graph, improvedManchettes);
 
+        // Finally, we merge the manchettes that have common knots
+        mergeManchettesWithCommonKnots(improvedManchettes, graph, knotsAsIC, stationsInFlow);
+
         System.out.println("Manchettes after improvement : " + improvedManchettes.size());
+    }
+
+    private static void mergeManchettesWithCommonKnots(List<List<String>> improvedManchettes,
+            Graph<String, String> graph, List<String> knotsAsIC, Map<String, List<String>> stationsInFlow) {
+        // List of manchettes that are not completed
+        List<List<String>> manchettesNotCompleted = getNotCompletedManchettes(improvedManchettes, knotsAsIC);
+
+        while (manchettesNotCompleted.size() > 0) {
+            // Example of manchette that can be merged with another
+            List<String> manchetteSelected = manchettesNotCompleted.get(0);
+
+            // List of manchettes that can be merged with the selected manchette
+            List<List<String>> manchettesToMerge = getManchettesNeighborsToSelectedManchette(manchettesNotCompleted,
+                    manchetteSelected, graph);
+
+            List<List<String>> mergedManchette = mergeManchettes(manchettesToMerge, graph);
+            System.out.println(manchettesToMerge);
+            System.out.println();
+            System.out.println();
+            System.out.println();
+            System.out.println(mergedManchette);
+
+            for(List<String> manchette : mergedManchette){
+                completeMergeManchettes(manchetteSelected, manchette, improvedManchettes, knotsAsIC, stationsInFlow);
+            }
+
+
+            // update the value of manchettesNotCompleted
+            manchettesNotCompleted = getNotCompletedManchettes(improvedManchettes, knotsAsIC);
+            System.out.println(manchettesNotCompleted);
+        }
+    }
+
+    private static List<List<String>> mergeManchettes(List<List<String>> manchettes, Graph<String, String> graph) {
+        List<List<String>> mergedManchettes = new ArrayList<>(manchettes);
+        boolean merged;
+    
+        do {
+            merged = false;
+            
+            for (int i = 0; i < mergedManchettes.size(); i++) {
+                for (int j = i + 1; j < mergedManchettes.size(); j++) {
+                    List<String> manchetteA = mergedManchettes.get(i);
+                    List<String> manchetteB = mergedManchettes.get(j);
+                    
+                    // Vérifier si les extrémités peuvent être connectées
+                    if (manchetteA.get(manchetteA.size() - 1).equals(manchetteB.get(0))) {
+                        manchetteA.addAll(manchetteB.subList(1, manchetteB.size()));
+                        mergedManchettes.remove(j);
+                        merged = true;
+                        break;
+                    } else if (manchetteB.get(manchetteB.size() - 1).equals(manchetteA.get(0))) {
+                        manchetteB.addAll(manchetteA.subList(1, manchetteA.size()));
+                        mergedManchettes.remove(i);
+                        merged = true;
+                        break;
+                    }
+                }
+                if (merged) break;
+            }
+        } while (merged);
+        
+        return mergedManchettes;
     }
 
     private static void mergeManchettesWithCommonPart(Graph<String, String> graph,
             List<List<String>> improvedManchettes) {
-        List<List<String>> manchettesNotCompleted = new ArrayList<>();
         List<String> knotsAsIC = getKnotsAsIC(graph);
+        List<List<String>> manchettesNotCompleted = getNotCompletedManchettes(improvedManchettes, knotsAsIC);
+        // For manchettes not completed : try to merge them with manchettes that have
+        // the same borders (knots)
+        for (List<String> manchette : manchettesNotCompleted) {
+            List<List<String>> manchettesWithCommonParts = getManchettesWithCommonPartsKnotsExcluded(
+                    manchettesNotCompleted, manchette,
+                    graph);
+            if (manchettesWithCommonParts.size() > 0) {
+                System.out.println("Manchettes with common parts : " + manchettesWithCommonParts.size());
+                // FIXME : select the two manchettes with the most common parts to merge them
+                // together
+            }
+        }
+    }
+
+    private static List<List<String>> getNotCompletedManchettes(List<List<String>> improvedManchettes,
+            List<String> knotsAsIC) {
+        List<List<String>> manchettesNotCompleted = new ArrayList<>();
         for (int i = 0; i < improvedManchettes.size(); i++) {
             List<String> manchetteSelected = improvedManchettes.get(i);
             // Identify the completed manchettes : theirs borders are outliers, so they
@@ -129,26 +219,15 @@ public class FlowAlgo {
                 manchettesNotCompleted.add(manchetteSelected);
             }
         }
-
-        // For manchettes not completed : try to merge them with manchettes that have
-        // the same borders (knots)
-        // Need to make a choice with which manchette the main one will be merged :
-        // length of the final manchette ?
-
-        List<String> manchetteExample = manchettesNotCompleted.get(1);
-        System.out.println(manchetteExample);
-        List<List<String>> manchettesWithCommonParts = getManchettesWithCommonPartsKnotsExcluded(
-                manchettesNotCompleted, manchetteExample,
-                graph);
-        System.out.println("Manchettes with common parts : " + manchettesWithCommonParts.size());
-        List<List<String>> manchettesToMerge = getManchettesNeighborsToSelectedManchette(manchettesNotCompleted,
-                manchetteExample, graph);
-        System.out.println("Manchettes to merge : " + manchettesToMerge.size());
+        return manchettesNotCompleted;
     }
 
     private static boolean isManchetteCompleted(List<String> manchette, List<String> knotsAsIC) {
-        return !knotsAsIC.contains(RailNetwork.getCodeImmu(manchette.get(0))) && !knotsAsIC
-                .contains(RailNetwork.getCodeImmu(manchette.get(manchette.size() - 1)));
+        if (manchette.isEmpty()) {
+            return false;
+        }
+        return !knotsAsIC.contains(RailNetwork.getCodeImmu(manchette.get(0))) && 
+               !knotsAsIC.contains(RailNetwork.getCodeImmu(manchette.get(manchette.size() - 1)));
     }
 
     private static List<List<String>> getManchettesNeighborsToSelectedManchette(
@@ -158,14 +237,15 @@ public class FlowAlgo {
         for (List<String> manchetteToCompare : manchettesNotCompleted) {
             // if the manchette to compare has a common border (knot) with the manchette
             // selected
-            if (manchetteToCompare.equals(manchette)) {
+            if (manchetteToCompare.equals(manchette) || manchetteToCompare.isEmpty() || manchette.isEmpty()) {
                 continue;
             }
-            boolean condition = manchetteToCompare.get(0).equals(manchette.get(0))
-                    || manchetteToCompare.get(0).equals(manchette.get(manchette.size() - 1))
-                    || manchetteToCompare.get(manchetteToCompare.size() - 1).equals(manchette.get(0))
-                    || manchetteToCompare.get(manchetteToCompare.size() - 1)
-                            .equals(manchette.get(manchette.size() - 1));
+            boolean condition = (manchetteToCompare.size() > 0 && manchette.size() > 0) && 
+                                (manchetteToCompare.get(0).equals(manchette.get(0))
+                                || manchetteToCompare.get(0).equals(manchette.get(manchette.size() - 1))
+                                || manchetteToCompare.get(manchetteToCompare.size() - 1).equals(manchette.get(0))
+                                || manchetteToCompare.get(manchetteToCompare.size() - 1)
+                                        .equals(manchette.get(manchette.size() - 1)));
             if (condition) {
                 manchettesNeighbors.add(manchetteToCompare);
             }
