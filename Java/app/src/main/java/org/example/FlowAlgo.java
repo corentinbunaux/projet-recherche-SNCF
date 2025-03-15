@@ -138,26 +138,14 @@ public class FlowAlgo {
             }
             // Check if the manchettes have a common part except for the knots
             List<String> knotsAsIC = getKnotsAsIC(graph);
-            boolean hasCommonPart = hasCommonPart(manchette, givenManchette, knotsAsIC);
-            // System.out.println("Manchette " + manchette + " has common part with " +
-            // givenManchette + " : "
-            // + hasCommonPart);
-            // System.out.println();
+            for (String station : manchette) {
+                if (givenManchette.contains(station) && !knotsAsIC.contains(RailNetwork.getCodeImmu(station))) {
+                    manchettesWithCommonParts.add(manchette);
+                    break;
+                }
+            }
         }
         return manchettesWithCommonParts;
-    }
-
-    private static boolean hasCommonPart(List<String> manchette, List<String> givenManchette, List<String> knotsAsIC) {
-        // Get the list of stations in common between two manchettes, excluding the
-        // knots
-        List<String> commonStations = new ArrayList<>(manchette);
-        commonStations.retainAll(givenManchette);
-        commonStations.removeAll(knotsAsIC);
-
-        if (!commonStations.isEmpty()) {
-            return true;
-        }
-        return false;
     }
 
     public static List<String> getKnotsAsIC(Graph<String, String> graph) {
@@ -266,8 +254,8 @@ public class FlowAlgo {
         improvedManchettes.remove(manchette1);
         improvedManchettes.remove(manchette2);
         improvedManchettes.add(mergedManchette);
-        System.out.println("Merged manchettes " + manchette1 + " and " + manchette2 +
-                " to get " + mergedManchette);
+        // System.out.println("Merged manchettes " + manchette1 + " and " + manchette2 +
+        //         " to get " + mergedManchette);
     }
 
     private static List<String> getManchetteWithMostFlowsInCommon(List<List<String>> manchettesForKnot,
