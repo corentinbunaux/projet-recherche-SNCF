@@ -13,14 +13,31 @@
  *    plus affluente et ses voisines (voir schéma). On identifie quelle gare voisine possède le flux le plus maximal avec la station
  *    noeudale (exemple : station C). On identifie la manchette qui contient ces deux stations comme la manchette principale à fusionner.
  *    On regarde ensuite parmi les manchettes restantes (A-B, B-D, B-E) celle qui a le plus de flux en commun avec la manchette principale
- *    (B-C). On fusionne les deux manchettes pour obtenir une manchette unique.
+ *    (B-C). On fusionne les deux manchettes pour obtenir une manchette unique. 
+ *    
+ *    NOTE : la manchette principale est extraite des manchettes restantes à traiter. En revanche, les manchettes restantes ne sont pas
+ *    sont issues de l'ensemble des manchettes de base. 
+ *  
+ *    EXEMPLE :
+ *    Lors de la première itération, B-D est la manchette principale (par exemple), fusionnée avec A-B, la manchette fusionnée sera
+ *    A-B-D.
+ *    La liste des manchettes devient alors : [A-B-D, B-C, B-E].
+ *    Puis, lors de la seconde itération, on regarde parmi les manchettes restantes (B-E et B-C) pour la séléction de la 
+ *    manchette principale. Prenons B-E. Pour séléctionner la manchette avec laquelle B-E a le plus de flux en commun, on regarde
+ *    toutes les manchettes (A-B, B-D, B-C) autres que B-E. Une solution peut être de fusionner B-E avec B-C pour obtenir E-B-C, mais
+ *    il est tout a fait possible de fusionner B-E avec B-D pour obtenir B-D-E, si B-E et B-D partagent plus de flux en commun que B-E et 
+ *    B-C. Dans ce second cas, il n'y a pas de réduction du nombre de manchettes, mais simplement amélioration de leur représentation. 
+ *    La minimmisation du nombre de manchettes se fera par la suite.
  * 
  *                  D
  *                  |
  *    A ----------- B ----------- C
  *                  |
  *                  E
- *             
+ * 
+ * 
+ *    On applique cet algorithme sur chaque noeud du réseau, de sorte a former des manchettes plus grandes, représentant les flux
+ *    de trains au niveau des noeuds (qui sont les points les plus affluents du réseau).
  * 
  *    PROBLEMES RENCONTRES : 
  *    - Certains flux manquent entre les stations voisines. La manchette B-E existe sur le réseau, mais nous n'avons pas de flux la 
@@ -28,12 +45,19 @@
  *    - Initialement, les manchettes générées ne reposent que sur les lignes droites du réseau, en ommettant les noeuds voisins.
  *      Il a fallu ajouter des manchettes pour décrire ces liens manquants, à l'extérieur de la phase de génération de manchettes, 
  *      lors de la récupération des manchettes pour un noeud (voir la fonction addMissingManchettesForNeighboringKnots).
+ *      Exemple : la manchette B-C est ajoutée à la liste des manchettes car B et C sont voisins, mais la manchette n'est pas générée
+ *      lors de la phase de génération de manchettes (aucune gare de passage entre les deux).
  * 
- * 3. Il reste à utiliser la génération de manchettes améliorées sur l'ensemble du graphe, de manière récursive, jusqu'à ce que
- *    toutes les manchettes soient fusionnées (extrémités des manchettes = outliers).
- *    Fusion des manchettes sur le même noeud avant passage au neoud nuivant ?
+ *                      |             | 
+ *                      D             G
+ *                      |             |  
+ *    --- A ----------- B ----------- C ------- F -----
+ *                      |
+ *                      E
  * 
- *    NOTE : garder en mémoire les manchettes avant fusion pour pouvoir les réutiliser.
+ * 3. Après avoir fusionné des manchettes selon les flux, il reste à réduire leur nombre.
+ *    On fusionne les manchettes qui ont une partie commune.
+ *    Exemple : A-B-C et B-C-D sont fusionnées en A-B-C-D.
  */
 
 package org.example;
