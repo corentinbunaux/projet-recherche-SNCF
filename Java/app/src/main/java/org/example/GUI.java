@@ -42,7 +42,7 @@ public class GUI {
         frame.setLayout(new BorderLayout());
         frame.setJMenuBar(menuBar()); // Add the menu bar
 
-        manchettePanel = createScrollPane();
+        manchettePanel = createScrollPane(null);
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, vv, manchettePanel);
         frame.add(splitPane, BorderLayout.CENTER);
 
@@ -50,14 +50,16 @@ public class GUI {
         frame.setVisible(true); // Display the frame
     }
 
-    // FIXME : Pourquoi on génère des manchettes sur le réseau complet ???
-    private static JScrollPane createScrollPane() {
-        return createScrollPaneWithManchettes(ManchettesOptimized.generateManchettes(railNetwork));
+    private static JScrollPane createScrollPane(Graph<String, String> railNetwork) {
+        return createScrollPaneWithManchettes(ManchetteGenerator.generateManchettes(railNetwork));
     }
 
     // Method to create a JScrollPane with the given manchettes
     private static JScrollPane createScrollPaneWithManchettes(List<List<String>> manchettes) {
         JScrollPane scrollPane = new JScrollPane();
+        if(manchettes == null) {
+            return scrollPane;
+        }
         JScrollBar verticalScrollBar = new JScrollBar(JScrollBar.VERTICAL);
         scrollPane.setVerticalScrollBar(verticalScrollBar);
 
@@ -191,15 +193,11 @@ public class GUI {
     private static void updateManchetteUI() {
         frame.getContentPane().remove(splitPane);
         Graph<String, String> subgraph = RailNetwork.subGraphListVerteces(GraphVisualizer.getStackedVertices(), railNetwork);
-        List<List<String>> manchettes=ManchettesOptimized.generateManchettes(subgraph);
-        manchettePanel = createScrollPaneWithManchettes(manchettes);
-        
-        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, GraphVisualizer.Graph(subgraph, positions, manchettes), manchettePanel);
+        manchettePanel = createScrollPane(subgraph);
+        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, GraphVisualizer.Graph(subgraph, positions, ManchetteGenerator.generateManchettes(railNetwork)), manchettePanel);
         GraphVisualizer.resetUI();
         frame.add(splitPane, BorderLayout.CENTER);
         frame.revalidate();
         frame.repaint();
-    }
-
-    
+    }    
 }

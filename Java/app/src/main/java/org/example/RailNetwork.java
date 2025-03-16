@@ -201,6 +201,7 @@ public class RailNetwork {
     private static List<Gare_json> gares;
     private static Map<String, List<String>> linkImmuLine;
     private static Map<String, Station> stations;
+    private static Map<String, String> stationICToName = new HashMap<>();
     private static NodeList stationNodeList;
     private static NodeList linksNodeList;
 
@@ -211,7 +212,6 @@ public class RailNetwork {
         try {
             lignes = loadLignes("lignes.json");
             gares = loadGares("gares.json");
-
         } catch (IOException e) {
             System.err.println("Error while loading data: " + e.getMessage());
         }
@@ -380,6 +380,7 @@ public class RailNetwork {
             for (Station s : stations.values()) {
                 updateMinMaxCoordinates(s);
                 railNetwork.addVertex(s.name);
+                stationICToName.put(s.codeImmu, s.name);
             }
 
             // Add padding to min and max values
@@ -650,7 +651,7 @@ public class RailNetwork {
         return border;
     }
 
-    private static Point2D convertToWGS84(Map<String, Point2D> positions, String startVertex) {
+    public static Point2D convertToWGS84(Map<String, Point2D> positions, String startVertex) {
         Point2D point = positions.get(startVertex);
         double normX = point.getX() / Window.height * (maxX - minX) + minX;
         double normY = (Window.height - point.getY()) / Window.height * (maxY - minY) + minY;
@@ -693,58 +694,20 @@ public class RailNetwork {
         return subGraph;
     }
 
-
-    // ---------USE linkImmuLine.get(codeImmu) INSTEAD-------------------------------- 
-    
-    // public static List<String> getCodeLignes(String station) {
-    //     List<String> codesLignes = new ArrayList<>();
-    //     for (Gare_json Gare_json : gares) {
-    //         if (Gare_json.libelle.equals(station)) {
-    //             codesLignes.add(Gare_json.code_ligne);
-    //         }
-    //     }
-    //     if (codesLignes.isEmpty()) {
-    //         codesLignes.add("error");
-    //         System.out.println("immu"+ linkImmuLine);
-    //     }
-    //     return codesLignes;
-
-    // }
-
-    public static List<String> getCodeLignes(String station){ 
-
-        String codeImmu= getCodeImmuJson(station);
-        if (codeImmu.equals("")){
-            codeImmu=getCodeImmuXML(station);
-        }
-
-        //linkImmuLine.get()
-        
-        if (codeImmu.equals("error")) {
-            return Arrays.asList("error");
-        }
-        return linkImmuLine.get(codeImmu);
+    public static List<String> getCodeLignes(String station) {
+        return linkImmuLine.get(getCodeImmu(station));
     }
-    
 
-    public static String getCodeImmuJson(String stationName) {
-        for (Gare_json Gare_json : gares) {
-            if (Gare_json.libelle.equals(stationName)) {
-                return Gare_json.code_uic.substring(2);
+    public static String getName(String stationIC) {
+        return stationICToName.getOrDefault(stationIC, "NoStationFound");
+    }
+
+    public static String getCodeImmu(String station) {
+        for (Station s : stations.values()) {
+            if (s.name.equals(station)) {
+                return s.codeImmu;
             }
         }
         return "";
-    }
-
-    public static String getCodeImmuXML(String stationName) {
-        for (int i = 0; i < stationNodeList.getLength(); i++) {
-            Element link = (Element) stationNodeList.item(i);
-            if (link.getAttribute("Libelle").equals(stationName)) {
-            return link.getAttribute("CodeImmuable");
-            }
-        }
-        return "error";
-    }
-
-    //getCodeLignes(String station) -> linkImmuLine.get(getCodeImmu(station))
+    } 
 }

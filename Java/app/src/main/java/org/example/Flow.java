@@ -93,10 +93,6 @@ public class Flow {
         Map<String, List<String>> stationsInFlow = getStationsInFlow();
         Graph<String, String> railNetwork = new SparseMultigraph<>();
         Map<String, Point2D> positions = new HashMap<>();
-        // for (Map.Entry<String, List<String>> entry : stationsInFlow.entrySet()) {
-        //     System.out.println("Flow ID: " + entry.getKey());
-        //     System.out.println("Stations: " + entry.getValue());
-        // }
         System.out.println(stationsInFlow.size() + " flows loaded");
         for(flows_json flow : flows){
             String NTribu = flow.varInfo.numero_tribu;
@@ -110,9 +106,6 @@ public class Flow {
                 if(!station.isEmpty() && !condition1 && !condition2){
                     railNetwork.addVertex(station);
                     positions.put(station, new Point2D.Double(xStation, yStation));
-                    // if(i>0){
-                    //     railNetwork.addEdge(stationCI + " - " + stationsInFlow.get(NTribu).get(i-1), stationCI, stationsInFlow.get(NTribu).get(i-1));
-                    // }
                 }
             }
         }
@@ -146,7 +139,7 @@ public class Flow {
         return "";
     }
 
-    private static  Map<String, List<String>> getStationsInFlow() {
+    public static  Map<String, List<String>> getStationsInFlow() {
         Map<String, List<String>> stationsInFlow = new HashMap<>();
         for(flows_json flow : flows) {
             List<String> stations = new ArrayList<>();
@@ -158,9 +151,68 @@ public class Flow {
             stationsInFlow.put(flow.varInfo.numero_tribu, stations);
         }
         return stationsInFlow;
-    }
+        }
 
-    private static List<flows_json> loadFlows(String filePath) throws IOException {
+        public static int affluenceStation(String stationName, String numero_tribu) {
+            int count = 0;
+            String code_imu=RailNetwork.getCodeImmu(stationName);
+            for (flows_json flow : flows) {
+                if (flow.varInfo.numero_tribu.equals(numero_tribu)) {
+                    for (Point point : flow.points) {
+                        if (point.CI.equals(code_imu)) {
+                        count++;
+                        }
+                    }
+                }
+            }
+            if (count == 0) {
+                
+                // for (flows_json flow : flows) {
+                //     if (flow.varInfo.numero_tribu.equals(numero_tribu)) {
+                //         for (int i = 0; i < flow.points.size(); i++) {
+                //             if (flow.points.get(i).CI.equals(code_imu)) {
+                //                 if (i > 0) {
+                //                     count += affluenceStation(flow.points.get(i - 1).libelle, numero_tribu);
+                //                 }
+                //                 if (i < flow.points.size() - 1) {
+                //                     count += affluenceStation(flow.points.get(i + 1).libelle, numero_tribu);
+                //                 }
+                //             }
+                //         }
+                //     }
+                // }
+            }
+            return count;
+        }
+
+        public static int affluenceTotaleStation(String stationName) {
+            int count = 0;
+            String code_imu = RailNetwork.getCodeImmu(stationName);
+            for (flows_json flow : flows) {
+                for (Point point : flow.points) {
+                    if (point.CI.equals(code_imu)) {
+                        count++;
+                    }
+                }
+            }
+            if (count == 0) {
+                for (flows_json flow : flows) {
+                    for (int i = 0; i < flow.points.size(); i++) {
+                        if (flow.points.get(i).CI.equals(code_imu)) {
+                            if (i > 0) {
+                                count += affluenceTotaleStation(flow.points.get(i - 1).libelle);
+                            }
+                            if (i < flow.points.size() - 1) {
+                                count += affluenceTotaleStation(flow.points.get(i + 1).libelle);
+                            }
+                        }
+                    }
+                }
+            }
+            return count;
+        }
+
+        private static List<flows_json> loadFlows(String filePath) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(new File(filePath), new TypeReference<List<flows_json>>() {
         });
