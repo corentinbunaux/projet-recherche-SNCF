@@ -12,6 +12,9 @@ import edu.uci.ics.jung.graph.Graph;
 public class ManchetteGenerator {
     // Génération des manchettes
     public static List<List<String>> generateManchettes(Graph<String, String> railNetwork) {
+        if(railNetwork == null) {
+            return null;
+        }
         List<List<String>> manchettes = new ArrayList<>();
         List<String> outliers = outliersList(railNetwork); // extrémités
         Set<String> visitedOutliers = new HashSet<>();

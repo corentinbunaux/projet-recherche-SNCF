@@ -61,6 +61,14 @@
  *    Lorsqu'on a fusionné toutes les manchettes possibles, on obtient un ensemble de manchettes plus réduit, représentant
  *    les flux de trains sur le réseau.
  *    La dernière étape consiste à fusionner les manchettes jusqu'à obtenir une manchette dont les bords sont des gares isolées.
+ *    On s'autorise à fusionner les manchettes si elles ont un noeud en commun, jusqu'à obtenir une manchette dont les bords sont
+ *    des gares isolées, parmi les manchettes à fusionner. Si jamais une des manchettes restantes n'a plus de manchette voisine avec 
+ *    laquelle une fusion est possible, on la considère comme manchette finalisée.
+ * 
+ *    AMELIORATIONS POSSIBLES : voir les FIXME dans le code (en bleu dans l'IDE).
+ *    On pense notament au choix de la manchette à fusionner, lorsqu'il y a plusieurs manchettes possibles. On pourrait choisir la 
+ *    manchette qui a le plus de flux en commun avec la manchette, ou alors parcourir le graphe afin de former la manchette la plus 
+ *    longue. La solution actuelle permet néanmoins de répondre en partie au problème posé.
  */
 
 package org.example;
@@ -71,11 +79,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-
-import org.checkerframework.checker.units.qual.m;
-
 import java.util.HashMap;
-
 import edu.uci.ics.jung.graph.Graph;
 
 public class FlowAlgo {
@@ -120,8 +124,6 @@ public class FlowAlgo {
         // common part to reduce their number
         mergeManchettesWithCommonPart(graph, improvedManchettes, stationsInFlow);
 
-        // ---- UNTIL HERE, EVRYTHING WORKS ----
-
         // Finally, we merge the manchettes that have common knots
         mergeManchettesWithCommonKnots(improvedManchettes, graph, knotsAsIC, stationsInFlow);
 
@@ -137,7 +139,6 @@ public class FlowAlgo {
             Graph<String, String> graph, List<String> knotsAsIC, Map<String, List<String>> stationsInFlow) {
         // List of manchettes that are not completed
         List<List<String>> manchettesNotCompleted = getNotCompletedManchettes(improvedManchettes, knotsAsIC);
-        // System.out.println("manchettes not completed : " + manchettesNotCompleted);
 
         List<List<String>> manchettesImpossibleToMerge = new ArrayList<>();
 
@@ -150,11 +151,10 @@ public class FlowAlgo {
                     manchetteSelected, graph);
 
             if (manchettesToMerge.size() > 0) {
-                List<List<String>> mergedManchette = mergeManchettes(manchettesToMerge, graph);
-                for (List<String> manchette : mergedManchette) {
-                    completeMergeManchettes(manchetteSelected, manchette, improvedManchettes, knotsAsIC,
-                            stationsInFlow);
-                }
+                // FIXME : if multiple manchettes, select the best one
+                List<String> manchetteToMergeWith = manchettesToMerge.get(0);
+                completeMergeManchettes(manchetteToMergeWith, manchetteSelected, improvedManchettes, knotsAsIC,
+                        stationsInFlow);
             }
 
             else {
@@ -163,42 +163,10 @@ public class FlowAlgo {
             }
 
             // update the value of manchettesNotCompleted
-            manchettesNotCompleted = getNotCompletedManchettes(improvedManchettes, knotsAsIC);
+            manchettesNotCompleted = getNotCompletedManchettes(improvedManchettes,
+                    knotsAsIC);
             manchettesNotCompleted.removeAll(manchettesImpossibleToMerge);
         }
-    }
-
-    private static List<List<String>> mergeManchettes(List<List<String>> manchettes, Graph<String, String> graph) {
-        List<List<String>> mergedManchettes = new ArrayList<>(manchettes);
-        boolean merged;
-
-        do {
-            merged = false;
-
-            for (int i = 0; i < mergedManchettes.size(); i++) {
-                for (int j = i + 1; j < mergedManchettes.size(); j++) {
-                    List<String> manchetteA = mergedManchettes.get(i);
-                    List<String> manchetteB = mergedManchettes.get(j);
-
-                    // Vérifier si les extrémités peuvent être connectées
-                    if (manchetteA.get(manchetteA.size() - 1).equals(manchetteB.get(0))) {
-                        manchetteA.addAll(manchetteB.subList(1, manchetteB.size()));
-                        mergedManchettes.remove(j);
-                        merged = true;
-                        break;
-                    } else if (manchetteB.get(manchetteB.size() - 1).equals(manchetteA.get(0))) {
-                        manchetteB.addAll(manchetteA.subList(1, manchetteA.size()));
-                        mergedManchettes.remove(i);
-                        merged = true;
-                        break;
-                    }
-                }
-                if (merged)
-                    break;
-            }
-        } while (merged);
-
-        return mergedManchettes;
     }
 
     private static void mergeManchettesWithCommonPart(Graph<String, String> graph,
@@ -612,7 +580,6 @@ public class FlowAlgo {
         List<String> manchette = new ArrayList<>();
         String station = onewayStations.remove(0);
         manchette.add(station);
-        System.out.println("Station : " + station);
 
         List<String> neighbors = getNeighborsAsList(graph, station);
 
