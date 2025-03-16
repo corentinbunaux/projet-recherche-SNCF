@@ -71,9 +71,9 @@ public class GraphVisualizer {
                 String normalizedEdge = normalizeEdge(gare1, gare2);
                
                 List<java.awt.Color> colors = edgeColorMap.getOrDefault(normalizedEdge, List.of(ColorPalette.SNCF_BLACK));
-                System.out.println(e);
-                System.out.println(normalizedEdge);
-                System.out.println("colors"+colors);
+                // System.out.println(e);
+                // System.out.println(normalizedEdge);
+                // System.out.println("colors"+colors);
                 if (colors.size() > 1) {
                     // Combine colors if there are multiple
                     return new java.awt.GradientPaint(0, 0, colors.get(0), 10, 0, colors.get(1), true);

@@ -16,7 +16,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JToggleButton;
 import javax.swing.JTree;
-
 import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.visualization.VisualizationViewer;
 import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
@@ -36,13 +35,14 @@ public class GUI {
     public static void display(Graph<String, String> railNetwork_arg, Map<String, Point2D> positions_arg) {
         railNetwork = railNetwork_arg;
         positions = positions_arg;
-        vv = GraphVisualizer.Graph(railNetwork, positions, null); // Initialize the visualization viewer
+        List<List<String>> manchettes = FlowAlgo.manchetteBasedFlow(railNetwork);
+        vv = GraphVisualizer.Graph(railNetwork, positions, manchettes); // Initialize the visualization viewer
         frame = new JFrame("Réseau Ferroviaire - Visualisation"); // Create the main frame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         frame.setJMenuBar(menuBar()); // Add the menu bar
 
-        manchettePanel = createScrollPane(null);
+        manchettePanel = createScrollPane(railNetwork);
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, vv, manchettePanel);
         frame.add(splitPane, BorderLayout.CENTER);
 
@@ -51,7 +51,7 @@ public class GUI {
     }
 
     private static JScrollPane createScrollPane(Graph<String, String> railNetwork) {
-        return createScrollPaneWithManchettes(ManchetteGenerator.generateManchettes(railNetwork));
+        return createScrollPaneWithManchettes(FlowAlgo.manchetteBasedFlow(railNetwork));
     }
 
     // Method to create a JScrollPane with the given manchettes
@@ -190,13 +190,16 @@ public class GUI {
     }
 
     // Method to update the Manchette UI
+    // FIXME : This method is not working properly
     private static void updateManchetteUI() {
         frame.getContentPane().remove(splitPane);
         Graph<String, String> subgraph = RailNetwork.subGraphListVerteces(GraphVisualizer.getStackedVertices(), railNetwork);
+        List<List<String>> manchettes = FlowAlgo.manchetteBasedFlow(subgraph);
+        vv = GraphVisualizer.Graph(subgraph, positions, manchettes);
         manchettePanel = createScrollPane(subgraph);
-        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, GraphVisualizer.Graph(subgraph, positions, ManchetteGenerator.generateManchettes(railNetwork)), manchettePanel);
-        GraphVisualizer.resetUI();
+        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, vv, manchettePanel);
         frame.add(splitPane, BorderLayout.CENTER);
+        GraphVisualizer.resetUI();
         frame.revalidate();
         frame.repaint();
     }    

@@ -85,6 +85,10 @@ import edu.uci.ics.jung.graph.Graph;
 public class FlowAlgo {
 
     public static List<List<String>> manchetteBasedFlow(Graph<String, String> graph) {
+        if(graph == null) {
+            return null;
+        }
+        
         // List of stations for each flow
         Map<String, List<String>> stationsInFlow = Flow.getStationsInFlow();
         List<String> knotsAsIC = getKnotsAsIC(graph);

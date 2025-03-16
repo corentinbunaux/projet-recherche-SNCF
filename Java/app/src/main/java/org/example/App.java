@@ -14,10 +14,9 @@ public class App {
         Map<String, Point2D> positions = new HashMap<>();
         Graph<String, String> railNetwork = RailNetwork.createRailNetwork(positions);
         Graph<String, String> subgraphTest = RailNetwork.graphBorder(railNetwork, positions, "Marseille-St-Charles", 50);
+        GUI.display(subgraphTest, positions);
         // Graph<String, String> subgraphTest = RailNetwork.graphBorder(railNetwork, positions, "Chambéry-Challes-les-Eaux", 50);
         // GUI.display(railNetwork, positions);
-        GUI.display(subgraphTest, positions);
-        FlowAlgo.manchetteBasedFlow(subgraphTest);
         // ManchetteOptiFlow.generateManchettes(subgraphTest, positions);
     }
 }
