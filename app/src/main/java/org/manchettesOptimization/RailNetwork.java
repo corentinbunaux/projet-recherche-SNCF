@@ -31,8 +31,6 @@ import org.xml.sax.SAXException;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -380,14 +378,14 @@ public class RailNetwork {
         } catch (DOMException e) {
             System.err.println("Error: " + e.getMessage());
         }
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("linkImmuLine.txt"))) {
-            for (Map.Entry<String, List<String>> entry : linkImmuLine.entrySet()) {
-                writer.write("Station: " + entry.getKey() + " -> Lines: " + entry.getValue());
-                writer.newLine();
-            }
-        } catch (IOException e) {
-            System.err.println("Error writing to file: " + e.getMessage());
-        }
+        // try (BufferedWriter writer = new BufferedWriter(new FileWriter("linkImmuLine.txt"))) {
+        //     for (Map.Entry<String, List<String>> entry : linkImmuLine.entrySet()) {
+        //         writer.write("Station: " + entry.getKey() + " -> Lines: " + entry.getValue());
+        //         writer.newLine();
+        //     }
+        // } catch (IOException e) {
+        //     System.err.println("Error writing to file: " + e.getMessage());
+        // }
         return railNetwork;
     }
 

@@ -60,7 +60,7 @@ public class GraphVisualizer {
                 //System.out.println("edges"+edges);
                 java.awt.Color color = ColorPalette.getColor(i);
                 for (String edge : edges) {
-                    edgeColorMap.computeIfAbsent(edge, k -> new ArrayList<>()).add(color);
+                    edgeColorMap.computeIfAbsent(edge, _ -> new ArrayList<>()).add(color);
                 }
             }
             
