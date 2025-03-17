@@ -71,8 +71,7 @@
  *    longue. La solution actuelle permet néanmoins de répondre en partie au problème posé.
  */
 
-package org.example;
-
+package org.manchettesOptimization;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;

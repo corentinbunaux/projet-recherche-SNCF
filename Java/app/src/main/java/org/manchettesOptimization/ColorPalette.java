@@ -1,4 +1,4 @@
-package org.example;
+package org.manchettesOptimization;
 
 public class ColorPalette {
     public static final java.awt.Color SNCF_RED = new java.awt.Color(223, 36, 47);

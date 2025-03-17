@@ -1,4 +1,4 @@
-package org.example;
+package org.manchettesOptimization;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,43 +32,10 @@ import org.xml.sax.SAXException;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Queue;
-import java.util.Set;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
-import org.w3c.dom.DOMException;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 
 import edu.uci.ics.jung.algorithms.filters.Filter;
 import edu.uci.ics.jung.algorithms.filters.KNeighborhoodFilter;
@@ -210,8 +177,8 @@ public class RailNetwork {
     private static double minY = Double.MAX_VALUE, maxY = Double.MIN_VALUE;
     static {
         try {
-            lignes = loadLignes("lignes.json");
-            gares = loadGares("gares.json");
+            lignes = loadLignes("data/lignes.json");
+            gares = loadGares("data/gares.json");
         } catch (IOException e) {
             System.err.println("Error while loading data: " + e.getMessage());
         }
@@ -529,7 +496,6 @@ public class RailNetwork {
         return lignesFusionnees;
     }
 
-
     private static Map<String, List<Station>> retrieveStationsForEachLine(List<Ligne_json> lignes,
             Map<String, Station> stations, Map<String, List<String>> linkImmuLine) {
         Map<String, List<Station>> stationsForLines = new HashMap<>();
@@ -709,5 +675,5 @@ public class RailNetwork {
             }
         }
         return "";
-    } 
+    }
 }

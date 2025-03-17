@@ -1,4 +1,4 @@
-package org.example;
+package org.manchettesOptimization;
 
 import java.io.File;
 import java.io.IOException;
@@ -83,7 +83,7 @@ public class Flow {
 
     static {
         try {
-            flows = loadFlows("flows.json");
+            flows = loadFlows("data/flows.json");
         } catch (IOException e) {
             e.printStackTrace();
         }

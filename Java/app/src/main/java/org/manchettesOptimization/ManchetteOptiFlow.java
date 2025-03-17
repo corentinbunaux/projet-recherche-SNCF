@@ -1,4 +1,4 @@
-package org.example;
+package org.manchettesOptimization;
 
 
 import java.util.ArrayList;
@@ -214,8 +214,6 @@ public class ManchetteOptiFlow {
         return outlierToManchettesMap;
     }
     
-  
-
     private static Deque<String> exploreStation(Graph<String, String> railNetwork, String option_code,
             String curentStation, Set<String> allVisited, Set<String> visited, boolean priority) {
         Deque<String> queue = new LinkedList<>();

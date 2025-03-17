@@ -1,4 +1,4 @@
-package org.example;
+package org.manchettesOptimization;
 
 public class Window {
     public static int height = 720;

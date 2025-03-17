@@ -6,4 +6,7 @@ build
 
 .vscode
 app/build
-app/bin/main/org/example/*.class
+app/bin
+data/*.xml
+data/flows.json
+data/flows_old.json

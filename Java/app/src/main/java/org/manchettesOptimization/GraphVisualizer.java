@@ -1,4 +1,4 @@
-package org.example;
+package org.manchettesOptimization;
 
 import java.awt.BasicStroke;
 import java.awt.Dimension;

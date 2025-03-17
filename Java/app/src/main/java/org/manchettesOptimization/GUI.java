@@ -1,4 +1,4 @@
-package org.example;
+package org.manchettesOptimization;
 
 import java.awt.BorderLayout;
 import java.awt.geom.Point2D;
@@ -190,13 +190,13 @@ public class GUI {
     }
 
     // Method to update the Manchette UI
-    // FIXME : This method is not working properly
     private static void updateManchetteUI() {
         frame.getContentPane().remove(splitPane);
-        Graph<String, String> subgraph = RailNetwork.subGraphListVerteces(GraphVisualizer.getStackedVertices(), railNetwork);
-        List<List<String>> manchettes = FlowAlgo.manchetteBasedFlow(subgraph);
-        vv = GraphVisualizer.Graph(subgraph, positions, manchettes);
-        manchettePanel = createScrollPane(subgraph);
+        // FIXME This code is not working
+        List<List<String>> manchettes = FlowAlgo.manchetteBasedFlow(railNetwork);
+        // Graph<String, String> subgraph = RailNetwork.subGraphListVerteces(GraphVisualizer.getStackedVertices(), railNetwork);
+        // vv = GraphVisualizer.Graph(subgraph, positions, manchettes); // Initialize the visualization viewer
+        // manchettePanel = createScrollPane(subgraph);
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, vv, manchettePanel);
         frame.add(splitPane, BorderLayout.CENTER);
         GraphVisualizer.resetUI();
