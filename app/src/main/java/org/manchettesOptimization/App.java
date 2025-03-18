@@ -11,10 +11,12 @@ public class App {
         FlatLightLaf.setup();
         Map<String, Point2D> positions = new HashMap<>();
         Graph<String, String> railNetwork = RailNetwork.createRailNetwork(positions);
-        Graph<String, String> subgraphTest = RailNetwork.graphBorder(railNetwork, positions, "Marseille-St-Charles",
+        Graph<String, String> subgraphTest = RailNetwork.graphBorder(railNetwork,
+                positions, "Marseille-St-Charles",
                 50);
         // Graph<String, String> subgraphTest = RailNetwork.graphBorder(railNetwork,
-        // positions, "Chambéry-Challes-les-Eaux", 50);
+        // positions,
+        // "Chambéry-Challes-les-Eaux", 50);
         GUI.display(subgraphTest, positions);
         // Graph<String, String> subgraphTest = RailNetwork.graphBorder(railNetwork,
         // positions, "Chambéry-Challes-les-Eaux", 50);
