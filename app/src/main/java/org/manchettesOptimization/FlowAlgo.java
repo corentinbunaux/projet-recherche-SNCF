@@ -40,13 +40,16 @@
  *    de trains au niveau des noeuds (qui sont les points les plus affluents du réseau).
  * 
  *    PROBLEMES RENCONTRES : 
- *    - Certains flux manquent entre les stations voisines. La manchette B-E existe sur le réseau, mais nous n'avons pas de flux la 
- *      décrivant, car la gare E n'est pas présente dans le fichier décrivant les flux du réseau.
+ *    - Certains flux manquaient entre les stations voisines. La manchette B-E existe sur le réseau, mais nous n'avons pas de flux la 
+ *      décrivant, car la gare E n'est pas présente dans le fichier décrivant les flux du réseau. Corrigé avec le bon fichier de flux.
  *    - Initialement, les manchettes générées ne reposent que sur les lignes droites du réseau, en ommettant les noeuds voisins.
  *      Il a fallu ajouter des manchettes pour décrire ces liens manquants, à l'extérieur de la phase de génération de manchettes, 
  *      lors de la récupération des manchettes pour un noeud (voir la fonction addMissingManchettesForNeighboringKnots).
  *      Exemple : la manchette B-C est ajoutée à la liste des manchettes car B et C sont voisins, mais la manchette n'est pas générée
  *      lors de la phase de génération de manchettes (aucune gare de passage entre les deux).
+ *    - Problèmes de rebroussements de trains : les manchettes générées se fusionnaient parfois de manièer incorrecte, car elles sont 
+ *      représentées sous la forme de listes. Il a fallu créer une fonction pour vérifier que les manchettes fusionnées ne se chevauchent
+ *      pas (création du sous graphe des manchettes fusionnées et vérification de la non présence de noeuds).
  * 
  *                      |             | 
  *                      D             G
@@ -55,20 +58,6 @@
  *                      |
  *                      E
  * 
- * 3. Après avoir fusionné des manchettes selon les flux, il reste à réduire leur nombre.
- *    On fusionne les manchettes qui ont une partie commune, autre que leur noeud.
- *    Exemple : A-B-C et B-C-D sont fusionnées en A-B-C-D, mais A-B-C et C-D ne sont pas fusionnées.
- *    Lorsqu'on a fusionné toutes les manchettes possibles, on obtient un ensemble de manchettes plus réduit, représentant
- *    les flux de trains sur le réseau.
- *    La dernière étape consiste à fusionner les manchettes jusqu'à obtenir une manchette dont les bords sont des gares isolées.
- *    On s'autorise à fusionner les manchettes si elles ont un noeud en commun, jusqu'à obtenir une manchette dont les bords sont
- *    des gares isolées, parmi les manchettes à fusionner. Si jamais une des manchettes restantes n'a plus de manchette voisine avec 
- *    laquelle une fusion est possible, on la considère comme manchette finalisée.
- * 
- *    AMELIORATIONS POSSIBLES : voir les FIXME dans le code (en bleu dans l'IDE).
- *    On pense notament au choix de la manchette à fusionner, lorsqu'il y a plusieurs manchettes possibles. On pourrait choisir la 
- *    manchette qui a le plus de flux en commun avec la manchette, ou alors parcourir le graphe afin de former la manchette la plus 
- *    longue. La solution actuelle permet néanmoins de répondre en partie au problème posé.
  */
 
 package org.manchettesOptimization;
@@ -174,6 +163,7 @@ public class FlowAlgo {
         }
     }
 
+    // function to check if the trains can refund the manchette
     private static boolean checkIfRefund(List<String> manchette, List<String> manchetteToMergeWith, Graph<String, String> graph) {
         List<String> stationsInManchette = new ArrayList<>(manchette);
         for (String station : manchetteToMergeWith) {

@@ -8,9 +8,7 @@ import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -22,54 +20,78 @@ import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
 
 public class GUI {
 
-    // Declare static variables for the visualization viewer, toolbar, buttons, and selected button
+    // Declare static variables for the visualization viewer, toolbar, buttons, and
+    // selected button
     private static List<JToggleButton> toggleButtons;
     private static VisualizationViewer<String, String> vv;
     private static JScrollPane manchettePanel;
     private static JSplitPane splitPane;
     private static JFrame frame;
     private static Graph<String, String> railNetwork;
+    private static Graph<String, String> subgraph;
     private static Map<String, Point2D> positions;
+    private static List<List<String>> manchettes;
 
     // Method to display the GUI with the given graph and positions
     public static void display(Graph<String, String> railNetwork_arg, Map<String, Point2D> positions_arg) {
         railNetwork = railNetwork_arg;
         positions = positions_arg;
-        List<List<String>> manchettes = FlowAlgo.manchetteBasedFlow(railNetwork);
-        vv = GraphVisualizer.Graph(railNetwork, positions, manchettes); // Initialize the visualization viewer
+
+        subgraph = railNetwork;
+        manchettes = null;
+
         frame = new JFrame("Réseau Ferroviaire - Visualisation"); // Create the main frame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         frame.setJMenuBar(menuBar()); // Add the menu bar
 
-        manchettePanel = createScrollPane(railNetwork);
-        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, vv, manchettePanel);
-        frame.add(splitPane, BorderLayout.CENTER);
+        createUI();
 
         frame.pack();
         frame.setVisible(true); // Display the frame
     }
 
-    private static JScrollPane createScrollPane(Graph<String, String> railNetwork) {
-        return createScrollPaneWithManchettes(FlowAlgo.manchetteBasedFlow(railNetwork));
+    private static void createUI() {
+        vv = GraphVisualizer.Graph(subgraph, positions, manchettes); // Initialize the visualization viewer
+        manchettePanel = createScrollPaneWithManchettes(manchettes);
+        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, vv, manchettePanel);
+        frame.add(splitPane, BorderLayout.CENTER);
+    }
+
+    // Method to update the Manchette UI
+    private static void updateUI() {
+        frame.getContentPane().remove(splitPane);
+
+        subgraph = RailNetwork.subGraphListVerteces(GraphVisualizer.getStackedVertices(), railNetwork);
+        manchettes = FlowAlgo.manchetteBasedFlow(subgraph);
+
+        createUI();
+
+        GraphVisualizer.resetUI();
+
+        frame.revalidate();
+        frame.repaint();
     }
 
     // Method to create a JScrollPane with the given manchettes
     private static JScrollPane createScrollPaneWithManchettes(List<List<String>> manchettes) {
         JScrollPane scrollPane = new JScrollPane();
-        if(manchettes == null) {
+        if (manchettes == null) {
             return scrollPane;
         }
         JScrollBar verticalScrollBar = new JScrollBar(JScrollBar.VERTICAL);
         scrollPane.setVerticalScrollBar(verticalScrollBar);
 
         JTree tree = new JTree();
-        javax.swing.tree.DefaultMutableTreeNode manchettes_node = new javax.swing.tree.DefaultMutableTreeNode("Manchettes");
+        javax.swing.tree.DefaultMutableTreeNode manchettes_node = new javax.swing.tree.DefaultMutableTreeNode(
+                "Manchettes");
 
         for (int i = 0; i < manchettes.size(); i++) {
-            javax.swing.tree.DefaultMutableTreeNode manchette = new javax.swing.tree.DefaultMutableTreeNode("Manchette " + (i + 1));
+            javax.swing.tree.DefaultMutableTreeNode manchette = new javax.swing.tree.DefaultMutableTreeNode(
+                    "Manchette " + (i + 1));
             for (int j = 0; j < manchettes.get(i).size(); j++) {
-                javax.swing.tree.DefaultMutableTreeNode gare = new javax.swing.tree.DefaultMutableTreeNode(manchettes.get(i).get(j));
+                javax.swing.tree.DefaultMutableTreeNode gare = new javax.swing.tree.DefaultMutableTreeNode(
+                        manchettes.get(i).get(j));
                 manchette.add(gare);
             }
             manchettes_node.add(manchette);
@@ -85,7 +107,6 @@ public class GUI {
     // Method to create the menu bar
     private static JMenuBar menuBar() {
         JMenuBar menuBar = new JMenuBar();
-        menuBar.add(menu("Menu")); // Add a menu to the menu bar
 
         toggleButtons = new ArrayList<>();
         toggleButtons.add(toggleButton("Movement"));
@@ -151,7 +172,7 @@ public class GUI {
     private static void handleButtons(String title) {
         switch (title) {
             case "Manchette" ->
-                updateManchetteUI();
+                updateUI();
             case "Reset" ->
                 reset();
             default -> {
@@ -162,10 +183,14 @@ public class GUI {
     // Method to reset the UI
     private static void reset() {
         frame.getContentPane().remove(splitPane);
+
+        manchettes = null;
+        subgraph = railNetwork;
+
+        createUI();
+
         GraphVisualizer.resetUI();
-        vv = GraphVisualizer.Graph(railNetwork, positions, null);
-        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, vv, manchettePanel);
-        frame.add(splitPane, BorderLayout.CENTER);
+
         frame.revalidate();
         frame.repaint();
     }
@@ -176,31 +201,4 @@ public class GUI {
             toggleButton.setSelected(false);
         }
     }
-
-    // Method to create a menu with the given text
-    private static JMenu menu(String text) {
-        JMenu menu = new JMenu(text);
-        menu.add(menuItem("Filtrer")); // Add a menu item to the menu
-        return menu;
-    }
-
-    // Method to create a menu item with the given text
-    private static JMenuItem menuItem(String text) {
-        return new JMenuItem(text);
-    }
-
-    // Method to update the Manchette UI
-    private static void updateManchetteUI() {
-        frame.getContentPane().remove(splitPane);
-        // FIXME This code is not working
-        List<List<String>> manchettes = FlowAlgo.manchetteBasedFlow(railNetwork);
-        // Graph<String, String> subgraph = RailNetwork.subGraphListVerteces(GraphVisualizer.getStackedVertices(), railNetwork);
-        // vv = GraphVisualizer.Graph(subgraph, positions, manchettes); // Initialize the visualization viewer
-        // manchettePanel = createScrollPane(subgraph);
-        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, vv, manchettePanel);
-        frame.add(splitPane, BorderLayout.CENTER);
-        GraphVisualizer.resetUI();
-        frame.revalidate();
-        frame.repaint();
-    }    
 }

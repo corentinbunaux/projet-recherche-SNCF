@@ -525,15 +525,11 @@ public class RailNetwork {
             if (stations == null) {
                 System.out
                         .println("No train stations found for line " + line.code_ligne + " (" + line.type_ligne + ")");
-                System.out
-                        .println("No train stations found for line " + line.code_ligne + " (" + line.type_ligne + ")");
                 continue;
             }
             sortTrainStations(stations, line);
             // Add edges between stations
             for (int i = 0; i < stations.size() - 1; i++) {
-                railNetwork.addEdge(stations.get(i).name + " -> " + stations.get(i + 1).name, stations.get(i).name,
-                        stations.get(i + 1).name);
                 railNetwork.addEdge(stations.get(i).name + " -> " + stations.get(i + 1).name, stations.get(i).name,
                         stations.get(i + 1).name);
             }
@@ -647,12 +643,12 @@ public class RailNetwork {
         for (String vertex : pickedVerteces) {
             subGraph.addVertex(vertex);
         }
-        // Add edges based on the complete graph railNetwork
-        for (String vertex : pickedVerteces) {
-            for (String neighbor : railNetwork.getNeighbors(vertex)) {
-                if (pickedVerteces.contains(neighbor)) {
-                    subGraph.addEdge(vertex + " -> " + neighbor, vertex, neighbor);
-                }
+        // add the edges the same way they are in the railNetwork
+        List<String> edges = new ArrayList<>(railNetwork.getEdges());
+        for (String edge : edges) {
+            String[] vertices = edge.split(" -> ");
+            if (pickedVerteces.contains(vertices[0]) && pickedVerteces.contains(vertices[1])) {
+                subGraph.addEdge(edge, vertices[0], vertices[1]);
             }
         }
         return subGraph;
