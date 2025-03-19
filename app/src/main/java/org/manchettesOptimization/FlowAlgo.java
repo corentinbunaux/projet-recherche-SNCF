@@ -153,10 +153,9 @@ public class FlowAlgo {
                     graph);
             if (listManchetteWithCommonParts.size() > 0) {
                 // If there are manchettes where the trains can refund the manchette, delete it
-                // FIXME : if multiple manchettes, select the best one
-                List<String> manchetteToMergeWith = listManchetteWithCommonParts.get(0);
-                if(!checkIfRefund(manchette, manchetteToMergeWith, graph)){
-                    completemergeCommonManchettes(manchetteToMergeWith, manchette,
+                List<String> manchetteSelected = listManchetteWithCommonParts.get(0);
+                if(!checkIfRefund(manchette, manchetteSelected, graph)){
+                    completemergeCommonManchettes(manchetteSelected, manchette,
                     improvedManchettes);
                 }
             }
@@ -214,9 +213,17 @@ public class FlowAlgo {
             // Check if the manchettes have a common part except for the knots
             List<String> knotsAsIC = getKnotsAsIC(graph);
             for (String station : manchette) {
-                if (givenManchette.contains(station) && !knotsAsIC.contains(RailNetwork.getCodeImmu(station))) {
-                    manchettesWithCommonParts.add(manchette);
-                    break;
+                if(manchette.size() > 2){
+                    if (givenManchette.contains(station) && !knotsAsIC.contains(RailNetwork.getCodeImmu(station))) {
+                        manchettesWithCommonParts.add(manchette);
+                        break;
+                    }
+                }
+                else {
+                    if (givenManchette.contains(station)) {
+                        manchettesWithCommonParts.add(manchette);
+                        break;
+                    }
                 }
             }
         }
