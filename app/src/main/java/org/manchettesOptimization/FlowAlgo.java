@@ -62,6 +62,7 @@
 
 package org.manchettesOptimization;
 
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -74,7 +75,8 @@ import edu.uci.ics.jung.graph.Graph;
 
 public class FlowAlgo {
 
-    public static List<List<String>> manchetteBasedFlow(Graph<String, String> graph) {
+    public static List<List<String>> manchetteBasedFlow(Graph<String, String> graph, Graph<String, String> railNetwork,
+            Map<String, Point2D> positions) {
         if (graph == null) {
             return null;
         }
@@ -121,10 +123,54 @@ public class FlowAlgo {
         // delete empty manchettes and manchettes included twice in a different order
         cleanManchettesFromEmptyAndDuplicated(improvedManchettes);
 
-        System.out.println("Manchettes after improvement : " +
-        improvedManchettes.size());
-        System.out.println(improvedManchettes);
+        extendManchettes(graph, improvedManchettes, railNetwork, positions);
         return improvedManchettes;
+    }
+
+    private static void extendManchettes(Graph<String, String> graph, List<List<String>> improvedManchettes,
+            Graph<String, String> railNetwork, Map<String, Point2D> positions) {
+        List<String> outliers = getOutliersAsList(graph, improvedManchettes);
+
+        while (!outliers.isEmpty()) {
+            String outlier = outliers.remove(0);
+            Collection<String> neighbors = railNetwork.getNeighbors(outlier);
+            System.out.println();
+            for (String neighbor : neighbors) {
+                if (!graph.getVertices().contains(neighbor) && railNetwork.getNeighborCount(outlier) <= 2) {
+                    graph.addVertex(neighbor);
+                    outliers.add(neighbor);
+                    for(List<String> manchette : improvedManchettes) {
+                        if(manchette.get(0).equals(outlier)) {
+                            manchette.add(0, neighbor);
+                        } else if(manchette.get(manchette.size() - 1).equals(outlier)) {
+                            manchette.add(neighbor);
+                        }
+                    }
+                }
+            }
+        }
+
+        // add the edges the same way they are in the railNetwork
+        List<String> edges = new ArrayList<>(railNetwork.getEdges());
+        for (String edge : edges) {
+            String[] vertices = edge.split(" -> ");
+            if (graph.getVertices().contains(vertices[0]) && graph.getVertices().contains(vertices[1])) {
+                graph.addEdge(edge, vertices[0], vertices[1]);
+            }
+        }
+    }
+
+    private static List<String> getOutliersAsList(Graph<String, String> graph, List<List<String>> improvedManchettes) {
+        List<String> outliers = new ArrayList<>();
+        for (List<String> manchette : improvedManchettes) {
+            List<String> stationsInManchette = new ArrayList<>(manchette);
+            for (String station : stationsInManchette) {
+                if (!outliers.contains(station) && graph.getNeighborCount(station) == 1) {
+                    outliers.add(station);
+                }
+            }
+        }
+        return outliers;
     }
 
     private static void cleanManchettesFromEmptyAndDuplicated(List<List<String>> improvedManchettes) {
@@ -154,27 +200,31 @@ public class FlowAlgo {
             if (listManchetteWithCommonParts.size() > 0) {
                 // If there are manchettes where the trains can refund the manchette, delete it
                 List<String> manchetteSelected = listManchetteWithCommonParts.get(0);
-                if(!checkIfRefund(manchette, manchetteSelected, graph)){
+                if (!checkIfRefund(manchette, manchetteSelected, graph)) {
                     completemergeCommonManchettes(manchetteSelected, manchette,
-                    improvedManchettes);
+                            improvedManchettes);
                 }
             }
         }
     }
 
     // function to check if the trains can refund the manchette
-    private static boolean checkIfRefund(List<String> manchette, List<String> manchetteToMergeWith, Graph<String, String> graph) {
+    private static boolean checkIfRefund(List<String> manchette, List<String> manchetteToMergeWith,
+            Graph<String, String> graph) {
+        // Create a subgraph with the stations of the manchette and the stations of the
+        // manchette to merge with
         List<String> stationsInManchette = new ArrayList<>(manchette);
         for (String station : manchetteToMergeWith) {
             if (!stationsInManchette.contains(station)) {
-            stationsInManchette.add(station);
+                stationsInManchette.add(station);
             }
         }
-
         Graph<String, String> subgraph = RailNetwork.subGraphListVerteces(stationsInManchette, graph);
+
+        // Check if there are nodes with more than 2 neighbors in the subgraph
         List<String> nodes = new ArrayList<>(subgraph.getVertices());
-        for(String node : nodes){
-            if(subgraph.getNeighborCount(node) > 2){
+        for (String node : nodes) {
+            if (subgraph.getNeighborCount(node) > 2) {
                 return true;
             }
         }
@@ -213,13 +263,12 @@ public class FlowAlgo {
             // Check if the manchettes have a common part except for the knots
             List<String> knotsAsIC = getKnotsAsIC(graph);
             for (String station : manchette) {
-                if(manchette.size() > 2){
+                if (manchette.size() > 2) {
                     if (givenManchette.contains(station) && !knotsAsIC.contains(RailNetwork.getCodeImmu(station))) {
                         manchettesWithCommonParts.add(manchette);
                         break;
                     }
-                }
-                else {
+                } else {
                     if (givenManchette.contains(station)) {
                         manchettesWithCommonParts.add(manchette);
                         break;

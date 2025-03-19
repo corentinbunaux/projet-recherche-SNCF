@@ -14,13 +14,13 @@ public class App {
         // Graph<String, String> subgraphTest = RailNetwork.graphBorder(railNetwork,
         //         positions, "Marseille-St-Charles",
         //         50);
-        Graph<String, String> subgraphTest = RailNetwork.graphBorder(railNetwork,
-        positions,
-        "Chambéry-Challes-les-Eaux", 50);
-        GUI.display(subgraphTest, positions);
+
         // Graph<String, String> subgraphTest = RailNetwork.graphBorder(railNetwork,
-        // positions, "Chambéry-Challes-les-Eaux", 50);
-        // GUI.display(railNetwork, positions);
-        // ManchetteOptiFlow.generateManchettes(subgraphTest, positions);
+        // positions,
+        // "Chambéry-Challes-les-Eaux", 50);
+        
+        // GUI.display(subgraphTest, positions);
+        
+        GUI.display(railNetwork, positions);
     }
 }

@@ -63,7 +63,7 @@ public class GUI {
         frame.getContentPane().remove(splitPane);
 
         subgraph = RailNetwork.subGraphListVerteces(GraphVisualizer.getStackedVertices(), railNetwork);
-        manchettes = FlowAlgo.manchetteBasedFlow(subgraph);
+        manchettes = FlowAlgo.manchetteBasedFlow(subgraph, railNetwork, positions);
 
         createUI();
 
