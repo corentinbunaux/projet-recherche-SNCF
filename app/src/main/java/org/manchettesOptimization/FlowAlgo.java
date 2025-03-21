@@ -57,7 +57,12 @@
  *    --- A ----------- B ----------- C ------- F -----
  *                      |
  *                      E
- * 
+ *    - Ajout de la fonction completeManchettesToOutliers pour compléter les manchettes. Lors de la fusion de deux manchettes possèdant une même partie, 
+ *      les deux manchettes sont supprimées de l'objet improvedManchettes, et la manchette fusionnée est ajoutée. Cependant, les manchettes supprimées
+ *      servent a fusionner plusieurs manchettes. C'est pourquoi dans certains cas des manchettes ne sont pas fusionnées alors qu'elles le devraient : 
+ *      il n'y a pas de manchette avec laquelle comparer. L'ajout de cette fonction remédie au problème en grande partie (certaines manchettes restent
+ *      incomplètes parfois). 
+ *      ATTENTION : la fonction boucle à l'infi lors d'une topologie particulière du réseau (exemple : boucle sur la zone de Chambéry).
  */
 
 package org.manchettesOptimization;
@@ -70,6 +75,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import edu.uci.ics.jung.graph.Graph;
 
@@ -107,18 +113,18 @@ public class FlowAlgo {
         // for ech knot, we try to merge the two best manchettes for a given knot
         for (int i = 0; i < mostVisitedknotsAsIC.size(); i++) {
             String mostVisitedKnotAsIC = mostVisitedknotsAsIC.get(i);
-            boolean flowsBetweenManchettes = true;
-            // while there is a possibility of merging manchettes, we continue
-            while (flowsBetweenManchettes) {
-                flowsBetweenManchettes = mergeTheTwoBestManchettesForGivenKnot(graph, improvedManchettes, flowsWallet,
-                        stationsInFlow,
-                        mostVisitedKnotAsIC, initialManchettes);
-            }
+            mergeTheTwoBestManchettesForGivenKnot(graph, improvedManchettes, flowsWallet,
+                    stationsInFlow,
+                    mostVisitedKnotAsIC, initialManchettes, knotsAsIC);
         }
 
         // Once the manchettes have been improved, we merge the manchettes that have a
         // common part to reduce their number
-        mergeManchettesForKnotWithCommonPart(graph, improvedManchettes, stationsInFlow);
+        mergeManchettesForKnotWithCommonPart(graph, improvedManchettes,
+                stationsInFlow);
+
+        // completeManchettesToOutliers(improvedManchettes, graph, knotsAsIC, initialManchettes, flowsWallet,
+        //         stationsInFlow);
 
         // delete empty manchettes and manchettes included twice in a different order
         cleanManchettesFromEmptyAndDuplicated(improvedManchettes);
@@ -134,15 +140,14 @@ public class FlowAlgo {
         while (!outliers.isEmpty()) {
             String outlier = outliers.remove(0);
             Collection<String> neighbors = railNetwork.getNeighbors(outlier);
-            System.out.println();
             for (String neighbor : neighbors) {
                 if (!graph.getVertices().contains(neighbor) && railNetwork.getNeighborCount(outlier) <= 2) {
                     graph.addVertex(neighbor);
                     outliers.add(neighbor);
-                    for(List<String> manchette : improvedManchettes) {
-                        if(manchette.get(0).equals(outlier)) {
+                    for (List<String> manchette : improvedManchettes) {
+                        if (manchette.get(0).equals(outlier)) {
                             manchette.add(0, neighbor);
-                        } else if(manchette.get(manchette.size() - 1).equals(outlier)) {
+                        } else if (manchette.get(manchette.size() - 1).equals(outlier)) {
                             manchette.add(neighbor);
                         }
                     }
@@ -158,6 +163,65 @@ public class FlowAlgo {
                 graph.addEdge(edge, vertices[0], vertices[1]);
             }
         }
+    }
+
+    private static void completeManchettesToOutliers(List<List<String>> improvedManchettes, Graph<String, String> graph,
+            List<String> knotsAsIC, List<List<String>> initialManchettes, List<String> flowsWallet,
+            Map<String, List<String>> stationsInFlow) {
+        List<List<String>> manchettesToRemove = new ArrayList<>();
+        List<List<String>> manchettesToAdd = new ArrayList<>();
+
+        for (Iterator<List<String>> iterator = improvedManchettes.iterator(); iterator.hasNext();) {
+            List<String> manchette = iterator.next();
+            while (!isManchetteCompleted(manchette, knotsAsIC)) {
+                System.out.println("Manchette not completed : " + manchette);
+                String knotIC = knotsAsIC.contains(RailNetwork.getCodeImmu(manchette.get(0))) ? manchette.get(0)
+                        : knotsAsIC.contains(RailNetwork.getCodeImmu(manchette.get(manchette.size() - 1)))
+                                ? manchette.get(manchette.size() - 1)
+                                : null;
+                if (knotIC != null) {
+                    List<List<String>> allManchettesForKnot = getManchettesForKnot(RailNetwork.getCodeImmu(knotIC),
+                            initialManchettes, graph);
+                    Map<List<String>, List<String>> flowsForManchetteMap = new HashMap<>();
+                    for (List<String> initialManchette : allManchettesForKnot) {
+                        List<String> flowsForManchette = flowsForManchette(initialManchette, flowsWallet,
+                                stationsInFlow, knotsAsIC);
+                        flowsForManchetteMap.put(initialManchette, flowsForManchette);
+                    }
+                    // extract the manchette with the most stations in common with manchette from
+                    // allManchettesForKnot
+                    List<String> manchetteWithMostStationsInCommon = null;
+                    int maxCommonStations = 0;
+                    for (List<String> initialManchette : allManchettesForKnot) {
+                        int commonStations = 0;
+                        for (String station : initialManchette) {
+                            if (manchette.contains(station)) {
+                                commonStations++;
+                            }
+                        }
+                        if (commonStations > maxCommonStations) {
+                            maxCommonStations = commonStations;
+                            manchetteWithMostStationsInCommon = initialManchette;
+                        }
+                    }
+
+                    List<String> manchetteWithMostFlowsInCommon = getManchetteWithMostFlowsInCommon(
+                            allManchettesForKnot, flowsForManchetteMap, manchetteWithMostStationsInCommon);
+                    if (!manchette.isEmpty() && !manchetteWithMostFlowsInCommon.isEmpty()) {
+                        manchettesToRemove.add(manchette); // Collect the manchette to be removed
+                        List<String> mergedManchette = mergeManchettesForKnot(manchette,
+                                manchetteWithMostFlowsInCommon);
+                        manchettesToAdd.add(mergedManchette); // Collect the merged manchette to be added
+                        manchette = mergedManchette;
+                    }
+                }
+            }
+        }
+
+        // Remove collected manchettes
+        improvedManchettes.removeAll(manchettesToRemove);
+        // Add collected merged manchettes
+        improvedManchettes.addAll(manchettesToAdd);
     }
 
     private static List<String> getOutliersAsList(Graph<String, String> graph, List<List<String>> improvedManchettes) {
@@ -261,6 +325,9 @@ public class FlowAlgo {
                 continue;
             }
             // Check if the manchettes have a common part except for the knots
+            // FIXME : in some cases, the common part between two manchettes is multiple
+            // knots, so the first if down below is not enough
+            // to check if the manchettes have a common part
             List<String> knotsAsIC = getKnotsAsIC(graph);
             for (String station : manchette) {
                 if (manchette.size() > 2) {
@@ -293,64 +360,70 @@ public class FlowAlgo {
     // the manchettes have been merged, false otherwise
     // The manchettes can't be merged if there are no flows between them, or if they
     // are empty
-    private static boolean mergeTheTwoBestManchettesForGivenKnot(Graph<String, String> graph,
+    private static void mergeTheTwoBestManchettesForGivenKnot(Graph<String, String> graph,
             List<List<String>> improvedManchettes, List<String> flowsWallet, Map<String, List<String>> stationsInFlow,
-            String mostVisitedKnotAsIC, List<List<String>> initialManchettes) {
-        List<String> knotsAsIC = getKnotsAsIC(graph);
-
+            String mostVisitedKnotAsIC, List<List<String>> initialManchettes, List<String> knotsAsIC) {
+        boolean flowsBetweenManchettes = true;
         // Look for the manchettes that contain the most visited knot
-        List<List<String>> allManchettesForKnot = getManchettesForKnot(mostVisitedKnotAsIC, initialManchettes, graph);
-        List<List<String>> manchettesForKnotNotMergedYet = getManchettesForKnot(mostVisitedKnotAsIC, improvedManchettes,
+        List<List<String>> allManchettesForKnot = getManchettesForKnot(mostVisitedKnotAsIC, initialManchettes,
                 graph);
+        List<List<String>> manchettesForKnotNotMergedYet = new ArrayList<>();
+        // while there is a possibility of merging manchettes, we continue
+        while (flowsBetweenManchettes) {
+            manchettesForKnotNotMergedYet = getManchettesForKnot(mostVisitedKnotAsIC,
+                    improvedManchettes,
+                    graph);
 
-        // For each manchette that contains the most visited knot, get the flows that go
-        // through it
-        Map<List<String>, List<String>> flowsForManchetteMap = new HashMap<>();
-        for (List<String> manchette : allManchettesForKnot) {
-            List<String> flowsForManchette = flowsForManchette(manchette, flowsWallet, stationsInFlow, knotsAsIC);
-            flowsForManchetteMap.put(manchette, flowsForManchette);
-        }
+            // For each manchette that contains the most visited knot, get the flows that go
+            // through it
+            Map<List<String>, List<String>> flowsForManchetteMap = new HashMap<>();
+            for (List<String> manchette : allManchettesForKnot) {
+                List<String> flowsForManchette = flowsForManchette(manchette, flowsWallet, stationsInFlow, knotsAsIC);
+                flowsForManchetteMap.put(manchette, flowsForManchette);
+            }
 
-        // Sort the manchettes by the number of flows that go through them
-        List<Map.Entry<List<String>, List<String>>> sortedManchettes = new ArrayList<>(flowsForManchetteMap.entrySet());
-        sortedManchettes.sort((entry1, entry2) -> entry2.getValue().size() - entry1.getValue().size());
+            // Sort the manchettes by the number of flows that go through them
+            List<Map.Entry<List<String>, List<String>>> sortedManchettes = new ArrayList<>();
+            for (Map.Entry<List<String>, List<String>> entry : flowsForManchetteMap.entrySet()) {
+                sortedManchettes.add(entry);
+            }
+            sortedManchettes.sort((entry1, entry2) -> entry2.getValue().size() - entry1.getValue().size());
 
-        // Sort the manchettes that have not been merged yet by the number of flows that
-        // go through them
-        List<List<String>> sortedManchettesNotMergedYet = new ArrayList<>();
-        for (Map.Entry<List<String>, List<String>> entry : sortedManchettes) {
-            if (manchettesForKnotNotMergedYet.contains(entry.getKey())) {
-                sortedManchettesNotMergedYet.add(entry.getKey());
+            // Sort the manchettes that have not been merged yet by the number of flows that
+            // go through them
+            List<List<String>> sortedManchettesNotMergedYet = new ArrayList<>();
+            for (Map.Entry<List<String>, List<String>> entry : sortedManchettes) {
+                if (manchettesForKnotNotMergedYet.contains(entry.getKey())) {
+                    sortedManchettesNotMergedYet.add(entry.getKey());
+                }
+            }
+
+            boolean hasFlows = false;
+            for (List<String> manchette : sortedManchettesNotMergedYet) {
+                if (flowsForManchetteMap.get(manchette).size() > 0) {
+                    hasFlows = true;
+                    break;
+                }
+            }
+            if (!hasFlows) {
+                flowsBetweenManchettes = false;
+            } else {
+                // Get the manchette with the most flows
+                List<String> manchette1 = sortedManchettesNotMergedYet.get(0);
+
+                // Get the manchette with the most flows in common with the first manchette
+                List<String> manchette2 = getManchetteWithMostFlowsInCommon(allManchettesForKnot, flowsForManchetteMap,
+                        manchette1);
+
+                if (manchette1.isEmpty() || manchette2.isEmpty()) {
+                    flowsBetweenManchettes = false;
+                } else {
+                    // Merge the two manchettes that have the most flows in common
+                    completemergeManchettesForKnot(manchette1, manchette2, improvedManchettes, flowsWallet,
+                            stationsInFlow);
+                }
             }
         }
-
-        boolean hasFlows = false;
-        for (List<String> manchette : sortedManchettesNotMergedYet) {
-            if (flowsForManchetteMap.get(manchette).size() > 0) {
-                hasFlows = true;
-                break;
-            }
-        }
-        if (!hasFlows) {
-            return false;
-        }
-
-        // Get the manchette with the most flows
-        List<String> manchette1 = sortedManchettesNotMergedYet.get(0);
-
-        // Get the manchette with the most flows in common with the first manchette
-        List<String> manchette2 = getManchetteWithMostFlowsInCommon(allManchettesForKnot, flowsForManchetteMap,
-                manchette1);
-
-        // Ensure that both manchettes are not empty before merging
-        if (manchette1.isEmpty() || manchette2.isEmpty()) {
-            return false;
-        }
-
-        // Merge the two manchettes that have the most flows in common
-        completemergeManchettesForKnot(manchette1, manchette2, improvedManchettes, flowsWallet, stationsInFlow);
-
-        return true;
     }
 
     private static List<String> mergeManchettesForKnot(List<String> manchette1, List<String> manchette2) {
@@ -427,7 +500,8 @@ public class FlowAlgo {
             }
             List<String> flowsInCommonWithManchetteToCompare = new ArrayList<>();
             for (String flow : flowsForManchetteMap.get(manchette)) {
-                if (flowsForManchetteMap.get(manchetteToCompareWith).contains(flow)) {
+                if (flowsForManchetteMap.get(manchetteToCompareWith) != null
+                        && flowsForManchetteMap.get(manchetteToCompareWith).contains(flow)) {
                     flowsInCommonWithManchetteToCompare.add(flow);
                 }
             }
@@ -436,7 +510,6 @@ public class FlowAlgo {
                 manchetteWithMostFlowsInCommon = manchette;
             }
         }
-
         return manchetteWithMostFlowsInCommon;
     }
 
@@ -465,7 +538,8 @@ public class FlowAlgo {
                     if (!manchettesForKnot.contains(newManchette)
                             && !manchettesForKnot.contains(Arrays.asList(neighbor, knotName))) {
                         manchettesForKnot.add(newManchette);
-                        System.out.println("Adding a manchette between " + knotName + " and " + neighbor);
+                        // System.out.println("Adding a manchette between " + knotName + " and " +
+                        // neighbor);
                     }
                 }
             }
