@@ -35,29 +35,26 @@ To start the application, run:
 ./gradlew run
 ```  
 
-## Results: Photos and Videos  
+## Results  
 
 You can find the results of this project here:  
 
 ### Photos  
 ![alt](app/results/photos/Gares.png)  
-*Figure 1: Train stations from open data*
+*Figure 1 : Train stations from open data*
 
 ![alt](app/results/photos/Lignes.png)  
-*Figure 2: Train lines from open data*
+*Figure 2 : Train lines from open data*
 
 ![alt](app/results/photos/Graphe.png)  
-*Figure 3: Representation of the railway topology through a graph*
+*Figure 3 : Representation of the railway topology through a graph*
 
 ![alt](app/results/photos/Manchettes1.png)  
-*Figure 4: Results of basic "manchettes" generation*
+*Figure 4 : Results of basic "manchettes" generation*
 
 ![alt](app/results/photos/Manchettes2.png)  
-*Figure 5: Results of the algorithm aiming to reduce the number of "manchettes"*
+*Figure 5 : Results of the algorithm aiming to reduce the number of "manchettes"*
 
-### GIFs
-![err: can't load gif :(](app/results/videos/Movement.gif.gif)  
-*Figure 6: *
-
-![err: can't load gif :(](app/results/videos/Selection.gif.gif)  
-*Figure 7: Example of usage for GUI (selection)*
+### Videos
+![Movement](https://github.com/user-attachments/assets/32b7a066-43d4-4393-ab95-7e07bcd17f2c)
+*Figure 6 : Example of usage of the UI, navigating accross the map*
