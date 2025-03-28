@@ -59,5 +59,5 @@ You can find the results of this project here:
 ![Movement](https://github.com/user-attachments/assets/32b7a066-43d4-4393-ab95-7e07bcd17f2c)
 *Figure 6 : Example of usage of the UI, navigating accross the map*
 
-https://github.com/user-attachments/assets/483c9f37-49e3-4ee3-b47e-e8ef500e1f76
-*Figure 7 : Handling stations selection*
+![Selection](https://github.com/user-attachments/assets/483c9f37-49e3-4ee3-b47e-e8ef500e1f76)
+*Figure 7 : Handling station selection*
